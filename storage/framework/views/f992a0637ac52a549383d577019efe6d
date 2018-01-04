@@ -1,0 +1,170 @@
+<?php $__env->startSection('header_title'); ?>
+
+    <h1>Packages Categories</h1>
+
+<?php $__env->stopSection(); ?>
+
+
+
+
+<?php $__env->startSection('content'); ?>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header text-right">
+                    <a href="<?php echo e(route('adminpackagestypescreate')); ?>" class="btn btn-primary btn-sm"><span class="fa fa-plus"></span></a>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <table id="table-package-type" class="table table-bordered table-striped">
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach($packagesTypes as $packagesType): ?>
+                                <tr>
+                                    <td><?php echo e($packagesType->name); ?></td>
+                                    <td>
+                                        <a href="<?php echo e(route('packageTypeUpdate',['packageTypeId' => $packagesType->id])); ?>" class="btn btn-default btn-xs"><span class="fa fa-pencil"></span></a>
+                                        <form id="formGigActivate" method="post" action="<?php echo e(route('packageType.activate')); ?>" style="padding-bottom: 10px; padding-top: 10px;">
+                                            <input type="hidden" name="packagetype-id" value="<?php echo e($packagesType->id); ?>">
+                                            <?php if(!$packagesType->active): ?>
+                                                <button type="button" class="btn btn-danger btn-xs btn-packagetype-activate">Deactivated</button>
+                                            <?php else: ?>
+                                                <button type="button" class="btn btn-success btn-xs btn-packagetype-activate">Activated</button>
+                                            <?php endif; ?>
+                                        </form>
+                                        <?php if( \Illuminate\Support\Facades\Auth::admin()->get()->type !='subadmin'): ?>
+                                        <form class="form-gig-category-delete" method="delete" action="<?php echo e(route('adminpackagestypesdelete')); ?>">
+                                            <input type="hidden" name="package-type-id" value="<?php echo e($packagesType->id); ?>">
+                                            <button type="button" class="btn btn-danger pakagetype_delete btn-xs fa fa-trash-o"></button>
+                                        </form>
+                                        <?php endif; ?>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+
+                    </table>
+                </div><!-- /.box-body -->
+            </div><!-- /.box -->
+        </div><!-- /.col -->
+    </div><!-- /.row -->
+
+
+<?php $__env->stopSection(); ?>
+
+
+<?php $__env->startSection('pages_css'); ?>
+
+        <!-- DataTables -->
+
+    <link rel="stylesheet" href="<?php echo e(asset('bower_components/AdminLTE/plugins/datatables/dataTables.bootstrap.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('css/animate.css')); ?>">
+
+    <?php $__env->stopSection(); ?>
+
+
+
+
+
+    <?php $__env->startSection('pages_script'); ?>
+
+            <!-- DataTables -->
+    <script src="<?php echo e(asset('bower_components/AdminLTE/plugins/datatables/jquery.dataTables.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('bower_components/AdminLTE/plugins/datatables/dataTables.bootstrap.min.js')); ?>"></script>
+    <!-- page script -->
+    <script>
+        $(function () {
+            var table = $("#table-package-type").DataTable({
+
+                "aaSorting": []
+            });
+              $('#table-package-type tbody').on('click', '.btn-packagetype-activate', function(e) {
+                e.preventDefault();
+                var form = e.target.parentNode;
+                var formData = new FormData(form);
+                var thisbutton = this;
+                $.ajax({
+                    url: form.action,
+                    method: form.method,
+                    contentType: false,
+                    processData: false,
+                    data: formData,
+                    success: function(data) {
+                        console.log(data);
+                        if(data.status == 1) {
+                            $(thisbutton).html("Activated");
+                            thisbutton.classList.remove('btn-danger');
+                            thisbutton.classList.add('btn-success');
+                        } else if(data.status == 0) {
+                            $(thisbutton).html("Deactivated");
+                            thisbutton.classList.remove('btn-success');
+                            thisbutton.classList.add('btn-danger');
+                        }
+
+                        //clickedElement.removeAttribute('disabled');
+                    }
+                });
+
+
+            })
+
+            $('#table-package-type').on('click', '.pakagetype_delete' ,function (e) {
+                if(!confirm('Are you sure you want to dalete the pakage catagory?'))
+                {
+                    return false;
+                }
+                else
+                {
+                    var form = e.target.parentNode;
+                    var formData = new FormData(form);
+                    var thisbutton = this;
+
+
+                    $.ajax({
+                        url: form.action,
+                        method: 'post',
+                        data: formData,
+                        contentType: false,
+                        processData: false,
+                        complete: function (data) {
+                            if (JSON.parse(data.responseText).deleted) {
+                                $(form).parent().parent().remove();
+                                $.notify({
+                                    // options
+                                    message: 'Package Type Delete Successfully.'
+                                }, {
+                                    // settings
+                                    placement: {
+                                        from: 'bottom',
+                                        align: 'right'
+                                    },
+                                    type: 'success'
+                                });
+                            }
+                            else {
+                                $.notify({
+                                    // options
+                                    message: 'Package Type Deleting failed please try later.'
+                                }, {
+                                    // settings
+                                    placement: {
+                                        from: 'bottom',
+                                        align: 'right'
+                                    },
+                                    type: 'danger'
+                                });
+                            }
+                        }
+                    });
+                }
+            })
+
+        });
+    </script>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('pages.admin.admin_template', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

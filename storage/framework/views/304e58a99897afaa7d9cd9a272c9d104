@@ -1,0 +1,259 @@
+
+
+
+<?php $__env->startSection('header_title'); ?>
+
+    <h1>Packages Orders</h1>
+
+<?php $__env->stopSection(); ?>
+
+
+
+
+<?php $__env->startSection('content'); ?>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header text-right">
+                    <?php if(!empty($CountpackagesCompleteOrders) && $CountpackagesCompleteOrders): ?>
+                    <a href="<?php echo e(route('orders_csv')); ?>?type=package" class="btn btn-primary">Export CSV</a>
+                    <?php endif; ?>
+                    <?php /*<a href="/admin/gigs/create" class="btn btn-primary btn-sm"><span class="fa fa-plus"></span></a>*/ ?>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                        <tr>
+                            <th>Order No</th>
+                            <th>Status</th>
+                            <th>Package</th>
+                            <th>Assigned to</th>
+                            <th>Amount</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php if(!empty($pendingordersCount) && $pendingordersCount > 0): ?>
+                            <?php foreach($packagesOrders as $order): ?>
+                                
+                            <tr>
+                                <?php if(date('d.m.Y', strtotime($order->created_at)) == date('d.m.Y')): ?>
+                                <td><i class="fa fa-star" style="color: #157340;"></i> <?php echo e($order->order_no); ?> <?php if($order->status == 'review'): ?>
+                                        <span class="job_reviewed"><i class="icon fa fa-check"></i>Reviewed</span>
+                                    <?php elseif($order->status == 'jobdonebyagency'): ?>
+                                        <span class="btn-success"><i class="icon fa fa-check"></i>Done by agency</span>
+                                    <?php endif; ?>
+                                </td>
+                                <?php else: ?>
+                                <td><i class="fa fa-star" style="color: #157340;"></i> <?php echo e($order->order_no); ?> <?php if($order->status == 'review'): ?><span class="job_reviewed"><i class="icon fa fa-check"></i>Reviewed</span><?php endif; ?></td>
+                                <?php endif; ?>
+                                <td><?php echo e($order->status); ?></td>
+                                <?php if(!empty($order['package'])): ?>
+                                <td><?php echo e($order['package']->title); ?></td>
+                                    <?php if(!empty($order->agency)): ?>
+                                        <td  style="background-color:#157340; color: #ffffff; "><?php echo e($order->agency->username); ?></td>
+                                    <?php else: ?>
+                                        <td style="background-color: #FBDD0A; color: black;">Not assigned</td>
+                                    <?php endif; ?>
+                                <td><?php echo e(config('app.currency')); ?><?php echo e(number_format($order['package']->price,2)); ?></td>
+                                <?php endif; ?>
+                                <td>
+                                    <a href="<?php echo e(route('adminorder', [$order->order_no, $order->uuid])); ?>" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-eye-open"></span></a>
+                                    <?php if( \Illuminate\Support\Facades\Auth::admin()->get()->type !='subadmin'): ?>
+                                        <button data-id="<?php echo e($order->order_no); ?>" class="btn btn-danger btn-xs trash-btn" data-target='#myModal' data-toggle="modal"><span class="fa fa-trash-o"></span></button>
+                                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                        <h4 class="modal-title" id="myModalLabel">Delete</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <h3>Are you sure want to delete this order?</h3>
+                                                        <input type="hidden" name="order_id" value="" id="order_id">
+                                                        <!-- select -->
+                                                        <div class="row">
+                                                            <div class="col-md-4">Order</div>
+                                                            <div class="col-md-8" id="order"></div>
+                                                        </div>
+
+                                                        <div class="row">
+                                                            <div class="col-md-4">Order Date</div>
+                                                            <div class="col-md-8" id="order_date"></div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-4">Expire Date</div>
+                                                            <div class="col-md-8" id="expire_date"></div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-4">Amount</div>
+                                                            <div class="col-md-8" id="order_amount"></div>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                                                        <button type="submit" class="btn btn-primary" id="yes_order_delete">Yes</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <?php endif; ?>
+                                </td>
+                            </tr>
+
+                            <?php endforeach; ?>
+                        <?php elseif(!empty($CountpackagesCompleteOrders) && $CountpackagesCompleteOrders): ?>
+                            <?php foreach($packagesCompleteOrders as $order): ?>
+
+                                <tr>
+                                    <td><?php echo e($order->order_no); ?></td>
+                                    <td><?php echo e($order->status); ?></td>
+                                    <?php if(!empty($order['package'])): ?>
+                                        <td><?php echo e($order['package']->title); ?></td>
+                                        <?php if(!empty($order->agency)): ?>
+                                            <td  style="background-color:#157340; color: #ffffff; "><?php echo e($order->agency->username); ?></td>
+                                        <?php else: ?>
+                                            <td style="background-color: #FBDD0A; color: black;">Not assigned</td>
+                                        <?php endif; ?>
+                                        <td><?php echo e(config('app.currency')); ?><?php echo e(number_format($order['package']->price,2)); ?></td>
+                                    <?php endif; ?>
+                                    <td>
+                                        <a href="<?php echo e(route('adminorder', [$order->order_no, $order->uuid])); ?>" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-eye-open"></span></a>
+                                        <?php if( \Illuminate\Support\Facades\Auth::admin()->get()->type !='subadmin'): ?>
+                                            <button data-id="<?php echo e($order->uuid); ?>" class="btn btn-danger btn-xs btn-del"><span class="fa fa-trash-o"></span></button>
+                                        <?php endif; ?>
+                                    </td>
+                                </tr>
+
+                            <?php endforeach; ?>
+                            <?php elseif(!empty($total_cancel_orders) && $total_cancel_orders): ?>
+                            <?php foreach($canceledorders as $order): ?>
+
+                                <tr>
+                                    <td><?php echo e($order->order_no); ?></td>
+                                    <td><?php echo e($order->status); ?></td>
+                                    <?php if(!empty($order['package'])): ?>
+                                        <td><?php echo e($order['package']->title); ?></td>
+                                        <?php if(!empty($order->agency)): ?>
+                                            <td  style="background-color:#157340; color: #ffffff; "><?php echo e($order->agency->username); ?></td>
+                                        <?php else: ?>
+                                            <td style="background-color: #FBDD0A; color: black;">Not assigned</td>
+                                        <?php endif; ?>
+                                        <td><?php echo e(config('app.currency')); ?><?php echo e(number_format($order['package']->price,2)); ?></td>
+                                    <?php endif; ?>
+                                    <td>
+                                        <a href="<?php echo e(route('adminorder', [$order->order_no, $order->uuid])); ?>" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-eye-open"></span></a>
+                                        <?php if( \Illuminate\Support\Facades\Auth::admin()->get()->type !='subadmin'): ?>
+                                            <button data-id="<?php echo e($order->uuid); ?>" class="btn btn-danger btn-xs btn-del"><span class="fa fa-trash-o"></span></button>
+                                        <?php endif; ?>
+                                    </td>
+                                </tr>
+
+                            <?php endforeach; ?>
+                        <?php endif; ?>
+                        </tbody>
+
+                    </table>
+                </div><!-- /.box-body -->
+            </div><!-- /.box -->
+        </div><!-- /.col -->
+    </div><!-- /.row -->
+    <!-- Modal -->
+    <?php $__env->stopSection(); ?>
+
+
+
+
+    <?php $__env->startSection('pages_css'); ?>
+
+            <!-- DataTables -->
+    <link rel="stylesheet" href="<?php echo e(asset('bower_components/AdminLTE/plugins/datatables/dataTables.bootstrap.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('css/animate.css')); ?>">
+
+    <?php $__env->stopSection(); ?>
+
+
+
+
+
+    <?php $__env->startSection('pages_script'); ?>
+
+            <!-- DataTables -->
+    <script src="<?php echo e(asset('bower_components/AdminLTE/plugins/datatables/jquery.dataTables.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('bower_components/AdminLTE/plugins/datatables/dataTables.bootstrap.min.js')); ?>"></script>
+    <!-- page script -->
+    <script>
+        $(function () {
+            var table = $("#example1").DataTable({
+                "aaSorting": []
+            });
+
+            $(document).on('click', '.trash-btn', function () {
+                var order_id = $(this).data('id');
+                $('#order_id').val(order_id);
+                $.ajax({
+                    type: 'get',
+                    data: 'order_id=' + order_id,
+                    url: "<?php echo e(route('pendingOrder')); ?>",
+                    success: function (res) {
+                        // alert(res);
+                        /*console.log(order_id);*/
+                        $('#order').html(res.order_no);
+                        $('#order_date').html(res.created_at);
+                        $('#expire_date').html(res.expiry);
+                        $('#order_amount').html(res.amount);
+                    }
+                })
+            });
+
+            /*$('#example1 tbody').on('click', 'button.btn-del', function() {
+
+                var button = $(this);
+
+                var rowId = button.data('uuid');
+
+                $.ajax({
+                    method: 'DELETE',
+                    url: '/admin/orders',
+                    data: { order_id: rowId },
+                }).done(function(data) {
+                    if(data != 0) {
+                        notifyMessage('Order Deleted Successfully.', 'success');
+
+                        table.row( button.parents('tr') ).remove().draw();
+
+                    } else {
+                        notifyMessage('Order Deleting failed please try again.', 'danger')
+                    }
+                });
+
+            });*/
+            $(document).on('click','#yes_order_delete', function () {
+
+                var order_id = $('#order_id').val();
+
+                $.ajax({
+                    type: 'get',
+                    data: 'order_id=' + order_id,
+                    url: "<?php echo e(route('orderdelete')); ?>",
+                    beforeSend: function () {
+                        $('#yes_order_delete').empty().html('Please wait...')
+                    },
+                    success: function (res) {
+                        console.log(res);
+                        if (res > 0) {
+                            location.reload();
+                        }
+                        else {
+                            alert('Ops! some thing goes wrong.. Please try again.')
+                        }
+                    }
+                });
+            });
+
+        });
+    </script>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('pages.admin.admin_template', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

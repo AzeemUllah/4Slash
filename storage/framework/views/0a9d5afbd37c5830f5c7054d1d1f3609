@@ -1,0 +1,143 @@
+<?php echo $__env->make('includes.header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+
+<!--Content-->
+   <div class="container top-gap">
+   		<div class="well main">
+        	<h1 class="text-primary">My Settings</h1>
+            <div class="content-body">
+              <div class="row">
+                <div class="col-md-2 name">
+                  Full Name
+                </div>
+                <div class="col-md-6 input-name">
+                  <input type="text" class="form-control input-lg" placeholder="Username">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-2 Email">
+                  Email
+                </div>
+                <div class="col-md-6 input-email">
+                  <input type="text" class="form-control input-lg" placeholder="email@website.com">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-2 paypal">
+                  PayPal
+                </div>
+                <div class="col-md-6 paypal-txt">
+                  Your profile is associated with a PayPal account.
+                  To change it,<a href="#">client here</a>
+                </div>
+              </div>
+              <hr>
+              <div class="select-box">
+                <div class="row first-rw">
+                  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-3">Notification</div>
+                  <div class="col-lg-5 col-md-5 col-sm-5 col-xs-3">Type</div>
+                  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-3">Email</div>
+                  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-3">Push</div>
+                </div>
+                <div class="row second-rw">
+                  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-3"></div>
+                  <div class="col-lg-5 col-md-5 col-sm-5 col-xs-3">Inbox Messages</div>
+                  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-3">
+                    <div class="switch">
+                      <input id="cmn-toggle-1" class="cmn-toggle cmn-toggle-round" type="checkbox">
+                      <label for="cmn-toggle-1"></label>
+                    </div>
+                  </div>
+                  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-3">
+                    <div class="switch">
+                      <input id="cmn-toggle-2" class="cmn-toggle cmn-toggle-round" type="checkbox">
+                      <label for="cmn-toggle-2"></label>
+                    </div>
+                  </div>
+                </div>
+                <div class="row third-rw">
+                  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-3"></div>
+                  <div class="col-lg-5 col-md-5 col-sm-5 col-xs-3">Order Messages</div>
+                  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-3">
+                    <div class="switch">
+                      <input id="cmn-toggle-3" class="cmn-toggle cmn-toggle-round" type="checkbox">
+                      <label for="cmn-toggle-3"></label>
+                    </div>
+                  </div>
+                  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-3">
+                    <div class="switch">
+                      <input id="cmn-toggle-4" class="cmn-toggle cmn-toggle-round" type="checkbox">
+                      <label for="cmn-toggle-4"></label>
+                    </div>
+                  </div>
+                </div>
+                <div class="row fourth-rw">
+                  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-3"></div>
+                  <div class="col-lg-5 col-md-5 col-sm-5 col-xs-3">Order statuses</div>
+                  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-3">
+                    <div class="switch">
+                      <input id="cmn-toggle-5" class="cmn-toggle cmn-toggle-round" type="checkbox">
+                      <label for="cmn-toggle-5"></label>
+                    </div>
+                  </div>
+                  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-3">
+                    <div class="switch">
+                      <input id="cmn-toggle-6" class="cmn-toggle cmn-toggle-round" type="checkbox">
+                      <label for="cmn-toggle-6"></label>
+                    </div>
+                  </div>
+                </div>
+                <div class="row fifth-rw">
+                  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-3"></div>
+                  <div class="col-lg-5 col-md-5 col-sm-5 col-xs-3">Gig Requests</div>
+                  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-3"></div>
+                  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-3">
+                    <div class="switch">
+                      <input id="cmn-toggle-7" class="cmn-toggle cmn-toggle-round" type="checkbox">
+                      <label for="cmn-toggle-7"></label>
+                    </div>
+                  </div>
+                </div>
+                <div class="row sixth-rw">
+                  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-3"></div>
+                  <div class="col-lg-5 col-md-5 col-sm-5 col-xs-3">My Account</div>
+                  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-3"></div>
+                  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-3">
+                    <div class="switch">
+                      <input id="cmn-toggle-8" class="cmn-toggle cmn-toggle-round" type="checkbox">
+                      <label for="cmn-toggle-8"></label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-md-2 col-sm-2 fb-txt">
+                  Facebook
+                </div>
+                <div class="col-md-10 col-sm-10 fb-img">
+                  <span><img src="img\fb.png"></span>Your Cnerr account is associated with your Facebook Profile.
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-2 col-sm-2 gmail-txt">
+                  Google
+                </div>
+                <div class="col-md-10 col-sm-10 gmail-img">
+                  <span><img src="img\gmail.png"></span>Your Cnerr account is associated with your Facebook Profile.
+                </div>
+              </div>
+              <div class="col-md-11 sav-btn"><button type="button" class="btn btn-primary pull-right">Save</button></div>
+              <div class="clearfix"></div>
+            </div>
+      </div>
+  </div>
+<!--Footer-->
+
+
+
+
+       <?php echo $__env->make('includes.footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+</body>
+</html>

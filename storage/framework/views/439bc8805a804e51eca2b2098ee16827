@@ -1,0 +1,1372 @@
+<?php echo $__env->make('includes.header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<section class="section pageSection section--product-first">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="section-content" style="text-align: left; margin-top: 44px; padding-bottom: 5px; font-size: 30px; font-family: cursive; color: white; font-size: -webkit-xxx-large;">
+
+
+                <br>
+                <div style="width: 100%;margin-left: 100px;">
+                    <p class="comeletdiv" style="font: 900 80px/53px metric;line-height: 0.8;font-family: roboto;"> Come Let's
+                        Sprout<span style="display: inline-block;"><img src="img/withus-gif.gif" class="comelet" alt="with us"></span></p>
+                </div>
+            </div>
+            <div class="laptop">
+
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<div class="cnerr-main-content-background-color text-center">
+    <div class="col-md-12 blackbardiv">
+        <p class="top_text blackdivpara4" >
+            <title>4Slash | Passion For e-volving Businesses</title>
+            <meta name="keywords" content="graphic design art,web programming,digital media marketing,video editor,producer & composer,business writing skills,advertising campaign,video maker,video marketing,business plans">
+            <meta name="description" content="4Slash is a Fusion of data, design & technology & results-driven Marketing">
+
+            4Slash is a <b>Fusion of data</b>, <b>design & technology</b> & results-driven <b>Marketing
+                Communications</b> Services Company.<br> We integrate <b>technology</b> with <b>critical agendas</b> to drive
+            <b>strategic business outcomes</b>.<br> We have committed teams of professionals with experience in variety of
+            tools and platforms
+        </p>
+        <div class="col-md-4 col-sm-12 col-xs-12" style="color: white">
+            <h1 class="blackdivheading1">Your Terms</h1>
+            <p class="blackdivpara1">Be 100% sure that we won’t stop,,<br>Until you get what you wanted.</p>
+        </div>
+        <div class="col-md-4 col-sm-12 col-xs-12" style="color: white;">
+            <h1 class="blackdivheading2">Your Timeline</h1>
+            <p class="blackdivpara2">Find our product and packages based on your goals and deadlines,<br>Or just create a custom order, it’s that simple.</p>
+        </div>
+        <div class="col-md-4 col-sm-12 col-xs-12" style="color: white">
+            <h1 class="blackdivheading3">Your Safety</h1>
+            <p class="blackdivpara3">Your payment is always secure, our system protect,<br>Your peace of mind.</p>
+        </div>
+    </div>
+    <div class="col-md-12 col-sm-12 col-xs-12 bluebardiv" style="z-index: 30">
+
+        <h2 style="padding-top: 40px;">Explore Our Marketplace</h2>
+        <p>Get inspired to build your business</p>
+    </div>
+</div>
+
+<section class="section pageSection section--product-first creativepanel1" style="padding-bottom: 25px;">
+    <div class="container creativecontainer">
+        <div class="row">
+            <div class="col-md-12 creativepanel" style="padding-left: 0px;">
+                <div class="col-md-3 col-sm-4 col-xs-5 imgdiv" style="padding-left: 0px;">
+                    <img src="img/pic.png.png" alt="Progress at a glance" title="Progress at a glance" style="padding-top: 57px; width: 100%;"/>
+                    <h3 style="color: white;"><?php echo e($gigtype1->name); ?></h3>
+                    <br>
+                    <p class="color-white"><?php echo e($gigtype1->description); ?></p>
+                    <a class="button button--secondary button--background" href="<?php echo e(route('gigscategory.gigs',['categoryslug'=> $gigtype1->slug])); ?>">Preview
+                        Portfolio</a>
+
+                </div>
+                <div class="col-md-9 col-sm-12 col-xs-12 gigsdiv" style="padding-top: 55px;">
+                    <div class="col-md-12 col-sm-12 col-xs-12 creativegigs">
+                        <?php foreach($featuredGigs1 as $featuredGig): ?>
+                        <div class="slide gig-item gig-item-default js-slide js-gig-card gifscard "
+                             data-gig-id="4864637"
+                             data-cached-slug="create-unusual-illustrations-in-my-style" data-gig-index="0"
+                             data-gig-category="graphics-design"
+                             data-gig-sub-category="digital-illustration" data-gig-price="20" itemscope=""
+                             itemtype="http://schema.org/Product">
+
+
+                            <div class="gig-seller">
+                        <span itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating">
+                            <span class="ratings-count" itemprop="ratingCount">(202)</span>
+                        </span>
+                                <meta itemprop="worstRating" content="1">
+                                <span class="circ-rating-s8 rate-10" itemprop="ratingValue">10</span>
+                                <meta itemprop="bestRating" content="10">
+                                <?php /*by <a href="/muravski" rel="nofollow" class="seller-name" itemprop="brand" itemscope="" itemtype="http://schema.org/Brand">muravski</a>*/ ?>
+                            </div>
+
+                            <a href="<?php echo e(url()); ?>/favors/<?php echo e($featuredGig['gigtype_slug']); ?>/<?php echo e($featuredGig->slug); ?>?funnel=<?php echo e($featuredGig->uuid); ?>"
+                               class="gig-link-main" itemprop="url">
+                                            <span class="gig-pict-222" itemscope=""
+                                                  itemtype="http://schema.org/ImageObject">
+                                                <?php if(!empty($featuredGig['thumbnail']) AND $featuredGig['thumbnail'] != ''): ?>
+                                                    <img src="<?php echo e($featuredGig['thumbnail']); ?>" alt="<?php echo e($featuredGig->title); ?>"></span>
+                                <?php endif; ?>
+                                <h3 itemprop="name"><?php echo e(str_limit($featuredGig->title, 45)); ?></h3>
+                            </a>
+
+                            <aside class="card-badges cf">
+
+                                <span class="gig-badges featured" itemprop="award">featured</span>
+
+                            </aside>
+
+
+                            <div class="gig-sub cf">
+
+
+                                <a href="<?php echo e(url()); ?>/favors/<?php echo e($featuredGig['gigtype_slug']); ?>/<?php echo e($featuredGig->slug); ?>?funnel=<?php echo e($featuredGig->uuid); ?>"
+                                   class="gig-price" rel="nofollow" itemprop="offers" itemscope=""
+                                   itemtype="http://schema.org/Offer">
+                                    <small itemprop="price"></small>
+                                    <span itemprop="price"><?php echo e(config('app.currency') . $featuredGig->price); ?></span></a>
+                                <?php if($user): ?>
+                                <aside data-url="<?php echo e(route('gig.favourite')); ?>" data-coll-id="<?php echo e($featuredGig->id); ?>">
+                                    <a id="btn-favourite-submit" href="javascript:void(0);" class="gig-favourite-heart-icn">
+                                                                <span class="favorite-span">
+                                                                    <?php if($featuredGig['my_fav']): ?>
+                                                                        <i class="fa fa-heart"></i>
+                                                                    <?php else: ?>
+                                                                        <i class="fa fa-heart-o"></i>
+                                                                    <?php endif; ?>
+                                                                </span>
+
+                                    </a>
+
+                                </aside>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                        <?php endforeach; ?>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12 creativepackets">
+                        <?php foreach($featuredPackages1 as $featuredPackag): ?>
+                        <div class="slide gig-item gig-item-default js-slide js-gig-card packetscard "
+                             data-gig-id="4864637"
+                             data-cached-slug="create-unusual-illustrations-in-my-style" data-gig-index="0"
+                             data-gig-category="graphics-design"
+                             data-gig-sub-category="digital-illustration" data-gig-price="20" itemscope=""
+                             itemtype="http://schema.org/Product">
+                            <?php /*<div id="sold" style="display: none;"><span style="color:white;font-weight: bold;font-size: 11px; position: relative;top:5px;"><?php echo e($featuredGig['sale_count']); ?></span></div>*/ ?>
+                            <div class="gig-seller">
+                    <span itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating">
+                        <span class="ratings-count" itemprop="ratingCount">(202)</span>
+                    </span>
+                                <meta itemprop="worstRating" content="1">
+                                <span class="circ-rating-s8 rate-10" itemprop="ratingValue">10</span>
+                                <meta itemprop="bestRating" content="10">
+                                <?php /*by <a href="/muravski" rel="nofollow" class="seller-name" itemprop="brand" itemscope="" itemtype="http://schema.org/Brand">muravski</a>*/ ?>
+                            </div>
+
+                            <a href="<?php echo e(route('site.single.package',['packageId' => $featuredPackag->id,'funnel' => uniqid(),'uuid' => rand(1,1000)])); ?>"
+                               class="gig-link-main" itemprop="url">
+                                        <span class="gig-pict-222" itemscope=""
+                                              itemtype="http://schema.org/ImageObject">
+                                            <?php if(!empty($featuredPackag['thumbnail']) AND $featuredPackag['thumbnail'] != ''): ?>
+                                                <img src="<?php echo e($featuredPackag['thumbnail']); ?>"
+                                                     alt="<?php echo e($featuredPackag->title); ?>"></span>
+                                <?php endif; ?>
+                                <h3 itemprop="name"><?php echo e(str_limit($featuredPackag->title,50,'...')); ?></h3>
+                                <?php /*<h3 itemprop="name"><?php echo e($featuredGig->title); ?></h3>*/ ?>
+                                <div class="row" style="margin:0px;">
+                                    <div class="col-xs-4 color-silver" >
+                                        <p>Bronze</p>
+                                        <img src="<?php echo e(url('/').'/img/bronze_label.png'); ?>" alt="bronze" width="30px">
+                                        <p><?php echo e(config('app.currency').$featuredPackag['package_bronze']->price); ?></p>
+                                    </div>
+                                    <div class="col-xs-4 color-bronze" >
+                                        <p>Silber</p>
+                                        <img src="<?php echo e(url('/').'/img/silver_label.png'); ?>" alt="silver" width="30px">
+                                        <p><?php echo e(config('app.currency').$featuredPackag['package_silver']->price); ?></p>
+                                    </div>
+                                    <div class="col-xs-4 color-gold" >
+                                        <p>Gold</p>
+                                        <img src="<?php echo e(url('/').'/img/gold_label.png'); ?>" alt="gold" width="30px">
+                                        <p><?php echo e(config('app.currency').$featuredPackag['package_gold']->price); ?></p>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <div class="col-xs-5">
+                                <span class="gig-badges featured" itemprop="award">featured</span>
+                            </div>
+                            <div class="col-xs-3">
+                                <?php if($user): ?>
+                                <aside data-url="<?php echo e(route('gig.favourite')); ?>"
+                                       data-coll-id="<?php echo e($featuredPackag->id); ?>">
+                                    <a id="btn-favourite-submit" href="javascript:void(0);"
+                                       class="gig-favourite-heart-icn">
+                                                            <span class="favorite-span">
+                                                                <?php if($featuredPackag['my_fav']): ?>
+                                                                    <i class="fa fa-heart"></i>
+                                                                <?php else: ?>
+                                                                    <i class="fa fa-heart-o"></i>
+                                                                <?php endif; ?>
+                                                            </span>
+
+                                    </a>
+
+                                </aside>
+                                <?php endif; ?>
+                            </div>
+                            <?php /*<div class="col-xs-4">
+                                <a href="<?php echo e(url()); ?>/favors/<?php echo e($featuredGig['gigtype_slug']); ?>/<?php echo e($featuredGig->slug); ?>?funnel=<?php echo e($featuredGig->uuid); ?>"
+                                   class="gig-price" rel="nofollow" itemprop="offers" itemscope=""
+                                   itemtype="http://schema.org/Offer">
+                                    <small itemprop="price"></small>
+                                    <span itemprop="price"><?php echo e(config('app.currency') . $featuredPackag->price); ?></span></a>
+                            </div>*/ ?>
+                        </div>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12 gigsdiv1" style="padding-top: 55px; display: none">
+                    <div class="col-md-12 col-sm-12 col-xs-12 creativegigs">
+                        <?php foreach($featuredGigs1 as $featuredGig): ?>
+                        <div class="slide gig-item gig-item-default js-slide js-gig-card gifscard "
+                             data-gig-id="4864637"
+                             data-cached-slug="create-unusual-illustrations-in-my-style" data-gig-index="0"
+                             data-gig-category="graphics-design"
+                             data-gig-sub-category="digital-illustration" data-gig-price="20" itemscope=""
+                             itemtype="http://schema.org/Product">
+
+
+                            <div class="gig-seller">
+                        <span itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating">
+                            <span class="ratings-count" itemprop="ratingCount">(202)</span>
+                        </span>
+                                <meta itemprop="worstRating" content="1">
+                                <span class="circ-rating-s8 rate-10" itemprop="ratingValue">10</span>
+                                <meta itemprop="bestRating" content="10">
+                                <?php /*by <a href="/muravski" rel="nofollow" class="seller-name" itemprop="brand" itemscope="" itemtype="http://schema.org/Brand">muravski</a>*/ ?>
+                            </div>
+
+                            <a href="<?php echo e(url()); ?>/favors/<?php echo e($featuredGig['gigtype_slug']); ?>/<?php echo e($featuredGig->slug); ?>?funnel=<?php echo e($featuredGig->uuid); ?>"
+                               class="gig-link-main" itemprop="url">
+                                            <span class="gig-pict-222" itemscope=""
+                                                  itemtype="http://schema.org/ImageObject">
+                                                <?php if(!empty($featuredGig['thumbnail']) AND $featuredGig['thumbnail'] != ''): ?>
+                                                    <img src="<?php echo e($featuredGig['thumbnail']); ?>" alt="<?php echo e($featuredGig->title); ?>"></span>
+                                <?php endif; ?>
+                                <h3 itemprop="name"><?php echo e(str_limit($featuredGig->title, 45)); ?></h3>
+                            </a>
+
+                            <aside class="card-badges cf">
+
+                                <span class="gig-badges featured" itemprop="award">featured</span>
+
+                            </aside>
+
+
+                            <div class="gig-sub cf">
+
+
+                                <a href="<?php echo e(url()); ?>/favors/<?php echo e($featuredGig['gigtype_slug']); ?>/<?php echo e($featuredGig->slug); ?>?funnel=<?php echo e($featuredGig->uuid); ?>"
+                                   class="gig-price" rel="nofollow" itemprop="offers" itemscope=""
+                                   itemtype="http://schema.org/Offer">
+                                    <small itemprop="price"></small>
+                                    <span itemprop="price"><?php echo e(config('app.currency') . $featuredGig->price); ?></span></a>
+                                <?php if($user): ?>
+                                <aside data-url="<?php echo e(route('gig.favourite')); ?>" data-coll-id="<?php echo e($featuredGig->id); ?>">
+                                    <a id="btn-favourite-submit" href="javascript:void(0);" class="gig-favourite-heart-icn">
+                                                                <span class="favorite-span">
+                                                                    <?php if($featuredGig['my_fav']): ?>
+                                                                        <i class="fa fa-heart"></i>
+                                                                    <?php else: ?>
+                                                                        <i class="fa fa-heart-o"></i>
+                                                                    <?php endif; ?>
+                                                                </span>
+
+                                    </a>
+
+                                </aside>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                        <?php endforeach; ?>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12 creativepackets">
+                        <?php foreach($featuredPackages1 as $featuredPackag): ?>
+                        <div class="slide gig-item gig-item-default js-slide js-gig-card packetscard "
+                             data-gig-id="4864637"
+                             data-cached-slug="create-unusual-illustrations-in-my-style" data-gig-index="0"
+                             data-gig-category="graphics-design"
+                             data-gig-sub-category="digital-illustration" data-gig-price="20" itemscope=""
+                             itemtype="http://schema.org/Product">
+                            <?php /*<div id="sold" style="display: none;"><span style="color:white;font-weight: bold;font-size: 11px; position: relative;top:5px;"><?php echo e($featuredGig['sale_count']); ?></span></div>*/ ?>
+                            <div class="gig-seller">
+                    <span itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating">
+                        <span class="ratings-count" itemprop="ratingCount">(202)</span>
+                    </span>
+                                <meta itemprop="worstRating" content="1">
+                                <span class="circ-rating-s8 rate-10" itemprop="ratingValue">10</span>
+                                <meta itemprop="bestRating" content="10">
+                                <?php /*by <a href="/muravski" rel="nofollow" class="seller-name" itemprop="brand" itemscope="" itemtype="http://schema.org/Brand">muravski</a>*/ ?>
+                            </div>
+
+                            <a href="<?php echo e(route('site.single.package',['packageId' => $featuredPackag->id,'funnel' => uniqid(),'uuid' => rand(1,1000)])); ?>"
+                               class="gig-link-main" itemprop="url">
+                                        <span class="gig-pict-222" itemscope=""
+                                              itemtype="http://schema.org/ImageObject">
+                                            <?php if(!empty($featuredPackag['thumbnail']) AND $featuredPackag['thumbnail'] != ''): ?>
+                                                <img src="<?php echo e($featuredPackag['thumbnail']); ?>"
+                                                     alt="<?php echo e($featuredPackag->title); ?>"></span>
+                                <?php endif; ?>
+                                <h3 itemprop="name"><?php echo e(str_limit($featuredPackag->title,50,'...')); ?></h3>
+                                <?php /*<h3 itemprop="name"><?php echo e($featuredGig->title); ?></h3>*/ ?>
+                                <div class="row" style="margin:0px;">
+                                    <div class="col-xs-4 color-bronze">
+                                        <p>Bronze</p>
+                                        <img src="<?php echo e(url('/').'/img/bronze_label.png'); ?>" alt="bronze" width="30px">
+                                        <p><?php echo e(config('app.currency').$featuredPackag['package_bronze']->price); ?></p>
+                                    </div>
+                                    <div class="col-xs-4 color-silver">
+                                        <p>Silber</p>
+                                        <img src="<?php echo e(url('/').'/img/silver_label.png'); ?>" alt="silver" width="30px">
+                                        <p><?php echo e(config('app.currency').$featuredPackag['package_silver']->price); ?></p>
+                                    </div>
+                                    <div class="col-xs-4 color-gold">
+                                        <p>Gold</p>
+                                        <img src="<?php echo e(url('/').'/img/gold_label.png'); ?>" alt="gold" width="30px">
+                                        <p><?php echo e(config('app.currency').$featuredPackag['package_gold']->price); ?></p>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <div class="col-xs-5">
+                                <span class="gig-badges featured" itemprop="award">featured</span>
+                            </div>
+                            <div class="col-xs-3">
+                                <?php if($user): ?>
+                                <aside data-url="<?php echo e(route('gig.favourite')); ?>"
+                                       data-coll-id="<?php echo e($featuredPackag->id); ?>">
+                                    <a id="btn-favourite-submit" href="javascript:void(0);"
+                                       class="gig-favourite-heart-icn">
+                                                            <span class="favorite-span">
+                                                                <?php if($featuredPackag['my_fav']): ?>
+                                                                    <i class="fa fa-heart"></i>
+                                                                <?php else: ?>
+                                                                    <i class="fa fa-heart-o"></i>
+                                                                <?php endif; ?>
+                                                            </span>
+
+                                    </a>
+
+                                </aside>
+                                <?php endif; ?>
+                            </div>
+                            <?php /*<div class="col-xs-4">
+                                <a href="<?php echo e(url()); ?>/favors/<?php echo e($featuredGig['gigtype_slug']); ?>/<?php echo e($featuredGig->slug); ?>?funnel=<?php echo e($featuredGig->uuid); ?>"
+                                   class="gig-price" rel="nofollow" itemprop="offers" itemscope=""
+                                   itemtype="http://schema.org/Offer">
+                                    <small itemprop="price"></small>
+                                    <span itemprop="price"><?php echo e(config('app.currency') . $featuredPackag->price); ?></span></a>
+                            </div>*/ ?>
+                        </div>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            </div>
+            <?php /*<div class="section-content" style="text-align: left; margin-top: 130px; padding-bottom: 5px;">*/ ?>
+                <?php /*<h2>Creative Services</h2>*/ ?>
+                <?php /*<p class="p--large">We work closely with our clients and partners throughout the creative process,*/ ?>
+                    <?php /*taking the time to listen, understand and collaborate while turning vision into success.*/ ?>
+                    <?php /*</p>*/ ?>
+                <?php /*<br>*/ ?>
+                <?php /*<a class="button button--secondary button--background" href="mobile_development.html">Preview*/ ?>
+                    <?php /*Portfolio</a>*/ ?>
+                <?php /*<!--<a class="sambtn button button&#45;&#45;secondary button&#45;&#45;background"*/ ?>
+            <?php /*style="color:white;margin-top: 16px; font-size: initial;padding-top: 7px;"*/ ?>
+            <?php /*href="">Preview Portfolio</a>-->*/ ?>
+
+                <?php /*</div>*/ ?>
+            <?php /*<div class="laptop"></div>*/ ?>
+        </div>
+    </div>
+</section>
+<section class="section pageSection section--product-screenshots position-set" >
+    <div class="screenshot-panel screenshot-panel--1" style="height: 700px;">
+        <div class="container">
+            <div class="row mobilepanel">
+                <div class="col-md-12 mobilepanelcol" style="padding-left: 0px;display: -webkit-inline-box;">
+                    <div class="col-md-3 col-sm-4 col-xs-5 mobilepanelcol1" style="padding-left: 0px;">
+                        <img src="img/mobiledev.png" alt="Progress at a glance" title="Progress at a glance" style="; width: 100%;"/>
+                        <h3 style="color: white;"><?php echo e($gigtype2->name); ?></h3>
+                        <br>
+                        <p><?php echo e($gigtype2->description); ?></p>
+                        <a class="button button--secondary button--background" href="<?php echo e(route('gigscategory.gigs',['categoryslug'=> $gigtype2->slug])); ?>">Preview
+                            Portfolio</a>
+
+                    </div>
+                    <div class="col-md-9 col-xs-6">
+                        <div class="col-xs-12">
+                            <?php foreach($featuredGigs2 as $featuredGig): ?>
+                            <div class="slide gig-item gig-item-default js-slide js-gig-card gifscard "
+                                 data-gig-id="4864637"
+                                 data-cached-slug="create-unusual-illustrations-in-my-style" data-gig-index="0"
+                                 data-gig-category="graphics-design"
+                                 data-gig-sub-category="digital-illustration" data-gig-price="20" itemscope=""
+                                 itemtype="http://schema.org/Product">
+
+
+                                <div class="gig-seller">
+                            <span itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating">
+                                <span class="ratings-count" itemprop="ratingCount">(202)</span>
+                            </span>
+                                    <meta itemprop="worstRating" content="1">
+                                    <span class="circ-rating-s8 rate-10" itemprop="ratingValue">10</span>
+                                    <meta itemprop="bestRating" content="10">
+                                    <?php /*by <a href="/muravski" rel="nofollow" class="seller-name" itemprop="brand" itemscope="" itemtype="http://schema.org/Brand">muravski</a>*/ ?>
+                                </div>
+
+                                <a href="<?php echo e(url()); ?>/favors/<?php echo e($featuredGig['gigtype_slug']); ?>/<?php echo e($featuredGig->slug); ?>?funnel=<?php echo e($featuredGig->uuid); ?>"
+                                   class="gig-link-main" itemprop="url">
+                                                <span class="gig-pict-222" itemscope=""
+                                                      itemtype="http://schema.org/ImageObject">
+                                                    <?php if(!empty($featuredGig['thumbnail']) AND $featuredGig['thumbnail'] != ''): ?>
+                                                        <img src="<?php echo e($featuredGig['thumbnail']); ?>" alt="<?php echo e($featuredGig->title); ?>"></span>
+                                    <?php endif; ?>
+                                    <h3 itemprop="name"><?php echo e(str_limit($featuredGig->title, 45)); ?></h3>
+                                </a>
+
+                                <aside class="card-badges cf">
+
+                                    <span class="gig-badges featured" itemprop="award">featured</span>
+
+                                </aside>
+
+
+                                <div class="gig-sub cf">
+
+
+                                    <a href="<?php echo e(url()); ?>/favors/<?php echo e($featuredGig['gigtype_slug']); ?>/<?php echo e($featuredGig->slug); ?>?funnel=<?php echo e($featuredGig->uuid); ?>"
+                                       class="gig-price" rel="nofollow" itemprop="offers" itemscope=""
+                                       itemtype="http://schema.org/Offer">
+                                        <small itemprop="price"></small>
+                                        <span itemprop="price"><?php echo e(config('app.currency') . $featuredGig->price); ?></span></a>
+                                    <?php if($user): ?>
+                                    <aside data-url="<?php echo e(route('gig.favourite')); ?>" data-coll-id="<?php echo e($featuredGig->id); ?>">
+                                        <a id="btn-favourite-submit" href="javascript:void(0);" class="gig-favourite-heart-icn">
+                                                                    <span class="favorite-span">
+                                                                        <?php if($featuredGig['my_fav']): ?>
+                                                                            <i class="fa fa-heart"></i>
+                                                                        <?php else: ?>
+                                                                            <i class="fa fa-heart-o"></i>
+                                                                        <?php endif; ?>
+                                                                    </span>
+
+                                        </a>
+
+                                    </aside>
+                                    <?php endif; ?>
+                                </div>
+
+                            </div>
+                            <?php endforeach; ?>
+                        </div>
+                        <div class="col-xs-12">
+                            <?php foreach($featuredPackages2 as $featuredPackag): ?>
+                            <div class="slide gig-item gig-item-default js-slide js-gig-card packetscard "
+                                 data-gig-id="4864637"
+                                 data-cached-slug="create-unusual-illustrations-in-my-style" data-gig-index="0"
+                                 data-gig-category="graphics-design"
+                                 data-gig-sub-category="digital-illustration" data-gig-price="20" itemscope=""
+                                 itemtype="http://schema.org/Product">
+                                <?php /*<div id="sold" style="display: none;"><span style="color:white;font-weight: bold;font-size: 11px; position: relative;top:5px;"><?php echo e($featuredGig['sale_count']); ?></span></div>*/ ?>
+                                <div class="gig-seller">
+                    <span itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating">
+                        <span class="ratings-count" itemprop="ratingCount">(202)</span>
+                    </span>
+                                    <meta itemprop="worstRating" content="1">
+                                    <span class="circ-rating-s8 rate-10" itemprop="ratingValue">10</span>
+                                    <meta itemprop="bestRating" content="10">
+                                    <?php /*by <a href="/muravski" rel="nofollow" class="seller-name" itemprop="brand" itemscope="" itemtype="http://schema.org/Brand">muravski</a>*/ ?>
+                                </div>
+
+                                <a href="<?php echo e(route('site.single.package',['packageId' => $featuredPackag->id,'funnel' => uniqid(),'uuid' => rand(1,1000)])); ?>"
+                                   class="gig-link-main" itemprop="url">
+                                        <span class="gig-pict-222" itemscope=""
+                                              itemtype="http://schema.org/ImageObject">
+                                            <?php if(!empty($featuredPackag['thumbnail']) AND $featuredPackag['thumbnail'] != ''): ?>
+                                                <img src="<?php echo e($featuredPackag['thumbnail']); ?>"
+                                                     alt="<?php echo e($featuredPackag->title); ?>"></span>
+                                    <?php endif; ?>
+                                    <h3 itemprop="name"><?php echo e(str_limit($featuredPackag->title,50,'...')); ?></h3>
+                                    <?php /*<h3 itemprop="name"><?php echo e($featuredGig->title); ?></h3>*/ ?>
+                                    <div class="row" style="margin:0px;">
+                                        <div class="col-xs-4 color-bronze">
+                                            <p>Bronze</p>
+                                            <img src="<?php echo e(url('/').'/img/bronze_label.png'); ?>" alt="bronze" width="30px">
+                                            <p><?php echo e(config('app.currency').$featuredPackag['package_bronze']->price); ?></p>
+                                        </div>
+                                        <div class="col-xs-4 color-silver">
+                                            <p>Silber</p>
+                                            <img src="<?php echo e(url('/').'/img/silver_label.png'); ?>" alt="silver" width="30px">
+                                            <p><?php echo e(config('app.currency').$featuredPackag['package_silver']->price); ?></p>
+                                        </div>
+                                        <div class="col-xs-4 color-gold">
+                                            <p>Gold</p>
+                                            <img src="<?php echo e(url('/').'/img/gold_label.png'); ?>" alt="gold" width="30px">
+                                            <p><?php echo e(config('app.currency').$featuredPackag['package_gold']->price); ?></p>
+                                        </div>
+                                    </div>
+                                </a>
+
+                                <div class="col-xs-5">
+                                    <span class="gig-badges featured" itemprop="award">featured</span>
+                                </div>
+                                <div class="col-xs-3">
+                                    <?php if($user): ?>
+                                    <aside data-url="<?php echo e(route('gig.favourite')); ?>"
+                                           data-coll-id="<?php echo e($featuredPackag->id); ?>">
+                                        <a id="btn-favourite-submit" href="javascript:void(0);"
+                                           class="gig-favourite-heart-icn">
+                                                            <span class="favorite-span">
+                                                                <?php if($featuredPackag['my_fav']): ?>
+                                                                    <i class="fa fa-heart"></i>
+                                                                <?php else: ?>
+                                                                    <i class="fa fa-heart-o"></i>
+                                                                <?php endif; ?>
+                                                            </span>
+
+                                        </a>
+
+                                    </aside>
+                                    <?php endif; ?>
+                                </div>
+                                <?php /*<div class="col-xs-4">
+                                    <a href="<?php echo e(url()); ?>/favors/<?php echo e($featuredGig['gigtype_slug']); ?>/<?php echo e($featuredGig->slug); ?>?funnel=<?php echo e($featuredGig->uuid); ?>"
+                                       class="gig-price" rel="nofollow" itemprop="offers" itemscope=""
+                                       itemtype="http://schema.org/Offer">
+                                        <small itemprop="price"></small>
+                                        <span itemprop="price"><?php echo e(config('app.currency') . $featuredPackag->price); ?></span></a>
+                                </div>*/ ?>
+                            </div>
+                            <?php endforeach; ?>
+                        </div>
+
+
+                    </div>
+                </div>
+                <?php /*<div class="screenshot-panel-content" style="text-align: left;">*/ ?>
+                    <?php /*<h 2 style="color: white; text-align: left;">Mobile Development</h2>*/ ?>
+                        <?php /*<br>*/ ?>
+                        <?php /*<p class="p--large">Small Screen Big Impact! Providing cutting edge technology solution to make*/ ?>
+                            <?php /*dreams a reality. it’s literally in the palm of your hands or better yet, in the palm of*/ ?>
+                            <?php /*your customer’s hands.</p>*/ ?>
+                        <?php /*<a class="button button--secondary button--background" href="mobile_development.html">Preview*/ ?>
+                            <?php /*Portfolio</a>*/ ?>
+                        <?php /*</div>*/ ?>
+                <?php /*<div class="screenshot-panel-screenshots">*/ ?>
+                    <?php /*<img src="img/mobiledev.png" alt="Progress at a glance" title="Progress at a glance"/>*/ ?>
+                    <?php /*</div>*/ ?>
+            </div>
+        </div>
+    </div>
+    <div class="screenshot-panel screenshot-panel--2 switch-sides" style="height: 700px;">
+        <div class="container">
+            <div class="row webpanel" style="margin-top: -5px;">
+                <div class="col-md-12  webpanelcol" style="padding-left: 0px; display: -webkit-inline-box;">
+                    <div class="col-md-3 col-sm-4 col-xs-5" style="padding-left: 0px;">
+                        <img src="img/webdev.png" alt="Progress at a glance" title="Progress at a glance"
+                             style="; width: 100%;"/>
+                        <h3 style="color: white;"><?php echo e($gigtype3->name); ?></h3>
+                        <br>
+                        <p><?php echo e($gigtype3->description); ?></p>
+                        <a class="button button--secondary button--background" href="<?php echo e(route('gigscategory.gigs',['categoryslug'=> $gigtype3->slug])); ?>">Preview
+                            Portfolio</a>
+
+                    </div>
+                    <div class="col-md-9 col-xs-6">
+                        <div class="col-xs-12">
+                            <?php foreach($featuredGigs3 as $featuredGig): ?>
+                            <div class="slide gig-item gig-item-default js-slide js-gig-card gifscard "
+                                 data-gig-id="4864637"
+                                 data-cached-slug="create-unusual-illustrations-in-my-style" data-gig-index="0"
+                                 data-gig-category="graphics-design"
+                                 data-gig-sub-category="digital-illustration" data-gig-price="20" itemscope=""
+                                 itemtype="http://schema.org/Product">
+
+
+                                <div class="gig-seller">
+                            <span itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating">
+                                <span class="ratings-count" itemprop="ratingCount">(202)</span>
+                            </span>
+                                    <meta itemprop="worstRating" content="1">
+                                    <span class="circ-rating-s8 rate-10" itemprop="ratingValue">10</span>
+                                    <meta itemprop="bestRating" content="10">
+                                    <?php /*by <a href="/muravski" rel="nofollow" class="seller-name" itemprop="brand" itemscope="" itemtype="http://schema.org/Brand">muravski</a>*/ ?>
+                                </div>
+
+                                <a href="<?php echo e(url()); ?>/favors/<?php echo e($featuredGig['gigtype_slug']); ?>/<?php echo e($featuredGig->slug); ?>?funnel=<?php echo e($featuredGig->uuid); ?>"
+                                   class="gig-link-main" itemprop="url">
+                                                <span class="gig-pict-222" itemscope=""
+                                                      itemtype="http://schema.org/ImageObject">
+                                                    <?php if(!empty($featuredGig['thumbnail']) AND $featuredGig['thumbnail'] != ''): ?>
+                                                        <img src="<?php echo e($featuredGig['thumbnail']); ?>" alt="<?php echo e($featuredGig->title); ?>"></span>
+                                    <?php endif; ?>
+                                    <h3 itemprop="name"><?php echo e(str_limit($featuredGig->title, 45)); ?></h3>
+                                </a>
+
+                                <aside class="card-badges cf">
+
+                                    <span class="gig-badges featured" itemprop="award">featured</span>
+
+                                </aside>
+
+
+                                <div class="gig-sub cf">
+
+
+                                    <a href="<?php echo e(url()); ?>/favors/<?php echo e($featuredGig['gigtype_slug']); ?>/<?php echo e($featuredGig->slug); ?>?funnel=<?php echo e($featuredGig->uuid); ?>"
+                                       class="gig-price" rel="nofollow" itemprop="offers" itemscope=""
+                                       itemtype="http://schema.org/Offer">
+                                        <small itemprop="price"></small>
+                                        <span itemprop="price"><?php echo e(config('app.currency') . $featuredGig->price); ?></span></a>
+                                    <?php if($user): ?>
+                                    <aside data-url="<?php echo e(route('gig.favourite')); ?>" data-coll-id="<?php echo e($featuredGig->id); ?>">
+                                        <a id="btn-favourite-submit" href="javascript:void(0);" class="gig-favourite-heart-icn">
+                                                                    <span class="favorite-span">
+                                                                        <?php if($featuredGig['my_fav']): ?>
+                                                                            <i class="fa fa-heart"></i>
+                                                                        <?php else: ?>
+                                                                            <i class="fa fa-heart-o"></i>
+                                                                        <?php endif; ?>
+                                                                    </span>
+
+                                        </a>
+
+                                    </aside>
+                                    <?php endif; ?>
+                                    <?php /*<aside class="gig-collect js-gig-collect" id="coll-gig-4864637"
+                                               data-coll-id="4864637">
+                                        */ ?><?php /*<a class="icn-heart-toggle hint--top js-gtm-event" href="#" data-hint="Save in..." data-coll-gig="coll-gig-4864637" data-gtm-action="hp-clicked-list" data-gtm-event="collections"><span></span></a>*/ ?><?php /*
+                                        <?php if(\Illuminate\Support\Facades\Auth::user()->check()): ?>
+                                        <a class="icn-heart hint--top js-gtm-event" href="#"
+                                           data-hint="Favorite" data-gtm-action="hp-clicked-heart"
+                                           data-gtm-event="collections"><span></span></a>
+                                        <?php endif; ?>
+                                    </aside>*/ ?>
+
+
+                                </div>
+
+                            </div>
+                            <?php endforeach; ?>
+                        </div>
+                        <div class="col-xs-12">
+                            <?php foreach($featuredPackages3 as $featuredPackag): ?>
+                            <div class="slide gig-item gig-item-default js-slide js-gig-card packetscard "
+                                 data-gig-id="4864637"
+                                 data-cached-slug="create-unusual-illustrations-in-my-style" data-gig-index="0"
+                                 data-gig-category="graphics-design"
+                                 data-gig-sub-category="digital-illustration" data-gig-price="20" itemscope=""
+                                 itemtype="http://schema.org/Product">
+                                <?php /*<div id="sold" style="display: none;"><span style="color:white;font-weight: bold;font-size: 11px; position: relative;top:5px;"><?php echo e($featuredGig['sale_count']); ?></span></div>*/ ?>
+                                <div class="gig-seller">
+                    <span itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating">
+                        <span class="ratings-count" itemprop="ratingCount">(202)</span>
+                    </span>
+                                    <meta itemprop="worstRating" content="1">
+                                    <span class="circ-rating-s8 rate-10" itemprop="ratingValue">10</span>
+                                    <meta itemprop="bestRating" content="10">
+                                    <?php /*by <a href="/muravski" rel="nofollow" class="seller-name" itemprop="brand" itemscope="" itemtype="http://schema.org/Brand">muravski</a>*/ ?>
+                                </div>
+
+                                <a href="<?php echo e(route('site.single.package',['packageId' => $featuredPackag->id,'funnel' => uniqid(),'uuid' => rand(1,1000)])); ?>"
+                                   class="gig-link-main" itemprop="url">
+                                        <span class="gig-pict-222" itemscope=""
+                                              itemtype="http://schema.org/ImageObject">
+                                            <?php if(!empty($featuredPackag['thumbnail']) AND $featuredPackag['thumbnail'] != ''): ?>
+                                                <img src="<?php echo e($featuredPackag['thumbnail']); ?>"
+                                                     alt="<?php echo e($featuredPackag->title); ?>"></span>
+                                    <?php endif; ?>
+                                    <h3 itemprop="name"><?php echo e(str_limit($featuredPackag->title,50,'...')); ?></h3>
+                                    <?php /*<h3 itemprop="name"><?php echo e($featuredGig->title); ?></h3>*/ ?>
+                                    <div class="row" style="margin:0px;">
+                                        <div class="col-xs-4 color-bronze">
+                                            <p>Bronze</p>
+                                            <img src="<?php echo e(url('/').'/img/bronze_label.png'); ?>" alt="bronze" width="30px">
+                                            <p><?php echo e(config('app.currency').$featuredPackag['package_bronze']->price); ?></p>
+                                        </div>
+                                        <div class="col-xs-4 color-silver">
+                                            <p>Silber</p>
+                                            <img src="<?php echo e(url('/').'/img/silver_label.png'); ?>" alt="silver" width="30px">
+                                            <p><?php echo e(config('app.currency').$featuredPackag['package_silver']->price); ?></p>
+                                        </div>
+                                        <div class="col-xs-4 color-gold">
+                                            <p>Gold</p>
+                                            <img src="<?php echo e(url('/').'/img/gold_label.png'); ?>" alt="gold" width="30px">
+                                            <p><?php echo e(config('app.currency').$featuredPackag['package_gold']->price); ?></p>
+                                        </div>
+                                    </div>
+                                </a>
+
+                                <div class="col-xs-5">
+                                    <span class="gig-badges featured" itemprop="award">featured</span>
+                                </div>
+                                <div class="col-xs-3">
+                                    <?php if($user): ?>
+                                    <aside data-url="<?php echo e(route('gig.favourite')); ?>"
+                                           data-coll-id="<?php echo e($featuredPackag->id); ?>">
+                                        <a id="btn-favourite-submit" href="javascript:void(0);"
+                                           class="gig-favourite-heart-icn">
+                                                            <span class="favorite-span">
+                                                                <?php if($featuredPackag['my_fav']): ?>
+                                                                    <i class="fa fa-heart"></i>
+                                                                <?php else: ?>
+                                                                    <i class="fa fa-heart-o"></i>
+                                                                <?php endif; ?>
+                                                            </span>
+
+                                        </a>
+
+                                    </aside>
+                                    <?php endif; ?>
+                                </div>
+                                <?php /*<div class="col-xs-4">
+                                    <a href="<?php echo e(url()); ?>/favors/<?php echo e($featuredGig['gigtype_slug']); ?>/<?php echo e($featuredGig->slug); ?>?funnel=<?php echo e($featuredGig->uuid); ?>"
+                                       class="gig-price" rel="nofollow" itemprop="offers" itemscope=""
+                                       itemtype="http://schema.org/Offer">
+                                        <small itemprop="price"></small>
+                                        <span itemprop="price"><?php echo e(config('app.currency') . $featuredPackag->price); ?></span></a>
+                                </div>*/ ?>
+                            </div>
+                            <?php endforeach; ?>
+                        </div>
+
+
+
+
+                    </div>
+                </div>
+                <?php /*<div class="screenshot-panel-content" style="margin-top: 35px;">*/ ?>
+                    <?php /*<h3 style="color: white; margin-bottom: 20px;text-align: left;">Web And Software*/ ?>
+                        <?php /*Development</h3>*/ ?>
+                    <?php /*<p class="text-will-left">We create value by augmenting your business with a solution*/ ?>
+                        <?php /*that not only*/ ?>
+                        <?php /*possesses the right capabilities but also the real-life fit that relates to your specific*/ ?>
+                        <?php /*business requirements.</p>*/ ?>
+                    <?php /*<p class="text-will-left">*/ ?>
+                        <?php /*<a class="button button--secondary button--background " href="web_development.html">Preview*/ ?>
+                            <?php /*Portfolio</a>*/ ?>
+                        <?php /*</p>*/ ?>
+                    <?php /*</div>*/ ?>
+                <?php /*<div class="screenshot-panel-screenshots">*/ ?>
+                    <?php /*<img src="img/webdev.png" alt="Make ideas happen" title="Make ideas happen"/>*/ ?>
+                    <?php /*</div>*/ ?>
+            </div>
+        </div>
+    </div>
+    <div class="screenshot-panel screenshot-panel--3" >
+        <div class="container">
+            <div class="row visualpanel">
+                <div class="col-md-12 visualpanelcol" style="padding-left: 0px; display: -webkit-inline-box;">
+                    <div class="col-md-3 col-sm-4 col-xs-5" style="padding-left: 0px;">
+                        <img src="img/fashion_fade.png" alt="Progress at a glance" title="Progress at a glance"
+                             style="; width: 100%;"/>
+                        <h3 style="color: white;"><?php echo e($gigtype4->name); ?></h3>
+                        <br>
+                        <p><?php echo e($gigtype4->description); ?>}</p>
+                        <a class="button button--secondary button--background" href="<?php echo e(route('gigscategory.gigs',['categoryslug'=> $gigtype4->slug])); ?>">Preview
+                            Portfolio</a>
+
+                    </div>
+                    <div class="col-md-9 col-xs-6">
+                        <div class="col-xs-12">
+                            <?php foreach($featuredGigs4 as $featuredGig): ?>
+                            <div class="slide gig-item gig-item-default js-slide js-gig-card gifscard "
+                                 data-gig-id="4864637"
+                                 data-cached-slug="create-unusual-illustrations-in-my-style" data-gig-index="0"
+                                 data-gig-category="graphics-design"
+                                 data-gig-sub-category="digital-illustration" data-gig-price="20" itemscope=""
+                                 itemtype="http://schema.org/Product">
+
+
+                                <div class="gig-seller">
+                            <span itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating">
+                                <span class="ratings-count" itemprop="ratingCount">(202)</span>
+                            </span>
+                                    <meta itemprop="worstRating" content="1">
+                                    <span class="circ-rating-s8 rate-10" itemprop="ratingValue">10</span>
+                                    <meta itemprop="bestRating" content="10">
+                                    <?php /*by <a href="/muravski" rel="nofollow" class="seller-name" itemprop="brand" itemscope="" itemtype="http://schema.org/Brand">muravski</a>*/ ?>
+                                </div>
+
+                                <a href="<?php echo e(url()); ?>/favors/<?php echo e($featuredGig['gigtype_slug']); ?>/<?php echo e($featuredGig->slug); ?>?funnel=<?php echo e($featuredGig->uuid); ?>"
+                                   class="gig-link-main" itemprop="url">
+                                                <span class="gig-pict-222" itemscope=""
+                                                      itemtype="http://schema.org/ImageObject">
+                                                    <?php if(!empty($featuredGig['thumbnail']) AND $featuredGig['thumbnail'] != ''): ?>
+                                                        <img src="<?php echo e($featuredGig['thumbnail']); ?>" alt="<?php echo e($featuredGig->title); ?>"></span>
+                                    <?php endif; ?>
+                                    <h3 itemprop="name"><?php echo e(str_limit($featuredGig->title, 45)); ?></h3>
+                                </a>
+
+                                <aside class="card-badges cf">
+
+                                    <span class="gig-badges featured" itemprop="award">featured</span>
+
+                                </aside>
+
+
+                                <div class="gig-sub cf">
+
+
+                                    <a href="<?php echo e(url()); ?>/favors/<?php echo e($featuredGig['gigtype_slug']); ?>/<?php echo e($featuredGig->slug); ?>?funnel=<?php echo e($featuredGig->uuid); ?>"
+                                       class="gig-price" rel="nofollow" itemprop="offers" itemscope=""
+                                       itemtype="http://schema.org/Offer">
+                                        <small itemprop="price"></small>
+                                        <span itemprop="price"><?php echo e(config('app.currency') . $featuredGig->price); ?></span></a>
+                                    <?php if($user): ?>
+                                    <aside data-url="<?php echo e(route('gig.favourite')); ?>" data-coll-id="<?php echo e($featuredGig->id); ?>">
+                                        <a id="btn-favourite-submit" href="javascript:void(0);" class="gig-favourite-heart-icn">
+                                                                    <span class="favorite-span">
+                                                                        <?php if($featuredGig['my_fav']): ?>
+                                                                            <i class="fa fa-heart"></i>
+                                                                        <?php else: ?>
+                                                                            <i class="fa fa-heart-o"></i>
+                                                                        <?php endif; ?>
+                                                                    </span>
+
+                                        </a>
+
+                                    </aside>
+                                    <?php endif; ?>
+                                    <?php /*<aside class="gig-collect js-gig-collect" id="coll-gig-4864637"
+                                               data-coll-id="4864637">
+                                        */ ?><?php /*<a class="icn-heart-toggle hint--top js-gtm-event" href="#" data-hint="Save in..." data-coll-gig="coll-gig-4864637" data-gtm-action="hp-clicked-list" data-gtm-event="collections"><span></span></a>*/ ?><?php /*
+                                        <?php if(\Illuminate\Support\Facades\Auth::user()->check()): ?>
+                                        <a class="icn-heart hint--top js-gtm-event" href="#"
+                                           data-hint="Favorite" data-gtm-action="hp-clicked-heart"
+                                           data-gtm-event="collections"><span></span></a>
+                                        <?php endif; ?>
+                                    </aside>*/ ?>
+
+
+                                </div>
+
+                            </div>
+                            <?php endforeach; ?>
+                        </div>
+                        <div class="col-xs-12">
+                            <?php foreach($featuredPackages4 as $featuredPackag): ?>
+                            <div class="slide gig-item gig-item-default js-slide js-gig-card packetscard "
+                                 data-gig-id="4864637"
+                                 data-cached-slug="create-unusual-illustrations-in-my-style" data-gig-index="0"
+                                 data-gig-category="graphics-design"
+                                 data-gig-sub-category="digital-illustration" data-gig-price="20" itemscope=""
+                                 itemtype="http://schema.org/Product">
+                                <?php /*<div id="sold" style="display: none;"><span style="color:white;font-weight: bold;font-size: 11px; position: relative;top:5px;"><?php echo e($featuredGig['sale_count']); ?></span></div>*/ ?>
+                                <div class="gig-seller">
+                <span itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating">
+                    <span class="ratings-count" itemprop="ratingCount">(202)</span>
+                </span>
+                                    <meta itemprop="worstRating" content="1">
+                                    <span class="circ-rating-s8 rate-10" itemprop="ratingValue">10</span>
+                                    <meta itemprop="bestRating" content="10">
+                                    <?php /*by <a href="/muravski" rel="nofollow" class="seller-name" itemprop="brand" itemscope="" itemtype="http://schema.org/Brand">muravski</a>*/ ?>
+                                </div>
+
+                                <a href="<?php echo e(route('site.single.package',['packageId' => $featuredPackag->id,'funnel' => uniqid(),'uuid' => rand(1,1000)])); ?>"
+                                   class="gig-link-main" itemprop="url">
+                                    <span class="gig-pict-222" itemscope=""
+                                          itemtype="http://schema.org/ImageObject">
+                                        <?php if(!empty($featuredPackag['thumbnail']) AND $featuredPackag['thumbnail'] != ''): ?>
+                                            <img src="<?php echo e($featuredPackag['thumbnail']); ?>"
+                                                 alt="<?php echo e($featuredPackag->title); ?>"></span>
+                                    <?php endif; ?>
+                                    <h3 itemprop="name"><?php echo e(str_limit($featuredPackag->title,50,'...')); ?></h3>
+                                    <?php /*<h3 itemprop="name"><?php echo e($featuredGig->title); ?></h3>*/ ?>
+                                    <div class="row" style="margin:0px;">
+                                        <div class="col-xs-4 color-bronze">
+                                            <p>Bronze</p>
+                                            <img src="<?php echo e(url('/').'/img/bronze_label.png'); ?>" alt="bronze" width="30px">
+                                            <p><?php echo e(config('app.currency').$featuredPackag['package_bronze']->price); ?></p>
+                                        </div>
+                                        <div class="col-xs-4 color-silver">
+                                            <p>Silber</p>
+                                            <img src="<?php echo e(url('/').'/img/silver_label.png'); ?>" alt="silver" width="30px">
+                                            <p><?php echo e(config('app.currency').$featuredPackag['package_silver']->price); ?></p>
+                                        </div>
+                                        <div class="col-xs-4 color-gold">
+                                            <p>Gold</p>
+                                            <img src="<?php echo e(url('/').'/img/gold_label.png'); ?>" alt="gold" width="30px">
+                                            <p><?php echo e(config('app.currency').$featuredPackag['package_gold']->price); ?></p>
+                                        </div>
+                                    </div>
+                                </a>
+
+                                <div class="col-xs-5">
+                                    <span class="gig-badges featured" itemprop="award">featured</span>
+                                </div>
+                                <div class="col-xs-3">
+                                    <?php if($user): ?>
+                                    <aside data-url="<?php echo e(route('gig.favourite')); ?>"
+                                           data-coll-id="<?php echo e($featuredPackag->id); ?>">
+                                        <a id="btn-favourite-submit" href="javascript:void(0);"
+                                           class="gig-favourite-heart-icn">
+                                                        <span class="favorite-span">
+                                                            <?php if($featuredPackag['my_fav']): ?>
+                                                                <i class="fa fa-heart"></i>
+                                                            <?php else: ?>
+                                                                <i class="fa fa-heart-o"></i>
+                                                            <?php endif; ?>
+                                                        </span>
+
+                                        </a>
+
+                                    </aside>
+                                    <?php endif; ?>
+                                </div>
+                                <?php /*<div class="col-xs-4">
+                                    <a href="<?php echo e(url()); ?>/favors/<?php echo e($featuredGig['gigtype_slug']); ?>/<?php echo e($featuredGig->slug); ?>?funnel=<?php echo e($featuredGig->uuid); ?>"
+                                       class="gig-price" rel="nofollow" itemprop="offers" itemscope=""
+                                       itemtype="http://schema.org/Offer">
+                                        <small itemprop="price"></small>
+                                        <span itemprop="price"><?php echo e(config('app.currency') . $featuredPackag->price); ?></span></a>
+                                </div>*/ ?>
+                            </div>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                </div>
+                <?php /*<div class="screenshot-panel-content">*/ ?>
+                    <?php /*<h3 style="color: white; text-align: start;margin-bottom: 20px;">Visual And Production</h3>*/ ?>
+                    <?php /*<p class="text-will-left">We develop and amplify communication ideas through*/ ?>
+                        <?php /*intelligent execution and*/ ?>
+                        <?php /*relevant technology – unlocking the potential of digital platforms for agencies and their*/ ?>
+                        <?php /*clients.</p>*/ ?>
+                    <?php /*<p class="text-will-left">*/ ?>
+                        <?php /*<a class="button button--secondary button--background" href="visual_production.html">Preview*/ ?>
+                            <?php /*Portfolio</a>*/ ?>
+                        <?php /*</p>*/ ?>
+                    <?php /*</div>*/ ?>
+                <?php /*<div class="screenshot-panel-screenshots" style="position: relative; bottom: 100px;">*/ ?>
+                    <?php /*<img src="img/fashion_fade.png" style="position: relative; top: 60px;" alt="A smarter Inbox" title="A smarter Inbox"/>*/ ?>
+                    <?php /*</div>*/ ?>
+            </div>
+        </div>
+    </div>
+    <div class="screenshot-panel screenshot-panel--3" style="margin-top: 100px;    height: 742px;;">
+        <div class="container">
+            <div class="row drenderpanel" style="margin-top: 73px;">
+                <div class="col-md-12 renderpaneldiv" style="padding-left: 0px;display: -webkit-inline-box;">
+                    <div class="col-md-3 col-sm-4 col-xs-5" style="padding-left: 0px;">
+                        <img src="img/3drendering.png" alt="Progress at a glance" title="Progress at a glance"
+                             style="width:100%;"/>
+                        <h3 style="color: white;"><?php echo e($gigtype5->name); ?></h3>
+                        <br>
+                        <p><?php echo e($gigtype5->description); ?></p>
+                        <a class="button button--secondary button--background" href="<?php echo e(route('gigscategory.gigs',['categoryslug'=> $gigtype5->slug])); ?>">Preview
+                            Portfolio</a>
+
+                    </div>
+                    <div class="col-md-9 col-xs-6">
+                        <div class="col-xs-12">
+                            <?php foreach($featuredGigs5 as $featuredGig): ?>
+                            <div class="slide gig-item gig-item-default js-slide js-gig-card gifscard "
+                                 data-gig-id="4864637"
+                                 data-cached-slug="create-unusual-illustrations-in-my-style" data-gig-index="0"
+                                 data-gig-category="graphics-design"
+                                 data-gig-sub-category="digital-illustration" data-gig-price="20" itemscope=""
+                                 itemtype="http://schema.org/Product">
+
+
+                                <div class="gig-seller">
+                            <span itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating">
+                                <span class="ratings-count" itemprop="ratingCount">(202)</span>
+                            </span>
+                                    <meta itemprop="worstRating" content="1">
+                                    <span class="circ-rating-s8 rate-10" itemprop="ratingValue">10</span>
+                                    <meta itemprop="bestRating" content="10">
+                                    <?php /*by <a href="/muravski" rel="nofollow" class="seller-name" itemprop="brand" itemscope="" itemtype="http://schema.org/Brand">muravski</a>*/ ?>
+                                </div>
+
+                                <a href="<?php echo e(url()); ?>/favors/<?php echo e($featuredGig['gigtype_slug']); ?>/<?php echo e($featuredGig->slug); ?>?funnel=<?php echo e($featuredGig->uuid); ?>"
+                                   class="gig-link-main" itemprop="url">
+                                                <span class="gig-pict-222" itemscope=""
+                                                      itemtype="http://schema.org/ImageObject">
+                                                    <?php if(!empty($featuredGig['thumbnail']) AND $featuredGig['thumbnail'] != ''): ?>
+                                                        <img src="<?php echo e($featuredGig['thumbnail']); ?>" alt="<?php echo e($featuredGig->title); ?>"></span>
+                                    <?php endif; ?>
+                                    <h3 itemprop="name"><?php echo e(str_limit($featuredGig->title, 45)); ?></h3>
+                                </a>
+
+                                <aside class="card-badges cf">
+
+                                    <span class="gig-badges featured" itemprop="award">featured</span>
+
+                                </aside>
+
+
+                                <div class="gig-sub cf">
+
+
+                                    <a href="<?php echo e(url()); ?>/favors/<?php echo e($featuredGig['gigtype_slug']); ?>/<?php echo e($featuredGig->slug); ?>?funnel=<?php echo e($featuredGig->uuid); ?>"
+                                       class="gig-price" rel="nofollow" itemprop="offers" itemscope=""
+                                       itemtype="http://schema.org/Offer">
+                                        <small itemprop="price"></small>
+                                        <span itemprop="price"><?php echo e(config('app.currency') . $featuredGig->price); ?></span></a>
+                                    <?php if($user): ?>
+                                    <aside data-url="<?php echo e(route('gig.favourite')); ?>" data-coll-id="<?php echo e($featuredGig->id); ?>">
+                                        <a id="btn-favourite-submit" href="javascript:void(0);" class="gig-favourite-heart-icn">
+                                                                    <span class="favorite-span">
+                                                                        <?php if($featuredGig['my_fav']): ?>
+                                                                            <i class="fa fa-heart"></i>
+                                                                        <?php else: ?>
+                                                                            <i class="fa fa-heart-o"></i>
+                                                                        <?php endif; ?>
+                                                                    </span>
+
+                                        </a>
+
+                                    </aside>
+                                    <?php endif; ?>
+                                    <?php /*<aside class="gig-collect js-gig-collect" id="coll-gig-4864637"
+                                               data-coll-id="4864637">
+                                        */ ?><?php /*<a class="icn-heart-toggle hint--top js-gtm-event" href="#" data-hint="Save in..." data-coll-gig="coll-gig-4864637" data-gtm-action="hp-clicked-list" data-gtm-event="collections"><span></span></a>*/ ?><?php /*
+                                        <?php if(\Illuminate\Support\Facades\Auth::user()->check()): ?>
+                                        <a class="icn-heart hint--top js-gtm-event" href="#"
+                                           data-hint="Favorite" data-gtm-action="hp-clicked-heart"
+                                           data-gtm-event="collections"><span></span></a>
+                                        <?php endif; ?>
+                                    </aside>*/ ?>
+
+
+                                </div>
+
+                            </div>
+                            <?php endforeach; ?>
+                        </div>
+                        <div class="col-xs-12">
+                            <?php foreach($featuredPackages5 as $featuredPackag): ?>
+                            <div class="slide gig-item gig-item-default js-slide js-gig-card packetscard "
+                                 data-gig-id="4864637"
+                                 data-cached-slug="create-unusual-illustrations-in-my-style" data-gig-index="0"
+                                 data-gig-category="graphics-design"
+                                 data-gig-sub-category="digital-illustration" data-gig-price="20" itemscope=""
+                                 itemtype="http://schema.org/Product">
+                                <?php /*<div id="sold" style="display: none;"><span style="color:white;font-weight: bold;font-size: 11px; position: relative;top:5px;"><?php echo e($featuredGig['sale_count']); ?></span></div>*/ ?>
+                                <div class="gig-seller">
+                    <span itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating">
+                        <span class="ratings-count" itemprop="ratingCount">(202)</span>
+                    </span>
+                                    <meta itemprop="worstRating" content="1">
+                                    <span class="circ-rating-s8 rate-10" itemprop="ratingValue">10</span>
+                                    <meta itemprop="bestRating" content="10">
+                                    <?php /*by <a href="/muravski" rel="nofollow" class="seller-name" itemprop="brand" itemscope="" itemtype="http://schema.org/Brand">muravski</a>*/ ?>
+                                </div>
+
+                                <a href="<?php echo e(route('site.single.package',['packageId' => $featuredPackag->id,'funnel' => uniqid(),'uuid' => rand(1,1000)])); ?>"
+                                   class="gig-link-main" itemprop="url">
+                                        <span class="gig-pict-222" itemscope=""
+                                              itemtype="http://schema.org/ImageObject">
+                                            <?php if(!empty($featuredPackag['thumbnail']) AND $featuredPackag['thumbnail'] != ''): ?>
+                                                <img src="<?php echo e($featuredPackag['thumbnail']); ?>"
+                                                     alt="<?php echo e($featuredPackag->title); ?>"></span>
+                                    <?php endif; ?>
+                                    <h3 itemprop="name"><?php echo e(str_limit($featuredPackag->title,50,'...')); ?></h3>
+                                    <?php /*<h3 itemprop="name"><?php echo e($featuredGig->title); ?></h3>*/ ?>
+                                    <div class="row" style="margin:0px;">
+                                        <div class="col-xs-4 color-bronze">
+                                            <p>Bronze</p>
+                                            <img src="<?php echo e(url('/').'/img/bronze_label.png'); ?>" alt="bronze" width="30px">
+                                            <p><?php echo e(config('app.currency').$featuredPackag['package_bronze']->price); ?></p>
+                                        </div>
+                                        <div class="col-xs-4 color-silver">
+                                            <p>Silber</p>
+                                            <img src="<?php echo e(url('/').'/img/silver_label.png'); ?>" alt="silver" width="30px">
+                                            <p><?php echo e(config('app.currency').$featuredPackag['package_silver']->price); ?></p>
+                                        </div>
+                                        <div class="col-xs-4 color-gold">
+                                            <p>Gold</p>
+                                            <img src="<?php echo e(url('/').'/img/gold_label.png'); ?>" alt="gold" width="30px">
+                                            <p><?php echo e(config('app.currency').$featuredPackag['package_gold']->price); ?></p>
+                                        </div>
+                                    </div>
+                                </a>
+
+                                <div class="col-xs-5">
+                                    <span class="gig-badges featured" itemprop="award">featured</span>
+                                </div>
+                                <div class="col-xs-3">
+                                    <?php if($user): ?>
+                                    <aside data-url="<?php echo e(route('gig.favourite')); ?>"
+                                           data-coll-id="<?php echo e($featuredPackag->id); ?>">
+                                        <a id="btn-favourite-submit" href="javascript:void(0);"
+                                           class="gig-favourite-heart-icn">
+                                                            <span class="favorite-span">
+                                                                <?php if($featuredPackag['my_fav']): ?>
+                                                                    <i class="fa fa-heart"></i>
+                                                                <?php else: ?>
+                                                                    <i class="fa fa-heart-o"></i>
+                                                                <?php endif; ?>
+                                                            </span>
+
+                                        </a>
+
+                                    </aside>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                            <?php endforeach; ?>
+
+
+
+
+
+
+
+                        </div>
+                    </div>
+                    <?php /*<div class="screenshot-panel-content">*/ ?>
+                        <?php /*<h3 style="color: white;" class="text-will-left">3D Rendering Services</h3>*/ ?>
+                        <?php /*<p class="text-will-left">Professional high quality 3D rendering services. Affordable &*/ ?>
+                            <?php /*fast*/ ?>
+                            <?php /*turnaround. Simply send your files & within a few days you will have top quality*/ ?>
+                            <?php /*Architecture/product 3D Renders returned.</p>*/ ?>
+                        <?php /*<p class="text-will-left">*/ ?>
+                            <?php /*<a class="button button--secondary button--background" href="3D_rendering.html">Preview*/ ?>
+                                <?php /*Portfolio</a>*/ ?>
+                            <?php /*</p>*/ ?>
+                        <?php /*</div>*/ ?>
+                    <?php /*<div class="screenshot-panel-screenshots">*/ ?>
+                        <?php /*<img src="img/3drendering.png" class="d_image" alt="A smarter Inbox"*/ ?>
+                                 <?php /*title="A smarter Inbox"/>*/ ?>
+                        <?php /*</div>*/ ?>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</section>
+
+
+
+<section class="section pageSection section--product-first businesspanel1" style="height:1040px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12" style="padding-left: 0px;display: -webkit-inline-box;">
+                <div class="col-md-3 col-sm-4 col-xs-5" style="padding-left: 0px;">
+                    <img src="img/business.png" alt="Progress at a glance" title="Progress at a glance" style="padding-top: 35px; width: 100%;"/>
+                    <h3 style="color: white;"><?php echo e($gigtype6->name); ?></h3>
+                    <br>
+                    <p class="color-white"><?php echo e($gigtype6->description); ?></p>
+                    <a class="button button--secondary button--background" href="<?php echo e(route('gigscategory.gigs',['categoryslug'=> $gigtype6->slug])); ?>">Preview
+                        Portfolio</a>
+
+                </div>
+                <div class="col-md-9 col-sm-8 col-xs-8" style="padding-top: 55px;">
+                    <div class="col-md-12 col-sm-12 col-xs-12 ">
+                        <?php foreach($featuredGigs6 as $featuredGig): ?>
+                        <div class="slide gig-item gig-item-default js-slide js-gig-card gifscard "
+                             data-gig-id="4864637"
+                             data-cached-slug="create-unusual-illustrations-in-my-style" data-gig-index="0"
+                             data-gig-category="graphics-design"
+                             data-gig-sub-category="digital-illustration" data-gig-price="20" itemscope=""
+                             itemtype="http://schema.org/Product">
+
+
+                            <div class="gig-seller">
+                        <span itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating">
+                            <span class="ratings-count" itemprop="ratingCount">(202)</span>
+                        </span>
+                                <meta itemprop="worstRating" content="1">
+                                <span class="circ-rating-s8 rate-10" itemprop="ratingValue">10</span>
+                                <meta itemprop="bestRating" content="10">
+                                <?php /*by <a href="/muravski" rel="nofollow" class="seller-name" itemprop="brand" itemscope="" itemtype="http://schema.org/Brand">muravski</a>*/ ?>
+                            </div>
+
+                            <a href="<?php echo e(url()); ?>/favors/<?php echo e($featuredGig['gigtype_slug']); ?>/<?php echo e($featuredGig->slug); ?>?funnel=<?php echo e($featuredGig->uuid); ?>"
+                               class="gig-link-main" itemprop="url">
+                                            <span class="gig-pict-222" itemscope=""
+                                                  itemtype="http://schema.org/ImageObject">
+                                                <?php if(!empty($featuredGig['thumbnail']) AND $featuredGig['thumbnail'] != ''): ?>
+                                                    <img src="<?php echo e($featuredGig['thumbnail']); ?>" alt="<?php echo e($featuredGig->title); ?>"></span>
+                                <?php endif; ?>
+                                <h3 itemprop="name"><?php echo e(str_limit($featuredGig->title, 45)); ?></h3>
+                            </a>
+
+                            <aside class="card-badges cf">
+
+                                <span class="gig-badges featured" itemprop="award">featured</span>
+
+                            </aside>
+
+
+                            <div class="gig-sub cf">
+
+
+                                <a href="<?php echo e(url()); ?>/favors/<?php echo e($featuredGig['gigtype_slug']); ?>/<?php echo e($featuredGig->slug); ?>?funnel=<?php echo e($featuredGig->uuid); ?>"
+                                   class="gig-price" rel="nofollow" itemprop="offers" itemscope=""
+                                   itemtype="http://schema.org/Offer">
+                                    <small itemprop="price"></small>
+                                    <span itemprop="price"><?php echo e(config('app.currency') . $featuredGig->price); ?></span></a>
+                                <?php if($user): ?>
+                                <aside data-url="<?php echo e(route('gig.favourite')); ?>" data-coll-id="<?php echo e($featuredGig->id); ?>">
+                                    <a id="btn-favourite-submit" href="javascript:void(0);" class="gig-favourite-heart-icn">
+                                                                <span class="favorite-span">
+                                                                    <?php if($featuredGig['my_fav']): ?>
+                                                                        <i class="fa fa-heart"></i>
+                                                                    <?php else: ?>
+                                                                        <i class="fa fa-heart-o"></i>
+                                                                    <?php endif; ?>
+                                                                </span>
+
+                                    </a>
+
+                                </aside>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                        <?php endforeach; ?>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12 ">
+                        <?php foreach($featuredPackages6 as $featuredPackag): ?>
+                        <div class="slide gig-item gig-item-default js-slide js-gig-card packetscard "
+                             data-gig-id="4864637"
+                             data-cached-slug="create-unusual-illustrations-in-my-style" data-gig-index="0"
+                             data-gig-category="graphics-design"
+                             data-gig-sub-category="digital-illustration" data-gig-price="20" itemscope=""
+                             itemtype="http://schema.org/Product">
+                            <?php /*<div id="sold" style="display: none;"><span style="color:white;font-weight: bold;font-size: 11px; position: relative;top:5px;"><?php echo e($featuredGig['sale_count']); ?></span></div>*/ ?>
+                            <div class="gig-seller">
+                    <span itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating">
+                        <span class="ratings-count" itemprop="ratingCount">(202)</span>
+                    </span>
+                                <meta itemprop="worstRating" content="1">
+                                <span class="circ-rating-s8 rate-10" itemprop="ratingValue">10</span>
+                                <meta itemprop="bestRating" content="10">
+                                <?php /*by <a href="/muravski" rel="nofollow" class="seller-name" itemprop="brand" itemscope="" itemtype="http://schema.org/Brand">muravski</a>*/ ?>
+                            </div>
+
+                            <a href="<?php echo e(route('site.single.package',['packageId' => $featuredPackag->id,'funnel' => uniqid(),'uuid' => rand(1,1000)])); ?>"
+                               class="gig-link-main" itemprop="url">
+                                        <span class="gig-pict-222" itemscope=""
+                                              itemtype="http://schema.org/ImageObject">
+                                            <?php if(!empty($featuredPackag['thumbnail']) AND $featuredPackag['thumbnail'] != ''): ?>
+                                                <img src="<?php echo e($featuredPackag['thumbnail']); ?>"
+                                                     alt="<?php echo e($featuredPackag->title); ?>"></span>
+                                <?php endif; ?>
+                                <h3 itemprop="name"><?php echo e(str_limit($featuredPackag->title,50,'...')); ?></h3>
+                                <?php /*<h3 itemprop="name"><?php echo e($featuredGig->title); ?></h3>*/ ?>
+                                <div class="row" style="margin:0px;">
+                                    <div class="col-xs-4 color-bronze">
+                                        <p>Bronze</p>
+                                        <img src="<?php echo e(url('/').'/img/bronze_label.png'); ?>" alt="bronze" width="30px">
+                                        <p><?php echo e(config('app.currency').$featuredPackag['package_bronze']->price); ?></p>
+                                    </div>
+                                    <div class="col-xs-4 color-silver">
+                                        <p>Silber</p>
+                                        <img src="<?php echo e(url('/').'/img/silver_label.png'); ?>" alt="silver" width="30px">
+                                        <p><?php echo e(config('app.currency').$featuredPackag['package_silver']->price); ?></p>
+                                    </div>
+                                    <div class="col-xs-4 color-gold">
+                                        <p>Gold</p>
+                                        <img src="<?php echo e(url('/').'/img/gold_label.png'); ?>" alt="gold" width="30px">
+                                        <p><?php echo e(config('app.currency').$featuredPackag['package_gold']->price); ?></p>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <div class="col-xs-5">
+                                <span class="gig-badges featured" itemprop="award">featured</span>
+                            </div>
+                            <div class="col-xs-3">
+                                <?php if($user): ?>
+                                <aside data-url="<?php echo e(route('gig.favourite')); ?>"
+                                       data-coll-id="<?php echo e($featuredPackag->id); ?>">
+                                    <a id="btn-favourite-submit" href="javascript:void(0);"
+                                       class="gig-favourite-heart-icn">
+                                                            <span class="favorite-span">
+                                                                <?php if($featuredPackag['my_fav']): ?>
+                                                                    <i class="fa fa-heart"></i>
+                                                                <?php else: ?>
+                                                                    <i class="fa fa-heart-o"></i>
+                                                                <?php endif; ?>
+                                                            </span>
+
+                                    </a>
+
+                                </aside>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<?php echo $__env->make('includes.footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+<script>
+
+    $('.gig-favourite-heart-icn').click(function (e) {
+
+        e.preventDefault();
+        $selectedGig = $(this).parent();
+
+        var gigId = $selectedGig.data('coll-id');
+        var url = $selectedGig.data('url');
+
+        // var className = $('span.favorite-span > i').attr('class');
+
+        //  alert(className);
+
+        if ($(this).find('i').attr('class') == 'fa fa-heart') {
+            var action = 'removeFavorite';
+            $(this).empty().html('<span class="favorite-span"><i class="fa fa-heart-o"></i></span>');
+        }
+        else {
+            var action = 'addToFavorite';
+            $(this).empty().html('<span class="favorite-span"><i class="fa fa-heart"></i></span>');
+        }
+
+
+        $.ajax({
+            url: url,
+            method: 'POST',
+            data: {'gig-id': gigId, 'action': action},
+            success: function (data) {
+                console.log(data);
+
+            }
+        });
+    });
+
+
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        /*$('.gig-item-default').hover(function(){
+         $(this).children('.col-xs-5').removeClass('hover-transition');
+         },function(){
+         $(this).children('.col-xs-5').addClass('hover-transition');
+         });
+         $('.gig-item-default').hover(function(){
+         $(this).children('.col-xs-4').removeClass('hover-transition');
+         },function(){
+         $(this).children('.col-xs-4').addClass('hover-transition');
+         });*/
+        $('.gig-item-default').hover(function(){
+            $(this).children('#sold').show();
+        },function(){
+            $(this).children('#sold').hide();
+        });
+        $('#custom_offer').click(function(){
+
+            $(".gig-style").toggle();
+        });
+
+
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $('.multiple-items').slick({
+            infinite: true,
+            slidesToShow: 3,
+            slidesToScroll: 3
+        });
+
+    });
+
+</script>
+</body>
+</html>

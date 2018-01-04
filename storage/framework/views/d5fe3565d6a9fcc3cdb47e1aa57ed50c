@@ -1,0 +1,582 @@
+
+<?php echo $__env->make('includes.header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<div class="dash-main-content">
+<div class="container login-modal">
+    <div class="row row-centered">
+        <h4 class="login-title" style="text-align: center">Partner-Registrierung / Partner registration</h4>
+        <h4 id="ger-para" style="text-align: center; font-size:16px; color:rgb(111, 111, 111); display: none;">Bitte füllen Sie zum
+            Abschluss Ihrer
+            Registrierung dieses Formular vollständig aus.</h4>
+        <h4 id="en-para" style="text-align: center; font-size:16px; color:rgb(111, 111, 111); display: none;">Please fill to complete
+            your
+            Registration form completely..</h4>
+
+        <div class="form-group form-inline text-center">
+            <label for="">Select language</label>
+            <select name="" id="language" class="form-control">
+                <option value="" selected disabled>Select language</option>
+                <option value="eng" <?php echo e((Request::old('sel_lang') == 'eng') ? 'Selected':''); ?>>English</option>
+                <option value="ger" <?php echo e((Request::old('sel_lang') == 'ger') ? 'Selected':''); ?>>German</option>
+            </select>
+        </div>
+    </div>
+    <?php if($errors->has('others')): ?>
+        <div class="alert alert-danger" role="alert"><?php echo e($errors->first('others')); ?></div>
+    <?php endif; ?>
+
+    <?php if(\Illuminate\Support\Facades\Session::has('errorMessage')): ?>
+        <div class="alert alert-danger" role="alert"><?php echo e(\Illuminate\Support\Facades\Session::get('errorMessage')); ?></div>
+    <?php endif; ?>
+    <div class="agency_register">
+        <form id="eng" style="display: none;" action="<?php echo e(route('agency.registerFormSuccess')); ?>" method="post" role="form" enctype="multipart/form-data">
+            <!-- Username -->
+            <div class="form-group form-inline">
+                <span class="col-xs-4"> <label for="username">Agency Name</label></span>
+                <input type="text" id="username" name="username" placeholder="" class="form-control" required
+                       value="<?php echo e(Request::old('username')); ?>">
+                <span class="required">*</span>
+                <?php if($errors->has('username')): ?>
+                    <p class="help-block"><?php echo e($errors->first('username')); ?></p>
+                <?php endif; ?>
+            </div>
+            <!-- E-mail -->
+            <div class="form-group form-inline">
+        <span class="col-xs-4">
+            <label for="email">E-mail</label>
+        </span>
+                <input type="text" id="email" name="email" placeholder="" class="form-control"
+                       value="<?php echo e(Request::old('email')); ?>" required>
+                <span class="required">*</span>
+                <?php if($errors->has('email')): ?>
+                    <p class="help-block"><?php echo e($errors->first('email')); ?></p>
+                <?php endif; ?>
+            </div>
+            <!-- Password-->
+            <div class="form-group form-inline">
+            <span class="col-xs-4">
+                <label for="password">Password</label>
+            </span>
+                <input type="password" id="password" name="password" placeholder="" class="form-control" required>
+                <span class="required">*</span>
+                <?php if($errors->has('password')): ?>
+                    <p class="help-block"><?php echo e($errors->first('password')); ?></p>
+                <?php endif; ?>
+            </div>
+            <!-- Password -->
+            <div class="form-group form-inline">
+            <span class="col-xs-4">
+                <label for="password_confirmation">Password (Confirm)</label>
+            </span>
+                <input type="password" id="password_confirmation" name="password_confirmation" placeholder=""
+                       class="form-control">
+                <span class="required">*</span>
+                <?php /*<p class="help-block">Please confirm password</p>*/ ?>
+            </div>
+            <hr>
+            <h2 class="">Contact Details</h2>
+            <div class="form-group form-inline">
+                <label class="col-xs-4" for="">Select language:</label>
+                <select name="ch-lang" id="" class="form-control" style="width: 202px;">
+                    <option value="german">German</option>
+                    <option value="english">English</option>
+                </select>
+            </div>
+            <div class="form-group form-inline">
+                <label class="col-xs-4" for="">Male|Female</label>
+                <select name="gender" id="" class="form-control" style="width: 202px;">
+                    <option value="" disabled selected>Male/Female</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+            </div>
+            <div class="form-group form-inline">
+                <label class="col-xs-4" for="">First Name:</label>
+                <input type="text" name="fname" id="fname" class="form-control" value="<?php echo e(Request::old('fname')); ?>"><span class="required">*</span>
+                <?php if($errors->has('fname')): ?>
+                    <p class="help-block"><?php echo e($errors->first('fname')); ?></p>
+                <?php endif; ?>
+            </div>
+            <div class="form-group form-inline">
+                <label class="col-xs-4" for="">Last Name:</label>
+                <input type="text" name="lname" id="lname" class="form-control" value="<?php echo e(Request::old('lname')); ?>"><span class="required">*</span>
+                <?php if($errors->has('lname')): ?>
+                    <p class="help-block"><?php echo e($errors->first('lname')); ?></p>
+                <?php endif; ?>
+            </div>
+            <div class="form-group form-inline">
+                <label class="col-xs-4" for="">Street Nr:</label>
+                <input type="text" name="street" id="street" class="form-control" value="<?php echo e(Request::old('street')); ?>"><span class="required">*</span>
+                <?php if($errors->has('street')): ?>
+                    <p class="help-block"><?php echo e($errors->first('street')); ?></p>
+                <?php endif; ?>
+            </div>
+            <div class="form-group form-inline">
+                <label class="col-xs-4" for="">Postal Code:</label>
+                <input type="text" name="post" id="post" class="form-control" value="<?php echo e(Request::old('post')); ?>">
+            </div>
+            <div class="form-group form-inline">
+                <label class="col-xs-4" for="">City</label>
+                <input type="text" name="city" id="city" class="form-control" value="<?php echo e(Request::old('city')); ?>"><span class="required">*</span>
+                <?php if($errors->has('city')): ?>
+                    <p class="help-block"><?php echo e($errors->first('city')); ?></p>
+                <?php endif; ?>
+            </div>
+            <div class="form-group form-inline">
+                <label class="col-xs-4" for="">Country</label>
+                <select name="country" id="country" class="form-control" style="width: 202px;">
+                    <?php foreach($countries as $country): ?>
+                        <option value="<?php echo e($country->country_name); ?>"><?php echo e($country->country_name); ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+            <div class="form-group form-inline">
+                <label class="col-xs-4" for="">Tel:</label>
+                <input type="text" name="tel" id="tel" class="form-control" value="<?php echo e(Request::old('tel')); ?>"><span class="required">*</span>
+                <?php if($errors->has('tel')): ?>
+                    <p class="help-block"><?php echo e($errors->first('tel')); ?></p>
+                <?php endif; ?>
+            </div>
+            <div class="form-group form-inline">
+                <label class="col-xs-4" for="">Mobile:</label>
+                <input type="text" name="cell" id="cell" class="form-control" value="<?php echo e(Request::old('cell')); ?>">
+            </div>
+            <div class="form-group form-inline">
+                <label class="col-xs-4" for="">Company Registration Number(Optional):</label>
+                <input type="text" name="cnumber" id="cnumber" class="form-control">
+            </div>
+            <hr>
+            <h2 class="">your team strength</h2>
+            <div class="form-group form-inline">
+                <label class="col-xs-4" for="">Employees</label>
+                <input type="number" name="emp" min="0" class="form-control" value="<?php echo e(Request::old('emp')); ?>">
+            </div>
+            <hr>
+            <h2 class="text-left">Skills</h2>
+            <h4 class="text-left">Tell us your top skills and main areas of expertise</h4>
+            <?php $count = 1; $i = 0; $j = 0; ?>
+            <?php $checked = 'checked'; ?>
+
+            <?php foreach($gigtypes as $gigtype): ?>
+                <div class="checkbox checkbox-info checkbox-circle chck-bx3">
+                    <input value="<?php echo e($gigtype->name); ?>" name="types[<?php echo e($i); ?>]" id="checkbox<?php echo e($count); ?>" class="styled type_check" type="checkbox" <?php if(isset(Request::old('types')[$i]) && Request::old('types')[$i] == $gigtype->name): ?><?php echo e($checked); ?> <?php endif; ?>}}>
+
+                    <label for="checkbox<?php echo e($count); ?>">
+                        <p class="chck-bx-p"><?php echo e($gigtype->name); ?></p>
+                    </label>
+                </div>
+                <?php $subCatCount = 1;?>
+                <div class="form-group text-left form-inline sub_cat" id="link1" style="<?php if(isset(Request::old('subcat')[$i])){ echo 'display:block'; } else { echo 'display: none'; } ?>">
+                    <?php foreach($gigtype['Subcategory'] as $subcat): ?>
+                        <div class="checkbox checkbox-info checkbox-circle chck-bx3">
+                            <input value="<?php echo e($subcat->name); ?>" name="subcat[<?php echo e($j); ?>]" id="checkbox<?php echo e($count . $subCatCount); ?>" class="styled checkbox_subcat" type="checkbox" <?php if(isset(Request::old('subcat')[$j]) && Request::old('subcat')[$j] == $subcat->name ): ?><?php echo e($checked); ?> <?php endif; ?>}}>
+                            <label for="checkbox<?php echo e($count . $subCatCount); ?>">
+                                <p class="chck-bx-p"><?php echo e($subcat->name); ?></p>
+                            </label>
+                        </div>
+                        <?php $subCatCount++; $j++; ?>
+                    <?php endforeach; ?>
+                </div>
+                <?php $count++; $i++; ?>
+            <?php endforeach; ?>
+            <h3 class="text-left">List other skills you may have (Optional)</h3>
+            <textarea name="others" cols="60" rows="5" class="form-control"></textarea>
+            <?php /*<div class="form-group form-inline marg-topp">
+                    <span class="col-xs-6"><b>Submit documents that demonstrate you have these skills (eg. CV,
+                            certifications, completed courses)</b></span>
+                    <span class="col-xs-6 text-right">
+                        <input type="file" name="attachment" id="file">
+                    </span>
+            </div>*/ ?>
+            <div class="col-md-12 pull-left" style="margin-bottom: 10px; padding-left: 0;">
+            <span class="col-xs-6"><b>Submit documents that demonstrate you have these skills (eg. CV,
+                    certifications, completed courses)</b></span>
+                <button type="button" class="btn btn-default"><i class="fa fa-paperclip"></i> Attach Files </button>
+                <span id="fileAttachmentName2"></span><span class="please_wait_agency" style="margin-left: 10px; display: none;"><img src="data:image/gif;base64,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"/></span>
+                <input type="file" id="fileAttachment2" name="file-attachment" style="margin-bottom: 5px; width:121px;    margin-left: 341px; opacity: 0; position:absolute;margin-top: -47px;padding:12px; cursor: pointer;">
+                <?php if($errors->has('file')): ?>
+                    <p class="help-block" style="color: red;"><?php echo e($errors->first('file')); ?></p>
+                <?php endif; ?>
+            </div>
+            <div class="clearfix"></div>
+            <h2 class="text-left">SOCIAL MEDIA/Portfolio</h2>
+            <div class="form-group form-inline">
+                <label class="col-xs-4" for="">Facebook:</label>
+                <input type="url" name="fbmedia" class="form-control">
+            </div>
+            <div class="form-group form-inline">
+                <label class="col-xs-4" for="">LinkedIn:</label>
+                <input type="url" name="limedia" class="form-control">
+            </div>
+            <div class="form-group form-inline">
+                <label class="col-xs-4" for="">Google Plus:</label>
+                <input type="url" name="gmedia" class="form-control">
+            </div>
+            <div class="form-group form-inline">
+                <label class="col-xs-4" for="">Twitter:</label>
+                <input type="url" name="timedia" class="form-control">
+            </div>
+            <div class="form-group form-inline">
+                <label class="col-xs-4" for="">Other Link</label>
+                <textarea name="" cols="60" rows="5" class="form-control"></textarea>
+            </div>
+
+            <hr>
+            <h2 class="text-left">Legal Policies and prices</h2>
+            <div class="form-group form-inline pull-left marg-right">
+                <input type="checkbox" class="privacy" id="pr1">
+                <a href="https://cnerr.de/AGB" target="_blank" style="position: relative; top: 4px;">Private Policy</a>
+            </div>
+            <?php /*<div class="form-group form-inline pull-left">
+                <input type="checkbox" class="privacy" id="pr2">
+                <span style="position: relative; top: 4px;">I agree with Cnerr prices</span>
+            </div>*/ ?>
+            <input type="hidden" name="language" value="english">
+            <div class="form-group">
+                <!-- Button -->
+                <div class="col-xs-12 text-center" style="margin-top: 20px">
+                    <input type="submit" name="submit" class="btn btn-primary" value="Register" id="sub-form" disabled style="background: #367fa9;">
+                    <input type="hidden" name="sel_lang" class="sel_lang" value="eng">
+                </div>
+            </div>
+        </form>
+
+        <form id="ger" style="display: none;" action="<?php echo e(route('agency.registerFormSuccess')); ?>" method="post" role="form" enctype="multipart/form-data">
+            <!-- Username -->
+            <div class="form-group form-inline">
+                <span class="col-sm-4"> <label for="username">Agenturname</label></span>
+                <input type="text" id="username" name="username" placeholder="" class="form-control" required value="<?php echo e(Request::old('username')); ?>">
+                <span class="required">*</span>
+                <?php if($errors->has('username')): ?>
+                    <p class="help-block"><?php echo e($errors->first('username')); ?></p>
+                <?php endif; ?>
+            </div>
+            <!-- E-mail -->
+            <div class="form-group form-inline">
+                <span class="col-sm-4"><label for="email">E-mail</label></span>
+                <input type="text" id="email" name="email" placeholder="" class="form-control" value="<?php echo e(Request::old('email')); ?>" required>
+                <span class="required">*</span>
+                <?php if($errors->has('email')): ?>
+                    <p class="help-block"><?php echo e($errors->first('email')); ?></p>
+                <?php endif; ?>
+            </div>
+            <!-- Password-->
+            <div class="form-group form-inline">
+                <label  class="col-xs-4" for="password">Passwort</label>
+                <input type="password" id="password" name="password" placeholder="" class="form-control" required>
+                <span class="required">*</span>
+                <?php if($errors->has('password')): ?>
+                    <p class="help-block" style="text-transform: capitalize;"><?php echo e($errors->first('password')); ?></p>
+                <?php endif; ?>
+            </div>
+            <!-- Password -->
+            <div class="form-group form-inline">
+                <label class="col-xs-4" for="password_confirmation">Passwortbestätigung</label>
+                <input type="password" id="password_confirmation" name="password_confirmation" placeholder="" class="form-control">
+                <span class="required">*</span>
+                <?php /*<p class="help-block">Please confirm password</p>*/ ?>
+            </div>
+            <hr>
+            <h2 class="">Kontaktdetails</h2>
+            <div class="form-group form-inline">
+                <label class="col-xs-4" for="">Sprache auswählen:</label>
+                <select name="ch-lang" id="" class="form-control" style="width: 202px;">
+                    <option value="german">German</option>
+                    <option value="english">English</option>
+                </select>
+            </div>
+            <div class="form-group form-inline">
+                <label class="col-xs-4" for="">Männlich | Weiblich</label>
+                <select name="gender" id="" class="form-control" style="width: 202px;">
+                    <option value="" disabled selected>Männlich/Weiblich</option>
+                    <option value="Male">Männlich</option>
+                    <option value="Female">Weiblich</option>
+                </select>
+            </div>
+            <div class="form-group form-inline">
+                <label class="col-xs-4" for="">Vorname:</label>
+                <input type="text" name="fname" id="fname" class="form-control" value="<?php echo e(Request::old('fname')); ?>"><span class="required">*</span>
+                <?php if($errors->has('fname')): ?>
+                    <p class="help-block"><?php echo e($errors->first('fname')); ?></p>
+                <?php endif; ?>
+            </div>
+            <div class="form-group form-inline">
+                <label class="col-xs-4" for="">Nachname:</label>
+                <input type="text" name="lname" id="lname" class="form-control" value="<?php echo e(Request::old('lname')); ?>"><span class="required">*</span>
+                <?php if($errors->has('lname')): ?>
+                    <p class="help-block"><?php echo e($errors->first('lname')); ?></p>
+                <?php endif; ?>
+            </div>
+            <div class="form-group form-inline">
+                <label class="col-xs-4" for="">Straße #:</label>
+                <input type="text" name="street" id="street" class="form-control" value="<?php echo e(Request::old('street')); ?>"><span class="required">*</span>
+                <?php if($errors->has('street')): ?>
+                    <p class="help-block"><?php echo e($errors->first('street')); ?></p>
+                <?php endif; ?>
+            </div>
+            <div class="form-group form-inline">
+                <label class="col-xs-4" for="">Postleitzahl:</label>
+                <input type="text" name="post" id="post" class="form-control" value="<?php echo e(Request::old('post')); ?>">
+            </div>
+            <div class="form-group form-inline">
+                <label class="col-xs-4" for="">Stadt</label>
+                <input type="text" name="city" id="city" class="form-control" value="<?php echo e(Request::old('city')); ?>"><span class="required">*</span>
+                <?php if($errors->has('city')): ?>
+                    <p class="help-block"><?php echo e($errors->first('city')); ?></p>
+                <?php endif; ?>
+            </div>
+            <div class="form-group form-inline">
+                <label class="col-xs-4" for="">Land</label>
+                <select name="country" id="country" class="form-control" style="width: 202px;">
+                    <?php foreach($countries as $country): ?>
+                        <option value="<?php echo e($country->country_name); ?>"><?php echo e($country->country_name); ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+            <div class="form-group form-inline">
+                <label class="col-xs-4" for="">Telefon:</label>
+                <input type="text" name="tel" id="tel" class="form-control" value="<?php echo e(Request::old('tel')); ?>"><span class="required">*</span>
+                <?php if($errors->has('tel')): ?>
+                    <p class="help-block"><?php echo e($errors->first('tel')); ?></p>
+                <?php endif; ?>
+            </div>
+            <div class="form-group form-inline">
+                <label class="col-xs-4" for="">Mobile:</label>
+                <input type="text" name="cell" id="cell" class="form-control" value="<?php echo e(Request::old('cell')); ?>">
+            </div>
+            <div class="form-group form-inline">
+                <label class="col-xs-4" for="">USt-IdNr:</label>
+                <input type="text" name="cnumber" id="cnumber" class="form-control">
+            </div>
+            <hr>
+            <h2 class="">Ihre Teamstärke</h2>
+            <div class="form-group form-inline">
+                <label class="col-xs-4" for="">Mitarbeiter</label>
+                <input type="number" name="emp" min="0" class="form-control" value="<?php echo e(Request::old('emp')); ?>">
+            </div>
+            <hr>
+            <h2 class="text-left">Fähigkeiten</h2>
+            <h4 class="text-left">Sagen Sie uns Ihre Top- Fähigkeiten und Kernkompetenzen</h4>
+            <?php $count = 1; $i = 0; ?>
+
+            <?php foreach($gigtypes as $gigtype): ?>
+                <div class="checkbox checkbox-info checkbox-circle chck-bx3">
+
+                    <input value="<?php echo e($gigtype->name); ?>" name="types[]" id="checkbox<?php echo e($count); ?>" <?php if(isset($_POST['types'][$i])): ?><?php echo e('checked'); ?> <?php endif; ?> class="styled type_check" type="checkbox">
+                    <label for="checkbox<?php echo e($count); ?>">
+                        <p class="chck-bx-p"><?php echo e($gigtype->name); ?></p>
+                    </label>
+                </div>
+                <div class="form-group text-left form-inline sub_cat" id="link1" style="display: none">
+                    <?php $subCatCount = 1;?>
+                    <?php foreach($gigtype['Subcategory'] as $subcat): ?>
+                        <div class="checkbox checkbox-info checkbox-circle chck-bx3">
+                            <input value="<?php echo e($subcat->name); ?>" name="subcat[]" id="checkbox<?php echo e($count . $subCatCount); ?>"  class="styled checkbox_subcat" type="checkbox">
+                            <label for="checkbox<?php echo e($count . $subCatCount); ?>">
+                                <p class="chck-bx-p"><?php echo e($subcat->name); ?></p>
+                            </label>
+                        </div>
+                        <?php $subCatCount++ ?>
+                    <?php endforeach; ?>
+                </div>
+                <?php $count++; $i++; ?>
+            <?php endforeach; ?>
+            <h3 class="text-left">Liste andere Fähigkeiten, die Sie haben können (optional)</h3>
+            <textarea name="others" cols="60" rows="5" class="form-control"></textarea>
+            <?php /*<div class="form-group form-inline marg-topp">
+                    <span class="col-xs-6"><b>Submit documents that demonstrate you have these skills (eg. CV,
+                            certifications, completed courses)</b></span>
+                    <span class="col-xs-6 text-right">
+                        <input type="file" name="attachment" id="file">
+                    </span>
+            </div>*/ ?>
+            <div class="col-md-12 pull-left" style="margin-bottom: 10px; padding-left: 0;">
+        <span class="col-xs-6"><b>Senden von Dokumenten , die zeigen Sie diese Fähigkeiten haben ( z. B. CV ,
+                Zertifizierungen , absolvierten Kurse )</b></span>
+                <button type="button" class="btn btn-default"><i class="fa fa-paperclip"></i>Dateien anhängen </button>
+                <span id="fileAttachmentName2"></span><span class="please_wait_agency" style="margin-left: 10px; display: none;"><img src="data:image/gif;base64,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"/></span>
+                <input type="file" id="fileAttachment2" name="file-attachment" style="margin-bottom: 5px; width:121px;    margin-left: 341px; opacity: 0; position:absolute;margin-top: -47px;padding:12px; cursor: pointer;">
+                <?php if($errors->has('file')): ?>
+                    <p class="help-block" style="color: red;"><?php echo e($errors->first('file')); ?></p>
+                <?php endif; ?>
+            </div>
+            <div class="clearfix"></div>
+            <h2 class="text-left">Sozial Medien/Mappe</h2>
+            <div class="form-group form-inline">
+                <label class="col-xs-4" for="">Facebook:</label>
+                <input type="url" name="fbmedia" class="form-control">
+            </div>
+            <div class="form-group form-inline">
+                <label class="col-xs-4" for="">LinkedIn:</label>
+                <input type="url" name="limedia" class="form-control">
+            </div>
+            <div class="form-group form-inline">
+                <label class="col-xs-4" for="">Google Plus:</label>
+                <input type="url" name="gmedia" class="form-control">
+            </div>
+            <div class="form-group form-inline">
+                <label class="col-xs-4" for="">Twitter:</label>
+                <input type="url" name="timedia" class="form-control">
+            </div>
+            <div class="form-group form-inline">
+                <label class="col-xs-4" for="">Andere Links</label>
+                <textarea name="" cols="60" rows="5" class="form-control"></textarea>
+            </div>
+
+            <hr>
+            <h2 class="text-left">Rechtliche Richtlinien und Preise</h2>
+            <div class="form-group form-inline pull-left marg-right">
+                <input type="checkbox" class="privacy" id="pr3">
+                <a href="https://cnerr.de/AGB" target="_blank" style="position: relative; top: 4px;">AGB</a>
+            </div>
+            <?php /*<div class="form-group form-inline pull-left">
+                <input type="checkbox" class="privacy" id="pr4">
+                <span style="position: relative; top: 4px;">Ich stimme mit Cnerr Preise</span>
+            </div>*/ ?>
+            <input type="hidden" name="language" value="germany">
+            <div class="form-group">
+                <!-- Button -->
+                <div class="col-xs-12 text-center" style="margin-top: 20px">
+                    <input type="submit" name="submit" class="btn btn-primary" value="registrieren" id="sub-form2" disabled style="background: #367fa9;">
+                    <input type="hidden" name="sel_lang" class="sel_lang" value="ger">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="container" style="padding-bottom: 260px;">
+    <div class="row">
+        <div class="col-sm-6 col-xs-12 text-justify" style="padding: 0px 40px;">
+            <p><u>Allgemeines</u><span style="margin-left: 20px;"><img src="img/ger_flag.png" alt="" width="100px;" style="height:54px;"></span></p>
+            <p>
+                Cnerr.de stellt Partnern aus dem Bereich Design, Grafik, Programmierung, Entwicklung, Freelancing, u.a.
+                einen digitalen Marktplatz für kreative Arbeiten zur Verfügung. Designer, Grafiker, Programmierer,
+                Entwickler, Freelancer, u.a. verkaufen unter cnerr.de kleine Dienstleistungen rund um den digitalen,
+                kreativen Markt. <a href="https://cnerr.de"><b>Cnerr.de</b></a> arbeitet ausschließlich mit ausgewählten Partnern zusammen.
+            </p>
+            <p>
+                <u>Partnerinformationen</u>
+            </p>
+            <p>
+                Als Partner haben Sie die Möglichkeit Ihre eigenen Dienstleistungen rund um den kreativen Markt (Design,
+                Grafik, Programmierung, Animation, 3D, uvm.) auf dem Marktplatz direkt anzubieten. Bewerben Sie sich
+                einfach mit dem Formular und Ihren Referenzen bei uns und seien Sie Teil des <b>Cnerr Netzwerkes</b>.
+            </p>
+            <p>
+                Bei erfolgreicher Anmeldung erhalten Sie weitere detaillierte Informationen rund um das Business Partner Modell.
+            </p>
+        </div>
+        <div class="col-sm-6 col-xs-12 text-justify" style="padding: 0px 40px;">
+            <p><u>General information</u><span style="margin-left: 20px;"><img src="img/eng_flag.png" alt=""
+                                                                               width="100px;"></span></p>
+            <p>
+
+                The company sells under the market place <a href="http://cnerr.de"
+                                                                                                 style="color:black;"><b
+                            style="color:black;">cnerr.de</b></a> small and large services around the digital,
+                creative market. <a href="http://cnerr.de" style="color:black;"><b style="color:black;">cnerr.de</b></a>
+                works exclusively with selected and tested partners. Partners of the large
+                <a href="http://cnerr.de" style="color:black;"><b style="color:black;">cnerr.de</b></a> network enjoy
+                the advantages in an interesting market under the brand <b style="color:black;">CNERR</b>.
+            </p>
+            <p style="margin-top:29px;">
+                <u>Partner information</u>
+            </p>
+            <p>
+                As a Partner you have the possibility to offer your own services
+                around the creative market
+                (design, graphics, programming, animation, 3D, etc.). Simply apply with the form and your references and
+                be part of the <b style="color:black;">Cnerr network</b>.
+            </p>
+            <p>
+                Upon successful registration, you will receive further detailed information about the business partner model.
+            </p>
+        </div>
+    </div>
+</div>
+</div>
+<?php echo $__env->make('includes.footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.privacy').click(function () {
+           if($('#pr1').is(':checked')){
+                $('#sub-form').removeAttr('disabled');
+            }else{
+               $('#sub-form').attr('disabled');
+           }
+        });
+        $('.privacy').click(function () {
+            if($('#pr3').is(':checked')){
+                $('#sub-form2').removeAttr('disabled');
+            }else{
+                $('#sub-form2').attr('disabled');
+            }
+        });
+    });
+</script>
+<script>
+
+    $('.type_check').on('click', function () {
+
+        if ($(this).is(':checked')) {
+            $(this).parent().next("#link1").show();
+
+        }
+        else{
+            $(this).parent().next("#link1").hide();
+        }
+    });
+    $("#fileAttachment2").change(function () {
+        var fileName = $(this).val().replace('C:\\fakepath\\', '');
+        $("#fileAttachmentName2").html(fileName);
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $(".cnerr-footer-background-color").css({"position": "absolute", "left": "0px","right":"0px","bottom":"0px"});
+        $("#language").find("option:selected").each(function () {
+            if ($(this).attr("value") == "eng") {
+                $("#eng").show();
+                $("#ger").hide();
+                $("#en-para").show();
+                $("#ger-para").hide();
+            } else if($(this).attr("value") == "ger"){
+                $('.agency_register').show();
+                $("#eng").hide();
+                $("#ger").show();
+                $("#en-para").hide();
+                $("#ger-para").show();
+            }else{
+                $("#eng").hide();
+                $("#ger").hide();
+            }
+        });
+        $("#language").change(function () {
+            $(".cnerr-footer-background-color").css({"position":"inherit"});
+            $(this).find("option:selected").each(function () {
+                if ($(this).attr("value") == "eng") {
+                    $("#eng").show();
+                    $("#ger").hide();
+                    $("#en-para").show();
+                    $("#ger-para").hide();
+                    $('.agency_register').css({
+                        'box-shadow' : 'gray 0px 0px 5px',
+                        'padding' : '20px',
+                        'display' :'inline-block'
+                    });
+                }
+                else {
+                    $('.agency_register').show();
+                    $("#eng").hide();
+                    $("#ger").show();
+                    $("#en-para").hide();
+                    $("#ger-para").show();
+                    $('.agency_register').css({
+                        'box-shadow' : 'gray 0px 0px 5px',
+                        'padding' : '20px',
+                        'display' :'inline-block'
+                    });
+                }
+            });
+        });
+    });
+</script>

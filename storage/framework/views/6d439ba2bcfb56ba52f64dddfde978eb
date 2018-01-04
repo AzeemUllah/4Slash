@@ -1,0 +1,78 @@
+<?php echo $__env->make('includes.header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+<!-- content -->
+<div class="main-profile" style="background-color:#f1f2f2">
+    <div class="content">
+        <div>
+                <div class="header profile-header" style="background-image: url(<?php echo e($user->cover_image); ?>);">
+                    <h1 class="heading1"><?php echo e($user->username); ?></h1>
+                    <h1 class="heading2">My Profile’s Tagline Here.</h1>
+                    <form id="profile-cover-img-form" enctype="multipart/form-data">
+                        <input name="profile-cover-img" type="file" class="profile-upload-button" id="profile-cover-upload">
+                        <label for="profile-cover-upload" class="btn btn-primary btn-xs btn-profile-cover-upload">Change Cover</label>
+                    </form>
+                </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12" style=" margin-bottom:52px;">
+                <div class="main-content">
+                    
+                    <div class="profile-img-profile">
+                        <form id="profile-img-form" enctype="multipart/form-data">
+                            <span>
+                                <input name="profile-img" type="file" class="profile-upload-button" id="profile-img-upload-icon">
+                                <label for="profile-img-upload-icon" class="profile-img-upload-icon"><i class="fa fa-camera"></i></label>
+                                <img style="width:100px;height:100px;" src="<?php echo e($user->profile_image); ?>" class="img-circle profile-img-circle">
+                            </span>
+                        </form>
+                    </div>
+                    
+                    <div class="profile-detail">
+                    <h1><?php echo e($user->username); ?></h1>
+                    <p>
+                        Lorem ipsum dolor sit amet, dictum vehicula sed ante, enim sed ipsum lacus ante, neque imperdiet suspendisse penatibus elit, varius cras ut sapien saepe aliquet. Vel taciti nibh, orci porttitor ipsum mattis leo, in at urna augue. Nulla nulla accumsan placerat
+                    </p>
+                    </div>
+                    <div class="profile">
+                        <table class="table">
+                            <tr>
+                                <td><span class="glyphicon glyphicon-globe"></span>From: Germany</td>
+                                <td><span><img src="img/speaks.png"></span>Speaks: <?php echo e($user->speaks); ?></td>
+                            </tr>
+                            <tr>
+                                <td><span class="glyphicon glyphicon-time"></span>Collaboration Time: 4Hrs.</td>
+                                <td><span><img src="img/gm.png"></span>Google + Verified</td>
+                            </tr>
+                            <tr>
+                                <td><span><img src="img/email.png"></span>Email verified</td>
+                                <td><span><img src="img/facebook.png"></span>Facebook Verified</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <?php echo $__env->make("includes.footer", array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+    
+    
+    
+    <script>
+        (function() {
+            
+            var input = document.querySelector('#profile-img-upload-icon');
+            var coverPhoto = document.querySelector('#profile-cover-upload');
+        
+            input.addEventListener('change', change_profile_image);
+            coverPhoto.addEventListener('change', change_profile_cover_image);
+            
+        })();
+        
+    </script>
+    </body>
+</html>

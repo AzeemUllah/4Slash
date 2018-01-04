@@ -1,0 +1,119 @@
+<?php echo $__env->make('includes.header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+<!-- Content -->
+        <div class="notify-main-content top-gap">
+            <div class="container">
+                <div class="well">
+                    <h1>My Favorites</h1>
+                   
+                    
+                    
+                    <div class="row my-favourites">
+                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                <div class="dash-listing">
+                                    <div class="dash-listing-cap">
+                                        <img src="img/1.jpg" class="img-responsive">
+                                        <h4><b>Business</b> Plan</h4>
+                                        <div class="dash-line"></div>
+                                        <p class="dash-list-parag">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                                    </div>
+                                </div>
+                            </div>
+                             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                <div class="dash-listing">
+                                    <div class="dash-listing-cap">
+                                        <img src="img/1.jpg" class="img-responsive">
+                                        <h4><b>Business</b> Plan</h4>
+                                        <div class="dash-line"></div>
+                                        <p class="dash-list-parag">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                <div class="dash-listing">
+                                    <div class="dash-listing-cap">
+                                        <img src="img/3.jpg" class="img-responsive">
+                                        <h4><b>3D</b> Designing</h4>
+                                        <div class="dash-line"></div>
+                                        <p class="dash-list-parag">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                                    </div>
+                                </div>
+
+                            </div>
+                          <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                <div class="dash-listing">
+                                    <div class="dash-listing-cap">
+                                        <img src="img/2.jpg" class="img-responsive">
+                                        <h4><b>Web</b> Development</h4>
+                                        <div class="dash-line"></div>
+                                        <p class="dash-list-parag">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                <div class="dash-listing">
+                                    <div class="dash-listing-cap">
+                                        <img src="img/4.jpg" class="img-responsive">
+                                        <h4><b>Logo</b> Designing</h4>
+                                        <div class="dash-line"></div>
+                                        <p class="dash-list-parag">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                                    </div>
+                                </div>
+                            </div>
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                <div class="dash-listing">
+                                    <div class="dash-listing-cap">
+                                        <img src="img/5.jpg" class="img-responsive">
+                                        <h4><b>Voice</b> Over</h4>
+                                        <div class="dash-line"></div>
+                                        <p class="dash-list-parag">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                                    </div>
+                                </div>
+                            </div>
+                           <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                <div class="dash-listing">
+                                    <div class="dash-listing-cap">
+                                        <img src="img/6.jpg" class="img-responsive">
+                                        <h4><b>Brochure</b> Designing</h4>
+                                        <div class="dash-line"></div>
+                                        <p class="dash-list-parag">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                                    </div>
+                                </div>
+
+                            </div>
+                                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                <div class="dash-listing">
+                                    <div class="dash-listing-cap">
+                                        <img src="img/5.jpg" class="img-responsive">
+                                        <h4><b>UI</b> Designing</h4>
+                                        <div class="dash-line"></div>
+                                        <p class="dash-list-parag">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+                    
+                    
+                    
+                    
+                    
+                    
+                  
+                </div>
+            </div>
+        </div>
+
+
+
+<?php echo $__env->make('includes.footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+    </body>
+</html>

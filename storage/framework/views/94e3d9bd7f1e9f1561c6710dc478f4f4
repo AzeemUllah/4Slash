@@ -1,0 +1,225 @@
+
+<style>
+    .zero-padd{
+        padding: 10px 0px !important;
+        font-size: 12px;
+        color: #3c8dbc;
+        font-weight: 600;
+    }
+    .zero-margg{
+        margin: 0px !important;
+        background: white;
+    }
+    .border{
+        /* border-top: 1px solid #3c8dbc;
+         border-left: 1px solid #3c8dbc;*/
+        border-right: 2px solid #d2d6de;
+    }
+    .border:last-child{
+        border: 0px;
+    }
+</style>
+<?php $__env->startSection('header_title'); ?>
+
+    <h1 style="padding: 0px 10px;">Dashboard</h1>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+    <div class="row">
+        <?php echo $__env->make('pages.agency.partials.side_menue', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+        <div class="col-md-9">
+            <div class="row zero-margg">
+                <div class="col-md-4 col-xs-12 text-center zero-padd border">
+                    <p style="color:#f0ad4e; font-size: 50px; margin: 0px;line-height: 0.8em;"><?php echo e($get_pending > 0 ? $get_pending : 0); ?></p>
+                    <p>In Process</p>
+                </div>
+                <div class="col-md-4 col-xs-12 text-center zero-padd border">
+                    <p style="color:rgb(72,25,118); font-size: 50px; margin: 0px;line-height: 0.8em;"><?php echo e($get_processed); ?></p>
+                    <p>Waiting for user acknowledgment</p>
+                </div>
+                <div class="col-md-4 col-xs-12 text-center zero-padd border">
+                    <p style="color:rgb(60, 118, 65); font-size: 50px; margin: 0px;line-height: 0.8em;"><?php echo e($get_finsihed > 0 ? $get_finsihed : 0); ?></p>
+                    <p>Finish Jobs</p>
+                </div>
+            </div>
+            <div class="box box-primary" id="boxMain">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Bestellungen / Orders</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body table-responsive">
+                        <table id="example1" class="table table-bordered table-striped">
+                            <thead>
+                            <tr>
+                                <th>Bestellungnummer / Order #</th>
+                                <th>Bestellung / Order Name</th>
+                                <th>Firmenname / Company Name</th>
+                                <th>fällig bis / Expire Date</th>
+                                <th>Bestelldatum / Order Date</th>
+                                <th>Order Amount</th>
+
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <?php if(!empty($pendingdorders) && $pendingdorders > 0): ?>
+                                <?php if(!empty($orders)): ?>
+                                <?php foreach($orders as $order): ?>
+
+                                    <tr>
+
+                                        <td class="mailbox-name" style="width: 233px;">
+                                            <div class="col-xs-6" style="padding: 0px;">
+                                            <span><img src="<?php echo e(url('/').'/img/Untitled-1 copy.PNG'); ?>" alt="package" width="20px;"></span>
+                                            <a class="order-link" href="<?php echo e(route('agencySingleOrder', [$order->order_no, $order->uuid])); ?>" data-href="<?php echo e(route('agencyorder')); ?>?orderno=<?php echo e($order->order_no); ?>"><?php echo e($order->order_no); ?></a>
+                                                <?php /*<a href="<?php echo e(route('agencySingleOrder', [$order->order_no, $order->uuid])); ?>" class="btn btn-primary btn-xs" target="_blank">*/ ?><?php /*<span class="glyphicon glyphicon-eye-open"></span>*/ ?><?php /*</a>*/ ?>
+                                            </div>
+                                            <div class="col-xs-6" style="padding: 0px;">
+                                                <?php if(date('d.m.Y', strtotime($order->created_at)) == date('d.m.Y')): ?>
+                                                    <?php if($order->status == 'review'): ?>
+                                                        <span class="label label-warning"><i class="icon fa fa-check"></i>Reviewed<i class="fa fa-star" style="margin: 5px; color: #157340;"></i></span><span class="badge label-warning"> <?php echo e($order->order_review); ?></span>
+                                                    <?php elseif($order->status == 'pending'): ?>
+                                                        <span class="label label-danger"><i class="icon fa fa-check"></i>Pending<i class="fa fa-star" style="margin: 5px; color: #157340;"></i></span>
+                                                    <?php elseif($order->status == 'jobdonebyagency'): ?> <span class="label label-info"><i class="icon fa fa-check"></i>Finished agency<i class="fa fa-star" style="color: #157340;"></i></span>
+                                                    <?php elseif($order->status == 'jobdone'): ?> <span class="label label-info"><i class="icon fa fa-check"></i>Finished admin<i class="fa fa-star" style="margin: 5px; color: #157340;"></i></span><?php endif; ?>
+                                                <?php else: ?>
+                                                    <?php if($order->status == 'review'): ?>
+                                                        <span class="label label-warning"><i class="icon fa fa-check"></i>Reviewed</span>
+                                                        <span class="badge label-warning"> <?php echo e($order->order_review); ?></span>
+                                                    <?php elseif($order->status == 'pending'): ?>
+                                                        <span class="label label-danger"><i class="icon fa fa-check"></i>Pending</span>
+                                                    <?php elseif($order->status == 'jobdonebyagency'): ?> <span class="label label-info"><i class="icon fa fa-check"></i>Finished agency</span>
+                                                    <?php elseif($order->status == 'jobdone'): ?> <span class="label label-info"><i class="icon fa fa-check"></i>Finished admin</span><?php endif; ?>
+                                                <?php endif; ?>
+                                            </div>
+                                        </td>
+                                        <td class="mailbox-subject"><b><?php echo e($order->title); ?></b></td>
+                                        <td class="mailbox-attachment"><?php echo e($order->company_name); ?></td>
+                                        <td class="mailbox-date"><?php echo e(date('d.m.Y', strtotime($order->expiry))); ?></td>
+                                        <td class="mailbox-date"><?php echo e(date('d.m.Y', strtotime($order->created_at))); ?></td>
+                                        <td class="mailbox-date">€<?php echo e(number_format($order->net_total * ($agencyAmount->agency_percentage/100),2)); ?></td>
+
+                                    </tr>
+
+                                <?php endforeach; ?>
+                            <?php endif; ?>
+                            <?php endif; ?>
+                            <?php if(!empty($total_pckage_ordres) && $total_pckage_ordres > 0): ?>
+                                <?php if(!empty($packagesOrder)): ?>
+                                <?php foreach($packagesOrder as $porder): ?>
+
+                                    <tr>
+                                        <td class="mailbox-name" style="width: 233px;">
+                                            <div class="col-xs-6" style="padding: 0px;">
+                                                <span><img src="<?php echo e(url('/').'/img/packageSuggestion.png'); ?>" alt="package" width="20px;"></span>
+                                                <a class="order-link" href="<?php echo e(route('agencySingleOrder', [$porder->order_no, $porder->uuid])); ?>" data-href="<?php echo e(route('agencyorder')); ?>?orderno=<?php echo e($porder->order_no); ?>"><?php echo e($porder->order_no); ?></a>
+                                                <?php /*<a href="<?php echo e(route('agencySingleOrder', [$order->order_no, $order->uuid])); ?>" class="btn btn-primary btn-xs" target="_blank">*/ ?><?php /*<span class="glyphicon glyphicon-eye-open"></span>*/ ?><?php /*</a>*/ ?>
+                                            </div>
+                                            <div class="col-xs-6" style="padding: 0px;">
+                                                <?php if(date('d.m.Y', strtotime($porder->created_at)) == date('d.m.Y')): ?>
+                                                    <?php if($porder->status == 'review'): ?>
+                                                        <span class="label label-warning"><i class="icon fa fa-check"></i>Reviewed<i class="fa fa-star" style="margin: 5px; color: #157340;"></i></span><span class="badge label-warning"> <?php echo e($porder->order_review); ?></span>
+                                                    <?php elseif($porder->status == 'pending'): ?>
+                                                        <span class="label label-danger"><i class="icon fa fa-check"></i>Pending<i class="fa fa-star" style="margin: 5px; color: #157340;"></i></span>
+                                                    <?php elseif($porder->status == 'jobdonebyagency'): ?> <span class="label label-info"><i class="icon fa fa-check"></i>Finished agency<i class="fa fa-star" style="color: #157340;"></i></span>
+                                                    <?php elseif($porder->status == 'jobdone'): ?> <span class="label label-info"><i class="icon fa fa-check"></i>Finished admin<i class="fa fa-star" style="margin: 5px; color: #157340;"></i></span><?php endif; ?>
+                                                <?php else: ?>
+                                                    <?php if($porder->status == 'review'): ?>
+                                                        <span class="label label-warning"><i class="icon fa fa-check"></i>Reviewed</span>
+                                                        <span class="badge label-warning"> <?php echo e($porder->order_review); ?></span>
+                                                    <?php elseif($porder->status == 'pending'): ?>
+                                                        <span class="label label-danger"><i class="icon fa fa-check"></i>Pending</span>
+                                                    <?php elseif($porder->status == 'jobdonebyagency'): ?> <span class="label label-info"><i class="icon fa fa-check"></i>Finished agency</span>
+                                                    <?php elseif($porder->status == 'jobdone'): ?> <span class="label label-info"><i class="icon fa fa-check"></i>Finished admin</span><?php endif; ?>
+                                                <?php endif; ?>
+                                            </div>
+                                        </td>
+                                        <td class="mailbox-subject"><b><?php echo e($porder->title); ?></b></td>
+                                        <td class="mailbox-attachment"><?php echo e($porder->company_name); ?></td>
+                                        <td class="mailbox-date"><?php echo e(date('d.m.Y', strtotime($porder->expiry))); ?></td>
+                                        <td class="mailbox-date"><?php echo e(date('d.m.Y', strtotime($porder->created_at))); ?></td>
+                                        <td class="mailbox-date">€<?php echo e(number_format($porder->net_total * ($agencyAmount->agency_percentage/100),2)); ?></td>
+
+                                    </tr>
+
+                                <?php endforeach; ?>
+                            <?php endif; ?>
+                            <?php endif; ?>
+                            <?php if(!empty($total_custom_orders) && $total_custom_orders > 0): ?>
+                                <?php if(!empty($customorders)): ?>
+                                <?php foreach($customorders as $corder): ?>
+                                    <?php if($corder->type == 'custom' && $corder->amount > 0): ?>
+                                        <tr>
+                                            <td class="mailbox-name" style="width: 233px;"><a class="order-link" href="<?php echo e(route('agencySingleOrder', [$corder->order_no, $corder->uuid])); ?>" data-href="<?php echo e(route('agencyorder')); ?>?orderno=<?php echo e($corder->order_no); ?>"><?php echo e($corder->order_no); ?>
+
+                                                    <?php /*<a href="<?php echo e(route('agencySingleOrder', [$corder->order_no, $corder->uuid])); ?>" class="btn btn-primary btn-xs" target="_blank">*/ ?><?php /*<span class="glyphicon glyphicon-eye-open"></span>*/ ?><?php /*</a>*/ ?>
+                                                    <?php if(date('d.m.Y', strtotime($corder->created_at)) == date('d.m.Y')): ?>
+                                                        <?php if($corder->status == 'review'): ?>
+                                                            <span class="btn-warning"><i class="icon fa fa-check"></i>Reviewed <i class="fa fa-star" style="margin: 5px;  color: #157340;"></i></span> <?php elseif($corder->status == 'pending'): ?>
+                                                            <span class="btn-danger"><i class="icon fa fa-check"></i>Pending <i class="fa fa-star" style="margin: 5px; color: #157340;"></i></span><?php elseif($corder->status == 'jobdonebyagency'): ?> <span class="btn-success"><i class="icon fa fa-check"></i>Finished agency<i class="fa fa-star" style=" margin: 5px; color: #157340;"></i> </span>
+                                                        <?php elseif($corder->status == 'jobdone'): ?> <span class="btn-primary"><i class="icon fa fa-check"></i>Finished admin <i class="fa fa-star" style=" margin: 5px; color: #157340;"></i></span><?php endif; ?>
+                                                    <?php else: ?>
+                                                        <?php if($corder->status == 'review'): ?>
+                                                            <span class="btn-warning"><i class="icon fa fa-check"></i>Reviewed</span> <?php elseif($corder->status == 'pending'): ?>
+                                                            <span class="btn-danger"><i class="icon fa fa-check"></i>Pending</span><?php elseif($corder->status == 'jobdonebyagency'): ?> <span class="btn-success"><i class="icon fa fa-check"></i>Finished agency</span>
+                                                        <?php elseif($corder->status == 'jobdone'): ?> <span class="btn-primary"><i class="icon fa fa-check"></i>Finished admin</span><?php endif; ?>
+                                                    <?php endif; ?>
+                                                </a>
+                                            </td>
+                                            <td class="mailbox-subject"><b><?php echo e($corder->type); ?></b></td>
+                                            <td class="mailbox-attachment"><?php echo e($corder->company_name); ?></td>
+                                            <td class="mailbox-date"><?php echo e(date('d.m.Y', strtotime($corder->expiry))); ?></td>
+                                            <td class="mailbox-date"><?php echo e(date('d.m.Y', strtotime($corder->created_at))); ?></td>
+                                            <td class="mailbox-date">€<?php echo e(number_format($corder->net_total * ($agencyAmount->agency_percentage/100),2)); ?></td>
+                                        </tr>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
+                            <?php endif; ?>
+
+                            </tbody>
+                        </table><!-- /.table --><!-- /.table -->
+                </div><!-- /.mail-box-messages -->
+            </div><!-- /.box-body -->
+
+
+
+
+
+
+        </div><!-- /. col-md-9 -->
+    </div><!-- /.row -->
+
+
+
+<?php $__env->stopSection(); ?>
+
+
+<?php $__env->startSection('pages_css'); ?>
+
+        <!-- DataTables -->
+
+    <link rel="stylesheet" href="<?php echo e(asset('bower_components/AdminLTE/plugins/datatables/dataTables.bootstrap.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('css/animate.css')); ?>">
+
+    <?php $__env->stopSection(); ?>
+
+
+
+
+
+    <?php $__env->startSection('pages_script'); ?>
+
+            <!-- DataTables -->
+    <?php /*<script src="<?php echo e(asset('bower_components/AdminLTE/plugins/datatables/jquery.dataTables.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('bower_components/AdminLTE/plugins/datatables/dataTables.bootstrap.min.js')); ?>"></script>*/ ?>
+    <!-- page script -->
+    <?php /*<script>
+        $(function () {
+            var table = $("#example1").DataTable({
+
+                "aaSorting": []
+            });
+        });
+    </script>*/ ?>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('pages.agency.agency_template', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

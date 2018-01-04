@@ -1,0 +1,9 @@
+<ul class="dash-list">
+    <li>
+        <a href="#"><img src="<?php echo e($user->profile_image); ?>" class="img-circle dash-user-login-image" style="width: 75px;"><span class="username-color"><?php echo e($user->username); ?></span></a><p style="margin-top: -20px; margin-bottom: 30px; color:#909090;">Some Useful Links</p>
+    </li>
+    <li><a href="/profile">My Profile</a></li>
+    <li><a href="#">My Favourite Gigs</a></li>
+    <li><a href="#">Request Custom Gig</a></li>
+
+</ul>

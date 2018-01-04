@@ -1,0 +1,649 @@
+<?php $__env->startSection('header_title'); ?>
+    <?php if(\Illuminate\Support\Facades\Session::has('updated')): ?>
+        <div class="alert alert-success alert-dismissible">
+            <h5><i class="icon fa fa-check"></i><span>Your request for the amount withdraw has been submitted</span>
+                <br><span>The accounts department contact you as soon as possible</span>
+            </h5>
+            <h5><i class="icon fa fa-check"></i><span>Ihre Anfrage zur Übersendung der Provisionen ist eingereicht worden.
+</span>
+                <br><span>Die Buchhaltung meldet sich in Kürze bei Ihnen zurück.</span>
+            </h5>
+        </div>
+    <?php endif; ?>
+    <h1>Profile</h1>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+    <div class="row">
+        <?php echo $__env->make('pages.agency.partials.side_menue', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+        <div class="col-sm-9 col-xs-12">
+            <div style="display: inline-block; float: right;padding: 20px 0px 0px 0px;">
+                <div class="description-block">
+                    <h5 class="description-header"></h5>
+                                <span class="description-text">
+                                    <!-- Button trigger modal -->
+                                    <?php if(!empty($get_agency_Detail)): ?>
+                                        <button type="button" <?php echo e($agency->wallet > 0 && $agency->request_withdraw == 0 ? '':'disabled'); ?> class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal" id="sent-request">
+                                            <?php if($agency->request_withdraw == 0): ?>
+                                                Request Withdraw
+                                            <?php else: ?>
+                                                Withdraw request sent
+                                            <?php endif; ?>
+                                        </button>
+                                    <?php else: ?>
+                                        <button type="button" class="btn btn-primary btn-md" id="pay-details-restrict">
+                                            Request Withdraw
+                                        </button>
+                                    <?php endif; ?>
+                                    <?php if(!empty($get_agency_Detail)): ?>
+                                    <p><a href="<?php echo e(route('agencyprofile')); ?>" style="text-transform: initial;" target="_blank">Complete your payment details here</a></p>
+                                    <?php endif; ?>
+                                                <!-- Modal -->
+                                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                                                    aria-hidden="true">&times;</span></button>
+                                                        <h4 class="modal-title" id="myModalLabel">Confirm</h4>
+                                                    </div>
+                                                    <div class="modal-body" style="text-transform: capitalize;">
+                                                        <?php if($agency->wallet > 25): ?>
+                                                        Do you really want to withdraw Amount?
+                                                        <div class="box" style="box-shadow: none;">
+                                                            <div class="form-group text-left av_fund">
+                                                                <span>
+                                                                    <b>Available Funds</b>
+                                                                </span>
+                                                                <span class="av_fund_amt">
+                                                                    <?php echo e(config('app.currency').number_format($agency->wallet,2)); ?>
+
+                                                                </span>
+                                                            </div>
+                                                            <?php if(!empty($get_agency_Detail->paypal_acct)): ?>
+                                                            <div class="form-group text-left" style="margin-top: 10px;">
+                                                                <h6><b>Select a Withdrawal Type</b></h6>
+                                                                <table>
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td>
+                                                                                <label for="amount1">
+                                                                    <input type="radio" id="amount1" name="amount" value="<?php echo e($service->paypal_services); ?>">
+                                                                </label>
+                                                                            </td>
+                                                                            <td class="gap_adjust">
+                                                                                <img style="max-width: 100px;" src="/img/Paypal_logo.png" alt="paypal">
+                                                                            </td>
+                                                                            <td>
+                                                                                <?php
+                                                                                $total = $agency->wallet - $service->paypal_services;
+                                                                                $net = number_format($total,2);
+                                                                                ?>
+                                                                                <?php echo e($get_agency_Detail->paypal_acct); ?><br>
+                                                                        Paypal services charges are (<?php echo e(config('app.currency')); ?><?php echo e(number_format($service->paypal_services,2)); ?>
+
+                                                                                )
+                                                                                <span class="pmnt-info">
+                                                                                    <i class="fa fa-info" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="<?php echo e(config('app.currency').$net); ?> will be transferred to your account"></i>
+                                                                                </span>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                            <?php endif; ?>
+                                                            <?php if(!empty($get_agency_Detail->acct_number) && !empty($get_agency_Detail->acct_type && !empty($get_agency_Detail->bank_address))): ?>
+                                                            <div class="form-group text-left">
+                                                                <table>
+                                                                    <tbody>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <label for="amount2">
+                                                                    <input type="radio" id="amount2" name="amount" value="<?php echo e($service->bank_services); ?>">
+                                                                </label>
+                                                                        </td>
+                                                                        <td>
+                                                                            <img style="max-width: 120px;" src="/img/bank.png" alt="paypal">
+                                                                        </td>
+                                                                        <td>
+                                                                                <?php
+                                                                            $total = $agency->wallet - $service->bank_services;
+                                                                            $net = number_format($total,2);
+                                                                            ?>
+                                                                            <?php echo e($get_agency_Detail->bank_name); ?><br>
+                                                                        Bank services charges are (<?php echo e(config('app.currency')); ?><?php echo e(number_format($service->bank_services,2)); ?>
+
+                                                                            )
+                                                                                <span class="pmnt-info">
+                                                                                    <i class="fa fa-info" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="<?php echo e(config('app.currency').$net); ?> will be transferred to your account"></i>
+                                                                                </span>
+                                                                            </td>
+                                                                    </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                            <?php else: ?>
+                                                                <p>Please complete your payment details first!</p>
+                                                            <?php endif; ?>
+                                                        </div>
+                                                        <?php else: ?>
+                                                            <div class="box">
+                                                                <p style="color:red; font-size:40px;"><i class="fa fa-exclamation-circle" aria-hidden="true"></i></p>
+                                                                <?php /*<p>You can not send withdrawal request, your balance in less than <?php echo e(config('app.currency')); ?>25.00.</p>*/ ?>
+                                                                <p>Sie können zur Zeit keine Wiederrufsanfrage senden, da Ihr Guthaben weniger als € 25 beträgt.<br>
+                                                                    You have Balance less than €25"</p>
+                                                            </div>
+                                                        <?php endif; ?>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <form method="post" action="<?php echo e(route('request.amount.withdraw')); ?>" id="amountWithdraw">
+                                                            <input type="hidden" name="agencyId" value="<?php echo e($agency->id); ?>">
+                                                            <input type="hidden" name="amount" class="amount" value="">
+                                                            <input type="hidden" name="pay-method" class="pay-method" value="">
+                                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                                            <button type="submit" class="btn btn-primary confirmRequest" disabled>Confirm</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                </span>
+                </div>
+                <!-- /.description-block -->
+            </div>
+            <div>
+                <h2>Orders  / Bestellungen</h2>
+
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab"
+                                                              data-toggle="tab">Pending Orders
+                        <?php if(!empty($pendingOrders) || $pendingOrders->count()!=0): ?>
+                                (<?php echo e($pendingOrders->count()); ?>)
+                        <?php endif; ?>
+                        </a></li>
+                    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Completed
+                            Orders
+                            <?php if(!empty($completedOrders) || $completedOrders->count()!=0): ?>
+                            (<?php echo e($completedOrders->count()); ?>)
+                            <?php endif; ?>
+                        </a>
+                    </li>
+                </ul>
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="home">
+                        <div class="box box-info">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Pending Orders
+
+                                    <?php if(!empty($pendingOrders) || $pendingOrders->count()!=0): ?>
+                                        (<?php echo e($pendingOrders->count()); ?>)
+                                    <?php endif; ?></h3>
+
+                                <div class="box-tools pull-right">
+                                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                                class="fa fa-minus"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i
+                                                class="fa fa-times"></i></button>
+                                </div>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                <div class="table-responsive">
+                                    <table id="example2" class="table no-margin">
+                                        <thead>
+                                        <tr>
+                                            <th>Order No / Bestellnummer</th>
+                                            <th>Favor</th>
+                                            <th>Company Name / Firmenname</th>
+                                            <th>Expiry Date / Ablaufdatum</th>
+                                            <th>Amount / Menge</th>
+                                            <th>See</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+
+                                        <?php /*<?php echo e($pendingOrders); ?>
+
+                                        <?php echo e(exit); ?>*/ ?>
+                                        <?php if(count($pendingOrders) > 0): ?>
+                                            <?php foreach($pendingOrders as $pendingOrder): ?>
+                                                <?php
+
+                                                $expiry = explode(' ', $pendingOrder->expiry);
+                                                $dateExpiry = explode('-', $expiry[0]);
+                                                $dateExpiry = $dateExpiry[2] . '-' . $dateExpiry[1] . '-' . $dateExpiry[0];
+                                                $date = new DateTime();
+                                                $match_date = new DateTime($dateExpiry);
+                                                $interval = $date->diff($match_date);
+                                                $day = date('d-m-Y');
+
+
+                                                ?>
+                                                <tr>
+
+<?php /*
+                                                    <?php if($interval->days == 0 || ($interval->invert != 0)): ?>
+*/ ?>
+                                                        <?php if(strtotime($dateExpiry) <= strtotime($day)): ?>
+                                                            <td><span class="pull-left"><?php echo e($pendingOrder->order_no); ?></span> <span class="badge" style="background: red; font-size: 10px; margin-left: 5px;">Late Delivery</span></td>
+                                                        <?php else: ?>
+                                                            <td><?php echo e($pendingOrder->order_no); ?></td>
+                                                        <?php endif; ?>
+
+                                                        <?php if($pendingOrder->gig != null): ?>
+                                                            <td><?php echo e($pendingOrder->gig->title); ?></td>
+                                                        <?php elseif($pendingOrder->package): ?>
+                                                            <td><?php echo e($pendingOrder->package->title); ?></td>
+                                                        <?php elseif( $pendingOrder->custom): ?>
+                                                            <?php if($pendingOrder->custom == "gig"): ?>
+                                                                <td>Favor</td>
+                                                            <?php elseif($pendingOrder->custom == "custom"): ?>
+                                                                `<td>custom</td>
+                                                            <?php else: ?>
+                                                                <td>Package</td>
+                                                            <?php endif; ?>
+                                                        <?php else: ?>
+                                                            <td></td>
+                                                        <?php endif; ?>
+
+                                                        <?php /*
+                                                                                                                <td><?php echo e($pendingOrder->gig->title); ?></td>
+                                                        */ ?>
+                                                        <td><?php echo e($pendingOrder->company_name); ?></td>
+                                                        <td><?php echo e(date("d.m.Y", strtotime($pendingOrder->expiry))); ?>
+
+                                                            <?php if($interval->days == 0 || !($interval->invert == 0)): ?>
+                                                                <span class="text-right" style="font-size:10px"><b
+                                                                            style="color:#ff0000">fällig
+                                                                        bis: </b><?php echo e($dateExpiry); ?></span>
+                                                            <?php else: ?>
+                                                                <span class="text-right" style="font-size:10px"><b
+                                                                            style="color:#ccc">fällig
+                                                                        bis: </b><?php echo e($dateExpiry); ?></span>
+
+                                                            <?php endif; ?>
+                                                        </td>
+                                                        <td><?php echo e(config('app.currency')); ?><?php echo e(number_format($pendingOrder->amount,2)); ?></td>
+                                                        <td>
+                                                            <a href="<?php echo e(route('agencySingleOrder', [$pendingOrder->order_no, $pendingOrder->uuid])); ?>"
+                                                               class="btn btn-primary btn-xs"><span
+                                                                        class="glyphicon glyphicon-eye-open"></span></a>
+                                                        </td>
+                                                </tr>
+<?php /*
+                                                <?php endif; ?>
+*/ ?>
+                                            <?php endforeach; ?>
+                                        <?php endif; ?>
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- /.table-responsive -->
+                            </div>
+                            <!-- /.box-body -->
+                            <div class="box-footer clearfix" style="display: none">
+                                <?php /*<a href="javascript::;" class="btn btn-sm btn-info btn-flat pull-left">Place New*/ ?>
+                                    <?php /*Order</a>*/ ?>
+                                <?php /*<a href="javascript::;" class="btn btn-sm btn-default btn-flat pull-right">View All*/ ?>
+                                    <?php /*Orders</a>*/ ?>
+                            </div>
+                            <!-- /.box-footer -->
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="profile">
+                        <div class="box box-info">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Completed Orders (<?php echo e($completedOrders->count()); ?>)</h3>
+
+                                <div class="box-tools pull-right">
+                                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                                class="fa fa-minus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                <div class="table-responsive">
+                                    <table id="example3" class="table table-bordered table-striped">
+                                        <thead>
+                                        <tr>
+                                            <th>Order No / Bestellnummer</th>
+                                            <th>Favor</th>
+                                            <th>Company Name / Firmenname</th>
+                                            <th>Expiry Date / Ablaufdatum</th>
+                                            <th>Amount / Menge</th>
+                                            <th>See</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <?php if(count($completedOrders)!= 0): ?>
+                                        <?php foreach($completedOrders as $completedOrder): ?>
+                                            <?php
+                                            $expiry = explode(' ', $completedOrder->expiry);
+                                            $dateExpiry = explode('-', $expiry[0]);
+                                            $dateExpiry = $dateExpiry[2] . '-' . $dateExpiry[1] . '-' . $dateExpiry[0];
+                                            $date = new DateTime();
+                                            $match_date = new DateTime($dateExpiry);
+                                            $interval = $date->diff($match_date);
+                                            $day = date('d-m-Y');
+
+                                            ?>
+
+                                            <tr>
+<?php /*
+                                                <?php if(strtotime($dateExpiry) <= strtotime($day)): ?>
+*/ ?>
+                                                    <?php if($interval->days == 0 || !($interval->invert == 0)): ?>
+                                                        <td><span class="pull-left"><?php echo e($completedOrder->order_no); ?></span> <span class="badge" style="background: red; font-size: 10px; margin-left: 5px;">Late Delivered</span></td>
+                                                    <?php else: ?>
+                                                        <td><span class="pull-left"><?php echo e($completedOrder->order_no); ?></span> <span class="badge" style="background: green; font-size: 10px; margin-left: 5px;">Completed</span></td>
+                                                    <?php endif; ?>
+
+                                                    <?php if($completedOrder->gig): ?>
+                                                        <?php if($completedOrder->gig->title == "gig"): ?>
+                                                            <td>Favor</td>
+                                                        <?php else: ?>
+                                                        <td><?php echo e($completedOrder->gig->title); ?></td>
+                                                        <?php endif; ?>
+                                                    <?php elseif($completedOrder->package): ?>
+                                                        <td><?php echo e($completedOrder->package->title); ?></td>
+                                                    <?php else: ?>
+                                                        <?php if($completedOrder->custom == "gig"): ?>
+                                                        <td>Favor</td>
+                                                        <?php else: ?>
+                                                        <td><?php echo e($completedOrder->custom); ?></td>
+                                                        <?php endif; ?>
+                                                    <?php endif; ?>
+
+                                                    <td><?php echo e($completedOrder->company_name); ?></td>
+                                                    <td><?php echo e(date('d.m.Y',strtotime($completedOrder->expiry))); ?><?php if($interval->days == 0 || !($interval->invert == 0)): ?>
+                                                            <span class="text-right" style="font-size:10px"><b
+                                                                        style="color:#ff0000">fällig
+                                                                    bis: </b><?php echo e($dateExpiry); ?></span>
+                                                        <?php else: ?>
+                                                            <span class="text-right" style="font-size:10px"><b
+                                                                        style="color:#ccc">fällig
+                                                                    bis: </b><?php echo e($dateExpiry); ?></span>
+
+                                                        <?php endif; ?></td>
+                                                    <td><?php echo e(config('app.currency')); ?><?php echo e(number_format($completedOrder->amount,2)); ?></td>
+                                                    <td>
+                                                        <a href="<?php echo e(route('agencySingleOrder', [$completedOrder->order_no, $completedOrder->uuid])); ?>"
+                                                           class="btn btn-primary btn-xs"><span
+                                                                    class="glyphicon glyphicon-eye-open"></span></a>
+                                                    </td>
+                                            </tr>
+<?php /*
+                                            <?php endif; ?>
+*/ ?>
+                                        <?php endforeach; ?>
+                                        <?php endif; ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- /.table-responsive -->
+                            </div>
+                            <!-- /.box-body -->
+                            <div class="box-footer clearfix">
+                                <?php /*<a href="javascript::;" class="btn btn-sm btn-info btn-flat pull-left">Place New*/ ?>
+                                    <?php /*Order</a>*/ ?>
+                                <?php /*<a href="javascript::;" class="btn btn-sm btn-default btn-flat pull-right">View All*/ ?>
+                                    <?php /*Orders</a>*/ ?>
+                            </div>
+                            <!-- /.box-footer -->
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div>
+                <h2>Payment History / Zahlungshistorie</h2>
+
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Payment History</h3>
+
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                        class="fa fa-minus"></i>
+                            </button>
+                            <a href="<?php echo e(route('agencyPayments')); ?>?agency_id=<?php echo e($agency->id); ?>" class="btn btn-primary">Export
+                                CSV</a>
+                            <?php /*<button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>*/ ?>
+                        </div>
+                    </div>
+
+                    <div class="box-body agency_invoice table-responsive">
+                        <table id="example1" class="table table-bordered table-striped">
+                            <thead>
+                            <tr>
+                                <?php /*<th>Id</th>*/ ?>
+                                <th width="20%">Date</th>
+                                <th width="60%">Details</th>
+                                <th width="20%" class="text-right">Amount</th>
+                                <?php /*<th>Order No. / Bestell-Nr.</th>*/ ?>
+                                <?php /*<th>Details</th>
+                                <th>Invoice Number / Rechnungsnummer</th>
+                                <th>Receivable / Forderung</th>
+                                <th>Fee (Bank/Paypal)</th>
+                                <th>Received / Empfangen</th>
+                                <th>Balance / Summe</th>
+                                <th>Status</th>*/ ?>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <?php if(count($agencyInvoices)!=0): ?>
+                            <?php foreach($agencyInvoices as $agencyInvoice): ?>
+                                <tr>
+                                    <td width="20%"><?php echo e(date('d.m.Y',strtotime($agencyInvoice->created_at))); ?></td>
+                                    <td width="60%">
+                                        <?php if(\Illuminate\Support\Facades\Auth::get()->id == $agencyInvoice->refer_agency_id): ?>
+                                            <span><?php echo e($agencyInvoice->detail); ?></span> <span style="color: #337ab7;font-weight: bold;">(Commission)</span>
+                                        <?php else: ?>
+                                            <?php echo e($agencyInvoice->detail); ?>
+
+                                            <?php if(!empty($agencyInvoice->invoice_status)): ?>
+                                                <span class="badge" style="background: #337ab7;"><?php echo e($agencyInvoice->invoice_status); ?></span>
+                                            <?php endif; ?>
+                                        <?php endif; ?>
+                                    </td>
+                                    <?php if(\Illuminate\Support\Facades\Auth::get()->id == $agencyInvoice->refer_agency_id): ?>
+                                        <td width="20%" class="text-right" style="color:#006700;"><?php echo e(config('app.currency').number_format($agencyInvoice->refer_agency_amount,2)); ?></td>
+                                    <?php else: ?>
+                                        <?php if($agencyInvoice->reference_invoice == "unpaid" || $agencyInvoice->reference_invoice == "paid"): ?>
+                                        <td width="20%" class="text-right" style="color:#006700;"><?php echo e(config('app.currency').number_format($agencyInvoice->balance,2)); ?></td>
+                                        <?php endif; ?>
+                                        <?php if($agencyInvoice->reference_invoice == null): ?>
+                                        <td width="20%" class="text-right" style="color:red;">-<?php echo e(config('app.currency').number_format($agencyInvoice->paid,2)); ?></td>
+                                        <?php endif; ?>
+                                    <?php endif; ?>
+                                    <?php /*<td><?php echo e($agencyInvoice->id); ?></td>
+                                    <td><?php echo e(date('d.m.Y',strtotime($agencyInvoice->created_at))); ?></td>
+                                    <td><?php echo e($agencyInvoice->detail); ?></td>
+                                    <td><?php echo e($agencyInvoice->invoiceno); ?></td>
+                                    <td><?php echo e(config('app.currency')); ?><?php echo e(number_format($agencyInvoice->payable,2)); ?></td>
+                                    <td></td>
+                                    <td><?php echo e(config('app.currency')); ?><?php echo e(number_format($agencyInvoice->paid,2)); ?><?php if($agencyInvoice->invoice_status=="Transferred"): ?>
+                                            <em></em><?php endif; ?></td>
+                                    <td><?php echo e(config('app.currency')); ?><?php echo e(number_format($agencyInvoice->balance,2)); ?></td>
+                                    <?php if(empty($agencyInvoice->order_no)): ?>
+                                    <?php if(empty($agencyInvoice->invoice_status)): ?>
+                                        <td>Request Sent</td>
+                                    <?php else: ?>
+
+                                        <td><?php echo e($agencyInvoice->invoice_status); ?></td>
+                                    <?php endif; ?>
+                                    <?php else: ?>
+                                        <td></td>
+                                    <?php endif; ?>*/ ?>
+                                </tr>
+                            <?php endforeach; ?>
+                            <?php endif; ?>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer clearfix">
+                        <?php /*<a href="javascript::;" class="btn btn-sm btn-info btn-flat pull-left">Place New Order</a>*/ ?>
+                        <?php /*<a href="javascript::;" class="btn btn-sm btn-default btn-flat pull-right">View All Orders</a>*/ ?>
+                    </div>
+                    <!-- /.box-footer -->
+                </div>
+
+                    <h2>Commission History / Provisionhistorie</h2>
+                    <div class="box box-info">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Commission History</h3>
+
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                        class="fa fa-minus"></i>
+                            </button>
+                            <a href="<?php echo e(route('agencyPayments')); ?>?agency_id=<?php echo e($agency->id); ?>" class="btn btn-primary">Export
+                                CSV</a>
+                            <?php /*<button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>*/ ?>
+                        </div>
+                    </div>
+
+                    <div class="box-body agency_invoice table-responsive">
+                        <table id="example1" class="table table-bordered table-striped">
+                            <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Date</th>
+                                <th>Order No / Bestell-Nr.</th>
+                                <th>Invoice Number / Rechnungsnummer</th>
+                                <th>Receivable</th>
+                                <th>Received</th>
+                                <th>Summe</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <?php if(count($comissionInvoices)!=0): ?>
+                            <?php foreach($comissionInvoices as $comissionInvoice): ?>
+                                <tr>
+                                    <td><?php echo e($comissionInvoice->id); ?></td>
+                                    <td><?php echo e(date('d.m.Y',strtotime($comissionInvoice->created_at))); ?></td>
+                                    <td><?php echo e($comissionInvoice->order_no); ?></td>
+                                    <td><?php echo e($comissionInvoice->invoiceno); ?></td>
+                                    <td><?php echo e(config('app.currency')); ?><?php echo e(number_format($comissionInvoice->refer_agency_amount,2)); ?></td>
+                                    <td><?php echo e(config('app.currency')); ?><?php echo e(number_format($comissionInvoice->paid,2)); ?><?php if(!empty($comissionInvoice->paid)): ?>
+                                            <em></em><?php endif; ?></td>
+                                    <td><?php echo e(config('app.currency')); ?><?php echo e(number_format($comissionInvoice->refer_agency_bal,2)); ?></td>
+                                </tr>
+                            <?php endforeach; ?>
+                            <?php endif; ?>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer clearfix">
+                        <?php /*<a href="javascript::;" class="btn btn-sm btn-info btn-flat pull-left">Place New Order</a>*/ ?>
+                        <?php /*<a href="javascript::;" class="btn btn-sm btn-default btn-flat pull-right">View All Orders</a>*/ ?>
+                    </div>
+                    <!-- /.box-footer -->
+                </div>
+
+            </div>
+        </div>
+    </div><!-- /.row -->
+
+    <?php $__env->stopSection(); ?>
+    <?php $__env->startSection('pages_css'); ?>
+
+            <!-- DataTables -->
+    <link rel="stylesheet" href="<?php echo e(asset('bower_components/AdminLTE/plugins/datatables/dataTables.bootstrap.css')); ?>">
+
+    <?php $__env->stopSection(); ?>
+    <?php $__env->startSection('pages_script'); ?>
+            <!-- DataTables -->
+    <!-- page script -->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#sent-request").click(function () {
+                $(this).html("Withdraw request sent");
+            });
+            $("#amount1").click(function () {
+                var amount = $(this).val();
+                $(".amount").val(amount);
+                $(".pay-method").val("Paypal");
+                $(".confirmRequest").removeAttr("disabled");
+                var data_place = $(this).parent().parent().parent();
+                <?php /*<?php if(!empty($get_agency_Detail->paypal_acct)): ?>
+                var total = "<?php echo e($agency->wallet - $service->paypal_services); ?>";
+                var append ="<i id='amt_nt_shw' class='fa fa-info' aria-hidden='true' data-toggle='tooltip' title='\u20ac"+total+" will be transferred to your account'></i>";
+//                var append = "<p id='nt_pp'>\u20ac"+total+" will be transferred to your account</p>";
+                data_place.append(append);
+                <?php endif; ?>*/ ?>
+            });
+            $("#amount2").click(function () {
+                var amount = $(this).val();
+                $(".amount").val(amount);
+                $(".pay-method").val("Bank");
+                $(".confirmRequest").removeAttr("disabled");
+            });
+            $("#pay-details-restrict").click(function(){
+                alert("Complete your payments details first");
+            })
+        });
+    </script>
+    <script>
+
+        $(function () {
+            $('#amountWithdraw').on('click', ('.confirmRequest'), function (e) {
+                e.preventDefault();
+                var form = e.target.parentNode;
+                var formData = new FormData(form);
+                $.ajax({
+                    url: form.action,
+                    method: form.method,
+                    contentType: false,
+                    processData: false,
+                    data: formData
+                }).done(function (data) {
+                    console.log(data);
+                    if (data > 0) {
+                        location.reload();
+                    }
+                    else {
+                        //notifyMessage
+                        $.notify({
+                            // options
+                            message: 'Request submission failed please try again'
+                        }, {
+                            // settings
+                            placement: {
+                                from: 'bottom',
+                                align: 'right'
+                            },
+                            type: 'danger'
+                        });
+                    }
+                });
+
+            });
+        });
+
+
+    </script>
+            <script src="<?php echo e(asset('bower_components/AdminLTE/plugins/datatables/jquery.dataTables.min.js')); ?>"></script>
+            <script src="<?php echo e(asset('bower_components/AdminLTE/plugins/datatables/dataTables.bootstrap.min.js')); ?>"></script>
+    <script>
+        $(function () {
+            var table = $("#example1").DataTable();
+            var table = $("#example2").DataTable();
+            var table = $("#example3").DataTable();
+            var table = $("#example4").DataTable();
+        });
+    </script>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('pages.agency.agency_template', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -1,0 +1,104 @@
+<?php echo $__env->make('includes.header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+        <div class="dash-main-content">
+            <div class="container">
+                <div class="row" style="margin-top: 65px; margin-bottom: 60px;">
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <ul class="dash-list">
+                            <li>
+                                <a href="#"><img src="<?php echo e(asset('img/placeholder.jpg')); ?>" class="img-circle dash-user-login-image" style="width: 75px;"><span class="username-color"><?php echo e($user->username); ?></span></a><p style="margin-top: -20px; margin-bottom: 30px; color:#909090;">Some Useful Links</p>
+                            </li>
+                            <li><a href="/profile">My Profile</a></li>
+                            <li><a href="#">My Favourite Gigs</a></li>
+                            <li><a href="#">Request Custom Gig</a></li>
+
+                        </ul>
+                    </div>
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12" style="text-align:-webkit-center;">
+                        <div class="row text-center">
+                            <p class="dash-heading-top">Need something Done? Get it at <span class="txt-color">Cnerr!</span></p>
+                        </div>
+                        
+                        <div class="row" style="border-radius:20px; padding:0px 20px">
+                            <div class="get_help1">
+                                <div class="main-help1">
+                                <form>
+                                    <input type="search" placeholder="What are you having trouble with?" class="input-lg">
+                                    <button type="button" class="btn btn-primary btn-lg help_btn1">Find</button>
+                                </form>
+                                </div>
+                            </div> 
+                        </div>
+
+                        <div class="row">
+                            <h1 class="dash-heading"><?php echo e($gigType->name); ?></h1>
+
+                            <?php foreach($gigs as $gig): ?>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <a href="<?php echo e(url()); ?>/gigs/<?php echo e($gigType->slug); ?>/<?php echo e($gig->slug); ?>?funnel=<?php echo e($gig->uuid); ?>">
+                                    <div class="dash-listing">
+                                        <div class="dash-listing-cap">
+                                            <img src="<?php echo e(asset('img/1.jpg')); ?>" class="img-responsive">
+                                            <h4><?php echo e($gig->title); ?></h4>
+                                            <div class="dash-line"></div>
+                                            <p class="dash-list-parag"><?php echo e($gig->short_discription); ?></p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <?php endforeach; ?>
+
+
+                        </div>
+                        <div class="text-center">
+                            <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-th-large" style="margin-right:5px;"></span>View all Gigs</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel1">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#carousel-example-generic" data-slide-to="0"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+  </ol>
+ 
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+    <div class="item active">
+      <img src="<?php echo e(asset('img/slide1.png')); ?>" alt="...">
+      <div class="carousel-caption">
+          <h3 class="slide-head1">Testimonals</h3>
+          <h2 class="slide-head2">There's no website like Cnerr</h2>
+          <h3 class="slide-head3"><b>Mavia Siddiqui</b>, Managing Director</h3>
+      </div>
+    </div>
+  </div>
+ 
+  <!-- Controls -->
+  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+  </a>
+  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+  </a>
+</div>
+
+
+       <?php echo $__env->make('includes.footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<script>
+    $('.carousel').carousel({
+        interval: 3000
+    })
+</script>
+<script>
+    $('.carousel1').carousel1({
+        interval: 3000
+    })
+</script>
+
+    </body>
+</html>

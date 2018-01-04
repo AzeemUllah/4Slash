@@ -1,0 +1,134 @@
+<?php echo $__env->make('includes.header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+<!-- Content -->
+        <div class="notify-main-content top-gap" style="max-height: 1350px ;min-height: 1080px;">
+            <div class="container">
+                <div class="well">
+                    <h1 style="padding:34px 52px;color: #367fa9;" class="heading-responsive">Meine Zahlungen</h1>
+
+
+
+
+    <div class="upper-pay col-md-8 col-md-offset-2">
+        <div class="well pay-box" style="background-color:white;">
+            <div class="row text-center pay-sect">
+                <div class="col-xs-6 " style="border-right: 1px solid #ccc;">
+                <h1 class="upper text-center"><?php $total_amount = ($pendingOrdersAmount + $pendingOrdersServiceCharges); $total_amount = str_replace('.', ',', number_format($total_amount, 2))?><?php echo e(config('app.currency') . $total_amount); ?></h1>
+                <h1 style="color:black; font-size:14px; text-align: center">aktuelle Bestellungen</h1>
+                </div>
+                <div class="col-xs-6">
+                <h1 class="upper text-center"><?php $total_complete_amount = ($completedOrdersAmount + $completedOrdersServiceCharges); $total_complete_amount = str_replace('.', ',', number_format($total_complete_amount, 2))?><?php echo e(config('app.currency') . $total_complete_amount); ?></h1>
+                <h1 style="color:black; font-size:14px; text-align: center">fertige Aufträge</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+                    <div class="clearfix"></div>
+    
+    <div class="upper-pay" style="min-height: 330px; max-height: 340px; overflow-y: auto;">
+        <div class="table-content">
+        <table id="example1" class="table table-bordered table-striped table-payment-transactions">
+    <thead>
+      <tr>
+        <th>Datum</th>
+        <th>Beschreibung</th>
+        <th>Bestellnummer</th>
+        <th>Rechnungsnummer</th>
+        <th style="text-align:right;">Summe</th>
+      </tr>
+
+    </thead>
+    <tbody>
+        <?php if(count($completedOrders) > 0): ?>
+            <?php foreach($completedOrders as $completedOrder): ?>
+              <tr>
+                  <td><?php echo e(date("M d, Y", strtotime($completedOrder->updated_at))); ?></td>
+                  <?php if(!empty($completedOrder->gig->title) ): ?>
+                  <td><?php echo e($completedOrder->gig->title); ?> </td>
+                  <?php elseif(!empty($completedOrder->package->title)): ?>
+                  <td><?php echo e($completedOrder->package->title); ?> </td>
+                  <?php else: ?>
+                      <td><?php echo e($completedOrder->custom); ?> </td>
+                  <?php endif; ?>
+                  <td><?php echo e($completedOrder->order_no); ?></td>
+                  <td><a href="<?php echo e(route('orderinvoice', ['orderno' => $completedOrder->order_no, 'invoiceno' => $completedOrder->invoice->invoice_no])); ?>" target="_blank"><?php echo e($completedOrder->invoice->invoice_no); ?></a></td>
+                  <td style="text-align:right; color:#33a5dd"><?php $amount = str_replace('.', ',', number_format($completedOrder->amount + $completedOrder->service_charges, 2))?> <?php echo e(config('app.currency') . $amount); ?></td>
+              </tr>
+            <?php endforeach; ?>
+        <?php endif; ?>
+      
+      <?php /*<tr>*/ ?>
+        <?php /*<td class="text-center" colspan="3">You have no transactions.</td>*/ ?>
+        <?php /**/ ?>
+      <?php /*</tr>*/ ?>
+      
+    </tbody>
+  </table>
+    </div>
+    </div>
+
+
+
+
+
+</div>
+
+ 						
+                            
+                             
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+        
+</div>
+</div>
+
+
+
+
+      
+       
+
+
+
+
+
+           </div>
+        </div>
+
+<!-- DataTables -->
+
+<link rel="stylesheet" href="<?php echo e(asset('bower_components/AdminLTE/plugins/datatables/dataTables.bootstrap.css')); ?>">
+<link rel="stylesheet" href="<?php echo e(asset('css/animate.css')); ?>">
+
+ <?php echo $__env->make('includes.footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>;
+
+<!-- DataTables -->
+<script src="<?php echo e(asset('bower_components/AdminLTE/plugins/datatables/jquery.dataTables.min.js')); ?>"></script>
+<script src="<?php echo e(asset('bower_components/AdminLTE/plugins/datatables/dataTables.bootstrap.min.js')); ?>"></script>
+<!-- page script -->
+<script>
+$(function () {
+    var table = $("#example1").DataTable({
+
+        "aaSorting": [],
+        "oLanguage": {
+            "sSearch": "Suchen"
+        }
+    });
+    $("#example1").parent().addClass("overFlow_auto");
+})
+</script>
+      
+    </body>
+</html>

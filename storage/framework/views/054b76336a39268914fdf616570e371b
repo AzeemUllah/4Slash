@@ -1,0 +1,228 @@
+<?php echo $__env->make('includes.header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+
+        <!-- content -->
+<div class="container main-body">
+    <form method="post" action="<?php echo e(url()); ?>/gigs/<?php echo e($gigType->slug); ?>/<?php echo e($gig->slug); ?>/order?funnel=<?php echo e($gig->uuid); ?>">
+        <h1 class="first-head"><?php echo e($gig->title); ?></h1>
+
+        <div class="row">
+
+            <div class="col-md-8 col-sm-12 slider">
+                <div class="single-item" style="margin-bottom:0px;">
+                    <div class="slide">
+                        <div class="back">
+                            <img src="<?php echo e(asset('img/slide8.png')); ?>">
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <div class="back">
+                            <img src="<?php echo e(asset('img/slide9.png')); ?>">
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <div class="back">
+                            <img src="<?php echo e(asset('img/slide10.png')); ?>">
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <div class="back">
+                            <img src="<?php echo e(asset('img/slide11.png')); ?>">
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <div class="back">
+                            <img src="<?php echo e(asset('img/slide12.png')); ?>">
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <div class="back">
+                            <img src="<?php echo e(asset('img/slide8.png')); ?>">
+                        </div>
+                    </div>
+                </div>
+                <div class="multiple-items">
+                    <div class="slide"><img src="<?php echo e(asset('img/slide3.png')); ?>"
+                                            style="width:100px; border:2px solid #2f8dd7;"></div>
+                    <div class="slide"><img src="<?php echo e(asset('img/slide4.png')); ?>"
+                                            style="width:100px; border:2px solid #2f8dd7;"></div>
+                    <div class="slide"><img src="<?php echo e(asset('img/slide5.png')); ?>"
+                                            style="width:100px; border:2px solid #2f8dd7;"></div>
+                    <div class="slide"><img src="<?php echo e(asset('img/slide6.png')); ?>"
+                                            style="width:100px; border:2px solid #2f8dd7;"></div>
+                    <div class="slide"><img src="<?php echo e(asset('img/slide7.png')); ?>"
+                                            style="width:100px; border:2px solid #2f8dd7;"></div>
+                    <div class="slide"><img src="<?php echo e(asset('img/slide3.png')); ?>"
+                                            style="width:100px; border:2px solid #2f8dd7;"></div>
+                </div>
+
+
+                <div class="left-para" style="border-top:2px solid #c6c6c6; margin-top:15px;">
+                    <h1>What you get with this <b>GIG</b></h1>
+
+                    <p><?php echo e($gig->discription); ?></p>
+
+                    <div class="buttons">
+                        <?php /*<button class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span>Contact with Me*/ ?>
+                        <?php /*</button>*/ ?>
+                            <button class="btn btn-primary"><span><img src="<?php echo e(asset('img/cakwe.png')); ?>"></span>Get this GIG</button>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+            <div class="col-md-4 col-sm-12  right-panel">
+
+                <div class="text-center">
+                    <h1 class="f-head"><span><img src="<?php echo e(asset('img/cart.png')); ?>"></span><?php echo e(config('app.currency')); ?><?php echo e($gig->price); ?></h1>
+
+                    <h1 class="s-head"><span class="glyphicon glyphicon-time clock"></span>Delivery in<br><?php echo e($gig->delivery_days); ?> Days</h1>
+
+                    <div class="row">
+                        <div class="button col-md-12 col-sm-12 col-xs-12">
+                                <button <?= ($gig->favourite) ? 'disabled' : '' ?> id="btn-favourite-submit" type="button" class="btn btn-default right-btn" data-toggle="tooltip" data-placement="right">
+                                    <i class="fa fa-heart-o" style="margin-right:5px; color:#ff9492;">
+                                    </i>
+                                    Favourite (<span class="totalFavourite"><?php echo e($gig->totalFavourite); ?></span>)
+                                </button>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="right-para">
+                    <h1 class="right-addon-head">Add-<b>Ons</b></h1>
+
+                    <div class="addons">
+                        <?php foreach($gig_addons as $gig_addon): ?>
+                            <div class="form-group row first-addon">
+                                <div class="checkbox checkbox-info checkbox-circle chck-bx2 col-md-8">
+                                    <input id="checkbox12" class="styled" type="checkbox">
+                                    <label for="checkbox12">
+                                        <p class="chck-bx-p"><?php echo e($gig_addon->addon); ?></p>
+                                    </label>
+                                </div>
+                                <div class="col-md-4 select">
+                                    <select name="<?php echo e($gig_addon->id); ?>" class="selectpicker">
+                                        <option value="">0</option>
+                                        <?php for($i = 1; $i <= 10; $i++): ?>
+                                            <option value="<?php echo e($i); ?>"><?php echo e($i); ?> (<?php echo e(config('app.currency')); ?><?php echo e($gig_addon->amount * $i); ?>)</option>
+                                        <?php endfor; ?>
+                                    </select>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                    <div class="col-md-12 buyer">
+                        <h1 class="right-addon-head">Buyer<b>Tips</b></h1>
+
+                        <p>Lorem ipsum dolor sit amet, dictum vehicula sed ante, enim sed ipsum lacus ante, neque imperdiet
+                            suspendisse penatibus elit,</p>
+                    </div>
+                    <div class="social-logo col-md-12">
+                        <span><a href="#"><img src="<?php echo e(asset('img/face.png')); ?>"></a></span>
+                        <span><a href="#"><img src="<?php echo e(asset('img/twitter.png')); ?>"></a></span>
+                        <span><a href="#"><img src="<?php echo e(asset('img/g.png')); ?>"></a></span>
+                        <span><a href="#"><img src="<?php echo e(asset('img/linked.png')); ?>"></a></span>
+                        <span><a href="#"><img src="<?php echo e(asset('img/mail.png')); ?>"></a></span>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+        </div>
+    </form>
+</div>
+<div class="bottom-slider">
+    <div class="container">
+        <h1>Client <b>Reviews</b></h1>
+
+        <div class="flexslider slider2">
+            <ul class="slides">
+                <li>
+                    <img src="<?php echo e(asset('img/slide2.png')); ?>"/>
+                </li>
+                <li>
+                    <img src="<?php echo e(asset('img/slide2.png')); ?>"/>
+                </li>
+                <li>
+                    <img src="<?php echo e(asset('img/slide2.png')); ?>"/>
+                </li>
+                <li>
+                    <img src="<?php echo e(asset('img/slide2.png')); ?>"/>
+                </li>
+                <li>
+                    <img src="<?php echo e(asset('img/slide2.png')); ?>"/>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<?php echo $__env->make('includes.footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+
+<script type="text/javascript">
+    // $(window).load(function() {
+    //   $('.flexslider2').flexslider({
+    //     animation: "slide",
+    //     controlNav: "thumbnails"
+    //   });
+    // });
+    $('.single-item').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: true,
+        fade: true,
+        asNavFor: '.multiple-items',
+        prevArrow: "<div class=\"slid-prev\"></div>",
+        nextArrow: "<div class=\"slid-next\"></div>",
+    });
+    $('.multiple-items').slick({
+        infinite: true,
+        slidesToShow: 5,
+        slidesToScroll: 4,
+        arrows: false,
+        asNavFor: '.single-item',
+        focusOnSelect: true,
+        centerMode: true,
+        centerPadding: '15px',
+    });
+</script>
+
+<script>
+    (function() {
+        document.querySelector('#btn-favourite-submit').addEventListener('click', function() {
+            $.ajax({
+                url: window.location,
+                method: 'post',
+                data: { addToFavourite: true },
+                success: function(data)
+                {
+                    var totalFavourite = document.querySelector('.totalFavourite');
+                    totalFavourite.innerHTML = data;
+                    document.querySelector('#btn-favourite-submit').setAttribute('disabled', 'disabled');
+                }
+            });
+        });
+    })();
+</script>
+
+<script type="text/javascript">
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+</script>
+<script type="text/javascript" charset="utf-8">
+    $(window).load(function () {
+        $('.flexslider').flexslider();
+    });
+</script>
+
+</body>
+</html>

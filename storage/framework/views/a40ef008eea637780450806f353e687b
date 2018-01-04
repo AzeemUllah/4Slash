@@ -1,0 +1,52 @@
+<?php echo $__env->make('includes.header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+<!-- content -->
+<div class="dash-main-content">
+            <div class="container">
+                <div class="row" style="margin-top: 65px; margin-bottom: 60px;">
+                    
+                    <div class="col-xs-12" style="text-align:-webkit-center;">
+                        <div class="row">
+                            <p class="dash-heading-top">Need something Done? Get it at <span class="txt-color">Cnerr!</span></p>
+                        </div>
+                        
+                        <div class="row" style="border-radius:20px; padding:0px 20px">
+                            <div class="get_help1">
+                                <div class="main-help1">
+                                <form>
+                                    <input type="search" placeholder="What are you having trouble with?" class="input-lg">
+                                    <button type="button" class="btn btn-primary btn-lg help_btn1">Find</button>
+                                </form>
+                                </div>
+                            </div> 
+                        </div>
+                        <div class="row dash">
+                            <h1 class="dash-heading">Featured Gigs</h1>
+                            <?php foreach($gigs as $gig): ?>
+                            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+                              <a href="<?php echo e(url()); ?>/gigs/<?php echo e($gig->gigtype_slug); ?>/<?php echo e($gig->slug); ?>?funnel=<?php echo e($gig->uuid); ?>" class="gig-link">
+                                <div class="dash-listing">
+                                    <div class="dash-listing-cap">
+                                        <img src="img/1.jpg" class="img-responsive">
+                                        <h4><?php echo e($gig->title); ?></h4>
+                                        <div class="dash-line"></div>
+                                        <p class="dash-list-parag"><?php echo e($gig->short_discription); ?></p>
+                                    </div>
+                                </div>
+                              </a>
+                            </div>
+                            <?php endforeach; ?>
+                        </div>
+                        <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-th-large" style="margin-right:5px;"></span>View all Gigs</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+<?php echo $__env->make('includes.footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+
+    </body>
+</html>

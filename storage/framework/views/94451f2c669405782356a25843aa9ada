@@ -1,0 +1,135 @@
+
+
+
+<?php $__env->startSection('header_title'); ?>
+
+    <h1>Orders Complaints</h1>
+
+<?php $__env->stopSection(); ?>
+
+
+
+
+<?php $__env->startSection('content'); ?>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-body">
+                    <table id="example1" class="table table-bordered table-striped">
+
+                        <thead>
+                        <tr>
+
+                            <th>Order No</th>
+                            <th>Complaint</th>
+                            <th>Date</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach($order_complaints as $complaints): ?>
+                                    <tr>
+                                        <td><?php echo e($complaints->order_no); ?></td>
+                                        <td><?php echo e($complaints->complaint); ?></td>
+                                        <td><?php echo e($complaints->created_at); ?></td>
+                                        <td>
+                                            <?php if($complaints->status == 0): ?>
+                                                <button type="button" class="btn btn-danger btn-xs slv_cmplnt" data-id="<?php echo e($complaints->id); ?>" data-toggle="modal"
+                                                        data-target="#myModal1">Problem lösen</button>
+                                            <?php else: ?>
+                                                <?php echo e($complaints->rslvd_txt); ?>
+
+                                            <?php endif; ?>
+                                        </td>
+                                    </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+
+                    </table>
+                </div><!-- /.box-body -->
+            </div><!-- /.box -->
+        </div><!-- /.col -->
+    </div><!-- /.row -->
+    <!-- Modal -->
+    <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <form action="" id="snd_compl">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel1">Lösung</h4>
+                    </div>
+                    <div class="modal-body">
+                        <textarea name="resolve_txt" id="resolve_txt" cols="30" rows="6" class="form-control"></textarea>
+                        <input type="hidden" name="complaint_id" id="complaint_id" value="">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Abrechen</button>
+                        <button type="submit" class="btn btn-primary cnerr_btn slv_cmplnt_txt">Geslöst</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+<?php $__env->stopSection(); ?>
+
+
+
+<?php $__env->startSection('pages_css'); ?>
+
+    <!-- DataTables -->
+
+    <link rel="stylesheet" href="<?php echo e(asset('bower_components/AdminLTE/plugins/datatables/dataTables.bootstrap.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('css/animate.css')); ?>">
+
+<?php $__env->stopSection(); ?>
+
+
+
+
+
+<?php $__env->startSection('pages_script'); ?>
+
+    <!-- DataTables -->
+    <script src="<?php echo e(asset('bower_components/AdminLTE/plugins/datatables/jquery.dataTables.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('bower_components/AdminLTE/plugins/datatables/dataTables.bootstrap.min.js')); ?>"></script>
+    <!-- page script -->
+    <script type="text/javascript">
+        $(function () {
+            var table = $("#example1").DataTable({
+                "aaSorting": [],
+                "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+                iDisplayLength: -1
+            });
+            var table = $("#example2").DataTable({
+                "aaSorting": [],
+                "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+                iDisplayLength: -1
+            });
+            $(".slv_cmplnt").on("click",function(){
+                var id = $(this).data('id');
+                $("#complaint_id").val(id);
+            });
+            $(".slv_cmplnt_txt").on("click",function(){
+                var resolve_txt = $("#resolve_txt").val();
+                var button = $(".slv_cmplnt");
+                var id = $("#complaint_id").val();
+                $.ajax({
+                    method : "post",
+                    url    : "<?php echo e(route('orders.resolved')); ?>",
+                    data   : {id: id,text : resolve_txt},
+                    success : function(data){
+                        if(data == 1){
+                            $("#myModal1").modal('hide');
+                        }else{
+                            alert("some error occured!");
+                        }
+                    }
+                })
+            })
+        })
+    </script>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('pages.admin.admin_template', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

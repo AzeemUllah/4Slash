@@ -1,0 +1,340 @@
+<?php echo 'hi'; exit; ?>
+
+
+<?php $__env->startSection('header_title'); ?>
+    <?php if($agency->request_withdraw == 1): ?>
+        <div class="alert alert-success alert-dismissible">
+            <h4><i class="icon fa fa-check"></i> Your request for amount withdraw has been submitted.</h4>
+            please wait for the admin to confirm the withdraw.
+        </div>
+    <?php endif; ?>
+    <h1>Profile</h1>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+    <div class="row">
+        <?php echo $__env->make('pages.agency.partials.side_menue', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+        <div class="col-xs-9">
+            <div>
+                <h2>Orders</h2>
+
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab"
+                                                              data-toggle="tab">Pending Orders
+                            (<?php echo e($pendingOrders->count()); ?>)</a></li>
+                    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Completed
+                            Orders (<?php echo e($completedOrders->count()); ?>)</a>
+                    </li>
+                </ul>
+
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="home">
+                        <div class="box box-info">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Pending Orders (<?php echo e($pendingOrders->count()); ?>)</h3>
+
+                                <div class="box-tools pull-right">
+                                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                                class="fa fa-minus"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                </div>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                <div class="table-responsive">
+                                    <table id="example2" class="table no-margin">
+                                        <thead>
+                                        <tr>
+                                            <th>Order No</th>
+                                            <th>Gig</th>
+                                            <th>Company Name</th>
+                                            <th>Expire Date</th>
+                                            <th>Amount</th>
+                                            <th>See</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+
+
+                                        <?php foreach($pendingOrders as $pendingOrder): ?>
+                                            <?php
+
+                                            $expiry= explode(' ', $pendingOrder->expiry);
+                                            $dateExpiry = explode('-', $expiry[0]);
+                                            $dateExpiry = $dateExpiry[2].'-'.$dateExpiry[1].'-'.$dateExpiry[0];
+                                            $date = new DateTime();
+                                            $match_date = new DateTime($dateExpiry);
+                                            $interval = $date->diff($match_date);
+
+
+
+                                            ?>
+                                            <tr>
+                                                <?php if($interval->days == 0 || !($interval->invert == 0)): ?>
+                                                    <?php if(strtotime($dateExpiry) <= strtotime($day)): ?>
+                                                        <td style="color: red;"><?php echo e($pendingOrder->order_no); ?></td>
+                                                    <?php else: ?>
+                                                        <td><?php echo e($pendingOrder->order_no); ?></td>
+                                                    <?php endif; ?>
+                                                    <?php if($pendingOrder->gig): ?>
+                                                        <td><?php echo e($pendingOrder->gig->title); ?></td>
+                                                    <?php elseif($pendingOrder->package): ?>
+                                                        <td><?php echo e($pendingOrder->package->title); ?></td>
+                                                    <?php else: ?>
+                                                        <td><?php echo e($pendingOrder->custom); ?></td>
+                                                    <?php endif; ?>
+
+                                                    <td><?php echo e($pendingOrder->gig->title); ?></td>
+                                                    <td><?php echo e($pendingOrder->company_name); ?></td>
+                                                    <td><?php echo e(date("d.m.Y",strtotime($pendingOrder->expiry))); ?>
+
+                                                        <?php if($interval->days == 0 || !($interval->invert == 0)): ?>
+                                                            <span class="text-right" style="font-size:10px"><b style="color:#ff0000">fällig bis: </b><?php echo e($dateExpiry); ?></span>
+                                                        <?php else: ?>
+                                                            <span class="text-right" style="font-size:10px"><b style="color:#ccc">fällig bis: </b><?php echo e($dateExpiry); ?></span>
+
+                                                        <?php endif; ?>
+                                                    </td>
+                                                    <td><?php echo e(config('app.currency')); ?><?php echo e(number_format($pendingOrder->amount,2)); ?></td>
+                                                    <td>
+                                                        <a href="<?php echo e(route('agencySingleOrder', [$pendingOrder->order_no, $pendingOrder->uuid])); ?>"
+                                                           class="btn btn-primary btn-xs"><span
+                                                                    class="glyphicon glyphicon-eye-open"></span></a>
+                                                    </td>
+                                            </tr>
+                                        <?php endforeach; ?>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- /.table-responsive -->
+                            </div>
+                            <!-- /.box-body -->
+                            <div class="box-footer clearfix">
+                                <a href="javascript::;" class="btn btn-sm btn-info btn-flat pull-left">Place New Order</a>
+                                <a href="javascript::;" class="btn btn-sm btn-default btn-flat pull-right">View All Orders</a>
+                            </div>
+                            <!-- /.box-footer -->
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="profile">
+                        <div class="box box-info">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Completed Orders (<?php echo e($completedOrders->count()); ?>)</h3>
+
+                                <div class="box-tools pull-right">
+                                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                                class="fa fa-minus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                <div class="table-responsive">
+                                    <table id="example3" class="table table-bordered table-striped">
+                                        <thead>
+                                        <tr>
+                                            <th>Order No</th>
+                                            <th>Gig</th>
+                                            <th>Company Name</th>
+                                            <th>Expire Date</th>
+                                            <th>Amount</th>
+                                            <th>See</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <?php foreach($completedOrders as $completedOrder): ?>
+                                            <?php
+                                            $expiry = explode(' ', $completedOrder->expiry );
+                                            $dateExpiry = explode('-', $expiry[0]);
+                                            $dateExpiry = $dateExpiry[2].'-'.$dateExpiry[1].'-'.$dateExpiry[0];
+                                            $date = new DateTime();
+                                            $match_date = new DateTime($dateExpiry);
+                                            $interval = $date->diff($match_date);
+                                            $day = date('d-m-Y');
+
+                                            ?>
+
+                                            <tr>
+                                                <?php if(strtotime($dateExpiry) <= strtotime($day)): ?>
+                                                    <?php if($interval->days == 0 || !($interval->invert == 0)): ?>
+                                                        <td style="color: red;"><?php echo e($completedOrder->order_no); ?>  </td>
+                                                    <?php else: ?>
+                                                        <td><?php echo e($completedOrder->order_no); ?></td>
+                                                    <?php endif; ?>
+                                                    <?php if($completedOrder->gig): ?>
+                                                        <td><?php echo e($completedOrder->gig->title); ?></td>
+                                                    <?php elseif($completedOrder->package): ?>
+                                                        <td><?php echo e($completedOrder->package->title); ?></td>
+                                                    <?php else: ?>
+                                                        <td><?php echo e($completedOrder->custom); ?></td>
+                                                    <?php endif; ?>
+                                                    <td><?php echo e($completedOrder->company_name); ?></td>
+                                                    <td><?php echo e(date('d.m.Y',strtotime($completedOrder->expiry))); ?><?php if($interval->days == 0 || !($interval->invert == 0)): ?>
+                                                            <span class="text-right" style="font-size:10px"><b style="color:#ff0000">fällig bis: </b><?php echo e($dateExpiry); ?></span>
+                                                        <?php else: ?>
+                                                            <span class="text-right" style="font-size:10px"><b style="color:#ccc">fällig bis: </b><?php echo e($dateExpiry); ?></span>
+
+                                                        <?php endif; ?></td>
+                                                    <td><?php echo e(config('app.currency')); ?><?php echo e(number_format($completedOrder->amount,2)); ?></td>
+                                                    <td>
+                                                        <a href="<?php echo e(route('agencySingleOrder', [$completedOrder->order_no, $completedOrder->uuid])); ?>"
+                                                           class="btn btn-primary btn-xs"><span
+                                                                    class="glyphicon glyphicon-eye-open"></span></a>
+                                                    </td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- /.table-responsive -->
+                            </div>
+                            <!-- /.box-body -->
+                            <div class="box-footer clearfix">
+                                <a href="javascript::;" class="btn btn-sm btn-info btn-flat pull-left">Place New Order</a>
+                                <a href="javascript::;" class="btn btn-sm btn-default btn-flat pull-right">View All Orders</a>
+                            </div>
+                            <!-- /.box-footer -->
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div>
+                <h2>Payment History</h2>
+
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Payment History</h3>
+
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                        class="fa fa-minus"></i>
+                            </button>
+                            <a href="<?php echo e(route('agencyPayments')); ?>?agency_id=<?php echo e($agency->id); ?>" class="btn btn-primary">Export CSV</a>
+                            <?php /*<button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>*/ ?>
+                        </div>
+                    </div>
+
+                    <div class="box-body agency_invoice">
+                        <table id="example1" class="table table-bordered table-striped">
+                            <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Date</th>
+                                <th>Invoice Number</th>
+                                <th>Payable</th>
+                                <th>Paid</th>
+                                <th>Balance</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            <?php foreach($agencyInvoices as $agencyInvoice): ?>
+                                <tr>
+                                    <td><?php echo e($agencyInvoice->id); ?></td>
+                                    <td><?php echo e(date('d.m.Y',strtotime($agencyInvoice->created_at))); ?></td>
+                                    <td><?php echo e($agencyInvoice->invoiceno); ?></td>
+                                    <td><?php echo e(config('app.currency')); ?><?php echo e(number_format($agencyInvoice->payable,2)); ?></td>
+                                    <td><?php echo e(config('app.currency')); ?><?php echo e(number_format($agencyInvoice->paid,2)); ?><?php if(!empty($agencyInvoice->paid)): ?><em></em><?php endif; ?></td>
+                                    <td><?php echo e(config('app.currency')); ?><?php echo e(number_format($agencyInvoice->balance,2)); ?></td>
+                                </tr>
+                            <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer clearfix">
+                        <?php /*<a href="javascript::;" class="btn btn-sm btn-info btn-flat pull-left">Place New Order</a>*/ ?>
+                        <?php /*<a href="javascript::;" class="btn btn-sm btn-default btn-flat pull-right">View All Orders</a>*/ ?>
+                    </div>
+                    <!-- /.box-footer -->
+                </div>
+
+            </div>
+        </div>
+    </div><!-- /.row -->
+
+    <?php $__env->stopSection(); ?>
+    <?php $__env->startSection('pages_css'); ?>
+
+            <!-- DataTables -->
+    <link rel="stylesheet" href="<?php echo e(asset('bower_components/AdminLTE/plugins/datatables/dataTables.bootstrap.css')); ?>">
+
+    <?php $__env->stopSection(); ?>
+    <?php $__env->startSection('pages_script'); ?>
+            <!-- DataTables -->
+    <script src="<?php echo e(asset('bower_components/AdminLTE/plugins/datatables/jquery.dataTables.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('bower_components/AdminLTE/plugins/datatables/dataTables.bootstrap.min.js')); ?>"></script>
+    <!-- page script -->
+    <script>
+        $(function () {
+            var table = $("#example1").DataTable();
+            var table = $("#example2").DataTable();
+            var table = $("#example3").DataTable();
+        });
+    </script>
+    <script>
+
+        $(function (){
+            $('#amountWithdraw').on('click',('.confirmRequest'), function(e){
+                e.preventDefault();
+                var form =  e.target.parentNode;;
+                var formData = new FormData(form);
+                $.ajax({
+                    url: form.action,
+                    method: form.method,
+                    contentType: false,
+                    processData: false,
+                    data: formData,
+                }).done(function (data){
+                    console.log(data);
+                    if(data > 0)
+                    {
+                        $.notify({
+                                    // options
+                                    message: 'Request submitted Successfully'
+
+                                },
+
+                                {
+                                    // settings
+                                    placement: {
+                                        from: 'bottom',
+                                        align: 'right'
+                                    },
+                                    type: 'success'
+                                });
+                        location.reload();
+                    }
+                    else {
+                        //notifyMessage
+                        $.notify({
+                            // options
+                            message: 'Request submission failed please try again'
+                        }, {
+                            // settings
+                            placement: {
+                                from: 'bottom',
+                                align: 'right'
+                            },
+                            type: 'danger'
+                        });
+                    }
+                });
+
+            })
+        })
+
+
+    </script>
+
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('pages.agency.agency_template', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

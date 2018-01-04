@@ -1,0 +1,203 @@
+<?php echo $__env->make('includes.header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+        <!-- Content -->
+<div class="notify-main-content top-gap">
+    <div class="container">
+        <div class="well">
+            <h1>Get a Logo Designed</h1>
+
+            <p class="comp-desc">Company Description</p>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <form method="post" action="<?php echo e(route('payment')); ?>">
+                        <div class="row">
+                            <div class="col-lg-9">
+                                <div class="form-group">
+
+                                    <input name="company_name" type="text" class="form-control" id="exampleInputEmail1"
+                                           placeholder="Comapny Name">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-9">
+                                <div class="form-group">
+
+                                    <input name="company_tagline" type="text" class="form-control" id="exampleInputEmail1"
+                                           placeholder="Tagline">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-9">
+                                <div class="form-group">
+
+                                    <input name="company_industry" type="text" class="form-control" id="exampleInputEmail1"
+                                           placeholder="Industry">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-9">
+                                <div class="form-group">
+                                    <textarea name="company_discription" class="form-control" rows="5" placeholder="Description"
+                                              id="comment"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <?php foreach($questions as $question): ?>
+                            <hr>
+                            <div class="row">
+                                <div class="col-lg-12">
+
+                                    <p class="no-color-class"><?php echo e($question->question); ?></p>
+
+                                    <?php if($question->type == 'check'): ?>
+
+                                        <div class="row text-center">
+                                            <?php foreach($question->answers as $answer): ?>
+                                                <div class="col-sm-4">
+                                                    <div class="checkbox checkbox-info checkbox-circle">
+                                                        <input id="<?php echo e(str_replace(" ", "-", strtolower($answer))); ?>"
+                                                               class="styled" value="<?php echo e($answer); ?>" type="radio" name="<?php echo e($question->id); ?>">
+                                                        <label for="<?php echo e(str_replace(" ", "-", strtolower($answer))); ?>"
+                                                               style="margin-left:25px; margin-bottom:10px;">
+
+                                                        </label>
+
+                                                        <div><p class="font-family-color"><?php echo e($answer); ?></p></div>
+                                                    </div>
+                                                </div>
+                                            <?php endforeach; ?>
+                                        </div>
+
+                                    <?php elseif($question->type == 'range'): ?>
+                                        <table class="ranges">
+                                        <?php foreach($question->answers as $answer): ?>
+                                            <?php $options = explode(',', $answer); ?>
+
+
+                                                        <tr>
+                                                                <td><?php echo e($options[0]); ?></td>
+                                                                <td><input name="<?php echo e($question->id); ?>[]" class="ex1" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="10" data-slider-step="1" data-slider-value="0"/></td>
+                                                                <td class="classic"><?php echo e($options[1]); ?></td>
+                                                        </tr>
+
+
+                                        <?php endforeach; ?>
+                                        </table>
+                                    <?php endif; ?>
+
+                                </div>
+                            </div>
+
+
+                        <?php endforeach; ?>
+
+
+                        <button type="button" class="btn btn-primary" data-toggle="modal"
+                                data-target=".bs-example-modal-sm" style="width: 100px; border-radius: 6px;">Pay & Start
+                        </button>
+                        <?php /*<button type="submit" class="btn btn-primary" style="width: 100px; border-radius: 6px;">Pay & Start</button>*/ ?>
+
+                        <div class="modal fade bs-example-modal-sm paypal" tabindex="-1" role="dialog"
+                         aria-labelledby="mySmallModalLabel">
+                        <div class="modal-dialog modal-md">
+                            <div class="modal-content">
+                                <div class="modal-header login-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                                aria-hidden="true">&times;</span></button>
+                                </div>
+                                <div class="modal-body">
+                                    <table class="order-view">
+                                        <thead>
+                                        <tr>
+                                            <th class="text-center" colspan="2">GIG</th>
+                                        </tr>
+                                        <tr>
+                                            <th>Gig</th>
+                                            <th>Amount</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><?php echo e($gig->title); ?></td>
+                                                <td><?php echo e(config('app.currency')); ?><?php echo e($gig->price); ?></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <br>
+
+                                    <table class="order-view">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-center" colspan="4">ADDONS</th>
+                                            </tr>
+                                            <tr>
+                                                <th>Addon</th>
+                                                <th>Amount</th>
+                                                <th>Quantity</th>
+                                                <th>Total Amount</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php foreach($order_addons['addons'] as $order_addon): ?>
+                                                <tr>
+                                                    <td><?php echo e($order_addon->addon); ?></td>
+                                                    <td><?php echo e(config('app.currency')); ?><?php echo e($order_addon->amount); ?></td>
+                                                    <td><?php echo e($order_addon->quantity); ?></td>
+                                                    <td><?php echo e(config('app.currency')); ?><?php echo e($order_addon->total_amount); ?></td>
+                                                </tr>
+                                            <?php endforeach; ?>
+                                        </tbody>
+                                    </table>
+
+                                    <br>
+
+                                    <table class="order-view">
+                                        <tbody>
+                                            <tr>
+                                                <td><h5>Total Amount</h5></td>
+                                                <td><h5><span class="pull-right"><?php echo e(config('app.currency')); ?><?php echo e($total_order_amount); ?></span></h5></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+
+                                <button type="submit" class="btn btn-primary btn-lg"
+                                        style="border-radius: 6px; margin-bottom:40px;">Pay with PayPal
+                                </button>
+                            </div>
+                        </div>
+                    </div> <!-- modal -->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<?php echo $__env->make('includes.footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+
+<script type="text/javascript">
+    (function () {
+
+        $('.ex1').bootstrapSlider({
+            tooltip: 'show'
+        });
+
+
+    })();
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cnerr</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="<?php echo e(asset('node_modules/bootstrap/dist/css/bootstrap.min.css')); ?>">
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,500,600,700,800,900,200,300,100' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="<?php echo e(asset('css/bootstrap-social.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('css/font-awesome.min.css')); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('css/awesome-bootstrap-checkbox.css')); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('css/flexslider.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('css/slick.css')); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('css/slick-theme.css')); ?>">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('css/bootstrap-slider.css')); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('css/bootstrap-select.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('css/A-style.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('css/A-style - Copy.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('css/O-style.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('css/Z-style.css')); ?>">
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $(".dropdown").hover(
+                    function() {
+                        $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).show();
+                        $(this).toggleClass('open');
+                    },
+                    function() {
+                        $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).hide();
+
+                    }
+            );
+        });
+    </script>
+</head>
+<body>
+<div class="container">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand navbar-cnerr" href="<?php echo e(url()); ?>" style="margin-top:5px;">
+                        <img src="<?php echo e(asset('img/dash_logo.png')); ?>">
+                    </a>
+                </div>
+
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+                    <?php if(\Illuminate\Support\Facades\Auth::check()): ?>
+                        <ul class="nav navbar-nav navbar-right">
+                        <form class="navbar-form navbar-left" role="search">
+                            <div class="form-group">
+                                <div class="search" style="background-color:#f1f2f2; padding:5px; border-radius:5px;">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                    <input type="search" placeholder="Search" style="border:0px; background-color:#f1f2f2; outline:none;">
+                                </div>
+
+                            </div>
+                        </form>
+                        <?php /*<li style="margin-top:8px; text-align:center;"><span class="notify-span">1</span><a href="#"><i class="fa fa-briefcase"></i></a></li>*/ ?>
+                        <?php /*<li style="margin-top:8px; text-align:center;"><span class="notify-span1">12</span><a href="#"><i class="fa fa-envelope-o"></i></a></li>*/ ?>
+                        <?php /*<li style="margin-top:8px; text-align:center;"><span class="notify-span2">25</span><a href="#"><i class="fa fa-bell-o"></i></a></li>*/ ?>
+                        <li style="margin-top:8px; text-align:center;"><a href="#"><i class="fa fa-briefcase"></i></a></li>
+                        <li style="margin-top:8px; text-align:center;"><a href="#"><i class="fa fa-envelope-o"></i></a></li>
+                        <li style="margin-top:8px; text-align:center;"><a href="#"><i class="fa fa-bell-o"></i></a></li>
+
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color:#008fd5;font-size:16px; padding:5px 0px 0px 0px; text-align:center; background-color: transparent;"><span><img src="<?php echo e(asset('img/user.png')); ?>"></span>
+          <span class="user">
+            <span class="username"><?php echo e(\Illuminate\Support\Facades\Auth::user()->username); ?></span>
+            <span class="caret"></span>
+          </span>
+                            </a>
+                            <ul class="dropdown-menu" style="text-align:left">
+                                <li><a href="<?php echo e(url()); ?>/profile"><span class="glyphicon glyphicon-user"></span>My profile</a></li>
+                                <li><a href="<?php echo e(url()); ?>/my_orders"><span class="glyphicon glyphicon-list"></span>My Orders</a></li>
+                                <li><a href="<?php echo e(url()); ?>/my_payments"><span class="glyphicon glyphicon-credit-card"></span>My Payments</a></li>
+                                <li><a href="#"><span class="glyphicon glyphicon-heart"></span>My Favourites</a></li>
+                                <li><a href="<?php echo e(url()); ?>/settings"><span class="glyphicon glyphicon-cog"></span>Settings</a></li>
+                                <li><a href="<?php echo e(url()); ?>/logout"><span class="glyphicon glyphicon-off"></span>Logout</a></li>
+                                <li class="botom-line">
+                                    <hr>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <?php endif; ?>
+                </div><!-- /.navbar-collapse -->
+            </div>
+        </div><!-- /.container-fluid -->
+    </nav>
+</div>
+<div class="navbar2">
+    <div class="navbar yamm navbar-inverse">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" data-toggle="collapse" data-target="#navbar-collapse-1" class="navbar-toggle"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+            </div>
+            <div id="navbar-collapse-1" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <!-- Classic list -->
+
+                    <?php foreach(\App\Gigtype::take(8)->get() as $gigType): ?>
+                        <li>
+                            <a href="<?php echo e(url()); ?>/gigs/<?php echo e($gigType->slug); ?>" class="dropdown-toggle"><?php echo e($gigType->name); ?></a>
+                            <?php /*<div class="zg-sub-menu dropdown-menu">*/ ?>
+                                <?php /*<ul>*/ ?>
+                                    <?php /*<li><a href="#">Sub Gig</a></li>*/ ?>
+                                    <?php /*<li><a href="#">Sub Gig</a></li>*/ ?>
+                                    <?php /*<li><a href="#">Sub Gig</a></li>*/ ?>
+                                    <?php /*<li><a href="#">Sub Gig</a></li>*/ ?>
+                                    <?php /*<li><a href="#">Sub Gig</a></li>*/ ?>
+                                    <?php /*<li><a href="#">Sub Gig</a></li>*/ ?>
+                                <?php /*</ul>*/ ?>
+                                <?php /*<ul>*/ ?>
+                                    <?php /*<li><a href="#">Sub Gig</a></li>*/ ?>
+                                    <?php /*<li><a href="#">Sub Gig</a></li>*/ ?>
+                                    <?php /*<li><a href="#">Sub Gig</a></li>*/ ?>
+                                    <?php /*<li><a href="#">Sub Gig</a></li>*/ ?>
+                                    <?php /*<li><a href="#">Sub Gig</a></li>*/ ?>
+                                    <?php /*<li><a href="#">Sub Gig</a></li>*/ ?>
+                                <?php /*</ul>*/ ?>
+                            <?php /*</div>*/ ?>
+                        </li><!-- Graphic & Design -->
+                    <?php endforeach; ?>
+
+                    <li>
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle">More</a>
+                        <?php /*<div class="zg-sub-menu dropdown-menu">*/ ?>
+                            <?php /*<ul>*/ ?>
+                                <?php /*<li><a href="#">Sub Gig</a></li>*/ ?>
+                                <?php /*<li><a href="#">Sub Gig</a></li>*/ ?>
+                                <?php /*<li><a href="#">Sub Gig</a></li>*/ ?>
+                                <?php /*<li><a href="#">Sub Gig</a></li>*/ ?>
+                                <?php /*<li><a href="#">Sub Gig</a></li>*/ ?>
+                                <?php /*<li><a href="#">Sub Gig</a></li>*/ ?>
+                            <?php /*</ul>*/ ?>
+                            <?php /*<ul>*/ ?>
+                                <?php /*<li><a href="#">Sub Gig</a></li>*/ ?>
+                                <?php /*<li><a href="#">Sub Gig</a></li>*/ ?>
+                                <?php /*<li><a href="#">Sub Gig</a></li>*/ ?>
+                                <?php /*<li><a href="#">Sub Gig</a></li>*/ ?>
+                                <?php /*<li><a href="#">Sub Gig</a></li>*/ ?>
+                                <?php /*<li><a href="#">Sub Gig</a></li>*/ ?>
+                            <?php /*</ul>*/ ?>
+
+                        <?php /*</div>*/ ?>
+                    </li><!-- More -->
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="custom-gigs" style="margin:0px;">
+    <div class="container">
+        <div class="col-md-7 toggle-pane" style="border:2px solid #008fd5; background-color:white; position:absolute; right:120px; z-index:7000;">
+            <div class="gig-style">
+                <div class="col-md-5">
+                    <h4 style="font-size:20px; font-family:Raleway-Medium; color:#008fd5">Company Description</h4>
+                    <div class="accordion-group new-accordion">
+                        <div class="accordion-heading">
+                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+                                Graphic Design
+                            </a>
+                        </div>
+                        <div id="collapseTwo" class="accordion-body collapse">
+                            <div class="accordion-inner">
+                                <div class="checkbox checkbox-info checkbox-circle chck-bx3">
+                                    <input id="checkbox10" class="styled" type="checkbox" checked>
+                                    <label for="checkbox10">
+                                        <p class="chck-bx-p">Logo Design</p>
+                                    </label>
+                                </div>
+                                <div class="checkbox checkbox-info checkbox-circle chck-bx3">
+                                    <input id="checkbox11" class="styled" type="checkbox" checked>
+                                    <label for="checkbox11">
+                                        <p class="chck-bx-p">Corporate Design</p>
+                                    </label>
+                                </div>
+                                <div class="checkbox checkbox-info checkbox-circle chck-bx3">
+                                    <input id="checkbox12" class="styled" type="checkbox" checked>
+                                    <label for="checkbox12">
+                                        <p class="chck-bx-p">Brochure</p>
+                                    </label>
+                                </div>
+                                <div class="checkbox checkbox-info checkbox-circle chck-bx3">
+                                    <input id="checkbox13" class="styled" type="checkbox" checked>
+                                    <label for="checkbox13">
+                                        <p class="chck-bx-p">Flyer</p>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-group new-accordion">
+                        <div class="accordion-heading">
+                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
+                                Voice Over
+                            </a>
+                        </div>
+                        <div id="collapseThree" class="accordion-body collapse">
+                            <div class="accordion-inner">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-group new-accordion">
+                        <div class="accordion-heading">
+                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapsefour">
+                                3D Design
+                            </a>
+                        </div>
+                        <div id="collapsefour" class="accordion-body collapse">
+                            <div class="accordion-inner">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-group new-accordion">
+                        <div class="accordion-heading">
+                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapsefive">
+                                Web Design
+                            </a>
+                        </div>
+                        <div id="collapsefive" class="accordion-body collapse">
+                            <div class="accordion-inner">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-group new-accordion">
+                        <div class="accordion-heading">
+                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapsesix">
+                                Video Production
+                            </a>
+                        </div>
+                        <div id="collapsesix" class="accordion-body collapse">
+                            <div class="accordion-inner">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-group new-accordion">
+                        <div class="accordion-heading">
+                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseseven">
+                                App
+                            </a>
+                        </div>
+                        <div id="collapseseven" class="accordion-body collapse">
+                            <div class="accordion-inner">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-7 sub-form">
+                    <h4
+                            >Company Description</h4>
+                    <form>
+                        <input class="form-control input-lg" placeholder="Firm">
+                        <input class="form-control input-lg" placeholder="Name">
+                        <input class="form-control input-lg" placeholder="Email">
+                        <input class="form-control input-lg" placeholder="Telephone">
+                        <input class="form-control input-lg" placeholder="Website">
+                        <textarea class="form-control" placeholder="Extra Notes" rows="4"></textarea>
+                        <select class="form-control" placeholder="Select Time">
+                            <option>-Select Time-</option>
+                        </select>
+                        <p style="font-size:14px; color:#7b7b7b;">or type timeline here</p>
+                        <input class="form-control input-lg" placeholder="Timline">
+                    </form>
+                    <div class="checkbox checkbox-info checkbox-circle chck-bx1">
+                        <input id="checkbox14" class="styled" type="checkbox" checked>
+                        <label for="checkbox14">
+                            <p class="chck-bx-p">Please call me back</p>
+                        </label>
+                    </div>
+                    <div class="checkbox checkbox-info checkbox-circle chck-bx2">
+                        <input id="checkbox15" class="styled" type="checkbox" checked>
+                        <label for="checkbox15">
+                            <p class="chck-bx-p">Please send me advance information on the chosen topic as PDF document</p>
+                        </label>
+                    </div>
+                    <button type="button" class="btn btn-primary form-btn">Send</button>
+                </div>
+            </div>
+         <?php /*   <button type="button" class="btn btn-primary gig-btn" style="color:white; font-size:16px;
+                        font-family:HelveticaLTStd-Light; outline:none;">Custom Gig<span class="glyphicon glyphicon-menu-down"></span></button> */ ?>
+        </div>
+    </div>
+</div>
+
+</div>

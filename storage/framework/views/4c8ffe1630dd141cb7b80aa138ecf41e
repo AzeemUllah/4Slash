@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Cnerr</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+        <link href='http://fonts.googleapis.com/css?family=Raleway:400,500,600,700,800,900,200,300,100' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="css/Z-style.css">
+        <link rel="stylesheet" href="css/bootstrap-social.css">
+        <link rel="stylesheet" href="css/font-awesome.min.css">
+    </head>
+    <body ng-app="cnerr">
+
+    <div class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" id="gridSystemModal1" tabindex="-1" >
+        <div class="modal-dialog modal-sm model-login-width" role="document">
+            <div class="modal-content">
+                <div class="modal-header login-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title login-title" id="gridSystemModalLabel">Sign Up</h4>
+                </div>
+                <div class="modal-body" ng-controller="RegisterController">
+                    <div class="container-fluid">
+                        <form>
+                            <div class="username form-group<?= "{{ hasEmailError ? ' has-error' : '' }}" ?>">
+                                <label for="email_adress" class="sr-only">Email_address</label>
+                                <input ng-model="emailModel" type="email" class="form-control em" name="email" id="email_adress" placeholder="Email" style="height:50px; padding: 6px 45px;">
+                                <p class="help-block"><?='{{  email }}'?></p>
+                            </div>
+                            <div class="user form-group<?= "{{ hasUsernameError ? ' has-error' : '' }}" ?>">
+                                <label for="user" class="sr-only">User Name</label>
+                                <input ng-model="usernameModel" type="text" class="form-control em" name="username" id="user" placeholder="User Name" style="height:50px; padding: 6px 45px;">
+                                <p class="help-block"><?="{{  username }}"?></p>
+                            </div>
+                            <div class="pass form-group<?= "{{ hasPasswordError ? ' has-error' : '' }}" ?>">
+                                <label for="pass" class="sr-only">Password</label>
+                                <input ng-model="passwordModel" type="password" class="form-control em" name="password" id="Pass" placeholder="password" style="height:50px; padding: 6px 45px;">
+                                <p class="help-block"><?='{{  password }}'?></p>
+                            </div>
+                            <div class="con_pass form-group">
+                                <label for="con_pass" class="sr-only">Confirm Password</label>
+                                <input ng-model="passwordConfirmationModel" type="password" class="form-control em" id="con_pass" name="password_confirmation" placeholder="Confirm Password" style="height:50px; padding: 6px 45px;">
+                            </div>
+                        </form>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="chk-margin-float">
+                                </div>
+                            </div><!-- /.col-lg-6 -->
+                            <div class="col-lg-6">
+                                <div class="btn-margin-float">
+                                    <button type="button" class="btn btn-primary" ng-disabled="regSubmitted" ng-click="register()">Sign Up</button>
+                                </div>
+                            </div><!-- /.col-lg-6 -->
+                        </div><!-- /.row -->
+                    </div>
+                </div>
+                <div class="modal-footer login-footer">
+                    <p class="footer-p">Already have an account?<span class="signup-css"> Sign In</span></p>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    <div class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" id="gridSystemModal" tabindex="-1" >
+        <div class="modal-dialog modal-sm model-login-width" role="document">
+            <div class="modal-content">
+                <div class="modal-header login-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title login-title" id="gridSystemModalLabel">Login To Your Account</h4>
+                </div>
+                <div class="modal-body" ng-controller="LoginController">
+                    <form>
+                        <div class="input form-group<?= "{{ hasEmailError ? ' has-error' : '' }}" ?>" style="positon:relative">
+                            <label for="emailadress" class="sr-only">Email address</label>
+                                <span style="position:absolute; top:26px; left:25px;">
+                                    <img src="img/lg-men.png" style="height:25px;">
+                                </span>
+                            <input ng-model="emailModel" type="email" class="form-control em" id="emailadress" placeholder="User Name" style="height:50px; padding: 6px 45px;">
+                            <p class="help-block"><?='{{  email }}'?></p>
+                        </div>
+                        <div class="form-group<?= "{{ hasPasswordError ? ' has-error' : '' }}" ?>">
+                            <label for="password" class="sr-only">Password</label>
+                                <span style="position:relative; top:40px; left:10px;">
+                                    <img src="img/lg-key.png" style="height:25px;">
+                                </span>
+                            <input ng-model="passwordModel" type="password" class="form-control em" id="password" placeholder="Password" style="height:50px; padding: 6px 45px;">
+                            <p class="help-block"><?='{{  password }}'?></p>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="chk-margin-float">
+                                    <input type="checkbox" class="chk-float-left"><span class="remember-css">Remember me</span>
+                                </div>
+                            </div><!-- /.col-lg-6 -->
+                            <div class="col-lg-6">
+                                <div class="btn-margin-float">
+                                    <button type="button" ng-click="login()" class="btn btn-primary">Log In</button>
+                                </div>
+                            </div><!-- /.col-lg-6 -->
+                        </div><!-- /.row -->
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="fgt-margin-float">
+                                    <p class="forgt-pass"><a href="#">Forgot Password?</a></p>
+                                </div>
+                            </div><!-- /.col-lg-6 -->
+                        </div><!-- /.row -->
+                        <hr>
+                        <div class="row or-css">
+                            <div class="col-lg-12">
+                                <p>or</p>
+                            </div><!-- /.col-lg-6 -->
+                        </div><!-- /.row -->
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="">
+                                    <a class="btn btn-block btn-social btn-facebook" style="box-shadow: 2px 3px 0px #0821A2">
+                                        <i class="fa fa-facebook"></i>
+                                        <span style="font-size: smaller;">Connect Facebook</span>
+                                    </a>
+                                </div>
+                            </div><!-- /.col-lg-6 -->
+                            <div class="col-lg-6">
+                                <div class="">
+                                    <a  href="/google_login" class="btn btn-block btn-social btn-google" style="box-shadow: 2px 3px 0px #770D00">
+                                        <i class="fa fa-google"></i>
+                                        <span style="font-size: smaller;">Connect Google</span>
+                                    </a>
+                                </div>
+                            </div><!-- /.col-lg-6 -->
+                        </div><!-- /.row -->
+                    </form>
+                </div>
+                <div class="modal-footer login-footer">
+                    <p class="footer-p">Don't have an account?<span class="signup-css"> Signup</span></p>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+
+
+
+    <div class="cnerr-background-image">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <nav class="navbar cnerr-navbar">
+                            <!-- Brand and toggle get grouped for better mobile display -->
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle collapsed mob-nav" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar" style="background-color:white;"></span>
+                                    <span class="icon-bar" style="background-color:white;"></span>
+                                    <span class="icon-bar" style="background-color:white;"></span>
+                                </button>
+                                <a class="navbar-brand" href=""></a>
+                            </div>
+                            <!-- Collect the nav links, forms, and other content for toggling -->
+                            <div class="collapse navbar-collapse border-none" id="bs-example-navbar-collapse-1">
+                                <ul class="nav navbar-nav navbar-right index-navbar">
+                                    <li><a href="#" data-toggle="modal" data-target="#gridSystemModal">Sign In</a></li>
+                                    <li><span class="cnerr-navbar-bar hidden-xs hidden-sm">|</span></li>
+                                    <li><a href="#" data-toggle="modal" data-target="#gridSystemModal1">Sign Up</a></li>
+                                </ul>
+                            </div><!-- /.navbar-collapse -->
+                        </nav>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 cnerr-logo-margin-top">
+                        <div class="row">
+                            <a href="index.html"><img src="img/logo.png"></a>
+                        </div>
+                        <div class="row">
+                            <p class="cnerr-slider-para">A great new free psd theme to showcase your new application. </p>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 left-img">
+                                <a href="#"><img src="img/appstore.png" class="img-responsive"></a>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 left-img">
+                                <a href="#"><img src="img/googlestore.png" class="img-responsive"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <img src="img/hand-phone.png" class="cnerr-hand-image hidden-xs hidden-sm">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cnerr-main-content-background-color text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <h2 class="cnerr-main-content-heading margin-top">Need something Done? Get it at <span class="txt-color">Cnerr!</span></h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <p class="cnerr-main-content-paragragh margin-bottom-top">Be it Business Start-ups, Creative Designing, Web Development or any work that needs brains! </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <img src="img/setting.png" class="image-top-margin">
+                        <p class="img-caption top-bottom-margin">Great Feature</p>
+                        <p class="cnerr-main-content-paragragh-cat">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris interdum velit vitae nulla molestie eu. consectetur adipiscing elit.</p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <img src="img/document.png" class="image-top-margin">
+                        <p class="img-caption top-bottom-margin">Great Feature</p>
+                        <p class="cnerr-main-content-paragragh-cat">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris interdum velit vitae nulla molestie eu. consectetur adipiscing elit.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <img src="img/bulb.png" class="image-top-margin">
+                        <p class="img-caption top-bottom-margin">Another Great Feature</p>
+                        <p class="cnerr-main-content-paragragh-cat">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris interdum velit vitae nulla molestie eu. consectetur adipiscing elit.</p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <img src="img/world.png" class="image-top-margin">
+                        <p class="img-caption top-bottom-margin">Another Great Feature</p>
+                        <p class="cnerr-main-content-paragragh-cat">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris interdum velit vitae nulla molestie eu. consectetur adipiscing elit.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cnerr-public-topcontent-background-color text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <h2 class="cnerr-public-topcontent-heading margin-top">“There’s no website like Cnerr”</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <p class="cnerr-public-topcontent-paragragh"><b>Mavia Siddiqui, </b><span class="designation-color"> Managing Director</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cnerr-public-background-color">
+            <img src="img/publicimage.jpg" width="100%">
+        </div>
+        <div class="cnerr-social-background-color text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <h2 class="cnerr-social-heading margin-top">Say Hi & Get in Touch</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <p class="cnerr-social-paragragh top-bottom">Lorem ipsum dolor sit amet, consectetur adipiscing elit suspendisse.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <span><a href=""><img src="img/icon.png" class="img-responsive" hspace="2"></a></span>
+                        <span><a href=""><img src="img/icon1.png" class="img-responsive" hspace="2"></a></span>
+                        <span><a href=""><img src="img/icon2.png" class="img-responsive" hspace="2"></a></span>
+                        <span><a href=""><img src="img/icon5.png" class="img-responsive" hspace="2"></a></span>
+                        <span><a href=""><img src="img/icon3.png" class="img-responsive" hspace="2"></a></span>
+                        <span><a href=""><img src="img/icon4.png" class="img-responsive" hspace="2"></a></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+    <?php echo $__env->make('includes.footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>;
+
+
+    </body>
+</html>

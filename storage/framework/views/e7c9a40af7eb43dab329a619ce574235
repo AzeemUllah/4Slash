@@ -1,0 +1,30 @@
+<?php echo $__env->make('includes.header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<div class="dash-main-content" style="min-height: 800px;">
+    <div class="login-modal">
+        <div class="modal-signin">
+
+            <?php if(\Illuminate\Support\Facades\Session::has('status')): ?>
+                <div class="alert alert-success"
+                     role="alert"><?php echo e(\Illuminate\Support\Facades\Session::get('status')); ?></div>
+                <?php echo e(\Illuminate\Support\Facades\Session::forget('status')); ?>
+
+            <?php endif; ?>
+            <?php if(\Illuminate\Support\Facades\Session::has('successMessage_title')): ?>
+                <div class="alert alert-success" role="alert">
+                    <h4 style="font-size:18px;"><?php echo e(\Illuminate\Support\Facades\Session::get('successMessage_title')); ?></h4>
+                    <h4 style="font-size:18px;"><?php echo e(\Illuminate\Support\Facades\Session::get('successMessage_subtitle')); ?></h4>
+                    <h4 style="font-size:18px;"><?php echo e(\Illuminate\Support\Facades\Session::get('successMessage_subtitle2')); ?></h4>
+                </div>
+                <?php echo e(\Illuminate\Support\Facades\Session::forget('successMessage_title, successMessage_subtitle')); ?>
+
+            <?php endif; ?>
+
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $(".cnerr-footer-background-color").css({"position": "absolute", "left": "0px","right":"0px","bottom":"0px"});
+    })
+</script>
+<?php echo $__env->make('includes.footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -1,0 +1,167 @@
+<?php echo $__env->make('includes.header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+<!-- content -->
+<div class="main-profile" style="background-color:#f1f2f2;padding-top:80px; min-height: 1500px;">
+    <div class="content">
+        <div>
+                <div class="header profile-header" style="background-image: url(<?php echo e($user->cover_image); ?>); text-align: right;">
+                    <?php /*<h1 class="heading1"> <?php echo e($user->username); ?></h1>*/ ?>
+                    <?php /*<h1 class="heading2">My Profile’s Tagline Here.</h1>*/ ?>
+                    <?php if(empty($user->cover_image)): ?>
+                        <h4 class="text-center" style="color: #848484; margin: 0px; position: absolute; right: 0px; left: 0px;">Profile cover size should be 1140 width by 250 height</h4>
+                    <?php endif; ?>
+                    <form id="profile-cover-img-form" enctype="multipart/form-data" class="form-vertical">
+                        <input name="profile-cover-img" type="file" class="profile-upload-button" id="profile-cover-upload">
+                        <label for="profile-cover-upload" class="btn btn-primary btn-xs btn-profile-cover-upload" style="margin-right: 5px; position: relative; top: 65px;">Hintergrund ändern</label>
+                    </form>
+                </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12" style=" margin-bottom:52px;">
+                <div class="main-content" id="profile-edit">
+                    
+                    <div class="profile-img-profile">
+
+                        <form id="profile-img-form" enctype="multipart/form-data">
+                            <span>
+                                <input name="profile-img" type="file" class="profile-upload-button" id="profile-img-upload-icon">
+                                <label for="profile-img-upload-icon" class="profile-img-upload-icon"><i class="fa fa-camera"></i></label>
+                                <img style="width:100px;height:100px;" src="<?php echo e($user->profile_image); ?>" class="img-circle profile-img-circle">
+                            </span>
+                        </form>
+                    </div>
+                    
+                    <div class="profile-detail">
+                    <h1 class="heading-responsive">Wellkommen<br>
+                        angemeldet als <?php echo e($user->username); ?></h1>
+                    <?php /*<p>*/ ?>
+                        <?php /*Lorem ipsum dolor sit amet, dictum vehicula sed ante, enim sed ipsum lacus ante, neque imperdiet suspendisse penatibus elit, varius cras ut sapien saepe aliquet. Vel taciti nibh, orci porttitor ipsum mattis leo, in at urna augue. Nulla nulla accumsan placerat*/ ?>
+                    <?php /*</p>*/ ?>
+                    </div>
+                    <div class="profile">
+
+
+                    </div>
+                    <div class="profile user-detail">
+                        <?php if($userDetail): ?>
+                        <a href=" <?php echo e(route('profile.update')); ?>" class="btn btn-primary pull-right"><span class="fa fa-pencil"></span></a>
+                        <?php else: ?>
+                            <a href=" <?php echo e(route('edit.userDetails')); ?>" class="btn btn-primary pull-right"><span class="fa fa-pencil"></span></a>
+                        <?php endif; ?>
+
+                        <table class="table dataTable no-footer">
+
+                            <tr>
+
+                                <td>
+                                    <span style="color: #000;">Firma</span>
+                                    <p style="font-size: 17px;"> <?php echo e($userDetail ? $userDetail->company : ''); ?></p>
+                                </td>
+
+                            </tr>
+                            <tr>
+
+                                <td>
+                                    <span style="color: #000;">Anrede</span>
+                                    <p style="font-size: 17px;"><?php echo e($userDetail ? $userDetail->gender : ''); ?></p>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span style="color: #000;">Vorname</span>
+                                    <p style=" font-size: 17px;"> <?php echo e($user ? $user->name : ''); ?></p>
+                                </td>
+                            </tr>
+                            <tr>
+
+                                <td>
+                                    <span style="color: #000;">Adresse/Hausnummer*</span>
+                                    <p style="font-size: 17px;"> <?php echo e($userDetail ? $userDetail->postal_address : ''); ?></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span style="color: #000;">PLZ, Ort</span>
+                                    <p style="font-size: 17px;"> <?php echo e($userDetail ? $userDetail->zip : ''); ?></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span style="color: #000;">Land</span>
+                                    <p style="font-size: 17px;"> <?php echo e($userDetail ? $userDetail->country : ''); ?></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span style="color: #000;">Telefonnummer</span>
+                                    <p style="font-size: 17px;"> <?php echo e($userDetail ? $userDetail->phone : ''); ?></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span style="color: #000;">Mobile</span>
+                                    <p style="font-size: 17px;"> <?php echo e($userDetail ? $userDetail->mobile : ''); ?></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span style="color: #000;">E-mail</span>
+                                    <p style="font-size: 17px;"> <?php echo e($user->email); ?></p>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <?php echo $__env->make("includes.footer", array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+    
+    
+    
+    <script>
+        (function() {
+            
+            var input = document.querySelector('#profile-img-upload-icon');
+            var coverPhoto = document.querySelector('#profile-cover-upload');
+        
+            input.addEventListener('change', change_profile_image);
+            /*coverPhoto.addEventListener('change', change_profile_cover_image);*/
+            var input = document.getElementById('profile-cover-upload');
+
+            input.addEventListener("change", function() {
+                var file  = this.files[0];
+                var img = new Image();
+
+                img.onload = function() {
+                    var sizes = {
+                        width:this.width,
+                        height: this.height
+                    };
+                    URL.revokeObjectURL(this.src);
+                    if(sizes.width == 1140 && sizes.height == 250){
+                        change_profile_cover_image();
+                    }else{
+                        alert("Image dimensions shoud be 1140 width and 250 height!");
+                    }
+                    /*console.log('onload sizes', sizes.width);
+                    console.log('onload this', this);*/
+                };
+
+                var objectURL = URL.createObjectURL(file);
+
+                /*console.log('change: file', file);
+                console.log('change: objectURL', objectURL);*/
+                img.src = objectURL;
+            });
+        })();
+
+    </script>
+    </body>
+</html>

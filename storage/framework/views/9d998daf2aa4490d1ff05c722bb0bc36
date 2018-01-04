@@ -1,0 +1,80 @@
+<?php echo $__env->make('includes.header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+
+
+<!-- begin::Body -->
+<section>
+    <div class="col-md-12" style="margin-top: 90px;">
+        <!--begin:: Widgets/Application Sales-->
+        <div class="m-portlet m-portlet--full-height ">
+            <div class="m-portlet__head">
+                <div class="m-portlet__head-caption">
+                    <div class="m-portlet__head-title">
+                        <h3 class="m-portlet__head-text">
+                            My payments
+                        </h3>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h1 class="upper text-center"><?php $total_amount = ($pendingOrdersAmount + $pendingOrdersServiceCharges); $total_amount = number_format($total_amount, 2)?><?php echo e(config('app.currency') . $total_amount); ?></h1>
+                    <h1 style="color:black; font-size:14px; text-align: center">Current orders</h1>
+                </div>
+
+                <div class="col-md-4">
+                    <h1 class="upper text-center"><?php $total_complete_amount = ($completedOrdersAmount + $completedOrdersServiceCharges); $total_complete_amount = number_format($total_complete_amount, 2)?><?php echo e(config('app.currency') . $total_complete_amount); ?></h1>
+                    <h1 style="color:black; font-size:14px; text-align: center">Finished orders
+                    </h1>
+                </div>
+
+            </div>
+
+        </div>
+        <!--end:: Widgets/Application Sales-->
+    </div>
+    <div class="container-fluid" style="width: 80%;">
+
+        <table id="myTable" class="table table-hover">
+            <thead>
+            <tr>
+                <th>Date</th>
+                <th>Description</th>
+                <th>Order number</th>
+                <th>Bill number</th>
+                <th style="text-align:right;">total</th>
+            </tr>
+
+            </thead>
+            <tbody>
+            <?php if(count($completedOrders) > 0): ?>
+                <?php foreach($completedOrders as $completedOrder): ?>
+                    <tr>
+                        <td><?php echo e(date("M d, Y", strtotime($completedOrder->updated_at))); ?></td>
+                        <?php if(!empty($completedOrder->gig->title) ): ?>
+                            <td><?php echo e($completedOrder->gig->title); ?> </td>
+                        <?php elseif(!empty($completedOrder->package->title)): ?>
+                            <td><?php echo e($completedOrder->package->title); ?> </td>
+                        <?php else: ?>
+                            <td><?php echo e($completedOrder->custom); ?> </td>
+                        <?php endif; ?>
+                        <td><?php echo e($completedOrder->order_no); ?></td>
+                        <td><a href="<?php echo e(route('orderinvoice', ['orderno' => $completedOrder->order_no, 'invoiceno' => $completedOrder->invoice->invoice_no])); ?>" target="_blank"><?php echo e($completedOrder->invoice->invoice_no); ?></a></td>
+                        <td style="text-align:right; color:#33a5dd"><?php $amount = number_format($completedOrder->amount + $completedOrder->service_charges, 2)?> <?php echo e(config('app.currency') . $amount); ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            <?php endif; ?>
+
+            <?php /*<tr>*/ ?>
+            <?php /*<td class="text-center" colspan="3">You have no transactions.</td>*/ ?>
+            <?php /**/ ?>
+            <?php /*</tr>*/ ?>
+
+            </tbody>
+        </table>
+    </div>
+</section>
+<!-- end::Body -->
+
+<?php echo $__env->make('includes.footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+
+

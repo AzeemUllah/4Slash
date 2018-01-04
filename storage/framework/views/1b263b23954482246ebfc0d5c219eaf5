@@ -1,0 +1,213 @@
+<?php echo $__env->make('includes.header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+
+
+<div class="container" style="text-align: center;">
+
+    <div class="col-md-12 col-sm-12 col-xs-12 modulesheading" style="margin-bottom: 27px;">
+        <h2 style="text-align: center;font-size: 52px;">Choose Your Apps</h2>
+        <h5 style="text-align: center">Using Any Three Apps is FREE for One user</h5>
+    </div>
+    <div class="col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 30px;">
+        <a href="<?php echo e(route('free_package_form')); ?>"> <button type="button" class="btn btn-danger" style="background: rgba(0, 185, 255, 0.95);border-color: rgba(0, 185, 255, 0.95);">Start Now</button></a>
+
+    </div>
+
+
+    <div class="col-md-12 col-sm-12 col-xs-12 col-md-offset-2" style="margin-bottom: 15px;">
+            <div class="col-md-2 col-sm-2 col-xs-2">
+                <a href="" style="display: inline-grid;"><span style="display: inline-grid;font-size: 17px;"><img src="img/imagesmodule/account.png" /></span><span style="font-size: 13px;">Purchases</span></a>
+                <input class="modulecheckboxes"  type="checkbox" value="" style="margin-left: -14px;margin-bottom: 2px;position: absolute;" >
+            </div>
+            <div class="col-md-2 col-sm-2 col-xs-2">
+                <a href="" style="display: inline-grid;"><span style="display: inline-grid;font-size: 17px;"><img src="img/imagesmodule/account_accountant.png"></span><span style="font-size: 13px;">Settings</span></a>
+                <input class="modulecheckboxes"  type="checkbox" style="margin-left: -14px;margin-bottom: 2px;position: absolute;" >
+            </div>
+            <div class="col-md-2 col-sm-2 col-xs-2">
+                <a href="" style="display: inline-grid;"><span style="display: inline-grid;font-size: 17px;"> <img src="img/imagesmodule/helpdesk.png"/></span><span style="font-size: 13px;">Sales</span></a>
+                <input class="modulecheckboxes"  type="checkbox" style="margin-left: -14px;margin-bottom: 2px;position: absolute;" >
+            </div>
+        <div class="col-md-2 col-sm-2 col-xs-2">
+            <a href="" style="display: inline-grid;"><span style="display: inline-grid;font-size: 17px;"> <img src="img/imagesmodule/helpdesk.png"/></span><span style="font-size: 13px;">Repairs</span></a>
+            <input class="modulecheckboxes"  type="checkbox" style="margin-left: -14px;margin-bottom: 2px;position: absolute;" >
+        </div>
+    </div>
+    <div class="col-md-12 col-sm-12 col-xs-12 col-md-offset-2" style="margin-bottom: 15px; ">
+
+        <div class="col-md-2 col-sm-2 col-xs-2">
+            <a href="" style="display: inline-grid;"><span style="display: inline-grid;font-size: 17px;"><img src="img/imagesmodule/account.png"/></span><span style="font-size: 13px;">Calendar</span></a>
+            <input class="modulecheckboxes"  type="checkbox" style="margin-left: -14px;margin-bottom: 2px;position: absolute;" >
+        </div>
+        <div class="col-md-2 col-sm-2 col-xs-2">
+            <a href="" style="display: inline-grid;"><span style="display: inline-grid;font-size: 17px;"><img src="img/imagesmodule/account_accountant.png"></span><span style="font-size: 13px;">Notes</span></a>
+            <input class="modulecheckboxes"  type="checkbox" style="margin-left: -14px;margin-bottom: 2px;position: absolute;" >
+        </div>
+        <div class="col-md-2 col-sm-2 col-xs-2">
+            <a href="" style="display: inline-grid;"><span style="display: inline-grid;font-size: 17px;"> <img src="img/imagesmodule/helpdesk.png"/></span><span style="font-size: 13px;">Timesheets</span></a>
+            <input class="modulecheckboxes"  type="checkbox" style="margin-left: -14px;margin-bottom: 2px;position: absolute;" >
+        </div>
+        <div class="col-md-2 col-sm-2 col-xs-2">
+            <a href="" style="display: inline-grid;"><span style="display: inline-grid;font-size: 17px;"> <img src="img/imagesmodule/helpdesk.png"/></span><span style="font-size: 13px;">Project</span></a>
+            <input class="modulecheckboxes"  type="checkbox" style="margin-left: -14px;margin-bottom: 2px;position: absolute;" >
+        </div>
+
+    </div>
+    <div class="col-md-12 col-sm-12 col-xs-12 col-md-offset-2" style="margin-bottom: 15px; ">
+
+        <div class="col-md-2 col-sm-2 col-xs-2">
+            <a href="" style="display: inline-grid;"><span style="display: inline-grid;font-size: 17px;"><img src="img/imagesmodule/account.png"/></span><span style="font-size: 13px;">Point of Sale</span></a>
+            <input class="modulecheckboxes"  type="checkbox" style="margin-left: -14px;margin-bottom: 2px;position: absolute;" >
+        </div>
+        <div class="col-md-2 col-sm-2 col-xs-2">
+            <a href="" style="display: inline-grid;"><span style="display: inline-grid;font-size: 17px;"><img src="img/imagesmodule/account_accountant.png"></span><span style="font-size: 13px;">Attendance</span></a>
+            <input class="modulecheckboxes"  type="checkbox" style="margin-left: -14px;margin-bottom: 2px;position: absolute;" >
+        </div>
+        <div class="col-md-2 col-sm-2 col-xs-2">
+            <a href="" style="display: inline-grid;"><span style="display: inline-grid;font-size: 17px;"> <img src="img/imagesmodule/helpdesk.png"/></span><span style="font-size: 13px;">Employees</span></a>
+            <input class="modulecheckboxes"  type="checkbox" style="margin-left: -14px;margin-bottom: 2px;position: absolute;" >
+        </div>
+        <div class="col-md-2 col-sm-2 col-xs-2">
+            <a href="" style="display: inline-grid;"><span style="display: inline-grid;font-size: 17px;"> <img src="img/imagesmodule/helpdesk.png"/></span><span style="font-size: 13px;">Dashboard</span></a>
+            <input class="modulecheckboxes"  type="checkbox" style="margin-left: -14px;margin-bottom: 2px;position: absolute;" >
+        </div>
+
+    </div>
+    <div class="col-md-12 col-sm-12 col-xs-12 col-md-offset-2" style="margin-bottom: 15px; ">
+
+        <div class="col-md-2 col-sm-2 col-xs-2">
+            <a href="" style="display: inline-grid;"><span style="display: inline-grid;font-size: 17px;"><img src="img/imagesmodule/account.png"/></span><span style="font-size: 13px;">Recruitment</span></a>
+            <input class="modulecheckboxes"  type="checkbox" style="margin-left: -14px;margin-bottom: 2px;position: absolute;" >
+        </div>
+        <div class="col-md-2 col-sm-2 col-xs-2">
+            <a href="" style="display: inline-grid;"><span style="display: inline-grid;font-size: 17px;"><img src="img/imagesmodule/account_accountant.png"></span><span style="font-size: 13px;">Discuss</span></a>
+            <input class="modulecheckboxes"  type="checkbox" style="margin-left: -14px;margin-bottom: 2px;position: absolute;" >
+        </div>
+        <div class="col-md-2 col-sm-2 col-xs-2">
+            <a href="" style="display: inline-grid;"><span style="display: inline-grid;font-size: 17px;"> <img src="img/imagesmodule/helpdesk.png"/></span><span style=" font-size: 13px;">Accounting</span></a>
+            <input class="modulecheckboxes"  type="checkbox" style="margin-left: -14px;margin-bottom: 2px;position: absolute;" >
+        </div>
+        <div class="col-md-2 col-sm-2 col-xs-2">
+            <a href="" style="display: inline-grid;"><span style="display: inline-grid;font-size: 17px;"> <img src="img/imagesmodule/helpdesk.png"/></span><span style="font-size: 13px;">Maintenance</span></a>
+            <input class="modulecheckboxes"  type="checkbox" style="margin-left: -14px;margin-bottom: 2px;position: absolute;" >
+        </div>
+
+    </div>
+    <div class="col-md-12 col-sm-12 col-xs-12 col-md-offset-2" style="margin-bottom: 15px; ">
+
+        <div class="col-md-2 col-sm-2 col-xs-2">
+            <a href="" style="display: inline-grid;"><span style="display: inline-grid;font-size: 17px;"><img src="img/imagesmodule/account.png"/></span><span style="font-size: 13px;">Inventory</span></a>
+            <input class="modulecheckboxes"  type="checkbox" style="margin-left: -14px;margin-bottom: 2px;position: absolute;" >
+        </div>
+        <div class="col-md-2 col-sm-2 col-xs-2">
+            <a href="" style="display: inline-grid;"><span style="display: inline-grid;font-size: 17px;"><img src="img/imagesmodule/account_accountant.png"></span><span style="font-size: 13px;">Expenses</span></a>
+            <input class="modulecheckboxes"  type="checkbox" style="margin-left: -14px;margin-bottom: 2px;position: absolute;" >
+        </div>
+        <div class="col-md-2 col-sm-2 col-xs-2">
+            <a href="" style="display: inline-grid;"><span style="display: inline-grid;font-size: 17px;"> <img src="img/imagesmodule/helpdesk.png"/></span ><span style="font-size: 13px;">Manufacturing</span></a>
+            <input class="modulecheckboxes"  type="checkbox" style="margin-left: -14px;margin-bottom: 2px;position: absolute;" >
+        </div>
+        <div class="col-md-2 col-sm-2 col-xs-2">
+            <a href="" style="display: inline-grid;"><span style="display: inline-grid;font-size: 17px;"> <img src="img/imagesmodule/helpdesk.png"/></span><span style="font-size: 13px;"> Leaves</span></a>
+            <input class="modulecheckboxes"  type="checkbox" style="margin-left: -14px;margin-bottom: 2px;position: absolute;" >
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<?php echo $__env->make('includes.footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+<?php /*<script>*/ ?>
+
+    <?php /*$('.gig-favourite-heart-icn').click(function (e) {*/ ?>
+
+        <?php /*e.preventDefault();*/ ?>
+        <?php /*$selectedGig = $(this).parent();*/ ?>
+
+        <?php /*var gigId = $selectedGig.data('coll-id');*/ ?>
+        <?php /*var url = $selectedGig.data('url');*/ ?>
+
+        <?php /*// var className = $('span.favorite-span > i').attr('class');*/ ?>
+
+        <?php /*//  alert(className);*/ ?>
+
+        <?php /*if ($(this).find('i').attr('class') == 'fa fa-heart') {*/ ?>
+            <?php /*var action = 'removeFavorite';*/ ?>
+            <?php /*$(this).empty().html('<span class="favorite-span"><i class="fa fa-heart-o"></i></span>');*/ ?>
+        <?php /*}*/ ?>
+        <?php /*else {*/ ?>
+            <?php /*var action = 'addToFavorite';*/ ?>
+            <?php /*$(this).empty().html('<span class="favorite-span"><i class="fa fa-heart"></i></span>');*/ ?>
+        <?php /*}*/ ?>
+
+
+        <?php /*$.ajax({*/ ?>
+            <?php /*url: url,*/ ?>
+            <?php /*method: 'POST',*/ ?>
+            <?php /*data: {'gig-id': gigId, 'action': action},*/ ?>
+            <?php /*success: function (data) {*/ ?>
+                <?php /*console.log(data);*/ ?>
+
+            <?php /*}*/ ?>
+        <?php /*});*/ ?>
+    <?php /*});*/ ?>
+
+
+<?php /*</script>*/ ?>
+<script type="text/javascript">
+    $(document).ready(function () {
+        /*$('.gig-item-default').hover(function(){
+         $(this).children('.col-xs-5').removeClass('hover-transition');
+         },function(){
+         $(this).children('.col-xs-5').addClass('hover-transition');
+         });
+         $('.gig-item-default').hover(function(){
+         $(this).children('.col-xs-4').removeClass('hover-transition');
+         },function(){
+         $(this).children('.col-xs-4').addClass('hover-transition');
+         });*/
+        $('.gig-item-default').hover(function(){
+            $(this).children('#sold').show();
+        },function(){
+            $(this).children('#sold').hide();
+        });
+        $('#custom_offer').click(function(){
+
+            $(".gig-style").toggle();
+        });
+        var limit = 4;
+        $('input.modulecheckboxes').on('click', function(evt) {
+            if($('.modulecheckboxes:checked').length >= limit) {
+                this.checked = true;
+                return false;
+            }
+
+        });
+    });
+</script>
+
+
+
+
+
+        <script>
+
+            $('.single-checkbox').on('change', function() {
+                if($('.single-checkbox:checked').length > 2) {
+                    this.checked = false;
+                }
+            });
+
+            $('.single-checkbox2').on('change', function() {
+                if($('.single-checkbox2:checked').length > 1) {
+                    this.checked = false;
+                }
+            });
+
+
+        </script>
+
+</body>
+</html>

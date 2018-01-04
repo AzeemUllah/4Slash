@@ -1,0 +1,75 @@
+<?php echo $__env->make('includes.header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+
+<!-- content -->
+  <div class="login-modal">
+                    <h4 class="login-title">Login To Your Account</h4>
+    <div class="modal-signin">
+      <div class="container">
+        <form method="post" action="<?php echo e(route('login')); ?>">
+            <div class="input form-group<?php echo $errors->has('email') ? ' has-error' : '' ?> input-new" style="positon:relative">
+                <div class="email">
+                  <label for="emailadress" class="sr-only">Email address</label>
+                <span style="position:relative; top:35px; left:10px;">
+                  <i class="fa fa-envelope-o"></i>
+                 </span>
+                <input value="<?php echo e(\Illuminate\Support\Facades\Input::old('email')); ?>" name="email" type="email" class="form-control em1" id="emailadress" placeholder="Email" style="height:50px; padding: 6px 45px;">
+                    <?php if($errors->has('email')): ?>
+                        <p class="help-block"><?php echo e($errors->first('email')); ?></p>
+                    <?php endif; ?>
+                </div>
+
+            </div>
+            <div class="input form-group<?php echo $errors->has('password') ? ' has-error' : '' ?> input-new" style="positon:relative">
+                <div class="password">
+                  <label for="password" class="sr-only">Password</label>
+                <span style="position:relative; top:40px; left:10px;">
+                    <img src="img/lg-key.png" style="height:25px;">
+                </span>
+                <input name="password" type="password" class="form-control em2" id="password" placeholder="Password" style="height:50px; padding: 6px 45px;">
+                    <?php if($errors->has('password')): ?>
+                        <p class="help-block"><?php echo e($errors->first('password')); ?></p>
+                    <?php endif; ?>
+                </div>
+            </div>
+            <div>
+                <input type="hidden" name="type" value="user">
+                <div class="send-box">
+                    <div class="sig-btn">
+                      <input type="checkbox"><span class="remember-css">Remember me</span>
+                        <input type="submit" class="btn btn-primary" value="Log In">
+                    </div>
+                        <p class="forgt-pass"><a href="#">Forgot Password?</a></p>
+                </div><!--send -->
+            </div>       
+            <div class="social-button">
+                <div class="col-xs-12 col-sm-4 col-md-3 col-lg-4">
+                    <div class="fb">      
+                        <a class="btn btn-block btn-social btn-facebook" style="box-shadow: 2px 3px 0px #0821A2">
+                            <i class="fa fa-facebook"></i>
+                            <span style="font-size: smaller;">Connect Facebook</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-4 col-md-3 col-lg-4">
+                    <div class="gm">      
+                        <a class="btn btn-block btn-social btn-google" style="box-shadow: 2px 3px 0px #770D00">
+                            <i class="fa fa-google"></i>
+                            <span style="font-size: smaller;">Connect Google</span>
+                        </a>
+                    </div>
+                </div><!-- /.col-lg-6 -->
+            </div><!-- /.row -->
+        </form>
+      </div>
+    </div>
+    <div class="modal-footer login-footer">
+        <p class="footer-p">Don't have an account? <a href="/register">Signup</a></p>
+    </div>
+  </div>
+
+
+<?php echo $__env->make('includes.footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+    </body>
+</html>

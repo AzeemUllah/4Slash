@@ -1,0 +1,676 @@
+<header class="main-header">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <?php if(\Illuminate\Support\Facades\Auth::user()->check()): ?>
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                            data-target="#bs-example-navbar-collapse-3" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar" style="background-color:#31b4ff;"></span>
+                        <span class="icon-bar" style="background-color:#31b4ff;"></span>
+                        <span class="icon-bar" style="background-color:#31b4ff;"></span>
+                    </button>
+                <?php endif; ?>
+                <a href="<?php echo e(url()); ?>" class="logo js-gtm-event" data-gtm-action="logo" data-gtm-event="navigation"
+                   data-gtm-label="clicked">Cnerr logo</a>
+
+                <?php if(!\Illuminate\Support\Facades\Auth::user()->check()): ?>
+                    <div class="col-xs-5" id="show-box-1">
+                        <form id="withou-logged-form" class="navbar-form navbar-left" accept-charset="UTF-8"
+                              action="<?php echo e(route('gigs')); ?>" id="search-form-nav-bar" method="get">
+                            <div class="global-search js-global-search ">
+                                <div class="inner cf">
+                                    <input style="position: relative;" class="js-search-input" id="" maxlength="40"
+                                           name="search"
+                                           placeholder="Find Services" type="text" autocomplete="off">
+                                    <button style="border:0px; background:transparent; position: absolute;top:8px; right:0px;"
+                                            type="submit">
+
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                        <a id="show-text-head-2" href="" style="color:white;">Marketplace For Creative Minds</a>
+                    </div>
+                    <div class="col-xs-4" id="show-box-2">
+                        <ul>
+                            <li class="pull-left col-xs-6"><a href="#" style="color:#e5e5e5"
+                                                              class="js-open-popup-join js-gtm-event"
+                                                              data-gtm-action="black-nav" data-gtm-label="join"
+                                                              data-gtm-event="navigation"
+                                                              data-toggle="modal" data-target="#gridSystemModal1">Register</a>
+                            </li>
+                            <li class="pull-left col-xs-1" style="color:white;">|</li>
+                            <li class="pull-left col-xs-5"><a href="#" style="color:#e5e5e5"
+                                                              class="js-open-popup-login js-gtm-event"
+                                                              data-gtm-action="black-nav" data-gtm-label="sign in"
+                                                              data-gtm-event="navigation" data-toggle="modal"
+                                                              data-target="#gridSystemModal">Log In</a>
+                            </li>
+                            <li>|</li>
+                            <?php /*<li><a href="/funktioniert">So funktioniert´s</a></li>*/ ?>
+                        </ul>
+                    </div>
+                <?php endif; ?>
+            </div>
+            <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-3" aria-expanded="false">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <form class="navbar-form navbar-left" style="margin-top: 18px;margin-left: 0;margin-right: 0;"
+                              accept-charset="UTF-8"
+                              action="<?php echo e(route('gigs')); ?>" id="search-form-nav-bar" method="get">
+                            <div class="global-search js-global-search ">
+                                <div class="inner cf">
+                                    <input style="position: relative;" class="js-search-input" id="" maxlength="40"
+                                           name="search"
+                                           placeholder="Find Services" type="text" autocomplete="off">
+                                    <button style="border:0px; position: absolute; top:8px; right:8px; background:transparent;"
+                                            type="submit">
+
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </li>
+                </ul>
+                <nav class="main-nav nav navbar-nav navbar-right">
+                    <ul class="">
+                        <?php if(\Illuminate\Support\Facades\Auth::user()->check()): ?>
+                            <li>
+                                <nav class="main-nav main-nav-user">
+                                    <ul>
+                                        <?php /*<li class="menu-icn icn-todo hint--bottom js-mark" data-mark="todos"
+                                            data-hint="Dashboard">
+                                            <a href="<?php echo e(route('userdashboard')); ?>" class="js-gtm-event-auto"
+                                               data-gtm-action="black-nav-loggedin" data-gtm-category="navigation"
+                                               data-gtm-label="to do" title="Dashboard"><i
+                                                        class="fa fa-dashboard fa-nav-icons"></i> </a>
+                                        </li>*/ ?>
+                                        <?php /*<li style="padding-top: 20px; padding-right: 10px;">*/ ?>
+                                        <?php /*<div id="google_translate_element" style="display:none;"></div><script type="text/javascript">*/ ?>
+                                        <?php /*function googleTranslateElementInit() {*/ ?>
+                                        <?php /*new google.translate.TranslateElement({pageLanguage: 'de', includedLanguages: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');*/ ?>
+                                        <?php /*}*/ ?>
+                                        <?php /*</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>*/ ?>
+                                        <?php /*</li>*/ ?>
+                                        <li class="dropdown header-notify menu-icn icn-notify hint--bottom js-mark"
+                                            data-mark="notifications" data-hint="Notifications">
+                                            <a href="#" data-toggle="dropdown"
+                                               class="js-notify-trigger js-gtm-event-auto"
+                                               data-gtm-category="navigation" data-gtm-action="black-nav-loggedin"
+                                               data-gtm-label="open notifications" rel="noindex, nofollow"
+                                               title="Notifications">
+                                                <i class="fa fa-bell fa-nav-icons"></i>
+                                                <span class="label label-warning <?php echo e((\App\Notification::hasNotifications()) ? '' : ' sr-only'); ?> user-notify"><?php echo e(\App\Notification::usertotalNotifications()); ?></span>
+                                            </a>
+                                            <div class="notify-menu">
+                                                <header>
+                                                    <h6>
+                                                        <a class="mark-read js-mark-read js-gtm-event-auto" href="#"
+                                                           data-gtm-category="navigation"
+                                                           data-gtm-action="black-nav-loggedin"
+                                                           data-gtm-label="mark notifications" rel="noindex, nofollow">Alles
+                                                            als gelesen markieren</a>
+                                                        Benachrichtigungen
+                                                    </h6>
+                                                </header>
+                                                <div class="antiscroll-wrap">
+                                                    <div class="antiscroll-inner">
+                                                        <div class="loading">
+                                                            <a style="color: #444444; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"
+                                                               href="#"></a>
+                                                        </div>
+
+                                                        <?php /*<a class="load-more js-load-more js-gtm-event-auto" href="#"
+                                                           data-gtm-category="navigation"
+                                                           data-gtm-action="black-nav-loggedin"
+                                                           data-gtm-label="load notifications" rel="noindex, nofollow">Load
+                                                            More</a>*/ ?>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="menu-icn icn-inbox hint--bottom js-icn-inbox" data-mark="inbox"
+                                            data-hint="Workstreams">
+                                            <a href="<?php echo e(route('myorders')); ?>" class="js-gtm-event-auto"
+                                               data-gtm-action="black-nav-loggedin" data-gtm-category="navigation"
+                                               data-gtm-label="click conversations" title="Bestellungen"><img
+                                                        src="<?php echo e(url('/') .'/img/my_orders.png'); ?>" width="29px"
+                                                        style="margin-top: 19px;"> </a>
+                                        </li>
+                                        <li class="header-user header-user-is-online">
+                                            <a href="<?php echo e(route('myorders')); ?>"
+                                               class="user-trigger js-gtm-event-auto"
+                                               data-gtm-action="black-nav-loggedin" data-gtm-category="navigation"
+                                               data-gtm-label="open username">
+                                                <?php if(!empty(\Illuminate\Support\Facades\Auth::user()->get()->profile_image)): ?>
+                                                    <span>angemeldet als</span>
+                                                    <span class="user-pict-24">
+                                                    <img src="<?php echo e(\Illuminate\Support\Facades\Auth::user()->get()->profile_image); ?>"
+                                                         alt="Profile Image" width="24" height="24"
+                                                         data-reload="inprogress">
+                                                </span>
+                                                    <span class="user-is-online  is-online"
+                                                          data-user-id="zohaibghafoor2"><em></em></span>
+                                                <?php else: ?>
+                                                    <span class="user_icon">
+                                                    <span class="user-pict-24"
+                                                          style="width:24px;height:24px;background-color:#797979;color:white;padding:2px;">
+                                                        <span style="font-size:16px;"
+                                                              class="alternat"><?php echo e(\Illuminate\Support\Facades\Auth::user()->get()->username[0]); ?></span>
+                                                    </span>
+                                                    <span class="user-is-online  is-online"
+                                                          data-user-id="zohaibghafoor2"><em></em></span>
+                                                </span>
+                                                <?php endif; ?>
+                                                <span class="user-name"><?php echo e(\Illuminate\Support\Facades\Auth::user()->get()->username); ?></span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="userMenuTrag"><b class="caret"></b></a>
+                                            <ul class="dropdown-menu">
+                                                <li>
+                                                    <a href="<?php echo e(route('myorders')); ?>"><span
+                                                                class="fa fa-tachometer"></span> Dashboard</a>
+                                                </li>
+                                                <li>
+                                                    <a href="<?php echo e(url()); ?>/profile"><span
+                                                                class="glyphicon glyphicon-user"></span> My Profile</a>
+                                                </li>
+                                                <li>
+                                                    <a href="" class="drop_down1"><span
+                                                                class="glyphicon glyphicon-list"></span> Orders<b
+                                                                class="caret"></b></a>
+                                                    <ul class="cancel_order2" style="display: none;">
+                                                        <li>
+                                                            <a href="<?php echo e(route('myorders')); ?>"> &nbsp;&nbsp;&nbsp;&nbsp;
+                                                                <span class="glyphicon glyphicon-list"></span> Overview</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="<?php echo e(route('myorders')); ?>?status=cancel"> &nbsp;&nbsp;&nbsp;&nbsp;
+                                                                <span class="glyphicon glyphicon-list"></span>
+                                                                Cancellations</a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a href="<?php echo e(url()); ?>/payments"><span
+                                                                class="glyphicon glyphicon-credit-card"></span>Payments</a>
+                                                </li>
+                                                <li>
+                                                    <a href="<?php echo e(route('myfavourites')); ?>"><span
+                                                                class="glyphicon glyphicon-heart"></span> Favourites</a>
+                                                </li>
+                                                <li>
+                                                    <a href="<?php echo e(route('mysettings')); ?>">
+                                                        <span
+                                                                class="glyphicon glyphicon-cog"></span>
+
+                                                        Settings</a>
+                                                </li>
+                                                <li role="separator" class="divider"></li>
+                                                <li>
+                                                    <a href="<?php echo e(url()); ?>/logout"><span
+                                                                class="glyphicon glyphicon-off"></span>Sign out</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </li>
+                        <?php else: ?>
+                            <?php /*<li style="padding-top: 20px; padding-right: 10px;"><div id="google_translate_element" style="display:none;"></div><script type="text/javascript">*/ ?>
+                            <?php /*function googleTranslateElementInit() {*/ ?>
+                            <?php /*new google.translate.TranslateElement({pageLanguage: 'de', includedLanguages: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');*/ ?>
+                            <?php /*}*/ ?>
+                            <?php /*</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script></li>*/ ?>
+                            <?php /*<li><a href="/funktioniert" style="color:#e5e5e5" class="js-open-popup-join js-gtm-event"*/ ?>
+                            <?php /*data-gtm-action="black-nav" data-gtm-label="join" data-gtm-event="navigation"><b>So funktioniert´s</b></a></li>*/ ?>
+                            <li><a href="#" style="color:#e5e5e5" class="js-open-popup-join js-gtm-event"
+                                   data-gtm-action="black-nav" data-gtm-label="join" data-gtm-event="navigation"
+                                   data-toggle="modal" data-target="#gridSystemModal1">Registration</a></li>
+                            <li><a href="#" style="color:#e5e5e5" class="js-open-popup-login js-gtm-event"
+                                   data-gtm-action="black-nav" data-gtm-label="sign in"
+                                   data-gtm-event="navigation" data-toggle="modal"
+                                   data-target="#gridSystemModal">Login</a></li>
+                            <li><a href="<?php echo e(route('contact')); ?>" style="color:#e5e5e5"
+                                   class="js-open-popup-login js-gtm-event" data-gtm-action="black-nav"
+                                   data-gtm-label="sign in" data-gtm-event="navigation">Contact</a></li>
+                        <?php endif; ?>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </nav>
+</header>
+<header>
+    <nav class="navbar navbar-default" style="min-height:0px;">
+        <div class="container-fluid">
+            <?php /*<div class="navbar-header">*/ ?>
+            <?php /*<div class="row text-right">*/ ?>
+            <?php /*<button type="button" class="btn btn-primary btn-custom-gig2"*/ ?>
+            <?php /*style="border-radius:0 0 10px 10px;color:white; font-size:16px; font-family:HelveticaLTStd-Light; outline:none; border-color: #367FA9;">*/ ?>
+            <?php /*Individuelle Anfrage <span class="custom-gig"><span*/ ?>
+            <?php /*class="glyphicon glyphicon-menu-up" id="custom-gig"*/ ?>
+            <?php /*style="display:none;"></span></span></button>*/ ?>
+            <?php /*<span style="color:#367fa9; font-weight: bold;" id="unsere">Unsere Produkte</span>*/ ?>
+            <?php /*<button type="button" class="navbar-toggle collapsed" data-toggle="collapse"*/ ?>
+            <?php /*data-target="#bs-example-navbar-collapse-4" aria-expanded="false">*/ ?>
+            <?php /*<span class="sr-only">Toggle navigation</span>*/ ?>
+            <?php /*<span class="icon-bar" style="background-color:#31b4ff;"></span>*/ ?>
+            <?php /*<span class="icon-bar" style="background-color:#31b4ff;"></span>*/ ?>
+            <?php /*<span class="icon-bar" style="background-color:#31b4ff;"></span>*/ ?>
+            <?php /*</button>*/ ?>
+            <?php /*</div>*/ ?>
+            <?php /*</div>*/ ?>
+            <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-4" aria-expanded="false">
+                <ul class="main-cat-list js-main-cat-list float-clear-fix">
+                    <?php foreach(\App\Gigtype::where(['active' => 1, 'status' => 'enabled'])->get() as $cat): ?>
+                        <?php if(!empty($cat)): ?>
+                            <li class="dropdown">
+                                <a href="<?php echo e(route('gigscategory.gigs',['categoryslug'=> $cat->slug])); ?>"
+                                   data-gtm-action="homepage-dropdown-click" class="dropdown-toggle"
+                                   data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"
+                                   data-gtm-event="Category Navigation" data-gtm-label="graphics-design"
+                                   data-title="Graphics &amp; Design"><?php echo e($cat->name); ?></a>
+                                <div class="unnecessary-firefox-wrapper">
+                                    <?php if(count(\App\Gigtype_Subcategory::where(['gigtypes_id' => $cat->id])->get()) > 0): ?>
+                                        <div class="menu-cont">
+                                            <ul class="styl dropdown-menu">
+                                                <?php foreach(\App\Gigtype_Subcategory::where(['gigtypes_id' => $cat->id])->get() as $subcat): ?>
+                                                    <?php if(!empty($subcat)): ?>
+                                                        <li>
+                                                            <a href="<?php echo e(route('category.subcategory.gigs', ['categoryslug' => $cat->slug, 'subcategoryslug' => $subcat->slug])); ?>"
+                                                               data-gtm-action="homepage-dropdown-click"
+                                                               data-gtm-event="Category Navigation"
+                                                               data-gtm-label="create-cartoon-caricatures"
+                                                               data-title="Cartoons &amp; Caricatures"><?php echo e($subcat->name); ?></a>
+                                                        </li>
+                                                    <?php endif; ?>
+                                                <?php endforeach; ?>
+                                                <li id="back-project"><a href="<?php echo e(route('gigscategory.packages',['categoryslug'=> $cat->slug])); ?>">
+                                                        <span>Packages</span>
+                                                        <i class="fa fa-dropbox" aria-hidden="true"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    <?php endif; ?>
+                                </div>
+                            </li>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="custom-gigs" style="margin:0px;">
+        <div class="container">
+            <div class="col-md-7 col-xs-12 toggle-pane">
+                <div class="gig-style col-xs-12">
+                    <?php if(\Illuminate\Support\Facades\Auth::user()->check()): ?>
+                        <form id="formCustomOrder" method="post" action="<?php echo e(route('order.custom.create')); ?>">
+                            <div class="col-md-5">
+                                <h4 style="font-size:20px; font-family:Raleway-Medium; color:#367FA9">Products</h4>
+                                <?php $count = 1; ?>
+                                <?php foreach(\App\Gigtype::where(['status' => 'enabled', 'active' => 1])->get() as $cat): ?>
+                                    <div class="accordion-group new-accordion">
+                                        <div class="accordion-heading">
+                                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2"
+                                               href="#collapse<?php echo e($count); ?>">
+                                                <?php echo e($cat->name); ?> <input type="hidden" name="gigtype" required
+                                                                        value="<?php echo e($cat->id); ?>"/>
+                                            </a>
+                                        </div>
+
+                                        <div id="collapse<?php echo e($count); ?>"
+                                             class="accordion-body collapse <?php echo e((($count == 1)) ?  : ''); ?>">
+                                            <div class="accordion-inner">
+                                                <?php $subCatCount = 1; ?>
+                                                <?php foreach(\App\Gigtype_Subcategory::where(['gigtypes_id' => $cat->id])->get() as $subCat): ?>
+                                                    <?php if(!empty($subCat->name)): ?>
+                                                        <div class="checkbox checkbox-info checkbox-circle chck-bx3">
+                                                            <input value="<?php echo e($subCat->name); ?>" name="products[]"
+                                                                   id="checkbox<?php echo e($count . $subCatCount); ?>"
+                                                                   class="styled" type="checkbox">
+                                                            <label for="checkbox<?php echo e($count . $subCatCount); ?>">
+                                                                <p class="chck-bx-p"><?php echo e($subCat->name); ?></p>
+                                                            </label>
+                                                        </div>
+                                                    <?php endif; ?>
+                                                    <?php $subCatCount++ ?>
+                                                <?php endforeach; ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <?php $count++; ?>
+                                <?php endforeach; ?>
+                            </div>
+
+                            <div class="col-md-7 sub-form">
+                                <h4>Projektinformationen</h4>
+                                <input required name="comp-name" type="text" class="form-control input-lg"
+                                       placeholder="Name">
+                                <input required name="comp-email" type="email" class="form-control input-lg"
+                                       placeholder="E-mail">
+                                <input required name="comp-tel" type="tel" class="form-control input-lg" placeholder="Telefon
+">
+                                <input name="comp-site" type="text" class="form-control input-lg" placeholder="Website">
+                                <textarea required name="comp-extra-note" class="form-control"
+                                          placeholder="Projektbeschreibung" rows="4"></textarea>
+                                <p style="font-size:14px; color:#7b7b7b;">
+                                    <input type="hidden" name="gigtype" required value="">
+                                </p>
+                                <input class="form-control input-lg" placeholder="Projektbudget
+
+">
+                                <button type="submit" class="btn btn-primary form-btn"
+                                        style="background: #367fa9; border: 0px;">senden
+                                </button>
+
+                            </div>
+                        </form>
+                    <?php else: ?>
+                        <form id="formCustomOrder" method="post" action="<?php echo e(route('ordercustom')); ?>">
+                            <div class="col-md-5">
+                                <h4 style="font-size:20px; font-family:Raleway-Medium; color:#367FA9">Produkte</h4>
+                                <?php $count = 1; ?>
+                                <?php foreach(\App\Gigtype::where(['status' => 'enabled', 'active' => 1])->get() as $cat): ?>
+                                    <div class="accordion-group new-accordion">
+                                        <div class="accordion-heading">
+                                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2"
+                                               href="#collapse<?php echo e($count); ?>">
+                                                <?php echo e($cat->name); ?> <input type="hidden" name="gigtype" required
+                                                                        value="<?php echo e($cat->id); ?>"/>
+                                            </a>
+                                        </div>
+
+                                        <div id="collapse<?php echo e($count); ?>"
+                                             class="accordion-body collapse <?php echo e((($count == 1)) ?  : ''); ?>">
+                                            <div class="accordion-inner">
+                                                <?php $subCatCount = 1; ?>
+                                                <?php foreach(\App\Gigtype_Subcategory::where(['gigtypes_id' => $cat->id])->get() as $subCat): ?>
+                                                    <?php if(!empty($subCat->name)): ?>
+                                                        <div class="checkbox checkbox-info checkbox-circle chck-bx3">
+                                                            <input value="<?php echo e($subCat->name); ?>" name="products[]"
+                                                                   id="checkbox<?php echo e($count . $subCatCount); ?>"
+                                                                   class="styled" type="checkbox">
+                                                            <label for="checkbox<?php echo e($count . $subCatCount); ?>">
+                                                                <p class="chck-bx-p"><?php echo e($subCat->name); ?></p>
+                                                            </label>
+                                                        </div>
+                                                    <?php endif; ?>
+                                                    <?php $subCatCount++ ?>
+                                                <?php endforeach; ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <?php $count++; ?>
+                                <?php endforeach; ?>
+                            </div>
+
+                            <div class="col-md-7 sub-form">
+                                <h4>Projektinformationen</h4>
+                                <input required name="comp-name" type="text" class="form-control input-lg"
+                                       placeholder="Name">
+                                <input required name="comp-email" type="email" class="form-control input-lg"
+                                       placeholder="E-mail">
+                                <input required name="comp-tel" type="tel" class="form-control input-lg" placeholder="Telefon
+">
+                                <input name="comp-site" type="text" class="form-control input-lg" placeholder="Website">
+                                <textarea required name="comp-extra-note" class="form-control"
+                                          placeholder="Projektbeschreibung" rows="4"
+                                          style="padding: 6px 7px 7px 7px;"></textarea>
+                                <p style="font-size:14px; color:#7b7b7b;">
+                                    <input type="hidden" name="gigtype" required value="">
+                                </p>
+                                <input class="form-control input-lg" placeholder="Projektbudget"
+                                       style="padding: 6px 7px 7px 7px;">
+                                <button type="submit" class="btn btn-primary form-btn"
+                                        style="background: #3c8dbc; border: 0px;">senden
+                                </button>
+
+                            </div>
+                        </form>
+                    <?php endif; ?>
+                </div>
+                <?php /*                    <a href="<?php echo e(route('userpackages')); ?>" class="btn btn-primary btn-packages" style="right: 235px;color:white; font-size:16px; font-family:HelveticaLTStd-Light; outline:none; background: #3c8dbc;border-color: #3c8dbc; border-radius:0 0 10px 10px">Pakete</a>*/ ?>
+                <?php /*<button type="button" class="btn btn-primary btn-custom-gig"*/ ?>
+                <?php /*style="border-radius:0 0 10px 10px;color:white; font-size:16px; font-family:HelveticaLTStd-Light; outline:none; border-color: #367FA9;">*/ ?>
+                <?php /*Individuelle Anfrage <span class="custom-gig"><span class="glyphicon glyphicon-menu-down"*/ ?>
+                <?php /*id="custom-gig"></span><span*/ ?>
+                <?php /*class="glyphicon glyphicon-menu-up" id="custom-gig" style="display:none;"></span></span>*/ ?>
+                <?php /*</button>*/ ?>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" id="gridSystemModal1" tabindex="-1">
+    <div class="modal-dialog modal-sm model-login-width" role="document">
+        <div class="modal-content" ng-controller="RegisterController">
+            <div class="modal-header login-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title login-title" id="gridSystemModalLabel">Registrierung</h4>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <form>
+                        <div class="username form-group<?= "{{ hasEmailError ? ' has-error' : '' }}" ?>">
+                            <label for="email_adress" class="sr-only">Email_address</label>
+                            <span style="position:relative; top:38px; left:10px;">
+                                        <?php /*<i class="fa fa-envelope-o"></i>*/ ?>
+                                    </span>
+                            <input ng-model="emailModel" type="text" class="form-control em" id="email_adress"
+                                   placeholder="E-mail" style="height:50px; padding: 6px 45px;">
+                            <p class="help-block"><?='{{  email }}'?></p>
+                        </div>
+                        <div class="user form-group<?= "{{ hasUsernameError ? ' has-error' : '' }}" ?>">
+                            <label for="user" class="sr-only">User Name</label>
+                            <span style="position:relative; top:38px; left:10px;">
+                                       <?php /* <img src="img/lg-men.png" style="height:25px;">*/ ?>
+                                    </span>
+                            <input ng-model="usernameModel" type="text" class="form-control em" id="user"
+                                   placeholder="Username" style="height:50px; padding: 6px 45px;">
+                            <p class="help-block"><?="{{  username }}"?></p>
+                        </div>
+                        <div class="pass form-group<?= "{{ hasPasswordError ? ' has-error' : '' }}" ?>">
+                            <label for="pass" class="sr-only">Password</label>
+                            <span style="position:relative; top:40px; left:10px;">
+                                        <?php /*<img src="img/lg-key.png" style="height:25px;">*/ ?>
+                                    </span>
+                            <input ng-model="passwordModel" type="password" class="form-control em" id="Pass"
+                                   placeholder="Password" style="height:50px; padding: 6px 45px;">
+                            <p class="help-block"><?='{{  password }}'?></p>
+                        </div>
+                        <div class="con_pass form-group<?= "{{ hasPasswordError ? ' has-error' : '' }}" ?>">
+                            <label for="con_pass" class="sr-only">Confirm Password</label>
+                            <span style="position:relative; top:40px; left:10px;">
+                                       <?php /* <img src="img/lg-key.png" style="height:25px;">*/ ?>
+                                    </span>
+                            <input ng-model="passwordConfirmationModel" type="password" class="form-control em"
+                                   id="con_pass" placeholder="
+Confirm Password" style="height:50px; padding: 6px 45px;">
+
+                        </div>
+
+                        <div class="form-group" style="padding-top:10px;">
+                            <label class="checkbox-inline"><input type="checkbox" value="" ng-model="agreeLicenceModel"
+                                                                  id="licence">Ich habe die <a href="/daten">Datenschutzbestimmungen</a>
+                                gelesen und akzeptiere sie.*</label>
+                            <p class="help-block"><?= "{{ agreeLicenceError ? ' Error' : '' }}" ?></p>
+                            <p class="help-block"><span id="License_error"
+                                                        style="font-size: 12px;color: #A94442; font-weight: bold;"></span>
+                            </p>
+
+
+                        </div>
+                        <div class="form-group">
+                            <label class="checkbox-inline"><input ng-model="newsletter_val" value="1" type="checkbox"
+                                                                  name="newsletter" id="newsletter">Ich möchte per
+                                E-Mail über Neuigkeiten und Aktionen informiert werden. Abmeldung jederzeit im
+                                Newsletter oder auf unserer Homepage möglich.</label>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="chk-margin-float">
+                                </div>
+                            </div><!-- /.col-lg-6 -->
+                            <div class="col-lg-6">
+                                <div class="btn-margin-float">
+                                    <input type="submit" class="btn btn-primary" value="Registrierung"
+                                           ng-disabled="regSubmitted" ng-click="register()" id="submitRegister"
+                                           style="background: #367FA9">
+                                </div>
+                            </div><!-- /.col-lg-6 -->
+                        </div><!-- /.row -->
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer login-footer">
+                <p class="footer-p">Sind sie bereits registriert? Klicken Sie <a href="#" data-toggle="modal"
+                                                                                 data-target="#gridSystemModal"
+                                                                                 id="loginModel">hier</a> um sich
+                    einzuloggen</p>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<div class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" id="gridSystemModal" tabindex="-1">
+    <div class="modal-dialog modal-sm model-login-width" role="document">
+        <div class="modal-content" ng-controller="LoginController">
+            <div class="modal-header login-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title login-title" id="gridSystemModalLabel">Kundenlogin</h4>
+            </div>
+
+
+            <div ng-if="hasOtherError" class="alert alert-danger animate-if" role="alert">
+                <span class="glyphicon glyphicon-warning-sign"></span>
+                <?php echo "User and Password is incorrect" ?>
+            </div>
+
+
+            <div class="modal-body">
+                <form>
+                    <div class="input form-group<?= "{{ hasEmailError ? ' has-error' : '' }}" ?>"
+                         style="positon:relative">
+                        <label for="emailadress" class="sr-only">Email address</label>
+                        <span style="position:relative; top:35px; left:10px;">
+                                   <?php /* <i class="fa fa-envelope-o"></i>*/ ?>
+                                </span>
+                        <input ng-model="emailModel" type="email" class="form-control em" id="emailadress"
+                               placeholder="E-mail" style="height:50px; padding: 6px 45px;">
+
+
+                    </div>
+                    <div class="input form-group<?= "{{ hasPasswordError ? ' has-error' : '' }}" ?>">
+                        <label for="password" class="sr-only">Password</label>
+                        <span style="position:relative; top:40px; left:10px;">
+                                    <?php /*<img src="img/lg-key.png" style="height:25px;">*/ ?>
+                                </span>
+                        <input ng-model="passwordModel" type="password" class="form-control em" id="password"
+                               placeholder="Password" style="height:50px; padding: 6px 45px;">
+
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="chk-margin-float">
+                                <input type="checkbox" class="chk-float-left"><span class="remember-css">Signed In</span>
+                            </div>
+                        </div><!-- /.col-lg-6 -->
+                        <div class="col-lg-6">
+                            <div class="btn-margin-float">
+                                <input ng-click="login()" type="submit" class="btn btn-primary" value="einloggen"
+                                       style=" background: #367FA9;">
+                            </div>
+                        </div><!-- /.col-lg-6 -->
+                    </div><!-- /.row -->
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="fgt-margin-float">
+                                <p class="forgt-pass"><a href="/password/email">Password Forgot?</a></p>
+                            </div>
+                        </div><!-- /.col-lg-6 -->
+                    </div><!-- /.row -->
+
+                    <hr>
+                    <div class="row or-css">
+                        <div class="col-lg-12">
+                            <p>or</p>
+                        </div><!-- /.col-lg-6 -->
+                    </div>
+
+                    <div class="ssk-block" style="width: 230px; margin:0 auto">
+                        <a href="redirect" class=""><img src="https://cnerr.de/img/login-with-facebook.png" style="width:100%"> </a>
+                        <?php /*<a href="" class="ssk ssk-text ssk-twitter">Sign in with Twitter</a>*/ ?>
+                        <?php /*<a href="" class="ssk ssk-text ssk-google-plus">Sign in with Google</a>*/ ?>
+                    </div>
+
+                    <?php /*  <div class="row">
+
+                              <div class="col-lg-6">
+                                  <a href="" class="btn btn-block ssk ssk-text ssk-facebook ssk-lg"><span style="font-size:smaller;">Facebook</span></a>
+                              */ ?><?php /*<div class="">*/ ?><?php /*
+                                  */ ?><?php /*<a class="btn btn-block btn-social btn-facebook" style="box-shadow: 2px 3px 0px #0821A2">*/ ?><?php /*
+                                      */ ?><?php /*<i class="fa fa-facebook"></i>*/ ?><?php /*
+                                      */ ?><?php /*<span style="font-size: smaller;">Connect Facebook</span>*/ ?><?php /*
+                                  */ ?><?php /*</a>*/ ?><?php /*
+                              */ ?><?php /*</div>*/ ?><?php /*
+                              </div><!-- /.col-lg-6 -->
+                              <div class="col-lg-6">
+                                  <a href="" class="btn btn-block ssk ssk-text ssk-google-plus ssk-lg"><span style="font-size: smaller;">Google</span></a>
+                                  */ ?><?php /*<a href="" class="ssk ssk-text ssk-google-plus">Connect Google</a>*/ ?><?php /*
+                              */ ?><?php /*<div class="">*/ ?><?php /*
+                                  */ ?><?php /*<a class="btn btn-block btn-social btn-google" style="box-shadow: 2px 3px 0px #770D00">*/ ?><?php /*
+                                      */ ?><?php /*<i class="fa fa-google"></i>*/ ?><?php /*
+                                      */ ?><?php /*<span style="font-size: smaller;">Connect Google</span>*/ ?><?php /*
+                                  */ ?><?php /*</a>*/ ?><?php /*
+                              */ ?><?php /*</div>*/ ?><?php /*
+                              </div><!-- /.col-lg-6 -->
+                      </div><!-- /.row -->*/ ?>
+                </form>
+            </div>
+            <div class="modal-footer login-footer">
+                <p class="footer-p"><a href="#" data-toggle="modal" data-target="#gridSystemModal1" id="registrieren">New Registration</a></p>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -
+        </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".userMenuTrag").click(function () {
+            var check = $(this).parent().find(".dropdown-menu").css("display");
+            if (check == "none") {
+                $(this).parent().find(".dropdown-menu").css("display", "block");
+            } else {
+                $(this).parent().find(".dropdown-menu").css("display", "none");
+            }
+        });
+        $('.drop_down1').click(function () {
+            var check = $('.cancel_order2').css('display');
+            if (check == 'none') {
+                $('.cancel_order2').show();
+            } else {
+                $('.cancel_order2').hide();
+            }
+        });
+    });
+    $(".dropdown-toggle").removeAttr("aria-expanded");
+    $(".dropdown-toggle").click(function () {
+        window.location.href = this;
+        $(".styl").hide();
+    });
+    $(".btn-custom-gig2").on("click", function () {
+        var chkDiv = $('.gig-style');
+        if (chkDiv.css("display") == "none") {
+            chkDiv.slideDown();
+        } else {
+            chkDiv.slideUp();
+        }
+    });
+</script>

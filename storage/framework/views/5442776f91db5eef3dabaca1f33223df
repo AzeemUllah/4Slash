@@ -1,0 +1,72 @@
+<?php echo $__env->make('includes.header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+<style>
+    .cnerr-footer-background-color{
+        position: relative !important;
+    }
+    .dash-main-content{
+        min-height: auto;
+        background-color: white;
+    }
+</style>
+
+<!-- content -->
+<div class="dash-main-content">
+    <div class="back_abstract">
+        <div class="container">
+            <div class="col-xs-2"></div>
+            <div class="col-xs-4"></div>
+            <div class="col-xs-4">
+                <?php if(\Illuminate\Support\Facades\Auth::user()->check()): ?>
+                    <div class="referral_box" ng-controller="checkEmail">
+                        <h3>
+                            Invite Friend & Get $5
+                        </h3>
+                        <p>
+                            Earn $5 for every Friend that buys on 4slash
+                        </p>
+                        <form>
+                            <div class="form-group">
+                                <div class="col-xs-8 zero-padd">
+                                    <input type="text" name="email" ng-model="emailModel" class="form-control">
+                                </div>
+                                <div class="col-xs-4 zero-padd">
+                                    <input type="submit" name="Send" value="Send" ng-click="CHeckmyemail()" class="btn btn-primary send_referr">
+                                </div>
+                                <p class="help-block"><?='{{  email }}'?></p>
+                                <p class="help-block"><?='{{  success }}'?></p>
+                            </div>
+                        </form>
+                    </div>
+                <?php else: ?>
+                    <div class="referral_box">
+                        <h3>
+                            Earn a reward
+                            for you and your friends
+                        </h3>
+                        <ul class="referre_page">
+                            <li>
+                                <span><i class="fa fa-id-badge" aria-hidden="true"></i></span>
+                                <span>Join Fiverr today with one quick click</span>
+                            </li>
+                            <li>
+                                <span><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                                <span>
+                                    Invite your friends to join 4slash
+                                </span>
+                            </li>
+                            <li>
+                                <span><i class="fa fa-gift" aria-hidden="true"></i></span>
+                                <span>Earn $5 when your friends make their first purchase</span>
+                            </li>
+                        </ul>
+                    </div>
+                <?php endif; ?>
+            </div>
+            <div class="col-xs-4"></div>
+        </div>
+    </div>
+</div>
+
+<?php echo $__env->make('includes.footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+

@@ -1,0 +1,26 @@
+<h1>SIGN UP</h1>
+
+
+
+<form method="post" action="<?php echo e(route('auth.reg')); ?>">
+    <label for="username">Username: </label>
+    <input type="text" name="username" id="username">
+
+    <label for="email">Email: </label>
+    <input type="email" name="email" id="email">
+
+    <label for="password">Password: </label>
+    <input type="password" name="password" id="password">
+
+    <button type="submit">Register</button>
+    <input type="hidden" name="_token" value="<?php echo e(Session::token()); ?>">
+    <?php if(count($errors) > 0): ?>
+        <div class="alert alert-danger">
+            <ul>
+                <?php foreach($errors->all() as $error): ?>
+                    <li><?php echo e($error); ?></li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+    <?php endif; ?>
+</form>

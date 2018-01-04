@@ -1,0 +1,242 @@
+<?php $__env->startSection('header_title'); ?>
+
+    <h1>Edit Profile</h1>
+
+<?php $__env->stopSection(); ?>
+
+<style>
+    .help-block {
+        color: #ff0002 !important;
+    }
+</style>
+
+
+<?php $__env->startSection('content'); ?>
+    <div class="row">
+        <?php echo $__env->make('pages.agency.partials.side_menue', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+        <div class="col-xs-9">
+            <form action="<?php echo e(route('PutProfile.Update')); ?>" method="post" class="form-vertical">
+
+                <div class="box">
+                    <div class="box-header">
+                        <h3 class="box-title">Personal Information</h3>
+                    </div>
+                    <div class="box-body agency_update">
+                        <div class="col-xs-6">
+                            <div class="username form-group">
+                                <label for="company">Firma</label>
+                                <input name="company" type="text" class="form-control em"
+                                       value="<?php echo e($agencyDetails->agency_name); ?>" placeholder="Company"
+                                       style="height:50px;">
+                            </div>
+                            <div class="form-group">
+                                <p style="margin-bottom: 0px;">Anrede:</p>
+                                <label for="male">Herr</label>
+                                <input type="radio" name="gender"
+                                       value="Male" <?php if($agencyDetails->gender=='Male'): ?><?php echo e("checked=checked"); ?> <?php endif; ?>>
+
+                                <label for="female">Frau</label>
+
+                                <input type="radio" name="gender"
+                                       value="Female" <?php if($agencyDetails->gender=='Female'): ?><?php echo e("checked=checked"); ?> <?php endif; ?>>
+
+                            </div>
+                            <div class="username form-group">
+                                <label for="name">Name*</label>
+                                <input name="name" type="text" class="form-control em"
+                                       value="<?php echo e($agency->username); ?>" placeholder="Name"
+                                       style="height:50px;">
+                                <?php echo $errors->first('name', '<span class="help-block">:message</span>'); ?>
+                            </div>
+                            <div class="form-group">
+
+                                <input type="hidden" class="form-control em"
+                                       value="<?php echo e($agencyDetails->id); ?>" placeholder="Nachname"
+                                       style="height:50px;" name="id">
+                            </div>
+                            <div class="form-group<?= $errors->has('email') ? ' has-error' : '' ?>">
+                                <label for="email_adress">E-mail*</label>
+
+                                <input name="email" type="email" class="form-control em"
+                                       value="<?php echo e($agency->email); ?>" placeholder="E-mail"
+                                       style="height:50px;">
+                                <?php echo $errors->first('email', '<span class="errors">:message</span>'); ?>
+                                <input name="user_id" type="hidden" class="form-control em"
+                                       value="<?php echo e($agency->id); ?>" placeholder="E-mail"
+                                       style="height:50px;">
+
+                            </div>
+                            <div class="form-group">
+                                <label>First Name:</label>
+                                <input type="text" name="fname" id="fname" class="form-control"
+                                       value="<?php echo e($agencyDetails->f_name); ?>">
+                                <?php if($errors->has('fname')): ?>
+                                    <p class="help-block"><?php echo e($errors->first('fname')); ?></p>
+                                <?php endif; ?>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Lase Name:</label>
+                                <input type="text" name="lname" id="lname" class="form-control"
+                                       value="<?php echo e($agencyDetails->l_name); ?>">
+                                <?php if($errors->has('lname')): ?>
+                                    <p class="help-block"><?php echo e($errors->first('lname')); ?></p>
+                                <?php endif; ?>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Street Nr:</label>
+                                <input type="text" name="street" id="street" class="form-control"
+                                       value="<?php echo e($agencyDetails->street_no); ?>">
+                                <?php if($errors->has('street')): ?>
+                                    <p class="help-block"><?php echo e($errors->first('street')); ?></p>
+                                <?php endif; ?>
+                            </div>
+                            <div class="form-group">
+                                <label for="post_add">Adresse/Hausnummer*</label>
+                                <input name="post_add" value="<?php echo e($agencyDetails->postal_code); ?>"
+                                       type="text" class="form-control em" id="user"
+                                       placeholder="Address" style="height:50px;">
+                                <?php echo $errors->first('post_add', '<span class="help-block">:message</span>'); ?>
+
+                            </div>
+                            <div class="form-group">
+                                <label for="">City</label>
+                                <input type="text" name="city" id="city" class="form-control"
+                                       value="<?php echo e($agencyDetails->city); ?>">
+                                <?php if($errors->has('city')): ?>
+                                    <p class="help-block"><?php echo e($errors->first('city')); ?></p>
+                                <?php endif; ?>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Country</label>
+                                <select name="country" id="country" class="form-control"
+                                        style="width: 195px;">
+                                    <?php foreach($countries as $country): ?>
+                                        <option <?php echo e((($agencyDetails) ? (($country->country_name == $agencyDetails->country) ? 'selected' : '') : '')); ?> value="<?php echo e($country->country_name); ?>"><?php echo e($country->country_name); ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+
+                            <?php /* <div class="form-group">
+                                 <label for="mobile">PLZ, Ort*</label>
+
+                                 <input name="zip" type="text" class="form-control em form-inline"  value="<?php echo e($agencyDetails->zip); ?>" style="height:50px;">
+
+                              </div>*/ ?>
+
+                            <div class="form-group">
+                                <label for="">Employees</label>
+                                <input type="number" name="emp" class="form-control"
+                                       value="<?php echo e($agencyDetails->employees); ?>">
+                            </div>
+
+                            <div class="form-group">
+
+                                <label for="email_adress">Telefonnummer*</label>
+
+                                <input name="phone" type="text" class="form-control em"
+                                       value="<?php echo e($agencyDetails->telephone); ?>" placeholder="Phone"
+                                       style="height:50px;">
+                                <?php echo $errors->first('phone', '<span class="help-block">:message</span>'); ?>
+                            </div>
+                            <div class="form-group">
+
+                                <label for="mobile">Mobile</label>
+
+                                <input name="mobile" type="text" value="<?php echo e($agencyDetails->mobile); ?>"
+                                       class="form-control em" placeholder="Mobile"
+                                       style="height:50px;">
+                                <?php if($errors->has('mobile')): ?>
+                                    <p class="help-block"><?php echo e($errors->first('mobile')); ?></p>
+                                <?php endif; ?>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <span>*Eingabe erforderlich</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="box-header">
+                        <h3 class="box-title">Skills</h3>
+                    </div>
+                    <div class="box-body">
+
+
+                        <?php $count = 1; ?>
+
+                        <?php foreach($gigtypes as $gigtype): ?>
+                            <div class="col-md-4">
+                                <h3 class="box-title"
+                                    style="padding-left:2px;background: #eee; margin: 0px 5px; padding: 10px; border-radius: 3px 3px 0 0;"><?php echo e($gigtype->name); ?></h3>
+                                <?php /*<input value="<?php echo e($gigtype->name); ?>" name="types[]" id="checkbox<?php echo e($count); ?>" class="styled type_check" type="checkbox"*/ ?>
+                                <?php /*<?php foreach($Agency_skills as $skill): ?>*/ ?>
+                                <?php /*<?php echo e(($skill==$gigtype->name) ? "checked": ''); ?>*/ ?>
+                                <?php /*<?php endforeach; ?> >*/ ?>
+                                <?php /*<label for="checkbox<?php echo e($count); ?>" class="cat-btn btn btn-primary">*/ ?>
+                                <?php /*<p class="chck-bx-p"><?php echo e($gigtype->name); ?></p>*/ ?>
+                                <?php /*</label>*/ ?>
+
+                                <div class="form-group text-left form-inline sub_cat" id="link1">
+                                    <?php $subCatCount = 1;?>
+                                    <?php foreach($gigtype['Subcategory'] as $subcat): ?>
+                                        <ul class="list"
+                                            style="margin:0 5px; padding: 0; list-style:  none; background-color: rgba(238, 238, 238, 0.46) !important;">
+                                            <li style="margin:0; padding: 5px 10px; border-bottom: 1px solid #eee;">
+                                                <input value="<?php echo e($subcat->name); ?>" name="subcat[]"
+                                                       id="checkbox<?php echo e($count . $subCatCount); ?>"
+                                                       class="styled checkbox_subcat"
+                                                       type="checkbox" <?php foreach($Agency_skills as $skill): ?>
+                                                    <?php echo e(($skill==$subcat->name) ? "checked": ''); ?>
+
+                                                        <?php endforeach; ?> >
+                                                <label for="checkbox<?php echo e($count . $subCatCount); ?>">
+                                                    <p class="chck-bx-p"><?php echo e($subcat->name); ?></p>
+                                                </label>
+                                            </li>
+                                        </ul>
+
+                                        <?php $subCatCount++ ?>
+                                    <?php endforeach; ?>
+                                </div>
+                            </div>
+                            <?php $count++; ?>
+                        <?php endforeach; ?>
+                    </div>
+                    <div class="box-footer">
+                        <div class="col-lg-8">
+                            <input type="submit" class="btn btn-primary" value="Update"
+                                   style="margin-bottom: 25px;">
+                        </div><!-- /.col-lg-8 -->
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
+
+        <?php $__env->stopSection(); ?>
+        <?php $__env->startSection('pages_script'); ?>
+            <script>
+
+                $('.cat-btn').on('click', function () {
+
+//        if ($(this).is(':checked')) {
+                    $(this).parent().next("#link1").toggle();
+
+                    /*}
+                     else{
+                     $(this).parent().next("#link1").hide();
+                     }*/
+                });
+                $("#fileAttachment2").change(function () {
+                    var fileName = $(this).val().replace('C:\\fakepath\\', '');
+                    $("#fileAttachmentName2").html(fileName);
+                });
+            </script>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('pages.agency.agency_template', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

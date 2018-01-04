@@ -1,0 +1,615 @@
+<?php $__env->startSection('header_title'); ?>
+
+    <h1>Agencies</h1>
+
+<?php $__env->stopSection(); ?>
+
+
+
+
+<?php $__env->startSection('content'); ?>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                <ul class="nav nav-tabs" role="tablist">
+                    <?php /*<li role="presentation" class="<?php if(!empty($_GET['agency'])): ?><?php echo e(($_GET['agency']=="review")? 'active':''); ?><?php else: ?> active <?php endif; ?>">
+                        <?php if(!empty($agenciesRequest_count > 0)): ?>
+                            <span class="badge count_request" style="position: absolute; right: 4px; bottom: 28px; z-index: 1;"><?php echo e($agenciesRequest_count); ?></span>
+                        <?php endif; ?>
+                        <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Request
+                            </a>
+                    </li>*/ ?>
+                    <li role="presentation" class="<?php if(!empty($_GET['agency'])): ?><?php echo e(($_GET['agency']=="all")? 'active':''); ?><?php endif; ?>">
+                        <?php if($agenciesRegistration_count > 0): ?>
+                            <span class="badge count_active" style="position: absolute; right: 4px; bottom: 28px; z-index: 1;"><?php echo e($agenciesRegistration_count); ?></span>
+                        <?php endif; ?>
+                        <a href="#application" class="<?php if(!empty($_GET['agency'])): ?><?php echo e(($_GET['agency']=="all")? 'active':''); ?><?php endif; ?>" aria-controls="application" role="tab" data-toggle="tab">Agency Applications
+                        </a>
+                    </li>
+                    <li role="presentation" class="<?php if(!empty($_GET['agency'])): ?><?php echo e(($_GET['agency']=="active")? 'active':''); ?><?php endif; ?>">
+                        <?php if($newagencycount > 0): ?>
+                        <span class="badge count_active" style="position: absolute; right: 4px; bottom: 28px; z-index: 1;"><?php echo e($newagencycount); ?></span>
+                        <?php endif; ?>
+                        <a href="#home" class="<?php if(!empty($_GET['agency'])): ?><?php echo e(($_GET['agency']=="active")? 'active':''); ?><?php endif; ?>" aria-controls="home" role="tab"
+                                                              data-toggle="tab">Active Agencies
+                        </a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane <?php if(!empty($_GET['agency'])): ?><?php echo e(($_GET['agency']=="active")? 'active':''); ?><?php endif; ?>" id="home">
+                        <div class="box box-info">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Active Agencies</h3>
+                                <div class="box-tools pull-right">
+                                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                                class="fa fa-minus"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                </div>
+                                </div>
+                            <div class="box-body table-responsive">
+                                <table id="example1" class="table table-bordered table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Details</th>
+                                        <th>Current Jobs</th>
+                                        <th>Completed Jobs</th>
+                                        <?php /*<th>Email</th>
+                                        <th>Date of Joining</th>*/ ?>
+                                        <th>Percentage</th>
+                                        <th>Mother Agency / %</th>
+                                        <th>Favors / Packages</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <?php foreach($agencies as $agency): ?>
+                                        <tr>
+                                            <td><?php echo e($agency->id); ?></td>
+                                            <td>
+                                                <span>Name :<?php echo e($agency->username); ?></span><br>
+                                                <span>Email :<?php echo e($agency->email); ?></span><br>
+                                                <span>Joining Date :<?php echo e($agency->updated_at); ?></span><br>
+                                                <span>Country :<?php echo e(!empty($agency['agency_additional']->country) ?  $agency['agency_additional']->country : ''); ?></span><br>
+                                                <span>Rating :
+                                                        <?php if($agency['total'] > 0): ?>
+                                                            <?php if($agency['rating'] <= 1): ?>
+                                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                             <?php elseif($agency['rating'] >1 && $agency['rating'] <=2 ): ?>
+                                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                            <?php elseif($agency['rating'] >2 && $agency['rating'] <=3 ): ?>
+                                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                            <?php elseif($agency['rating'] >3 && $agency['rating'] <=4 ): ?>
+                                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                            <?php elseif($agency['rating'] >4 && $agency['rating'] <=5 ): ?>
+                                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                            <?php endif; ?>
+                                                        <?php else: ?>
+                                                        <img src="<?php echo e(url('/')); ?>/img/no_rate.png" alt="" width="60px;">
+                                                        <?php endif; ?>
+                                                </span>
+                                            </td>
+                                            <td><?php echo e($agency['pendingOrders']); ?></td>
+                                            <td><?php echo e($agency['completed']); ?></td>
+                                            <?php /*<td><?php echo e($agency->email); ?></td>
+                                            <td><?php echo e($agency->updated_at); ?></td>*/ ?>
+                                            <td><?php echo e($agency->agency_percentage); ?>%</td>
+                                            <td><?php echo e(!empty(\App\User::find($agency->referr_agency)->username) ? \App\User::find($agency->referr_agency)->username : ''); ?> / <?php echo e($agency->refer_percent); ?>%</td>
+                                            <td><?php echo e($agency['favors']); ?> / <?php echo e($agency['packages']); ?></td>
+                                            <td>
+                                                <?php /*<button class="btn btn-primary btn-xs"><span class="fa fa-edit"></span></button>*/ ?>
+                                                <a href="<?php echo e(route('admin.agency', ['agencyMail' => $agency->email])); ?>" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-eye-open"></span></a>
+                                                <a href="<?php echo e(route('agency.update', ['agencyEmail' => $agency->email])); ?>" class="btn btn-default btn-xs"><span class="fa fa-pencil"></span></a>
+                                                <?php /*<?php if( \Illuminate\Support\Facades\Auth::admin()->get()->type !='subadmin'): ?>
+                                                    <button class="btn btn-danger btn-xs btn-del" data-url="<?php echo e(route('deleteAgency')); ?>" data-id="<?php echo e($agency->id); ?>"><span class="fa fa-trash-o"></span></button>
+                                                <?php endif; ?>*/ ?>
+                                                <form id="formagencyActivate" method="post" action="<?php echo e(route('agency.activate')); ?>">
+                                                    <input type="hidden" name="agency_id" value="<?php echo e($agency->id); ?>">
+                                                    <?php if(!$agency->active): ?>
+                                                        <button type="button" class="btn btn-danger btn-xs btn-agency-activate">Deactivated</button>
+                                                    <?php else: ?>
+                                                        <button type="button" class="btn btn-success btn-xs btn-agency-activate">Activated</button>
+                                                    <?php endif; ?>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach; ?>
+
+                                    </tbody>
+
+                                </table>
+                            </div>
+                        </div><!-- /.box-body -->
+                     </div>
+                    <div role="tabpanel" class="tab-pane <?php if(!empty($_GET['agency'])): ?><?php echo e(($_GET['agency']=="review")? 'active':''); ?><?php endif; ?>" id="profile">
+                        <div class="box box-info">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Agencies Request</h3>
+
+                                <div class="box-tools pull-right">
+                                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                                class="fa fa-minus"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                </div>
+                            </div>
+                            <div class="box-body table-responsive">
+                                <table id="example2" class="table table-bordered table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th>No#</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Subject</th>
+                                        <th>Message</th>
+                                        <th>Date</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <?php $l_i = 1; ?>
+                                    <?php foreach($agenciesRequest as $agency): ?>
+                                        <tr>
+                                            <td><?php echo (date('d-m-Y', strtotime($agency->created_at)) == date('d-m-Y')) ? '<i class="fa fa-star" style="color: #157340;"></i>' : ''; ?><?php echo e($l_i++); ?></td>
+                                            <td><?php echo e($agency->name); ?></td>
+                                            <td><?php echo e($agency->email); ?></td>
+                                            <td><?php echo e($agency->subject); ?></td>
+                                            <td><?php echo e($agency->message); ?></td>
+                                            <td><?php echo e($agency->created_at); ?></td>
+                                            <td>
+                                                <?php if($agency->status == 'accepted'): ?>
+                                                  <button class="btn btn-success btn-xs btn-accept" data-url="<?php echo e(route('agency.AcceptRequest', ['agencyEmail' => $agency->email])); ?>" data-id="<?php echo e($agency->id); ?>">Request Accepted </button>
+                                                 <?php else: ?>
+                                                    <?php
+                                                    $date_time = explode(' ', $agency->created_at);
+                                                    $date_time = explode('-', $date_time[0]);
+                                                    $date_time = $date_time[0].'-'.$date_time[1].'-'.$date_time[2];
+                                                        $current_date = date("Y-m-d");
+                                                    $diff = abs(strtotime($current_date) - strtotime($date_time));
+                                                    $day = 60*60*24;
+                                                    $MONTH = $day*30;
+                                                    $YEAR = $day*365;
+
+                                                    $years = floor($diff / ($YEAR));
+                                                    $months = floor(($diff - $years * $YEAR) / ($MONTH));
+                                                    $days = floor(($diff - $years * $YEAR - $months*$MONTH ) / ($day));
+                                                    ?>
+                                                <?php if($days > 0): ?>
+                                                            <button class="btn btn-danger btn-xs btn-accept" data-url="<?php echo e(route('agency.AcceptRequest', ['agencyEmail' => $agency->email])); ?>" data-id="<?php echo e($agency->id); ?>">Accept Request</button>
+                                                <?php else: ?>
+                                                  <button class="btn btn-primary btn-xs btn-accept" data-url="<?php echo e(route('agency.AcceptRequest', ['agencyEmail' => $agency->email])); ?>" data-id="<?php echo e($agency->id); ?>">Accept Request</button>
+                                                <?php endif; ?>
+                                                <?php endif; ?>
+                                                    <button class="btn btn-success btn-xs btn-resend" data-url="<?php echo e(route('agency.resend.email')); ?>" data-id="<?php echo e($agency->email); ?>">Resend email </button>
+                                                    <button class="btn btn-danger btn-xs btn-del" data-url="<?php echo e(route('deleteInactiveAgency')); ?>" data-id="<?php echo e($agency->id); ?>"><span class="fa fa-trash-o"></span></button>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach; ?>
+
+                                    </tbody>
+
+                                </table>
+                            </div><!-- /.box-body -->
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane <?php if(!empty($_GET['agency'])): ?><?php echo e(($_GET['agency']=="all")? 'active':''); ?><?php endif; ?>" id="application">
+                        <div class="box box-info">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Registered Agencies</h3>
+
+                                <div class="box-tools pull-right">
+                                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                                class="fa fa-minus"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                </div>
+                            </div>
+                            <div class="box-body table-responsive">
+                            <table id="example3" class="table table-bordered table-striped">
+                                <thead>
+                                <tr>
+                                    <th>Email</th>
+                                    <th>Skills</th>
+                                    <th>Attachments</th>
+                                    <th>View form</th>
+                                    <th>First Name</th>
+                                    <th>Actions</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <?php foreach($agenciesRegistration as $agency): ?>
+                                    <tr>
+                                        <td><?php echo e($agency->email); ?></td>
+                                        <td><?php echo e($agency->skills); ?></td>
+                                        <td><?php echo $agency->attachment; ?></td>
+                                        <td><a href="<?php echo e(route('agency.datarequest',['agencyEmail' => $agency->email])); ?>" class="btn btn-primary btn-xs">
+                                                <span class="glyphicon glyphicon-eye-open"></span>
+                                            </a>
+                                        </td>
+                                        <td><?php echo e($agency->f_name); ?></td>
+                                        <td>
+                                            <?php if($agency->active == 1): ?>
+                                           <button class="btn btn-success btn-xs" data-url="<?php echo e(route('agency.AcceptRequest', ['agencyEmail' => $agency->email])); ?>" data-id="<?php echo e($agency->id); ?>">Request Accepted </button>
+                                            <?php else: ?>
+                                                <button class="btn btn-primary btn-xs btn-accept-agency" data-url="<?php echo e(route('agency.Accept.Request')); ?>" data-id="<?php echo e($agency->agency_id); ?>">Accept request</button>
+                                            <?php endif; ?>
+                                            <button class="btn btn-danger btn-xs btn-delete" data-url="<?php echo e(route('delete.Agency.additional')); ?>" data-id="<?php echo e($agency->id); ?>"><span class="fa fa-trash-o"></span></button>
+                                            <button class="btn btn-success btn-xs btn-resend" data-url="<?php echo e(route('agency.AcceptRequest', ['agencyEmail' => $agency->email])); ?>" data-id="<?php echo e($agency->agency_id); ?>">Resend email </button>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+
+                                </tbody>
+
+                            </table>
+                                </div>
+
+
+                        </div>
+                    </div>
+            </div><!-- /.box -->
+        </div><!-- /.col -->
+    </div>
+   </div><!-- /.row -->
+</div><!-- /.row -->
+    <?php $__env->stopSection(); ?>
+
+
+
+
+    <?php $__env->startSection('pages_css'); ?>
+
+            <!-- DataTables -->
+    <link rel="stylesheet" href="<?php echo e(asset('bower_components/AdminLTE/plugins/datatables/dataTables.bootstrap.css')); ?>">
+
+    <?php $__env->stopSection(); ?>
+
+
+
+
+
+    <?php $__env->startSection('pages_script'); ?>
+
+            <!-- DataTables -->
+    <script src="<?php echo e(asset('bower_components/AdminLTE/plugins/datatables/jquery.dataTables.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('bower_components/AdminLTE/plugins/datatables/dataTables.bootstrap.min.js')); ?>"></script>
+    <!-- page script -->
+    <script>
+        $(function () {
+            var table = $("#example1").DataTable({
+                "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+                "order": []
+            });
+            var table2 = $("#example2").DataTable();
+            var table3 = $("#example3").DataTable();
+
+            $('#example1 tbody, #example2 tbody').on('click', 'button.btn-del', function() {
+
+                if(!confirm('Are you sure you want to permanently delete this agency?'))
+                {
+                    return false;
+                }
+                else {
+                var button = $(this);
+                var Id = button.data('id');
+
+                    $.ajax({
+
+                        method: 'get',
+                        url: button.data('url'),
+                        data: {agency_id: Id},
+                    }).done(function (data){
+                        console.log(data);
+                        if(data > 0)
+                        {
+                            $.notify({
+                                // options
+                                message: 'Agency Deleted Successfully'
+
+                            }, {
+                                // settings
+                                placement: {
+                                    from: 'bottom',
+                                    align: 'right'
+                                },
+                                type: 'success'
+                            });
+//                            location.reload();
+//                            table.row($(this).parents('tr') ).remove();
+                            $(this).parent('tr').hide();
+                        }
+                        else {
+                            //notifyMessage
+                            $.notify({
+                                // options
+                                message: 'Agency have some pending orders cannot delete at this moment!'
+                            }, {
+                                // settings
+                                placement: {
+                                    from: 'bottom',
+                                    align: 'right'
+                                },
+                                type: 'danger'
+                            });
+                        }
+                    });
+//                    table.row( $(this).parents('tr') ).remove().draw();
+                    if(table2.row( $(this).parents('tr') ).remove().draw()){
+                        var val = $(".count_request").text();
+                        var new_val = val-1;
+                        $(".count_request").empty();
+                        $(".count_request").text(new_val);
+                    }else{
+                        var val = $(".count_active").text();
+                        var new_val = val-1;
+                        $(".count_active").empty();
+                        $(".count_active").text(new_val);
+                    }
+
+                }
+
+            });
+            $('#example3 tbody').on('click', 'button.btn-delete', function() {
+                if(!confirm('Are you sure you want to permanently delete this agency?'))
+                {
+
+                    return false;
+                }
+                else {
+                var button = $(this);
+                var Id = button.data('id');
+                    $.ajax({
+
+                        method: 'get',
+                        url: button.data('url'),
+                        data: {agency_id: Id},
+                    }).done(function (data){
+//                        console.log(data);
+                        if(data > 0)
+                        {
+                            $.notify({
+                                // options
+                                message: 'Agency Deleted Successfully'
+
+                            }, {
+                                // settings
+                                placement: {
+                                    from: 'bottom',
+                                    align: 'right'
+                                },
+                                type: 'success'
+                            });
+                            location.reload();
+
+                        }
+                        else {
+                            //notifyMessage
+                            $.notify({
+                                // options
+                                message: 'Agency Deleting failed please try again'
+                            }, {
+                                // settings
+                                placement: {
+                                    from: 'bottom',
+                                    align: 'right'
+                                },
+                                type: 'danger'
+                            });
+                        }
+                    });
+                table.row( $(this).parents('tr') ).remove().draw();
+                }
+
+            });
+            $('#example2 tbody , #example3 tbody').on('click', 'button.btn-accept', function() {
+                var button = $(this);
+                var url =  button.data('url');
+                var Id = button.data('id');
+                /*alert(Id);*/
+                    $.ajax({
+
+                        method: 'get',
+                        url: url,
+                        data: {agency_id: Id},
+                    }).done(function (data){
+                        if(data != 0)
+                        {
+                            button.addClass('btn-success');
+                            button.text('Request Accepted')
+                            $.notify({
+                                // options
+                                message: 'Email Sent Successfully'
+
+                            }, {
+                                // settings
+                                placement: {
+                                    from: 'bottom',
+                                    align: 'right'
+                                },
+                                type: 'success'
+                            });
+
+                        }
+                        else {
+                            //notifyMessage
+                            $.notify({
+                                // options
+                                message: 'Failed please try again'
+                            }, {
+                                // settings
+                                placement: {
+                                    from: 'bottom',
+                                    align: 'right'
+                                },
+                                type: 'danger'
+                            });
+                        }
+                    });
+
+
+            });
+            $('#example2 tbody').on('click', 'button.btn-resend', function() {
+                var button = $(this);
+                var url =  button.data('url');
+                var Id = button.data('id');
+                $.ajax({
+
+                    method: 'post',
+                    url: url,
+                    data: {agency_id: Id},
+                }).done(function (data){
+                    if(data != 0)
+                    {
+                        button.addClass('btn-success');
+                        button.text('Request Accepted');
+                        $.notify({
+                            // options
+                            message: 'Email Sent Successfully'
+
+                        }, {
+                            // settings
+                            placement: {
+                                from: 'bottom',
+                                align: 'right'
+                            },
+                            type: 'success'
+                        });
+
+                    }
+                    else {
+                        //notifyMessage
+                        $.notify({
+                            // options
+                            message: 'Failed please try again'
+                        }, {
+                            // settings
+                            placement: {
+                                from: 'bottom',
+                                align: 'right'
+                            },
+                            type: 'danger'
+                        });
+                    }
+                });
+
+
+            });
+            $('#example3 tbody').on('click', 'button.btn-accept-agency', function() {
+                var button = $(this);
+                var url =  button.data('url');
+                var Id = button.data('id');
+                /*alert(url);*/
+                $.ajax({
+
+                    method: 'post',
+                    url: url,
+                    data: {'agency_id' : Id}
+                }).done(function (data){
+                    if(data != 0)
+                    {
+                        button.addClass('btn-success');
+                        button.text('Request Accepted');
+                        $.notify({
+                            // options
+                            message: 'Email Sent Successfully'
+
+                        }, {
+                            // settings
+                            placement: {
+                                from: 'bottom',
+                                align: 'right'
+                            },
+                            type: 'success'
+                        });
+
+                    }
+                    else {
+                        //notifyMessage
+                        $.notify({
+                            // options
+                            message: 'Failed please try again'
+                        }, {
+                            // settings
+                            placement: {
+                                from: 'bottom',
+                                align: 'right'
+                            },
+                            type: 'danger'
+                        });
+                    }
+                });
+
+
+            });
+            $('#example1 tbody').on('click', '.btn-agency-activate', function(e) {
+                e.preventDefault();
+                var form = e.target.parentNode;
+                var formData = new FormData(form);
+                var thisbutton = this;
+                $.ajax({
+                    url: form.action,
+                    method: form.method,
+                    contentType: false,
+                    processData: false,
+                    data: formData,
+                    success: function(data) {
+                        /*console.log(data);*/
+                        if(data == 0){
+                            //notifyMessage
+                            $.notify({
+                                // options
+                                message: 'Agency have some pending work cannot delete right now!'
+                            }, {
+                                // settings
+                                placement: {
+                                    from: 'bottom',
+                                    align: 'right'
+                                },
+                                type: 'danger'
+                            });
+                        }else {
+                            if (data.status == 1) {
+                                $(thisbutton).html("Activated");
+                                thisbutton.classList.remove('btn-danger');
+                                thisbutton.classList.add('btn-success');
+                            } else if (data.status == 0) {
+                                $(thisbutton).html("Deactivated");
+                                thisbutton.classList.remove('btn-success');
+                                thisbutton.classList.add('btn-danger');
+                            }
+                        }
+
+                        //clickedElement.removeAttribute('disabled');
+                    }
+                });
+
+
+            })
+        });
+    </script>
+
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('pages.admin.admin_template', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -1,0 +1,224 @@
+
+
+
+<?php $__env->startSection('header_title'); ?>
+
+    <h1>Sub Admin</h1>
+
+<?php $__env->stopSection(); ?>
+
+
+
+
+<?php $__env->startSection('content'); ?>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <?php if(\Illuminate\Support\Facades\Session::has('updated')): ?>
+                    <div class="alert alert-success" role="alert" style="text-align: center; width: 50%; margin: 0px auto; margin-top: 10px;">
+                        <p><?php echo e(\Illuminate\Support\Facades\Session::get('updated')); ?></p>
+                    </div>
+                <?php endif; ?>
+                <div class="box-header text-right">
+                    <a href="<?php echo e(route('subadminCreat')); ?>" class="btn btn-primary btn-sm"><span
+                                class="fa fa-plus"></span></a>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php foreach($subadmin as $subadm): ?>
+                            <tr>
+                                <td><?php echo e($subadm->username); ?></td>
+                                <td><?php echo e($subadm->email); ?></td>
+                                <td>
+                                    <?php /*<a href="<?php echo e(route('subadminprofile', ['subadminEmail' => $subadm->email])); ?>" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-eye-open"></span></a>*/ ?>
+                                    <a href="" data-id="<?php echo e($subadm->id); ?>" data-toggle="modal" data-target="#myModal"
+                                       class="btn btn-primary btn-xs get-subadmin-data"><span class="glyphicon glyphicon-eye-open"></span></a>
+                                    <?php /*<a href="<?php echo e(route('agency.update', ['agencyEmail' => $subadm->email])); ?>" class="btn btn-default btn-xs"><span class="fa fa-pencil"></span></a>*/ ?>
+                                    <button class="btn btn-danger btn-xs btn-del"
+                                            data-url="<?php echo e(route('subAdminDelete')); ?>" data-id="<?php echo e($subadm->id); ?>"><span
+                                                class="fa fa-trash-o"></span></button>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+
+                        </tbody>
+
+                    </table>
+                </div><!-- /.box-body -->
+            </div><!-- /.box -->
+        </div><!-- /.col -->
+    </div><!-- /.row -->
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <form method="post" id="subad_update" action="<?php echo e(route('subadmin.update.data')); ?>">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="box box-info">
+
+                                    <div class="box-body">
+                                        <div class="form-group">
+                                            <label>Admin Username</label>
+                                            <input name="agency_id" value="" type="hidden" id="subadmin_id">
+                                            <input name="uname" type="text" class="form-control"
+                                                   placeholder="Enter Subadmin Userame..."
+                                                   value="<?php echo e(Request::old('uname')); ?>" id="subadmin_username">
+
+                                            <?php if($errors->has('uname')): ?>
+                                                <span class="help-block"><?php echo e($errors->first('uname')); ?></span>
+                                            <?php endif; ?>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Subadmin Email</label>
+                                            <input name="email" type="email" class="form-control"
+                                                   placeholder="Enter Subadmin Email..."
+                                                   value="<?php echo e(Request::old('email')); ?>" id="subadmin_email">
+                                            <?php if($errors->has('email')): ?>
+                                                <span class="help-block"><?php echo e($errors->first('email')); ?></span>
+                                            <?php endif; ?>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Admin Phone</label>
+                                            <input name="phone" type="text" class="form-control"
+                                                   placeholder="Enter Admin Phone Number..." id="subadmin_phone">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Admin Password</label>
+                                            <input name="password" type="password" class="form-control"
+                                                   placeholder="Enter Subadmin Password..."
+                                                   value="<?php echo e(Request::old('password')); ?>" id="subadmin_password">
+                                            <?php if($errors->has('username')): ?>
+                                                <span class="help-block"><?php echo e($errors->first('password')); ?></span>
+                                            <?php endif; ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+<?php $__env->stopSection(); ?>
+
+
+
+
+<?php $__env->startSection('pages_css'); ?>
+
+    <!-- DataTables -->
+    <link rel="stylesheet" href="<?php echo e(asset('bower_components/AdminLTE/plugins/datatables/dataTables.bootstrap.css')); ?>">
+
+<?php $__env->stopSection(); ?>
+
+
+
+
+
+<?php $__env->startSection('pages_script'); ?>
+
+    <!-- DataTables -->
+    <script src="<?php echo e(asset('bower_components/AdminLTE/plugins/datatables/jquery.dataTables.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('bower_components/AdminLTE/plugins/datatables/dataTables.bootstrap.min.js')); ?>"></script>
+    <!-- page script -->
+    <script>
+        $(function () {
+            var table = $("#example1").DataTable();
+            $('#example1 tbody').on('click', 'button.btn-del', function () {
+                if (!confirm('Are you sure you want to permanently delete this sub-admin?')) {
+
+                    return false;
+                }
+                else {
+                    var button = $(this);
+                    var Id = button.data('id');
+                    $.ajax({
+
+                        method: 'get',
+                        url: button.data('url'),
+                        data: {user_id: Id},
+                    }).done(function (data) {
+                        console.log(data);
+                        if (data > 0) {
+                            $.notify({
+                                // options
+                                message: 'Sub Admin Deleted Successfully'
+
+                            }, {
+                                // settings
+                                placement: {
+                                    from: 'bottom',
+                                    align: 'right'
+                                },
+                                type: 'success'
+                            });
+
+                        }
+                        else {
+                            //notifyMessage
+                            $.notify({
+                                // options
+                                message: 'Sub Admin Deleting failed please try again'
+                            }, {
+                                // settings
+                                placement: {
+                                    from: 'bottom',
+                                    align: 'right'
+                                },
+                                type: 'danger'
+                            });
+                        }
+                    });
+
+
+                    table.row($(this).parents('tr')).remove().draw();
+                }
+
+            });
+            $("#example1 tbody").on('click','.get-subadmin-data', function () {
+                var url = "<?php echo e(route('subadmin.data')); ?>";
+                var form = $("#subad_update");
+                var Id = $(this).data('id');
+                $.ajax({
+                    method : "post",
+                    url  : url,
+                    data  : {user_id : Id},
+                    dataType : "json",
+                    success : function(res){
+                        res.forEach(function(data){
+                           console.log(data);
+                           $("#subadmin_id").val(data.id);
+                           $("#subadmin_username").val(data.username);
+                           $("#subadmin_email").val(data.email);
+                           $("#subadmin_phone").val(data.phone_number);
+                           $("#subadmin_password").val(data.password);
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('pages.admin.admin_template', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

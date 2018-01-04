@@ -1,0 +1,184 @@
+<?php echo $__env->make('includes.header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+<div class="container">
+
+<div class="col-md-12 col-sm-12 col-xs-12" style="padding: 0px;">
+    <div class="col-md-4 col-sm-4 col-xs-4" style="padding: 0px;">
+
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="padding: 0px;">
+        <img src="img/imagesmodule/account.png"/>
+    </div>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" style="padding: 0px;">
+
+            <h3>Sprout CRM</h3>
+            <p>Instant access.</p>
+        </div>
+</div>
+    <div class="col-md-4 col-sm-4 col-xs-4" style="padding: 0px;">
+
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="padding: 0px;">
+            <img src="img/imagesmodule/sale.png"/>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" style="padding: 0px;">
+
+            <h3>Sprout Sales</h3>
+            <p>Instant access.</p>
+        </div>
+    </div>
+    <div class="col-md-4 col-sm-4 col-xs-4" style="padding: 0px;">
+
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="padding: 0px;">
+            <img src="img/imagesmodule/website.png"/>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" style="padding: 0px;">
+
+            <h3>Sprout Inventory</h3>
+            <p>Instant access.</p>
+        </div>
+    </div>
+</div>
+
+<form action="store" method="POST">
+    <div class="col-md-12" style="padding: 0px;">
+        <div class="col-md-8 col-md-8 col-md-8" style="padding: 0px;">
+            <div class="col-md-12" style="padding-left: 0px;">
+                <div class="col-md-6" style="padding-left: 0px">
+                    <div class="form-group">
+                        <label for="name">Full Name:</label>
+                        <input type="text" class="form-control" id="name">
+                    </div>
+
+                </div>
+                <div class="col-md-6" style="padding-left: 0px">
+                    <div class="form-group">
+                        <label for="email">Admin Email:</label>
+                        <input type="email" class="form-control" id="usr" name="email">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12" style="padding-left: 0px;">
+                <div class="col-md-6" style="padding-left: 0px">
+                    <div class="form-group">
+                        <label for="compname">Company Name:</label>
+                        <input type="text" class="form-control" id="compname">
+                    </div>
+
+                </div>
+                <div class="col-md-6" style="padding-left: 0px">
+                    <div class="form-group">
+                        <label for="ctry">Country:</label>
+                        <input type="text" class="form-control" id="ctry">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12" style="padding-left: 0px;">
+                <div class="col-md-6" style="padding-left: 0px">
+                    <div class="form-group">
+                        <label for="phonenumber">Phone Number:</label>
+                        <input type="text" class="form-control" id="phonenumber">
+                    </div>
+
+                </div>
+                <div class="col-md-6" style="padding-left: 0px">
+                    <div class="form-group">
+                        <label for="compsize">Company Size:</label>
+                        <input type="number" class="form-control" id="compsize" style="width: 100%;">
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-12" style="padding-left: 0px;">
+                <div class="col-md-6" style="padding-left: 0px">
+                    <div class="form-group">
+                        <label for="pi">Primary Interest:</label>
+                        <input type="text" class="form-control" id="pi">
+                    </div>
+                </div>
+                <div class="col-md-6" style="padding-left: 0px">
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="text" class="form-control" id="password">
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 30px;padding-left: 0px">
+            <a href=""> <button type="submit" class="btn btn-danger" style="background: rgba(0, 185, 255, 0.95);border-color: rgba(0, 185, 255, 0.95);">Start Now</button></a>
+
+        </div>
+    </div>
+</form>
+</div>
+
+
+
+
+<?php echo $__env->make('includes.footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+<script>
+
+    $('.gig-favourite-heart-icn').click(function (e) {
+
+        e.preventDefault();
+        $selectedGig = $(this).parent();
+
+        var gigId = $selectedGig.data('coll-id');
+        var url = $selectedGig.data('url');
+
+        // var className = $('span.favorite-span > i').attr('class');
+
+        //  alert(className);
+
+        if ($(this).find('i').attr('class') == 'fa fa-heart') {
+            var action = 'removeFavorite';
+            $(this).empty().html('<span class="favorite-span"><i class="fa fa-heart-o"></i></span>');
+        }
+        else {
+            var action = 'addToFavorite';
+            $(this).empty().html('<span class="favorite-span"><i class="fa fa-heart"></i></span>');
+        }
+
+
+        $.ajax({
+            url: url,
+            method: 'POST',
+            data: {'gig-id': gigId, 'action': action},
+            success: function (data) {
+                console.log(data);
+
+            }
+        });
+    });
+
+
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        /*$('.gig-item-default').hover(function(){
+         $(this).children('.col-xs-5').removeClass('hover-transition');
+         },function(){
+         $(this).children('.col-xs-5').addClass('hover-transition');
+         });
+         $('.gig-item-default').hover(function(){
+         $(this).children('.col-xs-4').removeClass('hover-transition');
+         },function(){
+         $(this).children('.col-xs-4').addClass('hover-transition');
+         });*/
+        $('.gig-item-default').hover(function(){
+            $(this).children('#sold').show();
+        },function(){
+            $(this).children('#sold').hide();
+        });
+        $('#custom_offer').click(function(){
+
+            $(".gig-style").toggle();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,245 @@
+<?php echo $__env->make('includes.header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<style>
+    body{
+        background-color: #f1f2f2;
+    }
+    #bs-example-navbar-collapse-4{
+        background-color: white !important;
+        border-color: white !important;
+    }
+    .container-fluid{
+        padding: 0px;
+    }
+</style>
+<?php if($errors->has('others')): ?>
+    <div class="container">
+        <div class="alert alert-danger" role="alert" style="margin-top: 200px;margin-bottom: 200px;text-align: center;"><?php echo e($errors->first('others')); ?></div>
+    </div>
+<?php elseif(\Illuminate\Support\Facades\Session::has('ErrorActivation')): ?>
+    <div class="container">
+        <div class="alert alert-success"
+             role="alert" style="margin-top: 200px;margin-bottom: 200px;text-align: center;"><?php echo e(\Illuminate\Support\Facades\Session::get('ErrorActivation')); ?></div>
+    </div>
+<?php elseif(\Illuminate\Support\Facades\Session::has('successMessage')): ?>
+    <div class="container">
+        <div class="alert alert-success" role="alert" style="margin-top: 200px;margin-bottom: 200px;text-align: center;"><?php echo e(\Illuminate\Support\Facades\Session::get('successMessage')); ?></div>
+    </div>
+<?php elseif(\Illuminate\Support\Facades\Session::has('errorMessage')): ?>
+    <div class="container">
+        <div class="alert alert-danger" role="alert" style="margin-top: 200px;margin-bottom: 200px;text-align: center;"><?php echo e(\Illuminate\Support\Facades\Session::get('errorMessage')); ?></div>
+    </div>
+    <?php else: ?>
+            <!-- content -->
+    <div class="dash-main-content" style="min-height: 800px;">
+    <div class="container container_new login-modal">
+
+        <div class="row row-centered">
+            <div class="form-group form-inline text-center" style="margin-bottom: 3oaaa0px;">
+                <label for="">Select language</label>
+                <select name="" id="language" class="form-control">
+                    <option value="" selected disabled>Select language</option>
+                    <option value="eng" <?php echo e((Request::old('sel_lang') == 'eng') ? 'Selected':'selected'); ?>>English</option>
+                    <option value="ger" <?php echo e((Request::old('sel_lang') == 'ger') ? 'Selected':''); ?>>German</option>
+                </select>
+            </div>
+            <h3 id="ger-para" class="login-title" style="display: none; text-align: left">Sie möchten ein Teil vom Partnernetzwerk werden
+                ?</h3>
+            <h3 id="en-para" class="login-title" style="display: none; text-align: left">You want to be a part of the partner network ?</h3>
+            <h4 style="display: none; text-align: left; font-size:14px; color:rgb(111, 111, 111)" id="ger-para">Unser Partner-Team wird sich umgehend
+                um ihr Anliegen kümmern. Vielen Dank für lhr Interesse.</h4>
+            <h4 style="display: none; text-align: left; font-size:14px; color:rgb(111, 111, 111)" id="en-para">Our partner team will immediately
+                take care of their concerns . Thanks for LHR interest .</h4>
+        </div>
+        <div class="modal-signin">
+            <div class="kontackt-form">
+
+                <div class="row row-centered">
+                    <form style="display: none;" id="ger" method="get" action="<?php echo e(route('Agencycontact')); ?>">
+
+
+                        <div class="col-xs-6 col-centered input form-group<?php echo $errors->has('email') ? ' has-error' : '' ?> input-new"
+                             style="positon:relative;margin-bottom:0px !important; padding-left:0px">
+                            <div class="" style="margin: 0 auto;">
+
+                <span style="position:relative; top:35px; left:10px;">
+                  <i class="fa fa-user"></i>
+                 </span>
+                                <input value="<?php echo e(Request::old('name')); ?>" name="name"
+                                       type="text" class="form-control em1" id="name" placeholder="Name"
+                                       style="height:50px; padding: 6px 45px;">
+                                <?php if($errors->has('name')): ?>
+                                    <p class="help-block" style="display: table"><?php echo e($errors->first('name')); ?></p>
+                                <?php endif; ?>
+                            </div>
+
+                        </div>
+                        <div class="col-xs-6 col-centered input form-group<?php echo $errors->has('email') ? ' has-error' : '' ?> input-new"
+                             style="positon:relative;margin-bottom:0px !important">
+                            <div class="" style="margin: 0 auto;">
+                 <span style="position:relative; top:35px; left:10px;">
+                  <i class="fa fa-envelope"></i>
+                 </span>
+                                <input name="email" value="<?php echo e(Request::old('email')); ?>" type="text" class="form-control em2" id="email"
+                                       placeholder="Email adresse"
+                                       style="height:50px; padding: 6px 45px;margin-bottom:0px !important">
+                                <?php if($errors->has('email')): ?>
+                                    <p class="help-block" style="display: table">Bitte geben Sie eine gültige E-Mail Adresse an</p>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-centered input form-group<?php echo $errors->has('betreff') ? ' has-error' : '' ?> input-new"
+                             style="positon:relative; padding-left:0px">
+                            <div class="" style="margin: 0 auto;">
+                         <span style="position:relative; top:35px; left:10px;">
+                              <i class="fa fa-pencil"></i>
+                         </span>
+                                <input name="betreff" value="<?php echo e(Request::old('betreff')); ?>" type="text" class="form-control em2" id="betreff"
+                                       placeholder="Betreff" style="height:50px; padding: 6px 45px; ">
+                                <?php if($errors->has('betreff')): ?>
+                                    <p class="help-block">Dieses Betreff-Feld wird benötigt</p>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-centered input form-group<?php echo $errors->has('betreff') ? ' has-error' : '' ?> input-new"
+                             style="positon:relative; padding-left:0px">
+                            <div class="" style="margin: 0 auto;">
+
+                                <textarea placeholder="Nachricht" class="form-control" rows="6" cols="5"
+                                          name="msg"><?php echo e(Request::old('msg')); ?></textarea>
+                                <?php if($errors->has('msg')): ?>
+                                    <p class="help-block"><?php echo e($errors->first('msg')); ?></p>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                        <div class="input form-group<?php echo $errors->has('betreff') ? ' has-error' : '' ?> input-new"
+                             style="positon:relative">
+                            <div id="ger-btn" class="" style="margin: 0 auto; text-align: left;;">
+                                <input type="hidden" name="sel_lang" class="sel_lang" value="ger">
+                                <input type="submit" name="submit" value="Nachricht senden" class="btn btn-primary"
+                                       style="background: #367FA9; border: 0px;">
+
+                            </div>
+                        </div>
+
+                        <div>
+                        </div>
+                    </form>
+                    <form style="display: none;" id="eng" method="get" action="<?php echo e(route('Agencycontact')); ?>">
+
+
+                        <div class="col-xs-6 col-centered input form-group<?php echo $errors->has('email') ? ' has-error' : '' ?> input-new"
+                             style="positon:relative;margin-bottom:0px !important; padding-left:0px">
+                            <div class="" style="margin: 0 auto;">
+
+                <span style="position:relative; top:35px; left:10px;">
+                  <i class="fa fa-user"></i>
+                 </span>
+                                <input value="<?php echo e(Request::old('name')); ?>" name="name"
+                                       type="text" class="form-control em1" id="name" placeholder="Name"
+                                       style="height:50px; padding: 6px 45px;">
+                                <?php if($errors->has('name')): ?>
+                                    <p class="help-block" style="display: table;"><?php echo e(($errors->has('name')) ? 'This name field is required' : ''); ?></p>
+                                <?php endif; ?>
+                            </div>
+
+                        </div>
+                        <div class="col-xs-6 col-centered input form-group<?php echo $errors->has('email') ? ' has-error' : '' ?> input-new"
+                             style="positon:relative;margin-bottom:0px !important">
+                            <div class="" style="margin: 0 auto;">
+                 <span style="position:relative; top:35px; left:10px;">
+                  <i class="fa fa-envelope"></i>
+                 </span>
+                                <input name="email" value="<?php echo e(Request::old('email')); ?>" type="text" class="form-control em2" id="email"
+                                       placeholder="Email address"
+                                       style="height:50px; padding: 6px 45px;margin-bottom:0px !important">
+                                <?php if($errors->has('email')): ?>
+                                    <p class="help-block" style="display: table">Please enter a valid e -mail address</p>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-centered input form-group<?php echo $errors->has('betreff') ? ' has-error' : '' ?> input-new"
+                             style="positon:relative; padding-left:0px">
+                            <div class="" style="margin: 0 auto;">
+                         <span style="position:relative; top:35px; left:10px;">
+                              <i class="fa fa-pencil"></i>
+                         </span>
+                                <input name="betreff" type="text" value="<?php echo e(Request::old('betreff')); ?>" class="form-control em2" id="betreff"
+                                       placeholder="Subject" style="height:50px; padding: 6px 45px; ">
+                                <?php if($errors->has('betreff')): ?>
+                                    <p class="help-block">This field is required concerning</p>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-centered input form-group<?php echo $errors->has('betreff') ? ' has-error' : '' ?> input-new"
+                             style="positon:relative; padding-left:0px">
+                            <div class="" style="margin: 0 auto;">
+
+                                <textarea placeholder="message" class="form-control" rows="6" cols="5"
+                                          name="msg"><?php echo e(Request::old('msg')); ?></textarea>
+                                <?php if($errors->has('msg')): ?>
+                                    <p class="help-block">This msg field is required</p>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                        <div class="input form-group<?php echo $errors->has('betreff') ? ' has-error' : '' ?> input-new"
+                             style="positon:relative">
+                            <div id="ger-btn" class="" style="margin: 0 auto; text-align: left;;">
+                                <input type="hidden" name="sel_lang" class="sel_lang" value="eng">
+                                <input id="ger-btn" type="submit" name="submit" value="Send message" class="btn btn-primary"
+                                       style="background: #367FA9; border: 0px;">
+
+                            </div>
+                        </div>
+
+                        <div>
+                        </div>
+                    </form>
+                </div><?php /*end of row row-centered*/ ?>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $("#language").find("option:selected").each(function () {
+                    if ($(this).attr("value") == "eng") {
+                        $("#eng").show();
+                        $("#ger").hide();
+                        $("#en-para").show();
+                        $("#ger-para").hide();
+                    } else if($(this).attr("value") == "ger"){
+                        $('.agency_register').show();
+                        $("#eng").hide();
+                        $("#ger").show();
+                        $("#en-para").hide();
+                        $("#ger-para").show();
+                    }else{
+                        $("#eng").hide();
+                        $("#ger").hide();
+                    }
+                });
+                $("#language").change(function () {
+                    $(this).find("option:selected").each(function () {
+                        if ($(this).attr("value") == "eng") {
+                            $("#eng").show();
+                            $("#ger").hide();
+                            $("#en-para").show();
+                            $("#ger-para").hide();
+                        }
+                        else {
+                            $('.agency_register').show();
+                            $("#eng").hide();
+                            $("#ger").show();
+                            $("#en-para").hide();
+                            $("#ger-para").show();
+                        }
+                    });
+                });
+            });
+        </script>
+    </div>
+    </div>
+    <?php endif; ?>
+    <?php echo $__env->make('includes.footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+    </body>
+    </html>

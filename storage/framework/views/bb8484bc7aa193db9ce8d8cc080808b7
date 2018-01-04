@@ -1,0 +1,195 @@
+<?php echo $__env->make('includes.header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+
+ <!--content-->
+<div class="container top-gap">
+  <div class="well grey">
+    <div class="row">
+      <div class="col-lg-5">
+        <h1 class="text-primary">My Workstream</h1>
+      </div>
+    </div>
+      <div class="row wrk_stm">
+        <div class="thumb">
+          <div class="col-md-1 col-sm-1 box_1">
+          
+        </div>
+        <div class="col-md-2 col-sm-2 box_1">
+          <p class="dollar">$0</p>
+          <p class="spent">Spend this Month</p>
+          <img src="img\dollar.png">
+        </div>
+        <div class="col-md-2 col-sm-2 box_1">
+          <p class="dollar">0</p>
+          <p class="spent">New Orders</p>
+          <img src="img\pencil.png">
+        </div>
+        <div class="col-md-2 col-sm-2 box_1">
+          <p class="dollar">0%</p>
+          <p class="spent">Positivity Gauge</p>
+          <img src="img\hand.png">
+        </div>
+        <div class="col-md-2 col-sm-2 box_1">
+          <p class="dollar">0</p>
+          <p class="spent">Completed Orders</p>
+          <img src="img\jet.png">
+        </div>
+        <div class="col-md-2 col-sm-2 box_1">
+          <p class="dollar">0 hrs.</p>
+          <p class="spent">Collaboration Time</p>
+          <img src="img\time.png">
+        </div>
+      </div>
+      </div>
+      <div class="row wrk-strm-chat">
+        <div class="col-md-3 left-ubox">
+          <div class="head">
+            <p>My Projects</p>
+          </div>
+          <div ng-controller="MyOrdersController" class="list-group left-pane">
+            <?php foreach($orders as $order): ?>
+              <a href ng-click="getMyOrder(<?php echo e($order->id); ?>)" class="list-group-item"><?php echo e($order['gig']->title); ?></a>
+            <?php endforeach; ?>
+          </div>
+        </div>
+        <div class="col-md-9 right-ubox">
+            <div class="pane-head col-md-12">
+              <span>My Chat</span>
+              <span class="pull-right">Order No.:00123</span>
+            </div>
+            <div class="chat-window col-md-12">
+              <div class="upr-wind col-md-12 text-center">
+                <div class="days">
+                  <div class="dy" style="height:116px; width:90px;">
+                    00
+                  </div>
+                  DAYS
+                </div>
+                <div class="hours">
+                  <div class="hr" style="height:116px; width:90px;">
+                    00</div>
+                  HOURS
+                </div>
+                <div class="minutes">
+                  <div class="mint" style="height:116px; width:90px;">
+                    00</div>
+                  MINUTES
+                </div>
+                <div class="seconds">
+                  <div class="sec" style="height:116px; width:90px;">
+                    00</div>
+                  SECONDS
+                </div>
+              </div>
+              <div class="chat-box">
+                <img src="img\girl.png" class="img-circle girl">
+                <div class="chat">
+                  <h4><span><img src="img\bulbb.png" style="margin-right:5px;"></span>Company Description</h4>
+                  <table class="table">
+                    <tr>
+                      <td class="left">Company Name:</td>
+                      <td class="right">Lorem Ipsum</td>  
+                    </tr>
+                    <tr>
+                      <td class="left">Tagline:</td>
+                      <td class="right">Lorem Ipsum</td>  
+                    </tr>
+                    <tr>
+                      <td class="left">Industry:</td>
+                      <td class="right">Lorem Ipsum</td>  
+                    </tr>
+                    <tr>
+                      <td class="left">Description:</td>
+                      <td class="right">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</td>  
+                    </tr>
+                  </table>
+                  <hr>
+                  <h4><span style="margin-right:5px;"><img src="img\drop.png"></span>No. of Colors</h4>
+                  <p style="font-size:16px;color:#7b7b7b;">Two colors</p>
+                  <hr>
+                  <h4><span style="margin-right:5px;"><img src="img\box.png"></span>Type of Logo</h4>
+                  <div class="cnerr-logo">
+                    <img src="img\logo-cnerr.png">
+                  </div>  
+                  <hr>
+                  <h4><span style="margin-right:5px;"><img src="img\circl.png"></span>Sample Styles</h4>
+                  <p style="font-size:16px;color:#7b7b7b;">Client selected following sample logo design styles.</p>
+                  <div class="img-thumbnail bx-1">
+                    <img src="img\globe.png">
+                  </div>
+                  <div class="img-thumbnail bx-2">
+                    <img src="img\olympic.png">
+                  </div>
+                  <div class="img-thumbnail bx-3">
+                    <img src="img\pepsi.png">
+                  </div>
+                  <hr>
+                  <h4><span style="margin-right:5px;"><img src="img\slider.png"></span>Sample Styles</h4>
+                  <p style="font-size:16px;color:#7b7b7b;">What value should your logo communicate ?</p>
+                  <div class="scrl1">
+                  <span class="play">Playful</span><input id="ex1" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/><span class="serious">Serious</span>
+                  </div>
+                  <div class="scrl2">
+                  <span class="modern">Modern</span><input id="ex2" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/><span class="classic">Classic</span>
+                  </div>
+                  <div class="scrl3">
+                  <span class="femin">Feminine</span><input id="ex3" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/><span class="masculin">Masculine</span>
+                  </div>
+                  <div class="scrl4">
+                  <span class="simple">Simple</span><input id="ex4" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/><span class="complex">Complex</span>
+                  </div>
+                </div>
+              </div>
+              <div class="chat-box2">
+                <img src="img\koala.png" class="img-circle">
+                <div class="chat2">
+                  Lorem ipsum dolor sit amet, vix at natum zril oblique,<br>iudicabit adipiscing te usu.
+                </div>
+              </div>
+              <div class="chat-box3">
+                <img src="img\girl.png" class="img-circle">
+                <div class="chat3">
+                  Lorem ipsum dolor sit amet, vix at natum zril oblique,<br>iudicabit adipiscing te usu.
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3 done-btn">
+          <a class="btn btn-large btn-default bottom-btn" href="#">Job Done Acknowledgment</a>
+          <a class="btn btn-large btn-default bottom-btn-new2" href="#">Send Custom Order</a>
+        </div>
+        <div class="col-md-9" style="padding:0px; margin-bottom:10px;">
+          <div class="col-md-10 frm" style="padding:0px;">
+            <textarea class="form-control pull-left" rows="2" placeholder="Click here to type"></textarea>
+          </div>
+          <div class="col-md-2">
+            <button type="button" class="btn btn-primary pull right" style="padding:5px 30px;">Send</button>
+          </div>
+        </div>
+        <div class="col-md-9 pull-right btm-txt"><p><span style="margin-right:5px;"><img src="img\check.png"></span>I acknowledge that all billing regarding this Gig(Including follow on work)has to conducted through Cnerr in order to comply with Cnerr Policy.</p></div>
+      </div>
+  </div>
+</div>
+
+<?php echo $__env->make('includes.footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+<script type="text/javascript">
+  $('#ex1').bootstrapSlider({
+  tooltip : 'hide'
+});
+
+   $('#ex2').bootstrapSlider({
+    tooltip : 'hide'
+});
+   $('#ex3').bootstrapSlider({
+  tooltip : 'hide'
+});
+   $('#ex4').bootstrapSlider({
+ tooltip : 'hide'
+});
+</script>
+
+</body>
+</html>

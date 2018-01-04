@@ -1,0 +1,65 @@
+<?php $__env->startSection('header_title'); ?>
+
+    <h1>Create a new Package Category</h1>
+
+<?php $__env->stopSection(); ?>
+
+
+
+
+<?php $__env->startSection('content'); ?>
+    <?php if($update): ?>
+    <form method="post" action="<?php echo e(route('package.type.update')); ?>">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-info">
+
+                    <div class="box-body">
+                        <!-- text input -->
+                        <div class="form-group">
+                            <label>Package Type Name</label>
+                            <input name="package-name" value="<?php echo e($update ? $package_type->name : ''); ?>" type="text" class="form-control" placeholder="Enter Package Type Name...">
+                            <input name="type_id" value="<?php echo e($update ? $package_type->id : ''); ?>" type="hidden" class="form-control" placeholder="Enter Package Type Name...">
+                        </div>
+
+                        <div class="text-center">
+                            <?php if($update): ?>
+                            <button name="package-submit" type="submit" class="btn btn-primary btn-lg" type="submit">Update</button>
+                             <?php else: ?>
+                                <button name="package-submit" type="submit" class="btn btn-primary btn-lg" type="submit">Create</button>
+                             <?php endif; ?>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </form>
+        <?php else: ?>
+            <form method="post" action="<?php echo e(route('adminpackagestypescreate')); ?>">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="box box-info">
+
+                            <div class="box-body">
+                                <!-- text input -->
+                                <div class="form-group">
+                                    <label>Package Type Name</label>
+                                    <input name="package-name"  type="text" class="form-control" placeholder="Enter Package Type Name...">
+                                </div>
+
+                                <div class="text-center">
+
+                                        <button name="package-submit" type="submit" class="btn btn-primary btn-lg" type="submit">Create</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </form>
+    <?php endif; ?>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('pages.admin.admin_template', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

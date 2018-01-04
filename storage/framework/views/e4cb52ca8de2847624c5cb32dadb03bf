@@ -1,0 +1,104 @@
+<?php $__env->startSection('header_title'); ?>
+
+    <h1>Orders</h1>
+
+<?php $__env->stopSection(); ?>
+
+
+
+
+<?php $__env->startSection('content'); ?>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header text-right">
+                    <a href="/admin/gigs/create" class="btn btn-primary btn-sm"><span class="fa fa-plus"></span></a>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                        <tr>
+                            <th>Order No</th>
+                            <th>Gig</th>
+                            <th>Company Name</th>
+                            <th>Expire Date</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php foreach($orders as $order): ?>
+                            <tr>
+                                <td><?php echo e($order->order_no); ?></td>
+                                <td><?php echo e($order->gig->title); ?></td>
+                                <td><?php echo e($order->company_name); ?></td>
+                                <td><?php echo e($order->expiry); ?></td>
+                                <td>
+                                    <a href="<?php echo e(route('adminorder', [$order->order_no, $order->uuid])); ?>" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-eye-open"></span></a>
+                                    <button data-id="<?php echo e($order->uuid); ?>" class="btn btn-danger btn-xs btn-del"><span class="fa fa-trash-o"></span></button>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+
+                        </tbody>
+
+                    </table>
+                </div><!-- /.box-body -->
+            </div><!-- /.box -->
+        </div><!-- /.col -->
+    </div><!-- /.row -->
+    <?php $__env->stopSection(); ?>
+
+
+
+
+    <?php $__env->startSection('pages_css'); ?>
+
+            <!-- DataTables -->
+    <link rel="stylesheet" href="<?php echo e(asset('bower_components/AdminLTE/plugins/datatables/dataTables.bootstrap.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('css/animate.css')); ?>">
+
+    <?php $__env->stopSection(); ?>
+
+
+
+
+
+    <?php $__env->startSection('pages_script'); ?>
+
+            <!-- DataTables -->
+    <script src="<?php echo e(asset('bower_components/AdminLTE/plugins/datatables/jquery.dataTables.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('bower_components/AdminLTE/plugins/datatables/dataTables.bootstrap.min.js')); ?>"></script>
+    <!-- page script -->
+    <script>
+        $(function () {
+            var table = $("#example1").DataTable({
+                "aaSorting": []
+            });
+
+            $('#example1 tbody').on('click', 'button.btn-del', function() {
+
+                var button = $(this);
+
+                var rowId = button.data('uuid');
+
+                $.ajax({
+                    method: 'DELETE',
+                    url: '/admin/orders',
+                    data: { order_id: rowId },
+                }).done(function(data) {
+                    if(data != 0) {
+                        notifyMessage('Order Deleted Successfully.', 'success');
+
+                        table.row( button.parents('tr') ).remove().draw();
+
+                    } else {
+                        notifyMessage('Order Deleting failed please try again.', 'danger')
+                    }
+                });
+
+            });
+
+        });
+    </script>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('pages.admin.admin_template', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

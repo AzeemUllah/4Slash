@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Order Invoice</title>
+    <link rel="stylesheet" type="text/css" href="css/invoice-style.css" media="all" />
+    <style>
+        body{height:auto !important}
+    </style>
+</head>
+<body>
+<header class="clearfix">
+    <div id="logo">
+        <p>
+        <?php if(!empty($user->profile_image)): ?>
+        <img src="photos/mini/<?php echo e($user->profile_image); ?>" style="max-width: 150px;">
+        <?php else: ?>
+                <img src="img/medium.gif" style="max-width: 150px;">
+        <?php endif; ?>
+        </p>
+    </div>
+</header>
+<main>
+    <div id="details" class="clearfix">
+        <div id="client">
+            <div>Cnerr.deRomero & Malik GbR i.G.</div>
+            <div>Webereistraße 4</div>
+            <div>48607 Ochtrup</div>
+            <div style="padding-bottom: 40px;">Cnerr.de</div>
+            <div class="to">INVOICE FROM:</div>
+            <h2 class="name"><?php echo e($user->username); ?></h2>
+            <div class="address"></div>
+            <div class="email"><a href="mailto:<?php echo e($user->email); ?>"><?php echo e($user->email); ?></a></div>
+            <?php /*<div>Postal Address: <?php echo e($userInfo->postal_code); ?></div>*/ ?>
+            <?php /*<div>Invoice#: <?php echo e($invoice->invoiceno); ?></div>*/ ?>
+            <table class="client-info">
+                <tr>
+                    <td class="date">Datum:</td><td><?php echo e(date('d.m.Y')); ?></td>
+                </tr>
+            </table>
+            <?php /*<div class="address">*/ ?>
+                <?php /*<p>Rechnung. DE153190723</p>*/ ?>
+            <?php /*</div>*/ ?>
+        </div>
+        <div>
+            <p>Dle Lelstung erfolgte lm Monat der Rechungsstellung(§ 31 UST-DV)</p>
+        </div>
+        <table>
+            <thead>
+            <tr>
+                <th>Date</th>
+                <th colspan="3">Order#</th>
+                <th>Amount</th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php foreach($order_details as $orders): ?>
+                <?php if(!empty($orders->order_no)): ?>
+            <tr>
+
+                <td><?php echo e(date('d.m.Y',strtotime($orders->created_at))); ?></td>
+                <td colspan="3"><?php echo e($orders->detail); ?></td>
+                <?php if($invoice->method == "Paypal"): ?>
+                    <?php /*<td><?php echo e(config('app.currency') . number_format($orders->paid+$service->paypal_services,2)); ?></td>*/ ?>
+                    <td><?php echo e(config('app.currency') . number_format($orders->balance,2)); ?></td>
+                <?php else: ?>
+                    <td><?php echo e(config('app.currency') . number_format($orders->balance,2)); ?></td>
+                    <?php /*<td><?php echo e(config('app.currency') . number_format($orders->paid+$service->bank_services,2)); ?></td>*/ ?>
+                <?php endif; ?>
+
+            </tr>
+            <?php endif; ?>
+            <?php endforeach; ?>
+            <tr>
+                <td colspan="4">Gesamt Netto</td>
+                <?php if($invoice->method == "Paypal"): ?>
+                <td><?php echo e(config('app.currency') . number_format($invoice->paid+$service->paypal_services,2)); ?></td>
+                <?php else: ?>
+                <td><?php echo e(config('app.currency') . number_format($invoice->paid+$service->bank_services,2)); ?></td>
+                <?php endif; ?>
+            </tr>
+            <tr>
+                <?php if($invoice->method == "Paypal"): ?>
+                    <td colspan="4">Service Charges (Paypal)</td>
+                <?php else: ?>
+                    <td colspan="4">Service Charges (Bank)</td>
+                <?php endif; ?>
+                <?php if($invoice->method == "Paypal"): ?>
+                    <td><?php echo e(config('app.currency').number_format($service->paypal_services,2)); ?></td>
+                <?php else: ?>
+                    <td><?php echo e(config('app.currency').number_format($service->bank_services,2)); ?></td>
+                <?php endif; ?>
+            </tr>
+            <tr>
+                <td colspan="4" class="text-right">Gesamtbetrag</td>
+                <?php if($invoice->method == "Paypal"): ?>
+                    <td><?php echo e(config('app.currency') . number_format($invoice->paid,2)); ?></td>
+                <?php else: ?>
+                    <td><?php echo e(config('app.currency') . number_format($invoice->paid,2)); ?></td>
+                <?php endif; ?>
+            </tr>
+            </tbody>
+        </table>
+        <div>
+            <p>Der Betrag Wird bel Annahme dar Ware von unserem Loglsttlkpartner kasslert  </p>
+        </div>
+        <div class="box">
+
+            <div class="box2">
+                <p><strong>Phone:</strong> <a href="tel:555-555-5555"><?php echo e($userInfo->telephone); ?></a></p>
+                <p><strong>Email:</strong> <a href="mailto:hello@5marks.co"><?php echo e($user->email); ?></a></p>
+                <p><strong>Website:</strong> <a href="http://5marks.co"><?php echo e($userInfo->protfolio); ?></a></p>
+            </div>
+
+        </div>
+    </div>
+</main>
+</body>
+</html>
+

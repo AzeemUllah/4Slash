@@ -1,0 +1,182 @@
+<?php echo $__env->make('includes.header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+<!-- content -->
+<div class="dash-main-content">
+            <div class="container">
+                <div class="row" style="margin-top: 65px; margin-bottom: 60px;">
+                    
+                    <div class="col-xs-12" style="text-align:-webkit-center;">
+                        <div class="row">
+                            <p class="dash-heading-top">Need something Done? Get it at <span class="txt-color">Cnerr!</span></p>
+                        </div>
+                        
+                        <div class="row" style="border-radius:20px; padding:0px 20px">
+                            <div class="get_help1">
+                                <div class="main-help1">
+                                <form>
+                                    <input type="search" placeholder="What are you having trouble with?" class="input-lg">
+                                    <button type="button" class="btn btn-primary btn-lg help_btn1">Find</button>
+                                </form>
+                                </div>
+                            </div> 
+                        </div>
+                        <div class="row dash">
+                            <h1 class="dash-heading">Featured Gigs</h1>
+                            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+                              <a href="" class="gig-link">
+                                <div class="dash-listing">
+                                    <div class="dash-listing-cap">
+                                        <img src="img/1.jpg" class="img-responsive">
+                                        <h4><b>Business</b> Plan</h4>
+                                        <div class="dash-line"></div>
+                                        <p class="dash-list-parag">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                                    </div>
+                                </div>
+                              </a>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+                              <a href="" class="gig-link">
+                                <div class="dash-listing">
+                                    <div class="dash-listing-cap">
+                                        <img src="img/2.jpg" class="img-responsive">
+                                        <h4><b>Web</b> Development</h4>
+                                        <div class="dash-line"></div>
+                                        <p class="dash-list-parag">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                                    </div>
+                                </div>
+                              </a>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+                              <a href="" class="gig-link">
+                                <div class="dash-listing">
+                                    <div class="dash-listing-cap">
+                                        <img src="img/3.jpg" class="img-responsive">
+                                        <h4><b>3D</b> Designing</h4>
+                                        <div class="dash-line"></div>
+                                        <p class="dash-list-parag">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                                    </div>
+                                </div>
+                              </a>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+                              <a href="" class="gig-link">
+                                <div class="dash-listing">
+                                    <div class="dash-listing-cap">
+                                        <img src="img/4.jpg" class="img-responsive">
+                                        <h4><b>Logo</b> Designing</h4>
+                                        <div class="dash-line"></div>
+                                        <p class="dash-list-parag">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                                    </div>
+                                </div>
+                              </a>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+                              <a href="" class="gig-link">
+                                <div class="dash-listing">
+                                    <div class="dash-listing-cap">
+                                        <img src="img/5.jpg" class="img-responsive">
+                                        <h4><b>Content</b> Writing</h4>
+                                        <div class="dash-line"></div>
+                                        <p class="dash-list-parag">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                                    </div>
+                                </div>
+                              </a>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+                              <a href="" class="gig-link">
+                                <div class="dash-listing">
+                                    <div class="dash-listing-cap">
+                                        <img src="img/6.jpg" class="img-responsive">
+                                        <h4><b>Brochure</b> Designing</h4>
+                                        <div class="dash-line"></div>
+                                        <p class="dash-list-parag">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                                    </div>
+                                </div>
+                              </a>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+                              <a href="" class="gig-link">
+                                <div class="dash-listing">
+                                    <div class="dash-listing-cap">
+                                        <img src="img/7.jpg" class="img-responsive">
+                                        <h4><b>Voice</b> Over</h4>
+                                        <div class="dash-line"></div>
+                                        <p class="dash-list-parag">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                                    </div>
+                                </div>
+                              </a>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+                              <a href="" class="gig-link">
+                                <div class="dash-listing">
+                                    <div class="dash-listing-cap">
+                                        <img src="img/8.jpg" class="img-responsive">
+                                        <h4><b>Virtual</b> Assistant</h4>
+                                        <div class="dash-line"></div>
+                                        <p class="dash-list-parag">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                                    </div>
+                                </div>
+                              </a>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+                              <a href="" class="gig-link">
+                                <div class="dash-listing">
+                                    <div class="dash-listing-cap">
+                                        <img src="img/9.jpg" class="img-responsive">
+                                        <h4><b>UI</b> Designing</h4>
+                                        <div class="dash-line"></div>
+                                        <p class="dash-list-parag">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                                    </div>
+                                </div>
+                              </a>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+                              <a href="" class="gig-link">
+                                <div class="dash-listing">
+                                    <div class="dash-listing-cap">
+                                        <img src="img/4.jpg" class="img-responsive">
+                                        <h4><b>Logo</b> Designing</h4>
+                                        <div class="dash-line"></div>
+                                        <p class="dash-list-parag">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                                    </div>
+                                </div>
+                              </a>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+                              <a href="" class="gig-link">
+                                <div class="dash-listing">
+                                    <div class="dash-listing-cap">
+                                        <img src="img/5.jpg" class="img-responsive">
+                                        <h4><b>Content</b> Writing</h4>
+                                        <div class="dash-line"></div>
+                                        <p class="dash-list-parag">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                                    </div>
+                                </div>
+                              </a>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+                              <a href="" class="gig-link">
+                                <div class="dash-listing">
+                                    <div class="dash-listing-cap">
+                                        <img src="img/6.jpg" class="img-responsive">
+                                        <h4><b>Brochure</b> Designing</h4>
+                                        <div class="dash-line"></div>
+                                        <p class="dash-list-parag">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                                    </div>
+                                </div>
+                              </a>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-th-large" style="margin-right:5px;"></span>View all Gigs</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+<?php echo $__env->make('includes.footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+
+    </body>
+</html>

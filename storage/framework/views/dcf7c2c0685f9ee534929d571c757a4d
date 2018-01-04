@@ -1,0 +1,16 @@
+
+
+<?php $__env->startSection('header_title'); ?>
+
+    <h1 style="padding: 0px 10px;">FAQ</h1>
+
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+    <div class="row" style="margin-left: 0px; margin-right: 0px;">
+        <?php echo $__env->make('pages.agency.partials.side_menue', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+    </div><!-- /.row -->
+
+
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('pages.agency.agency_template', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

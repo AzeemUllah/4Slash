@@ -1,0 +1,116 @@
+
+@include('includes.header')
+
+
+
+<!-- Main container -->
+<main class="main-content">
+
+
+
+    <!--
+    |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+    | Press coverage
+    |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+    !-->
+    <section class="section bg-gray">
+        <div class="container">
+
+            <header class="section-header">
+                <small>In News</small>
+                <h2>Press Coverage</h2>
+                <hr>
+                <p class="lead">Read all the news, reports and stories that published about our startup by journalists.</p>
+            </header>
+
+            <div class="row gap-y">
+
+                <div class="col-12 col-lg-4">
+                    <a href="#" class="card card-bordered card-hover-shadow text-center">
+                        <div class="card-block">
+                            <br>
+                            <p><img src="assets/img/press-1.png"></p>
+                            <br>
+                            <h4 class="card-title">TheSaaS is one of the best templates for startup landing pages</h4>
+                            <small>July 2017</small>
+                        </div>
+                    </a>
+                </div>
+
+
+                <div class="col-12 col-lg-4">
+                    <a href="#" class="card card-bordered card-hover-shadow text-center">
+                        <div class="card-block">
+                            <br>
+                            <p><img src="assets/img/press-2.png"></p>
+                            <br>
+                            <h4 class="card-title">A new website template is always in most popular items of Themeforest</h4>
+                            <small>July 2017</small>
+                        </div>
+                    </a>
+                </div>
+
+
+                <div class="col-12 col-lg-4">
+                    <a href="#" class="card card-bordered card-hover-shadow text-center">
+                        <div class="card-block">
+                            <br>
+                            <p><img src="assets/img/press-3.png"></p>
+                            <br>
+                            <h4 class="card-title">You'll become amaze by how you can design your pages easily</h4>
+                            <small>June 2017</small>
+                        </div>
+                    </a>
+                </div>
+
+
+                <div class="col-12 col-lg-4">
+                    <a href="#" class="card card-bordered card-hover-shadow text-center">
+                        <div class="card-block">
+                            <br>
+                            <p><img src="assets/img/press-4.png"></p>
+                            <br>
+                            <h4 class="card-title">A new major version of a most selling html template is out there</h4>
+                            <small>June 2017</small>
+                        </div>
+                    </a>
+                </div>
+
+
+                <div class="col-12 col-lg-4">
+                    <a href="#" class="card card-bordered card-hover-shadow text-center">
+                        <div class="card-block">
+                            <br>
+                            <p><img src="assets/img/press-5.png"></p>
+                            <br>
+                            <h4 class="card-title">A html template which is a requirement for every entrepreneurs</h4>
+                            <small>June 2017</small>
+                        </div>
+                    </a>
+                </div>
+
+
+                <div class="col-12 col-lg-4">
+                    <a href="#" class="card card-bordered card-hover-shadow text-center">
+                        <div class="card-block">
+                            <br>
+                            <p><img src="assets/img/press-6.png"></p>
+                            <br>
+                            <h4 class="card-title">This new product is selling much more than expectation</h4>
+                            <small>May 2017</small>
+                        </div>
+                    </a>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+
+
+
+</main>
+<!-- END Main container -->
+
+@include('includes.footer')

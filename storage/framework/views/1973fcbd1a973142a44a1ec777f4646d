@@ -1,0 +1,268 @@
+<?php $__env->startSection('header_title'); ?>
+
+    <h1>Order: <?php echo e($order->order_no); ?></h1>
+
+<?php $__env->stopSection(); ?>
+
+
+
+
+<?php $__env->startSection('content'); ?>
+
+        <div class="row">
+            <div class="col-md-6">
+
+
+                <div class="box box-primary direct-chat direct-chat-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Order Info</h3>
+                        <?php /*<div class="box-tools pull-right">*/ ?>
+                        <?php /*<span data-toggle="tooltip" title="3 New Messages" class="badge bg-light-blue">3</span>*/ ?>
+                        <?php /*<button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>*/ ?>
+                        <?php /*<button class="btn btn-box-tool" data-toggle="tooltip" title="Contacts" data-widget="chat-pane-toggle"><i class="fa fa-comments"></i></button>*/ ?>
+                        <?php /*<button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>*/ ?>
+                        <?php /*</div>*/ ?>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <div class="col-md-12">
+
+                            <h4>Company Discription</h4>
+                            <table class="table">
+
+                                <tbody>
+                                <tr>
+                                    <td><b>Company Name</b></td><td><?php echo e($order->company_name); ?></td>
+                                    </tr>
+                                <tr>
+                                    <td><b>Tagline</b></td><td><?php echo e($order->company_tagline); ?></td>
+                                    </tr>
+                                <tr>
+                                    <td><b>Industry</b></td><td><?php echo e($order->company_industry); ?></td>
+                                    </tr>
+                                <tr>
+                                    <td><b>Discription</b></td><td><?php echo e($order->company_discription); ?></td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+
+
+
+                            <div>
+                                <?php foreach($order_questions as $order_ques): ?>
+                                <h4><?php echo e($order_ques->question); ?></h4>
+                                <p><?php echo e($order_ques->answers); ?></p>
+                                    <?php endforeach; ?>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+            <div class="col-md-6">
+
+
+                <div class="box box-primary direct-chat direct-chat-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Order Chat</h3>
+                        <?php /*<div class="box-tools pull-right">*/ ?>
+                        <?php /*<span data-toggle="tooltip" title="3 New Messages" class="badge bg-light-blue">3</span>*/ ?>
+                        <?php /*<button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>*/ ?>
+                        <?php /*<button class="btn btn-box-tool" data-toggle="tooltip" title="Contacts" data-widget="chat-pane-toggle"><i class="fa fa-comments"></i></button>*/ ?>
+                        <?php /*<button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>*/ ?>
+                        <?php /*</div>*/ ?>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+
+
+                        <!-- Conversations are loaded here -->
+                        <div class="direct-chat-messages">
+                            <!-- Message. Default to the left -->
+
+                            <?php foreach($messages as $message): ?>
+                                <?php if($message->user_id == \Illuminate\Support\Facades\Auth::user()->id): ?>
+                                    <div class="direct-chat-msg">
+                                        <div class="direct-chat-info clearfix">
+                                            <span class="direct-chat-name pull-left">Alexander Pierce</span>
+                                            <span class="direct-chat-timestamp pull-right">23 Jan 2:00 pm</span>
+                                        </div>
+                                        <!-- /.direct-chat-info -->
+                                        <img class="direct-chat-img" src="http://localhost:8000/bower_components/AdminLTE/dist/img/user2-160x160.jpg" alt="message user image"><!-- /.direct-chat-img -->
+                                        <div class="direct-chat-text">
+                                            <?php echo e($message->body); ?>
+
+                                        </div>
+                                        <!-- /.direct-chat-text -->
+                                    </div><!-- /.direct-chat-msg -->
+                                    <?php else: ?>
+                                            <!-- Message to the right -->
+                                    <div class="direct-chat-msg right">
+                                        <div class="direct-chat-info clearfix">
+                                            <span class="direct-chat-name pull-right">Sarah Bullock</span>
+                                            <span class="direct-chat-timestamp pull-left">23 Jan 2:05 pm</span>
+                                        </div>
+                                        <!-- /.direct-chat-info -->
+                                        <img class="direct-chat-img"
+                                             src="http://localhost:8000/bower_components/AdminLTE/dist/img/user2-160x160.jpg"
+                                             alt="message user image"><!-- /.direct-chat-img -->
+                                        <div class="direct-chat-text">
+                                            <?php echo e($message->body); ?>
+
+                                        </div>
+                                        <!-- /.direct-chat-text -->
+                                    </div><!-- /.direct-chat-msg -->
+                                <?php endif; ?>
+                            <?php endforeach; ?>
+
+
+                        </div>
+                        <!--/.direct-chat-messages-->
+
+                        <!-- Contacts are loaded here -->
+                        <div class="direct-chat-contacts">
+                            <ul class="contacts-list">
+                                <li>
+                                    <a href="#">
+                                        <img class="contacts-list-img"
+                                             src="http://localhost:8000/bower_components/AdminLTE/dist/img/user2-160x160.jpg">
+
+                                        <div class="contacts-list-info">
+                            <span class="contacts-list-name">
+                              Count Dracula
+                              <small class="contacts-list-date pull-right">2/28/2015</small>
+                            </span>
+                                            <span class="contacts-list-msg">How have you been? I was...</span>
+                                        </div>
+                                        <!-- /.contacts-list-info -->
+                                    </a>
+                                </li>
+                                <!-- End Contact Item -->
+                            </ul>
+                            <!-- /.contatcts-list -->
+                        </div>
+                        <!-- /.direct-chat-pane -->
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer">
+                        <form class="chat-form" action="#" method="post">
+                            <div class="input-group">
+                                <input id="chat-admin-message-text" name="message" placeholder="Type Message ..." class="form-control" type="text">
+                      <span class="input-group-btn">
+                        <button id="chat-submit" type="submit" class="btn btn-primary btn-flat">Send</button>
+                      </span>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- /.box-footer-->
+                </div>
+
+
+            </div>
+        </div>
+
+<?php $__env->stopSection(); ?>
+
+
+
+<?php $__env->startSection('pages_css'); ?>
+
+
+<?php $__env->stopSection(); ?>
+
+
+
+<?php $__env->startSection('pages_script'); ?>
+<script>
+
+    (function() {
+
+        $('.chat-form').submit(function(ev) {
+            ev.preventDefault();
+
+            sendAdminOrderMessage();
+        });
+
+        $('.direct-chat-messages').scrollTop($('.direct-chat-messages')[0].scrollHeight);
+
+    })();
+
+    function sendAdminOrderMessage() {
+
+
+
+        var message = document.querySelector('#chat-admin-message-text').value;
+
+        $.ajax({
+            method: 'POST',
+            url: window.location,
+            data: { text_message: message }
+        }).done(function(data) {
+console.log(data);
+
+            var myChat = '<div class="direct-chat-msg">' +
+                            '<div class="direct-chat-info clearfix">' +
+                                '<span class="direct-chat-name pull-left">Alexander Pierce</span>' +
+                                '<span class="direct-chat-timestamp pull-right">23 Jan 2:00 pm</span>' +
+                            '</div>' +
+                            '<img class="direct-chat-img" src="http://localhost:8000/bower_components/AdminLTE/dist/img/user2-160x160.jpg" alt="message user image">' +
+                            '<div class="direct-chat-text">' +
+                                data.body +
+                            '</div>' +
+                        '</div>';
+            $('.direct-chat-messages').append(myChat);
+
+            $('.direct-chat-messages').scrollTop($('.direct-chat-messages')[0].scrollHeight);
+
+
+        });
+
+    }
+
+</script>
+
+<?php $__env->stopSection(); ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<?php echo $__env->make('pages.admin.admin_template', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

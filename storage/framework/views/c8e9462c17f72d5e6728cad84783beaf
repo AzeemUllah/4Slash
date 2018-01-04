@@ -1,0 +1,26 @@
+<?php echo $__env->make('includes.header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+        <!--Content-->
+<div class="container top-gap">
+    <div class="well main">
+        <h1 class="text-primary">Impressum</h1>
+        <p>Angaben gem. § 5 TMG</p>
+        <h2>Betreiber und Kontakt:</h2>
+        <p>Romero & Malik GbR i.G.</p>
+        <p>Webereistraße 4
+            48607 Ochtrup</p>
+        <p><b>T:</b> +49 2553 – 8034-0</p>
+        <p><b>F:</b> +49 2553 – 8034-6</p>
+        <p><b>E-Mail-Adresse:</b> anfrage@cnerr.de</p>
+        <h2>Vertretung:</h2>
+        <p>Romero & Malik GbR i.G. wird vertreten durch Severin Romero
+            Faisal Khalid Malik</p>
+        <p>Finanzamt Steinfurt</p>
+
+    </div>
+</div>
+
+
+<?php echo $__env->make('includes.footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+</body>
+</html>

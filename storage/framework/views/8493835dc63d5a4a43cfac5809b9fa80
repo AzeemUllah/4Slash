@@ -1,0 +1,280 @@
+<?php echo $__env->make('includes.header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+
+        <!--content-->
+<div class="container top-gap" ng-app="cnerr" ng-controller="MyOrdersController">
+    <div class="well grey">
+        <div class="row">
+            <div class="col-lg-5">
+                <h1 class="text-primary">My Workstream</h1>
+            </div>
+        </div>
+        <div class="row wrk_stm">
+            <div class="thumb">
+                <div class="col-md-1 col-sm-1 box_1">
+
+                </div>
+                <div class="col-md-2 col-sm-2 box_1">
+                    <p class="dollar">$0</p>
+
+                    <p class="spent">Spend this Month</p>
+                    <img src="<?php echo e(asset('img/dollar.png')); ?>">
+                </div>
+                <div class="col-md-2 col-sm-2 box_1">
+                    <p class="dollar">0</p>
+
+                    <p class="spent">New Orders</p>
+                    <img src="<?php echo e(asset('img/pencil.png')); ?>">
+                </div>
+                <div class="col-md-2 col-sm-2 box_1">
+                    <p class="dollar">0%</p>
+
+                    <p class="spent">Positivity Gauge</p>
+                    <img src="<?php echo e(asset('img/hand.png')); ?>">
+                </div>
+                <div class="col-md-2 col-sm-2 box_1">
+                    <p class="dollar">0</p>
+
+                    <p class="spent">Completed Orders</p>
+                    <img src="<?php echo e(asset('img/jet.png')); ?>">
+                </div>
+                <div class="col-md-2 col-sm-2 box_1">
+                    <p class="dollar">0 hrs.</p>
+
+                    <p class="spent">Collaboration Time</p>
+                    <img src="<?php echo e(asset('img/time.png')); ?>">
+                </div>
+            </div>
+        </div>
+        <div class="row wrk-strm-chat">
+            <div class="col-md-3 left-ubox">
+                <div class="head">
+                    <p>My Projects</p>
+                </div>
+                <div class="list-group left-pane">
+                    <?php foreach($orders as $order): ?>
+                        <a href ng-click="getMyOrder('<?php echo e($order->uuid); ?>')"
+                           class="list-group-item">
+                            <?php if($order->status == 'jobdone'): ?>
+                            <span class="myorders-list-item-status"><i class="icon fa fa-check"></i> job done</span>
+                            <?php endif; ?>
+                            <?php echo e($order['gig']->title); ?></a>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+            <div class="col-md-9 right-ubox">
+                <div class="pane-head col-md-12">
+                    <span>My Chat</span>
+                    <span class="pull-right">Order No: <span><?='{{ order.order_no }}'?></span></span>
+                </div>
+                <div class="chat-window col-md-12">
+                     <div ng-show="order.status=='jobdone'" class="alert alert-success alert-dismissible">
+                        <h4><i class="icon fa fa-check"></i> This order mark as Job Done.</h4>
+                        please wait for the buyer to acknowledge this order.
+                        <form method="post" action="<?php echo e(route('myordersaction')); ?>">
+                            <input type="hidden" name="order-action" value="acknowledge">
+                            <input type="hidden" name="order-no" value="<?= '{{ order.order_no }}' ?>">
+                            <input type="hidden" name="order-uuid" value="<?= '{{ order.uuid }}' ?>">
+                            <button type="submit" class="btn btn-primary">Acknowledge</button>
+                        </form>
+                    </div>
+                    <div class="upr-wind text-center">
+                        <div class="days">
+                            <div class="dy">
+                                00
+                            </div>
+                            DAYS
+                        </div>
+                        <div class="hours">
+                            <div class="hr">
+                                00
+                            </div>
+                            HOURS
+                        </div>
+                        <div class="minutes">
+                            <div class="mint">
+                                00
+                            </div>
+                            MINUTES
+                        </div>
+                        <div class="seconds">
+                            <div class="sec">
+                                00
+                            </div>
+                            SECONDS
+                        </div>
+                    </div>
+                    
+                    <div class="chat-box">
+                        <div class="info-part">
+                            <h4>Show Order Info</h4>
+                        </div>
+                        <div class="chat">
+                            <h4><span>Company Description</h4>
+                            <table class="table">
+                                <tr>
+                                    <td class="left">Company Name:</td>
+                                    <td class="right"><?= '{{ order.company_name  }}' ?></td>
+                                </tr>
+                                <tr>
+                                    <td class="left">Tagline:</td>
+                                    <td class="right"><?= '{{ order.company_tagline  }}' ?></td>
+                                </tr>
+                                <tr>
+                                    <td class="left">Industry:</td>
+                                    <td class="right"><?= '{{ order.company_industry  }}' ?></td>
+                                </tr>
+                                <tr>
+                                    <td class="left">Description:</td>
+                                    <td class="right"><?= '{{ order.company_discription  }}' ?></td>
+                                </tr>
+                            </table>
+                            <hr>
+
+
+                            <div ng-repeat="question in order.ques_ans">
+                                <h4><?= '{{ question.question }}' ?></h4>
+
+                                <p style="font-size:16px;color:#7b7b7b;"><?= '{{ question.answers }}' ?></p>
+                                <hr>
+                            </div>
+
+
+
+                            <?php /*<h4>Sample Styles</h4>*/ ?>
+
+                            <?php /*<div class="scrl1">*/ ?>
+                                <?php /*<span class="play">Playful</span>*/ ?>
+                                <?php /*<input id="ex1" data-slider-id='ex1Slider' type="text" data-slider-min="0"*/ ?>
+                                       <?php /*data-slider-max="20" data-slider-step="1" data-slider-value="14"/>*/ ?>
+                                <?php /*<span class="serious">Serious</span>*/ ?>
+                            <?php /*</div>*/ ?>
+                            <?php /*<div class="scrl2">*/ ?>
+                                <?php /*<span class="modern">Modern</span>*/ ?>
+                                <?php /*<input id="ex2" data-slider-id='ex1Slider' type="text" data-slider-min="0"*/ ?>
+                                       <?php /*data-slider-max="20" data-slider-step="1" data-slider-value="14"/>*/ ?>
+                                <?php /*<span class="classic">Classic</span>*/ ?>
+                            <?php /*</div>*/ ?>
+                            <?php /*<div class="scrl3">*/ ?>
+                                <?php /*<span class="femin">Feminine</span>*/ ?>
+                                <?php /*<input id="ex3" data-slider-id='ex1Slider' type="text" data-slider-min="0"*/ ?>
+                                       <?php /*data-slider-max="20" data-slider-step="1" data-slider-value="14"/>*/ ?>
+                                <?php /*<span class="masculin">Masculine</span>*/ ?>
+                            <?php /*</div>*/ ?>
+                            <?php /*<div class="scrl4">*/ ?>
+                                <?php /*<span class="simple">Simple</span>*/ ?>
+                                <?php /*<input id="ex4" data-slider-id='ex1Slider' type="text" data-slider-min="0"*/ ?>
+                                       <?php /*data-slider-max="20" data-slider-step="1" data-slider-value="14"/>*/ ?>
+                                <?php /*<span class="complex">Complex</span>*/ ?>
+                            <?php /*</div>*/ ?>
+                        </div>
+                    </div>
+                    
+                    <div class="zg-chat-box-list">
+                        <div ng-repeat="message in orderm.messages.slice().reverse()"
+                             ng-class="(message.from == 'me') ? 'chat-box3' : 'chat-box2'">
+                            <img src="<?= '{{ message.profile_image }}' ?>" class="img-circle">
+
+                            <div ng-class="(message.from == 'me') ? 'chat3' : 'chat2'">
+                                <p ng-bind-html="message.body">
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="chat-text-box-block col-md-12">
+                    <form method="post" id="order-messaging-form">
+                        <div class="row">
+                            <div class="col-md-10 frm" style="padding:0px;">
+                                <input type="hidden" name="orderuid" id="orderuuid-message-orderuid">
+                                <textarea name="message" class="form-control pull-left" rows="2"
+                                          placeholder="Click here to type"></textarea>
+                            </div>
+                            <div class="col-md-2">
+                                <button type="submit" class="btn btn-primary pull right"
+                                        style="padding:5px 30px;">Send
+                                </button>
+                                <input type="file" name="order-message-file" id="order-message-file-selector">
+                                <label id="order-message-file-selector-button" for="order-message-file-selector"><span class="glyphicon glyphicon-paperclip"></span></label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<?php echo $__env->make('includes.footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+
+<script src="<?php echo e(asset('bower_components/jquery.countdown/dist/jquery.countdown.js')); ?>"></script>
+
+
+<script type="text/javascript">
+    $('#ex1').bootstrapSlider({
+        tooltip: 'hide'
+    });
+
+    $('#ex2').bootstrapSlider({
+        tooltip: 'hide'
+    });
+    $('#ex3').bootstrapSlider({
+        tooltip: 'hide'
+    });
+    $('#ex4').bootstrapSlider({
+        tooltip: 'hide'
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".info-part").click(function () {
+            $(".chat").slideToggle();
+        });
+    });
+</script>
+<script>
+    (function() {
+            var orderMessageForm = document.querySelector('#order-messaging-form');
+            orderMessageForm.addEventListener('submit', function(event)
+            {
+                event.preventDefault();
+                var formData = new FormData(orderMessageForm);
+            
+                $.ajax({
+                    url: '/order/sendMessage',
+                    method: 'post',
+                    data: formData,
+                    enctype: 'multipart/form-data',
+                    processData: false,
+                    contentType: false,
+                    success: function(data) {
+                        console.log(data);
+                        var elem = $('<div class="ng-scope chat-box3"><img src="'+ $('.head-profile-image img').attr('src') +'" class="img-circle"><div class="ng-binding chat3">'+ data.message +'<br><a href="'+ data.imageurl +'">File</a></div></div>');
+                        
+                        $('.zg-chat-box-list').append(elem);
+                        //data.imageurl
+                    }
+                });
+            });
+    })();
+</script>
+<script>
+    //  $(function(){
+    //    $('.zg-chat-box-list').slimScroll({
+    //      height: '500px',
+    //      size: '5px',
+    //      start: 'bottom',
+    //      railVisible: true,
+    //      railColor: '#222',
+    //      railOpacity: 0.3,
+    //      wheelStep: 10,
+    //      disableFadeOut: false
+    //    });
+    //  });
+</script>
+
+</body>
+</html>

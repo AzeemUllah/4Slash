@@ -1,0 +1,1742 @@
+
+
+<?php $__env->startSection('header_title'); ?>
+    <style>
+        .green{
+            color:green;
+        }
+        .red{
+            color:red;
+        }
+    </style>
+    <h1 style="padding: 0px 10px;">Dashboard
+        <?php if(!empty($type) && $type == "package"): ?>
+            <span class="badge danger">Under Construction</span>
+        <?php endif; ?>
+    </h1>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+    <div class="row">
+        <?php echo $__env->make('pages.agency.partials.side_menue', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+        <div class="box-body no-padding">
+
+            <div class="box-body">
+                <div class="col-md-9">
+                    <div class="box box-info" id="suggestion_content">
+                        <div class="box-header with-border">
+                            <?php if(!empty($type) && $type == 'gig'): ?>
+                                <h3 class="box-title">Suggest favor</h3>
+                            <?php elseif(!empty($type) && $type == 'package'): ?>
+                                <h3 class="box-title">Suggest Pacakge</h3>
+                            <?php endif; ?>
+                        </div><!-- /.box-header -->
+                        <?php if(!empty($type) && $type == 'gig'): ?>
+                            <?php if($update): ?>
+                                <form action="<?php echo e(route('suggestgig.update')); ?>" method="post"
+                                      enctype="multipart/form-data" id="gig-submit" >
+                                    <input type="hidden" name="gig-id" value="<?php echo e($gig->id); ?>">
+                                    <?php else: ?>
+                                        <form action="<?php echo e(route('Create.Agencygig')); ?>" method="post"
+                                              enctype="multipart/form-data" id="gig_submit">
+                                            <?php endif; ?>
+                                            <div class="box-body">
+                                                <!-- text input -->
+                                                <div class="form-group">
+                                                    <label>Title / Titel</label>
+                                                    <input value="<?php echo e(($update) ? $gig->title : Request::old('gig-title')); ?>"
+                                                           name="gig-title" type="text" maxlength="50"
+                                                           class="form-control favor-title" placeholder="Enter favor Title...">
+                                                    <span>(Maximum 50 characters)</span>
+                                                    <?php if($errors->has('gig-title')): ?>
+                                                        <?php /*<span class="help-block"*/ ?>
+                                                        <?php /*style="color:#ff0000"><?php echo e($errors->first('gig-title')); ?></span>*/ ?>
+                                                        <span class="help-block"
+                                                              style="color:#ff0000;">Bitte wählen Sie eine favor-title aus</span>
+                                                        <span class="help-block"
+                                                              style="color:#ff0000">Please choose a favor-title from</span>
+                                                    <?php endif; ?>
+                                                    <span class="error-block1"></span>
+                                                    <span class="error-block2"></span>
+                                                </div>
+
+
+                                            <?php /*<div class="form-group">
+                                                <label>Short Discription /
+                                                    Kurzbeschreibung</label>
+                                                <input value="<?php echo e(($update) ? $gig->short_discription : Request::old('gig-short-discription')); ?>"
+                                                       name="gig-short-discription"
+                                                       type="text" class="form-control"
+                                                       placeholder="Enter favor Short Discription...">
+                                                <?php if($errors->has('gig-short-discription')): ?>
+                                                    */ ?><?php /*<span class="help-block"*/ ?><?php /*
+                                                    */ ?><?php /*style="color:#ff0000"><?php echo e($errors->first('gig-short-discription')); ?></span>*/ ?><?php /*
+                                                    <span class="help-block"
+                                                          style="color:#ff0000">Bitte ergänzen Sie die Favor Kurzbeschreibung</span>
+                                                    <span class="help-block"
+                                                          style="color:#ff0000">Please write a favor-short discription</span>
+                                                <?php endif; ?>
+                                            </div>*/ ?>
+
+
+                                            <!-- textarea -->
+                                                <div class="form-group">
+                                                    <label>Description (Was Kunde bekommt / What Customer get) <span style="color:#b299a5; font-weight: 500;">Please explain in a few words what the client buys. (Maximum 800 characters)</span></label>
+                                                    <?php /*<textarea id="gigDiscription" name="gig-discription" class="form-control" rows="3"
+                                                              placeholder="Enter Gig Discription..."><?php echo e(($update) ? $gig->discription : ''); ?></textarea>*/ ?>
+
+                                                    <textarea id="editor1" name="gig-discription"  rows="10" cols="80"
+                                                              placeholder="Enter favor Discription...">
+                                            <?php echo e(($update) ? $gig->discription : Request::old('gig-discription')); ?>
+
+                            </textarea>
+                                                    <?php /*<textarea style="display:none;" name="gig-discription" id="desc" cols="30" rows="10"></textarea>*/ ?>
+                                                    <?php if($errors->has('gig-discription')): ?>
+                                                        <?php /*<span class="help-block"*/ ?>
+                                                        <?php /*style="color:#ff0000"><?php echo e($errors->first('gig-discription')); ?></span>*/ ?>
+                                                        <span class="help-block"
+                                                              style="color:#ff0000">Bitte ergänzen Sie die Favor Beschreibung</span>
+                                                        <span class="help-block"
+                                                              style="color:#ff0000">Please complete the Favor Description</span>
+                                                    <?php endif; ?>
+                                                    <span class="error-desc1-1"></span>
+                                                    <span class="error-desc1-2"></span>
+                                                </div>
+                                                <!-- textarea2 -->
+                                                <div class="form-group">
+                                                    <label>Description (Was Sie benötigen, um den Auftrag zu beginnen / what you need to start the Order) <span style="color:#b299a5; font-weight: 500;">Please explain in a few words what the client need's to send you (Maximum 800 characters)</span></label>
+                                                    <?php /*<textarea id="gigDiscription" name="gig-discription" class="form-control" rows="3"
+                                                              placeholder="Enter Gig Discription..."><?php echo e(($update) ? $gig->discription : ''); ?></textarea>*/ ?>
+
+                                                    <textarea id="editor2" name="gig-discription1" rows="10" cols="80"
+                                                              placeholder="Enter favor Discription...">
+                                            <?php echo e(($update) ? $gig->discription2 : Request::old('gig-discription1')); ?>
+
+
+                            </textarea>
+                                                    <?php /*<textarea style="display:none;" name="gig-discription1" id="desc1" cols="30" rows="10"></textarea>*/ ?>
+                                                    <?php if($errors->has('gig-discription1')): ?>
+                                                        <?php /*<span class="help-block"*/ ?>
+                                                        <?php /*style="color:#ff0000"><?php echo e($errors->first('gig-discription')); ?></span>*/ ?>
+                                                        <span class="help-block"
+                                                              style="color:#ff0000">Bitte ergänzen Sie die Favor Beschreibung</span>
+                                                        <span class="help-block"
+                                                              style="color:#ff0000">Please complete the Favor Description</span>
+                                                    <?php endif; ?>
+                                                    <span class="error-desc2-1"></span>
+                                                    <span class="error-desc2-2"></span>
+                                                </div>
+                                                <!-- textarea2 -->
+                                                <?php /*<div class="form-group">
+                                                    <label>Description (Erweiterungen (Aufpreis) / Extensions & Extras) <span style="color:#b299a5; font-weight: 500;">Please explain in a few words what extras you are offering (Maximum 800 characters)</span></label>
+                                                    */ ?><?php /*<textarea id="gigDiscription" name="gig-discription" class="form-control" rows="3"
+                                                              placeholder="Enter Gig Discription..."><?php echo e(($update) ? $gig->discription : ''); ?></textarea>*/ ?><?php /*
+
+                                                    <textarea id="editor3" name="gig-discription2" rows="10" cols="80"
+                                                              placeholder="Enter favor Discription...">
+                                            <?php echo e(($update) ? $gig->discription3 : Request::old('gig-discription2')); ?>
+
+
+                            </textarea>
+                                                    */ ?><?php /*<textarea style="display:none;" name="gig-discription2" id="desc2" cols="30" rows="10"></textarea>*/ ?><?php /*
+                                                    <?php if($errors->has('gig-discription2')): ?>
+                                                        */ ?><?php /*<span class="help-block"*/ ?><?php /*
+                                                        */ ?><?php /*style="color:#ff0000"><?php echo e($errors->first('gig-discription')); ?></span>*/ ?><?php /*
+                                                        <span class="help-block"
+                                                              style="color:#ff0000">Bitte ergänzen Sie die Favor Beschreibung</span>
+                                                        <span class="help-block"
+                                                              style="color:#ff0000">Please complete the Favor Description</span>
+                                                    <?php endif; ?>
+                                                    <span class="error-desc3-1"></span>
+                                                    <span class="error-desc3-2"></span>
+                                                </div>*/ ?>
+                                                <div class="form-group">
+                                                    <label for="">Embed Video / Video einfugen</label>
+                                                    <textarea class="form-control" name="videos" id="embed_video" cols="30" rows="5"
+                                                              placeholder="Place your video embed code here.."><?php echo e(($update) ? $gig->gig_videos : Request::old('videos')); ?></textarea>
+                                                </div>
+                                                <!-- select -->
+                                                <div class="form-group cat" style="position: relative;">
+                                                    <label>Category / Kategorie</label>
+                                                    <select id="categorySelectList" name="gig-category"
+                                                            class="form-control"
+                                                            data-url="<?php echo e(route('agency.category.subcategories')); ?>" required style="<?php echo e(($update)? '' :'padding-left: 32px;-webkit-appearance: none;'); ?>;">
+                                                        <option value="">You must select a Category</option>
+                                                        <?php foreach($categories as $category): ?>
+                                                            <option <?php echo e((($update) ? (($category->id == $gig->gigtype_id) ? 'selected' : '') : (Request::old('gig-category') == $category->id) ? 'selected' : '')); ?>  value="<?php echo e($category->id); ?>"><?php echo e($category->name); ?></option>
+                                                        <?php endforeach; ?>
+
+                                                    </select>
+                                                    <?php if(!($update)): ?>
+                                                        <i id="warning1" class="fa fa-exclamation" aria-hidden="true" style="color:red; border: 1px solid red; padding: 3px 8px; border-radius: 15px; position: absolute; top:32px; left:5px;"></i>
+                                                    <?php endif; ?>
+                                                    <?php if($errors->has('gig-category')): ?>
+                                                        <?php /*<span class="help-block"*/ ?>
+                                                        <?php /*style="color:#ff0000"><?php echo e($errors->first('gig-category')); ?></span>*/ ?>
+                                                        <span class="help-block"
+                                                              style="color:#ff0000">Bitte wählen Sie die Favor Kategorie aus</span>
+                                                        <span class="help-block"
+                                                              style="color:#ff0000">Please select the Category</span>
+                                                    <?php endif; ?>
+                                                </div>
+
+
+                                                <div class="form-group" style="position: relative;">
+                                                    <span style="margin-bottom: 20px;">
+                                                        <label style="float: left;">Sub Category / Subkategorie</label>
+                                                        <label style="float: left; margin-left: 10px; margin-bottom: 5px;" class="btn btn-primary btn-xs" for="subcat"  data-toggle="modal" data-target="#myModal"><span class="fa fa-plus"></span></label>
+                                                    </span>
+                                                    <p class="error" style="float:left; width: 100%;"></p>
+                                                    <div id="subcat_tagsinput" class="subcatinput" style="width: 100%; margin-top: 20px;">
+                                                        <?php if($update): ?>
+                                                            <?php foreach($subcategory as $subcat): ?>
+                                                                <span class="subcat_span">
+                                                    <input type="hidden" value="<?php echo e($subcat->id); ?>" name="gig-sub-category[]" class="single_id">
+                                                    <span><?php echo e($subcat->name); ?>&nbsp;&nbsp;</span>
+                                                    <a href="" title="Removing Sub Category" class="remove-subcat">x</a>
+                                                </span>
+                                                            <?php endforeach; ?>
+                                                        <?php endif; ?>
+                                                        <?php if(empty($subcat)): ?>
+                                                            <i id="warning2" class="fa fa-exclamation" aria-hidden="true" style="color:red; border: 1px solid red; padding: 3px 8px; border-radius: 15px; position: absolute; top:50px; left:5px;"></i>
+                                                            <p id="warning-para2" style="color:#9999a2; <?php echo e(($update)? '' :'padding-left: 32px; padding-top:7px'); ?>;">You must select atleast one Sub Category</p>
+                                                        <?php endif; ?>
+                                                    </div>
+                                                    <?php /*<input type="text" id="subCategorySelectList" class="form-control" data-toggle="modal" data-target="#myModal">*/ ?>
+                                                </div>
+
+
+                                                <!-- select -->
+                                                <div class="row">
+
+                                                    <div class="col-md-6 form-group">
+                                                        <label>Delivery Days / Lieferzeit</label>
+                                                        <select name="gig-delivery-days" class="form-control">
+                                                            <?php for($i = 1; $i <= 30; $i++): ?>
+                                                                <option <?php echo e((($update) ? (($gig->delivery_days == $i) ? 'selected' : '') : '')); ?> value="<?php echo e($i); ?>" <?php echo e(($i == 10) ? 'selected':''); ?>><?php echo e($i); ?></option>
+                                                            <?php endfor; ?>
+                                                        </select>
+                                                    </div>
+
+
+                                                    <div class="col-md-6 form-group">
+                                                        <label>Price</label>
+
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">&euro;</span>
+                                                            <input value="<?php echo e((($update) ? $gig->price : '10')); ?>"
+                                                                   name="gig-price" type="number"
+                                                                   class="form-control" readonly>
+                                                            <span class="input-group-addon">.00</span>
+                                                            <?php if($errors->has('gig-price')): ?>
+                                                                <span class="help-block"
+                                                                      style="color:#ff0000"><?php echo e($errors->first('gig-price')); ?></span>
+                                                            <?php endif; ?>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+
+                                            </div>
+                                            <div class="box box-info gig-images-box">
+                                                <div class="box-header with-border">
+                                                    <h3 class="box-title image-title">Images / Bilder <span class="red">(750x350)</span>
+                                                        <?php if(\Illuminate\Support\Facades\Session::has('gig-image')): ?>
+                                                            <span class="help-block"
+                                                                  style="color:#ff0000; font-size:12px; display:inline-block"> (<?php echo e(\Illuminate\Support\Facades\Session::get('gig-image')); ?>
+
+                                                                )</span>
+                                                            <?php echo e(\Illuminate\Support\Facades\Session::forget('gig-image')); ?>
+
+                                                        <?php endif; ?>
+                                                    </h3>
+                                                    <input style="position:absolute;top:0px;left:0px;width:0.1px;height:0.1px;opacity:0;overflow:hidden;"
+                                                           name="gig-images[]" accept="image/*" type="file" multiple
+                                                           id="fileee">
+                                                    <label style="margin-left: 10px;" class="btn btn-primary btn-xs" for="fileee"><span
+                                                                class="fa fa-plus"></span></label>
+                                                </div>
+
+                                                <div class="box-body gig-images-box-body">
+                                                    <?php /*<?php if($update): ?>*/ ?>
+                                                    <?php if(!empty($gigImages) && count($gigImages) > 0): ?>
+                                                        <?php foreach($gigImages as $gigImage): ?>
+                                                            <?php if(!empty($gigImage)): ?>
+                                                                <div style="position:relative;display:inline-block;">
+
+
+                                                                    <button data-href="<?php echo e(route('gig.images.remove.agency')); ?>"
+                                                                            data-image-id="<?php echo e($gigImage->id); ?>"
+                                                                            style="position:absolute;right:0px;top:0px;padding:0px 6px;"
+                                                                            class="btn btn-default btn-gig-img-remove">x
+                                                                    </button>
+                                                                    <img style="height:60px;"
+                                                                         src="<?php echo e(url('/files/gigs/images') . '/' . $gigImage->image); ?>"
+                                                                         class="meriimage">
+                                                                </div>
+                                                            <?php endif; ?>
+                                                        <?php endforeach; ?>
+                                                    <?php endif; ?>
+                                                </div>
+                                                <div class="box-footer"></div>
+                                            </div>
+                                            <?php /*<div class="box box-info addons-box">
+                                                <div class="box-header with-border">
+                                                    <h3 class="box-title">Embed videos</h3>
+                                                </div>
+                                                <div class="box-body">
+                                                    <textarea name="" id="" cols="30" rows="10"></textarea>
+                                                </div>
+                                            </div>*/ ?>
+                                            <div class="box box-info addons-box">
+                                                <div class="box-header with-border">
+                                                    <h3 class="box-title">Addons / Erweiterungen</h3>
+                                                    <button type="button" id="add-new-addon"
+                                                            class="btn btn-primary btn-xs" style="margin-left:10px;"><span
+                                                                class="fa fa-plus"></span></button>
+                                                </div>
+                                                <div class="box-body">
+                                                    <?php if($update): ?>
+                                                        <?php $i = 1; ?>
+                                                        <?php foreach($gigAddons as $gigAddon): ?>
+                                                            <div class="row" style="margin-left: -10px; margin-right: -10px;">
+                                                                <?php if($gigAddon->addon == "Expresslieferung"): ?>
+                                                                    <div class="col-xs-12" style="border-top:1px solid #ececec; padding-top: 10px;">
+                                                                        <label for="">Express Delivery</label>
+                                                                    </div>
+                                                                <?php endif; ?>
+                                                                <div class="col-md-4">
+                                                                    <div class="form-group">
+                                                                        <input value="<?php echo e($gigAddon->addon); ?>"
+                                                                               name="gig-addon[<?php echo e($i); ?>][discription]"
+                                                                               type="text"
+                                                                               class="form-control <?php echo e(($gigAddon->addon == "Expresslieferung")? 'express': ''); ?>"
+                                                                               placeholder="Enter Addon Discription...">
+                                                                        <input value="<?php echo e($gigAddon->id); ?>"
+                                                                               name="gig-addon[<?php echo e($i); ?>][addon_id]"
+                                                                               type="hidden"
+                                                                               class="form-control">
+                                                                    </div>
+                                                                </div>
+                                                                <?php if($gigAddon->addon == "Expresslieferung"): ?>
+                                                                    <div class="col-md-2">
+                                                                        <div class="form-group">
+                                                                            <div class="input-group">
+                                                                                <span class="input-group-addon">Days</span>
+                                                                                <input type="number" value="<?php echo e($gigAddon->day); ?>" name="gig-addon[<?php echo e($i); ?>][delivery_day]"
+                                                                                       class="form-control">
+                                                                                <input value="<?php echo e($gigAddon->id); ?>"
+                                                                                       name="gig-addon[<?php echo e($i); ?>][addon_id]" type="hidden"
+                                                                                       class="form-control">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                <?php endif; ?>
+                                                                <div class="col-md-4">
+                                                                    <div class="form-group">
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon">&euro;</span>
+                                                                            <input value="<?php echo e($gigAddon->amount); ?>"
+                                                                                   name="gig-addon[<?php echo e($i); ?>][price]"
+                                                                                   type="number" class="form-control">
+                                                                            <span class="input-group-addon">.00</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-2 del-btn-box">
+                                                                    <button data-href="<?php echo e(route('gig-addon-remove')); ?>"
+                                                                            type="button"
+                                                                            data-addonid="<?php echo e($gigAddon->id); ?>"
+                                                                            class="btn btn-danger btn-xs remove-addon"><span
+                                                                                class="fa fa-minus"></span></button>
+                                                                </div>
+                                                            </div>
+                                                            <?php $i++; ?>
+                                                        <?php endforeach; ?>
+                                                    <?php else: ?>
+                                                        <?php /*<div class="row">*/ ?>
+                                                        <?php /*<div class="col-md-5">*/ ?>
+                                                        <?php /*<div class="form-group">*/ ?>
+                                                        <?php /*<input value="Gewerbliche Nutzung"*/ ?>
+                                                        <?php /*name="gig-addon[2][discription]" type="text"*/ ?>
+                                                        <?php /*class="form-control"*/ ?>
+                                                        <?php /*placeholder="Enter Addon Discription...">*/ ?>
+                                                        <?php /*</div>*/ ?>
+                                                        <?php /*</div>*/ ?>
+                                                        <?php /*<div class="col-md-5">*/ ?>
+                                                        <?php /*<div class="form-group">*/ ?>
+                                                        <?php /*<div class="input-group">*/ ?>
+                                                        <?php /*<span class="input-group-addon">&euro;</span>*/ ?>
+                                                        <?php /*<input value="50" name="gig-addon[2][price]"*/ ?>
+                                                        <?php /*type="number" class="form-control">*/ ?>
+                                                        <?php /*<input name="new_addon[]" type="hidden"*/ ?>
+                                                        <?php /*value="">*/ ?>
+                                                        <?php /*<span class="input-group-addon">.00</span>*/ ?>
+                                                        <?php /*</div>*/ ?>
+                                                        <?php /*</div>*/ ?>
+                                                        <?php /*</div>*/ ?>
+                                                        <?php /*<div class="col-md-2 del-btn-box">*/ ?>
+                                                        <?php /*<button type="button"*/ ?>
+                                                        <?php /*class="btn btn-danger btn-xs remove-addon"><span*/ ?>
+                                                        <?php /*class="fa fa-minus"></span></button>*/ ?>
+                                                        <?php /*</div>*/ ?>
+                                                        <?php /*</div>*/ ?>
+                                                        <div class="row">
+                                                            <div class="col-xs-12">
+                                                                <p style="color:#dd4b39; font-weight: bold; font-size: 12px;">Express Delivery (If you want to use this addon plesae add Days, it will effect on your delivery days,otherwise leave it empty)</p>
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <div class="form-group">
+                                                                    <input value="Expresslieferung"
+                                                                           name="gig-addon[3][discription]" type="text"
+                                                                           class="form-control express"
+                                                                           placeholder="Enter Addon Discription...">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-3">
+                                                                <div class="form-group">
+                                                                    <div class="input-group">
+                                                                        <span class="input-group-addon">Days</span>
+                                                                        <input type="number" value="" name="gig-addon[3][delivery_day]"
+                                                                               class="form-control">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-3">
+                                                                <div class="form-group">
+                                                                    <div class="input-group">
+                                                                        <span class="input-group-addon">&euro;</span>
+                                                                        <input value="50" name="gig-addon[3][price]"
+                                                                               type="number" class="form-control">
+                                                                        <input name="new_addon[]" type="hidden"
+                                                                               value="">
+                                                                        <span class="input-group-addon">.00</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-2 del-btn-box">
+                                                                <button type="button"
+                                                                        class="btn btn-danger btn-xs remove-addon"><span
+                                                                            class="fa fa-minus"></span></button>
+                                                            </div>
+                                                        </div>
+                                                    <?php endif; ?>
+                                                </div><!-- /.box-body -->
+                                            </div>
+                                            <div class="box box-info gig-questions-box">
+                                                <div class="box-header with-border">
+                                                    <h3 class="box-title">Questions / Fragen</h3>
+
+                                                    <div class="btn-group pull-right">
+                                                        <button type="button" id="add-choice-question"
+                                                                class="btn btn-primary btn-xs"><span
+                                                                    class="fa fa-plus"></span> Add Choice Question
+                                                        </button>
+                                                        <button disabled type="button" id="add-range-question"
+                                                                class="btn btn-primary btn-xs"><span
+                                                                    class="fa fa-plus"></span> Add Range Question
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <div class="box-body">
+
+
+                                                    <?php if($update): ?>
+                                                        <?php $i = 1 ?>
+                                                        <?php foreach($gigQuestions as $gigQuestion): ?>
+                                                            <div class="well well-sm">
+                                                                <div class="pull-right">
+                                                                    <button type="button"
+                                                                            class="btn btn-danger btn-xs remove-choice-question"><span
+                                                                                class="fa fa-minus"></span></button>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-md-12">
+                                                                        <div class="form-group">
+                                                                            <label>Choice Question</label>
+                                                                            <input value="<?php echo e($gigQuestion->question); ?>"
+                                                                                   name="gig-choice-question[<?php echo e($i); ?>][question]"
+                                                                                   type="text"
+                                                                                   class="form-control"
+                                                                                   placeholder="Enter ...">
+                                                                            <input value="<?php echo e($gigQuestion->id); ?>"
+                                                                                   name="gig-choice-question[<?php echo e($i); ?>][question_id]"
+                                                                                   type="hidden"
+                                                                                   class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-md-12">
+                                                                        <label class="green">Choices</label>
+
+
+                                                                        <?php $answers = explode(',', $gigQuestion->answers) ?>
+                                                                        <div class="row answers-container">
+                                                                            <?php foreach($answers as $answer): ?>
+                                                                                <div class="col-md-2">
+                                                                                    <input value="<?php echo e($answer); ?>"
+                                                                                           class="answer"
+                                                                                           name="gig-choice-question[<?php echo e($i); ?>][answers][]"
+                                                                                           style="width:100%"
+                                                                                           type="text">
+                                                                                </div>
+                                                                            <?php endforeach; ?>
+                                                                            <?php /*<div class="col-md-2">*/ ?>
+                                                                            <?php /*<button type="button" style="width:100%;" class="btn btn-primary">Add more choices</button>*/ ?>
+                                                                            <?php /*</div>*/ ?>
+                                                                        </div>
+
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <?php $i++; ?>
+                                                        <?php endforeach; ?>
+                                                    <?php endif; ?>
+
+
+                                                </div><!-- /.box-body -->
+                                            </div>
+                                            <div class="text-center">
+                                                <?php if($update): ?>
+                                                    <input class="btn btn-primary btn-lg" type="submit" name="save_only" value="Save & Exit">
+                                                    <button class="btn btn-primary btn-lg" type="submit"
+                                                            style="margin:10px 0">Update & Suggest
+                                                    </button>
+                                                    <a href="<?php echo e(route ('gigdetail',['gigType' => $gigtype->slug, 'gig' => $gig->slug ])); ?>?funnel=<?php echo e($gig->uuid); ?>"
+                                                       class="btn btn-primary btn-lg" target="_blank">View Favor</a>
+                                                <?php else: ?>
+                                                    <input class="btn btn-primary btn-lg" type="submit" name="save_only" value="Save only">
+                                                    <button class="btn btn-primary btn-lg" type="submit"
+                                                            style="margin:10px 0">Suggest favor Now
+                                                    </button>
+                                                <?php endif; ?>
+                                            </div>
+                                        </form>
+                                        <?php elseif(!empty($type) && $type == 'package'): ?>
+                                            <form method="post"
+                                                  action="<?php echo e((($update) ? route('agency.package.update') : route('Create.Agencypacakge') )); ?>"
+                                                  enctype="multipart/form-data">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="box box-info">
+
+                                                            <div class="box-body">
+                                                                <!-- text input -->
+                                                                <div class="row">
+                                                                    <div class="col-md-6 form-group">
+                                                                        <label>Title</label>
+                                                                        <input name="package-title" type="text"
+                                                                               value="<?php echo e($update ? $packages->title: ''); ?>"
+                                                                               class="form-control"
+                                                                               placeholder="Enter Package Title...">
+                                                                        <input type="hidden"
+                                                                               value="<?php echo e($update ? $packages->id: ''); ?>"
+                                                                               name="package_id">
+                                                                    </div>
+                                                                </div>
+                                                                <!--Assocition-->
+                                                                <div class="box box-info">
+                                                                    <div class="row">
+                                                                        <div class="col-md-12 form-group"><label
+                                                                                    for="">Package Association</label>
+                                                                        </div>
+                                                                        <div class="col-md-4 form-group">
+                                                                            <input type="radio" name="association"
+                                                                                   id="radio1">
+                                                                            <label for="radio1">No Favor</label>
+                                                                        </div>
+                                                                        <div class="col-md-4 form-group">
+                                                                            <input type="radio" name="association"
+                                                                                   id="radio2">
+                                                                            <label for="radio2">Sync with my
+                                                                                favor</label>
+                                                                        </div>
+                                                                        <div class="col-md-4 form-group"></div>
+                                                                    </div>
+
+                                                                    <!--Association by Category  & subcategory-->
+                                                                    <div id="cat-association" style="display:none;">
+                                                                        <div class="row" style="margin:0px;">
+                                                                            <div class="form-group cat" style="position: relative;">
+                                                                                <label for="categorySelectList">Category / Kategorie</label>
+                                                                                <select id="categorySelectList" name="package-category"
+                                                                                        class="form-control"
+                                                                                        data-url="<?php echo e(route('agency.category.subcategories')); ?>" required style="<?php echo e(($update)? '' :'padding-left: 32px;-webkit-appearance: none;'); ?>;">
+                                                                                    <option value="">You must select a Category</option>
+                                                                                    <?php foreach($categories as $category): ?>
+                                                                                        <option <?php echo e((($update) ? (($category->id == $gig->gigtype_id) ? 'selected' : '') : (Request::old('gig-category') == $category->id) ? 'selected' : '')); ?>  value="<?php echo e($category->id); ?>"><?php echo e($category->name); ?></option>
+                                                                                    <?php endforeach; ?>
+
+                                                                                </select>
+                                                                                <?php if(!($update)): ?>
+                                                                                    <i id="warning1" class="fa fa-exclamation" aria-hidden="true" style="color:red; border: 1px solid red; padding: 3px 8px; border-radius: 15px; position: absolute; top:32px; left:5px;"></i>
+                                                                                <?php endif; ?>
+                                                                                <?php if($errors->has('gig-category')): ?>
+                                                                                    <?php /*<span class="help-block"*/ ?>
+                                                                                    <?php /*style="color:#ff0000"><?php echo e($errors->first('gig-category')); ?></span>*/ ?>
+                                                                                    <span class="help-block"
+                                                                                          style="color:#ff0000">Bitte wählen Sie die Favor Kategorie aus</span>
+                                                                                    <span class="help-block"
+                                                                                          style="color:#ff0000">Please select the Category</span>
+                                                                                <?php endif; ?>
+                                                                            </div>
+                                                                        </div>
+                                                                        <!-- Subcategory -->
+                                                                        <div class="row" style="margin:0px;">
+                                                                            <div class="form-group" style="position: relative;">
+                                                    <span style="margin-bottom: 20px;">
+                                                        <label style="float: left;">Sub Category / Subkategorie</label>
+                                                        <label style="float: left; margin-left: 10px; margin-bottom: 5px;" class="btn btn-primary btn-xs" for="subcat"  data-toggle="modal" data-target="#myModal"><span class="fa fa-plus"></span></label>
+                                                    </span>
+                                                                                <p class="error" style="float:left; width: 100%;"></p>
+                                                                                <div id="subcat_tagsinput" class="subcatinput" style="width: 100%; margin-top: 20px;">
+                                                                                    <?php if($update): ?>
+                                                                                        <?php foreach($subcategory as $subcat): ?>
+                                                                                            <span class="subcat_span">
+                                                    <input type="hidden" value="<?php echo e($subcat->id); ?>" name="gig-sub-category[]" class="single_id">
+                                                    <span><?php echo e($subcat->name); ?>&nbsp;&nbsp;</span>
+                                                    <a href="" title="Removing Sub Category" class="remove-subcat">x</a>
+                                                </span>
+                                                                                        <?php endforeach; ?>
+                                                                                    <?php endif; ?>
+                                                                                    <?php if(empty($subcat)): ?>
+                                                                                        <i id="warning2" class="fa fa-exclamation" aria-hidden="true" style="color:red; border: 1px solid red; padding: 3px 8px; border-radius: 15px; position: absolute; top:50px; left:5px;"></i>
+                                                                                        <p id="warning-para2" style="color:#9999a2; <?php echo e(($update)? '' :'padding-left: 32px; padding-top:7px'); ?>;">You must select atleast one Sub Category</p>
+                                                                                    <?php endif; ?>
+                                                                                </div>
+                                                                                <?php /*<input type="text" id="subCategorySelectList" class="form-control" data-toggle="modal" data-target="#myModal">*/ ?>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!--Assocation by favor-->
+                                                                    <div class="row" style="margin:0px; display:none;" id="favor-assocation">
+                                                                        <div class="form-group col-md-6" style="padding:0px;">
+                                                                            <label for="favors_associate">Favors List</label>
+                                                                            <select name="favor_associate" id="favors_associate" class="form-control">
+                                                                                <?php foreach($agency_favors as $favors): ?>
+                                                                                    <option value="<?php echo e($favors->id); ?>"><?php echo e($favors->title); ?></option>
+                                                                                <?php endforeach; ?>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="box box-info gig-images-box">
+                                                                    <div class="box-header with-border">
+                                                                        <h3 class="box-title image-title">Images / Bilder <span class="red">(750x350)</span>
+                                                                            <?php if(\Illuminate\Support\Facades\Session::has('gig-image')): ?>
+                                                                                <span class="help-block"
+                                                                                      style="color:#ff0000; font-size:12px; display:inline-block"> (<?php echo e(\Illuminate\Support\Facades\Session::get('gig-image')); ?>
+
+                                                                                    )</span>
+                                                                                <?php echo e(\Illuminate\Support\Facades\Session::forget('gig-image')); ?>
+
+                                                                            <?php endif; ?>
+                                                                        </h3>
+                                                                        <input style="position:absolute;top:0px;left:0px;width:0.1px;height:0.1px;opacity:0;overflow:hidden;"
+                                                                               name="gig-images[]" accept="image/*" type="file" multiple
+                                                                               id="fileee">
+                                                                        <label style="margin-left: 10px;" class="btn btn-primary btn-xs" for="fileee"><span
+                                                                                    class="fa fa-plus"></span></label>
+                                                                    </div>
+
+                                                                    <div class="box-body gig-images-box-body">
+                                                                        <?php /*<?php if($update): ?>*/ ?>
+                                                                        <?php if(!empty($gigImages) && count($gigImages) > 0): ?>
+                                                                            <?php foreach($gigImages as $gigImage): ?>
+                                                                                <?php if(!empty($gigImage)): ?>
+                                                                                    <div style="position:relative;display:inline-block;">
+
+
+                                                                                        <button data-href="<?php echo e(route('gig.images.remove.agency')); ?>"
+                                                                                                data-image-id="<?php echo e($gigImage->id); ?>"
+                                                                                                style="position:absolute;right:0px;top:0px;padding:0px 6px;"
+                                                                                                class="btn btn-default btn-gig-img-remove">x
+                                                                                        </button>
+                                                                                        <img style="height:60px;"
+                                                                                             src="<?php echo e(url('/files/gigs/images') . '/' . $gigImage->image); ?>"
+                                                                                             class="meriimage">
+                                                                                    </div>
+                                                                                <?php endif; ?>
+                                                                            <?php endforeach; ?>
+                                                                        <?php endif; ?>
+                                                                    </div>
+                                                                    <div class="box-footer"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <table class="table table-striped table-bordered">
+                                                            <thead>
+                                                            <tr>
+                                                                <th></th>
+                                                                <th>Silver</th>
+                                                                <th>Gold</th>
+                                                                <th>Platinum</th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            <tr>
+                                                                <td>Package name</td>
+                                                                <td><input type="text" class="form-control" name="package_name" placeholder="Package Name"></td>
+                                                                <td><input type="text" class="form-control" name="package_name" placeholder="Package Name"></td>
+                                                                <td><input type="text" class="form-control" name="package_name" placeholder="Package Name"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Description</td>
+                                                                <td><textarea name="" id="" cols="30"
+                                                                              rows="4" class="form-control"></textarea>
+                                                                </td>
+                                                                <td><textarea name="" id="" cols="30"
+                                                                              rows="4" class="form-control"></textarea>
+                                                                </td>
+                                                                <td><textarea name="" id="" cols="30"
+                                                                              rows="4" class="form-control"></textarea>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Days of Delivery</td>
+                                                                <td>
+                                                                    <select name="" id="" class="form-control">
+                                                                        <option value="">1</option>
+                                                                        <option value="">2</option>
+                                                                        <option value="">3</option>
+                                                                        <option value="">4</option>
+                                                                        <option value="">5</option>
+                                                                        <option value="">6</option>
+                                                                        <option value="">7</option>
+                                                                        <option value="">8</option>
+                                                                        <option value="">9</option>
+                                                                        <option value="">10</option>
+                                                                    </select>
+                                                                </td>
+                                                                <td>
+                                                                    <select name="" id="" class="form-control">
+                                                                        <option value="">1</option>
+                                                                        <option value="">2</option>
+                                                                        <option value="">3</option>
+                                                                        <option value="">4</option>
+                                                                        <option value="">5</option>
+                                                                        <option value="">6</option>
+                                                                        <option value="">7</option>
+                                                                        <option value="">8</option>
+                                                                        <option value="">9</option>
+                                                                        <option value="">10</option>
+                                                                    </select>
+                                                                </td>
+                                                                <td>
+                                                                    <select name="" id="" class="form-control">
+                                                                        <option value="">1</option>
+                                                                        <option value="">2</option>
+                                                                        <option value="">3</option>
+                                                                        <option value="">4</option>
+                                                                        <option value="">5</option>
+                                                                        <option value="">6</option>
+                                                                        <option value="">7</option>
+                                                                        <option value="">8</option>
+                                                                        <option value="">9</option>
+                                                                        <option value="">10</option>
+                                                                    </select>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Source File</td>
+                                                                <td class="text-center"><input type="checkbox" name=""></td>
+                                                                <td class="text-center"><input type="checkbox" name=""></td>
+                                                                <td class="text-center"><input type="checkbox" name=""></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Revisions</td>
+                                                                <td>
+                                                                    <select name="" id="" class="form-control">
+                                                                        <option value="">1</option>
+                                                                        <option value="">2</option>
+                                                                        <option value="">3</option>
+                                                                        <option value="">4</option>
+                                                                        <option value="">5</option>
+                                                                        <option value="">6</option>
+                                                                        <option value="">7</option>
+                                                                        <option value="">8</option>
+                                                                        <option value="">9</option>
+                                                                        <option value="">Unlimited</option>
+                                                                    </select>
+                                                                </td>
+                                                                <td>
+                                                                    <select name="" id="" class="form-control">
+                                                                        <option value="">1</option>
+                                                                        <option value="">2</option>
+                                                                        <option value="">3</option>
+                                                                        <option value="">4</option>
+                                                                        <option value="">5</option>
+                                                                        <option value="">6</option>
+                                                                        <option value="">7</option>
+                                                                        <option value="">8</option>
+                                                                        <option value="">9</option>
+                                                                        <option value="">Unlimited</option>
+                                                                    </select>
+                                                                </td>
+                                                                <td>
+                                                                    <select name="" id="" class="form-control">
+                                                                        <option value="">1</option>
+                                                                        <option value="">2</option>
+                                                                        <option value="">3</option>
+                                                                        <option value="">4</option>
+                                                                        <option value="">5</option>
+                                                                        <option value="">6</option>
+                                                                        <option value="">7</option>
+                                                                        <option value="">8</option>
+                                                                        <option value="">9</option>
+                                                                        <option value="">Unlimited</option>
+                                                                    </select>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Price</td>
+                                                                <td>
+                                                                    <select name="package-price" id="" class="form-control">
+                                                                        <?php for($i=1; $i<=100; $i++): ?>
+                                                                            <option value="<?php echo e($i*10); ?>">€<?php echo e($i*10); ?></option>
+                                                                        <?php endfor; ?>
+                                                                    </select>
+                                                                </td>
+                                                                <td>
+                                                                    <select name="" id="" class="form-control">
+                                                                        <?php for($i=1; $i<=100; $i++): ?>
+                                                                            <option value="<?php echo e($i*10); ?>">€<?php echo e($i*10); ?></option>
+                                                                        <?php endfor; ?>
+                                                                    </select>
+                                                                </td>
+                                                                <td>
+                                                                    <select name="" id="" class="form-control">
+                                                                        <?php for($i=1; $i<=100; $i++): ?>
+                                                                            <option value="<?php echo e($i*10); ?>">€<?php echo e($i*10); ?></option>
+                                                                        <?php endfor; ?>
+                                                                    </select>
+                                                                </td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                                <div class="text-center">
+                                                    <?php if(isset($update) && $update): ?>
+                                                        <button name="update-package" class="btn btn-primary btn-lg"
+                                                                type="submit">Update
+                                                        </button>
+                                                        <button name="create-package" class="btn btn-primary btn-lg"
+                                                                type="submit">View Package
+                                                        </button>
+                                                    <?php else: ?>
+                                                        <button name="create-package" class="btn btn-primary btn-lg"
+                                                                type="submit">Suggest Package Now
+                                                        </button>
+                                                    <?php endif; ?>
+                                                    <button name="save_package" class="btn btn-primary btn-lg"
+                                                            type="submit">Save Only
+                                                    </button>
+                                                </div>
+                                            </form>
+                                        <?php endif; ?>
+                                </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel" style="display: inline-block;">Select Subcatagories</h4>
+                    <span style="display: inline-block; position: absolute; right: 40px; top: 10px;">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Exit</button>
+                        <button type="button" class="btn btn-primary checked-cat" data-dismiss="modal">select / auswählen</button>
+                    </span>
+                </div>
+                <div class="modal-body">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                    <button type="button" class="btn btn-primary checked-cat" data-dismiss="modal">select / auswählen</button>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('pages_css'); ?>
+
+    <link rel="stylesheet" href="<?php echo e(asset('bower_components/AdminLTE/plugins/select2/select2.min.css')); ?>">
+
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('pages_script'); ?>
+    <script src="<?php echo e(asset('bower_components/AdminLTE/plugins/select2/select2.full.min.js')); ?>"></script>
+    <script src='//cdn.tinymce.com/4/tinymce.min.js'></script>
+    <!-- CK Editor -->
+    <script type="text/javascript" src="<?php echo e(asset('bower_components/AdminLTE/plugins/ckeditor/ckeditor.js')); ?>"></script>
+
+    <script src="<?php echo e(asset('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js')); ?>"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $(".form-group input.express").on("keydown keypress keyup", false);
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#categorySelectList").on('change',function(){
+                $("#warning1").hide();
+            });
+            $("#radio1").click(function(){
+                $("#cat-association").show();
+                $("#favor-assocation").hide();
+            });
+            $("#radio2").click(function(){
+                $("#cat-association").hide();
+                $("#favor-assocation").show();
+            });
+        });
+    </script>
+    <script>
+        $(function () {
+            // Replace the <textarea id="editor1"> with a CKEditor
+            // instance, using default configuration.
+
+            var wordCountConf1 = {
+                showParagraphs: false,
+                showWordCount: true,
+                showCharCount: true,
+                countSpacesAsChars: false,
+                countHTML: false,
+                maxWordCount: -1,
+                maxCharCount: 800
+            }
+
+            var wordCountConf2 = {
+                showParagraphs: false,
+                showWordCount: true,
+                showCharCount: true,
+                countSpacesAsChars: false,
+                countHTML: false,
+                maxWordCount: -1,
+                maxCharCount: 800
+            }
+
+            var wordCountConf3 = {
+                showParagraphs: false,
+                showWordCount: true,
+                showCharCount: true,
+                countSpacesAsChars: false,
+                countHTML: false,
+                maxWordCount: -1,
+                maxCharCount: 800
+            }
+
+            CKEDITOR.replace('editor1', {wordcount: wordCountConf1});
+            CKEDITOR.replace('editor2', {wordcount: wordCountConf2});
+            CKEDITOR.replace('editor3', {wordcount: wordCountConf3});
+            //bootstrap WYSIHTML5 - text editor
+            $(".textarea").wysihtml5();
+        });
+    </script>
+    <!-- Bootstrap WYSIHTML5 -->
+    <script>
+        tinymce.init({
+            selector: '#gigDiscription'
+        });
+    </script>
+    <script>
+        (function () {
+            $('#btnAddMoreOption').click(function (e) {
+                var option = '<div class="col-md-2 form-group"><input name="package-option[]" type="text" class="form-control" placeholder="Enter Option..."></div>';
+                $(option).insertBefore($(this).parent());
+            });
+        })();
+    </script>
+
+    <script>
+        (function () {
+            $('#gig_submit').submit(function(e){
+                var editorData = CKEDITOR.instances.editor1.getData();
+                var editorData2 = CKEDITOR.instances.editor2.getData();
+                var editorData3 = CKEDITOR.instances.editor3.getData();
+                var dev = $("#subcat_tagsinput");
+                var fiedl1 = $(".favor-title").val();
+                var numFiles = $("input:file",this)[0].files.length;
+                if( !$.trim( dev.html() ).length ){
+                    e.preventDefault();
+                    $('.error').html('Please select at least one sub category');
+                }
+                if(numFiles > 0){
+                    $(this).submit();
+                }
+                else {
+                    e.preventDefault();
+                    $('.gig-images-box .box-footer').html('<p style="color:red;">Please select at least one image.</p>');
+                }
+                if(fiedl1 == ""){
+                    e.preventDefault();
+                    $('.error-block1').html('<p style="color:red;">Bitte wählen Sie eine favor-title aus</p>');
+                    $('.error-block2').html('<p style="color:red;">Please choose a favor-title from</p>');
+                }
+                if(editorData == ""){
+                    $(".error-desc1-1").html('<p style="color:red">Bitte ergänzen Sie die Favor Beschreibung</p>');
+                    $(".error-desc1-2").html('<p style="color:red">Pleaes complete the Favor Description</p>');
+
+                }
+                if(editorData2 == ""){
+                    $(".error-desc2-1").html('<p style="color:red">Bitte ergänzen Sie die Favor Beschreibung</p>');
+                    $(".error-desc2-2").html('<p style="color:red">Pleaes complete the Favor Description</p>');
+                }
+                if(editorData3 == ""){
+                    $(".error-desc3-1").html('<p style="color:red">Bitte ergänzen Sie die Favor Beschreibung</p>');
+                    $(".error-desc3-2").html('<p style="color:red">Pleaes complete the Favor Description</p>');
+                }
+            });
+            $('#gig-submit').submit(function(e){
+                var dev = $("#subcat_tagsinput");
+                var numFiles = $("input:file",this)[0].files.length;
+                if( !$.trim( dev.html() ).length ){
+                    e.preventDefault();
+                    $('.error').html('Please select at least one sub category');
+                }
+            });
+            $('#gig-submit').submit(function(e){
+                var dev = $(".favor-title").val();
+                if(dev == ""){
+                    e.preventDefault();
+                    alert("error!");
+                }
+            });
+            var grab_sel_cat = $('#categorySelectList');
+            var grab_sel_val = grab_sel_cat.val();
+            var grab_sel_opt = $('#subCategorySelectList').data('select-id');
+            if(grab_sel_val != ""){
+                $.ajax({
+                    url: "<?php echo e(route('agency.category.subcategories')); ?>" + '?cat-id=' + grab_sel_val,
+                    method: 'get',
+                    success: function (data) {
+                        /*$('#subCategorySelectList').attr("data-target","#myModal");
+                         $('#subCategorySelectList').attr("data-toggle","modal");*/
+                        var cats = '<h4>Select Sub Category</h4>';
+                        data.forEach(function (element, index, array) {
+                            cats += '<div class="row">';
+                            cats +='<div class="col-sm-4">';
+                            cats +='<div class="form-group">';
+//                            cats +='<label class="btn">';
+                            cats += '<input type="checkbox" class="ans" name="sub-cat-check" value="' + element.id + '"/>';
+                            cats +='<span class="cat_name">'+ element.name+'</span>';
+//                            cats += '</lable>';
+                            cats += '</div>';
+                            cats += '</div>';
+                            cats += '</div>';
+                        });
+
+                        $('.modal-body').html(cats);
+                    }
+                });
+            }
+            $('#categorySelectList').change(function (e) {
+
+                var cat = $(this);
+                var catId = cat.val();
+                console.log(catId);
+                $.ajax({
+                    url: cat.data('url') + '?cat-id=' + catId,
+                    method: 'get',
+                    success: function (data) {
+                        /*$('#subCategorySelectList').attr("data-target","#myModal");
+                         $('#subCategorySelectList').attr("data-toggle","modal");*/
+                        var cats = '<h4>Select Sub Category</h4>';
+                        data.forEach(function (element, index, array) {
+                            cats += '<div class="row">';
+                            cats +='<div class="col-sm-4">';
+                            cats +='<div class="form-group">';
+//                            cats +='<label class="btn">';
+                            cats += '<input type="checkbox" class="ans" name="sub-cat-check" value="' + element.id + '"/>';
+                            cats +='<span class="cat_name">'+ element.name+'</span>';
+//                            cats += '</lable>';
+                            cats += '</div>';
+                            cats += '</div>';
+                            cats += '</div>';
+                        });
+
+                        $('.modal-body').html(cats);
+                    }
+                });
+
+            });
+            $(document.body).on('click','.checked-cat',function(){
+                var span1 = "";
+                var dev = $("#subcat_tagsinput");
+                $("#myModal .form-group input[type=checkbox]:checked").each(function() {
+                    $('.error').empty();
+                    span1 += '<span class="subcat_span"><input type="hidden" value="'+$(this).val()+'" name="gig-sub-category[]" class="single_id"><span>'+$(this).next('.cat_name').html()+'&nbsp;&nbsp;</span>' +
+                        '<a href="" title="Removing Sub Category" class="remove-subcat">x</a></span>';
+                });
+                var trim = $('#subcat_tagsinput').html();
+                if($.trim( dev.html()) != '' ){
+                    var add = dev.html();
+                    dev.html("");
+                    dev.append(span1+add);
+                    $("#warning2").hide();
+                    $("#warning-para2").hide();
+                }
+                else{
+                    dev.append(span1);
+                    $("#warning2").hide();
+                    $("#warning-para2").hide();
+                }
+            });
+            $(document.body).on('click','.remove-subcat',function(e){
+                e.preventDefault();
+                var parent = $(this).parent();
+                var text = parent.find('.single_id').val("");
+                $(this).parent().remove();
+            });
+            document.querySelector('#fileee').addEventListener('change', function () {
+                var files = this.files;
+                var imageBox = document.querySelector('.gig-images-box .box-body');
+                var imageBoxFooter = $('.gig-images-box .box-footer');
+                $('.gig-images-box .box-body').find('img.new_up').remove();
+                if (files.length > 0) {
+                    var img_valid_arr = [];
+                    imageBoxFooter.html('');
+                    for (var i = 0; i < files.length; i++) {
+                        var load_img = new Image();
+                        load_img.onload = function () {
+                            var height = this.height;
+                            var width = this.width;
+                            if (width == 750 && height == 350) {
+                                var imgElement = document.createElement('img');
+                                imgElement.className = 'meriimage new_up';
+                                imgElement.height = 60;
+                                imgElement.src = this.src;
+                                imgElement.onload = function () {
+                                    window.URL.revokeObjectURL(imgElement.src);
+                                };
+                                imageBox.appendChild(imgElement);
+                            } else {
+                                img_valid_arr.push('not valid');
+                            }
+
+                            var sub = files.length - img_valid_arr.length;
+
+                            console.log(sub);
+
+                            var selc_cont = (sub == 0) ? '<p>No image selected.</p>' : '<p>' + sub + ' image selected.</p>';
+
+                            if (img_valid_arr.length > 0) {
+                                imageBoxFooter.html(selc_cont + '<p style="color:red;">The image dimensions should be: 750 width and 350 height</p>');
+                                $("#fileee").val("");
+                            } else {
+                                imageBoxFooter.html(selc_cont);
+                            }
+                        };
+                        load_img.src = window.URL.createObjectURL(files[i]);
+                    }
+                } else {
+                    imageBoxFooter.html('');
+                    imageBoxFooter.html('<p>No image selected.</p>');
+                }
+            });
+            <!--Package Photos-->
+            document.querySelector('#file_package').addEventListener('change', function () {
+                var files = this.files;
+                var imageBox = document.querySelector('.gig-images-box .box-body');
+                var imageBoxFooter = $('.gig-images-box .box-footer');
+                $('.gig-images-box .box-body').find('img.new_up').remove();
+                if (files.length > 0) {
+                    var img_valid_arr = [];
+                    imageBoxFooter.html('');
+                    for (var i = 0; i < files.length; i++) {
+                        var load_img = new Image();
+                        load_img.onload = function () {
+                            var height = this.height;
+                            var width = this.width;
+                            if (width == 750 && height == 350) {
+                                var imgElement = document.createElement('img');
+                                imgElement.className = 'meriimage new_up';
+                                imgElement.height = 60;
+                                imgElement.src = this.src;
+                                imgElement.onload = function () {
+                                    window.URL.revokeObjectURL(imgElement.src);
+                                };
+                                imageBox.appendChild(imgElement);
+                            } else {
+                                img_valid_arr.push('not valid');
+                            }
+
+                            var sub = files.length - img_valid_arr.length;
+
+                            console.log(sub);
+
+                            var selc_cont = (sub == 0) ? '<p>No image selected.</p>' : '<p>' + sub + ' image selected.</p>';
+
+                            if (img_valid_arr.length > 0) {
+                                imageBoxFooter.html(selc_cont + '<p style="color:red;">The image dimensions should be: 750 width and 350 height</p>');
+                                $("#file_package").val("");
+                            } else {
+                                imageBoxFooter.html(selc_cont);
+                            }
+                        };
+                        load_img.src = window.URL.createObjectURL(files[i]);
+                    }
+                } else {
+                    imageBoxFooter.html('');
+                    imageBoxFooter.html('<p>No image selected.</p>');
+                }
+            });
+
+            document.querySelector('#add-new-addon').addEventListener('click', addAddon);
+            document.querySelector('#add-choice-question').addEventListener('click', addChoiceQuestion);
+            document.querySelector('#add-range-question').addEventListener('click', addRangeQuestion);
+            $('.btn-gig-img-remove').click(function (e) {
+                e.preventDefault();
+                if (!confirm('Are you sure you want to delete this image?')) {
+                    return false;
+                }
+                // console.log('Test');
+                //alert($(this).attr('href'));
+                else {
+                    var obj = $(this);
+                    $.ajax({
+
+                        method: 'post',
+                        url: $(this).data('href'),
+                        data: {gigimage_id: $(this).data('image-id')},
+                        success: function (data) {
+                            console.log(data);
+
+                            if (data.result == true) {
+
+                                obj.parent().remove();
+                            }
+                            else {
+                                console.log(data.result);
+                            }
+                        }
+                    });
+
+                }
+            });
+
+            $('.remove-addon').click(function (e) {
+
+                e.preventDefault();
+                /*alert($(this).data('addonid'));*/
+                var add_id = $(this).data('addonid');
+                var addon = $(this);
+                $.ajax({
+
+                    method: 'post',
+                    url: $(this).data('href'),
+                    data: {gigadonid: add_id},
+                    success: function (data, status) {
+                        if (data.result == true) {
+                            addon.parent().parent().remove();
+
+                        }
+                    }
+
+
+                });
+
+
+            });
+
+
+            $(".select2").select2({
+                tags: true,
+                tokenSeparators: [','],
+                maximumSelectionSize: 0,
+            });
+            $('.select2-selection__rendered').prepend('<li class="select2-selection__choice" title="hello"><span class="select2-selection__choice__remove" role="presentation">×</span>hello</li>');
+            $('.select2-hidden-accessible').prepend('<option value="hello" data-select2-tag="true">hello</option>');
+
+
+        })();
+        //        (function () {
+        //            var get_old_sub_id = $('#subCategorySelectList').data('old-sel-id');
+        //            var get_parent_id = $('#subCategorySelectList').data('old-par-id');
+        //            var ajax_url = $('#categorySelectList').data('url');
+        //            $.ajax({
+        //                url: ajax_url + '?cat-id=' + get_parent_id,
+        //                method: 'get',
+        //                success: function (data) {
+        //                    var cats = '<option value="">Select Sub Category</option>';
+        //                    data.forEach(function (element, index, array) {
+        //                        if (get_old_sub_id == element.id) {
+        //                            cats += '<option value="' + element.id + '" selected>' + element.name + '</option>';
+        //                        } else {
+        //                            cats += '<option value="' + element.id + '">' + element.name + '</option>';
+        //                        }
+        //                    });
+        //
+        //                    $('#subCategorySelectList').html(cats);
+        //                }
+        //            });
+        //
+        //
+        //            $('#categorySelectList').change(function (e) {
+        //
+        //                var cat = $(this);
+        //                var catId = cat.val();
+        //
+        //                $.ajax({
+        //                    url: cat.data('url') + '?cat-id=' + catId,
+        //                    method: 'get',
+        //                    success: function (data) {
+        //                        var cats = '<option value="">Select Sub Category</option>';
+        //                        data.forEach(function (element, index, array) {
+        //                            cats += '<option value="' + element.id + '">' + element.name + '</option>';
+        //                        });
+        //
+        //                        $('#subCategorySelectList').html(cats);
+        //                    }
+        //                });
+        //
+        //            });
+        //
+        //
+        //            document.querySelector('#fileee').addEventListener('change', function () {
+        //                var files = this.files;
+        //                var imageBox = document.querySelector('.gig-images-box .box-body');
+        //                var imageBoxFooter = $('.gig-images-box .box-footer');
+        //                var img_valid_arr = [];
+        //                $('.gig-images-box .box-body').find('img.new_up').remove();
+        //
+        //
+        //                if (files.length > 0) {
+        //                    imageBoxFooter.html('');
+        //                    for (var i = 0; i < files.length; i++) {
+        //                        var load_img = new Image();
+        //                        load_img.onload = function () {
+        //                            var height = this.height;
+        //                            var width = this.width;
+        //                            if (width == 750 && height == 350) {
+        //                                var imgElement = document.createElement('img');
+        //                                imgElement.className = 'meriimage new_up';
+        //                                imgElement.height = 60;
+        //                                imgElement.src = this.src;
+        //                                imgElement.onload = function () {
+        //                                    window.URL.revokeObjectURL(imgElement.src);
+        //                                };
+        //                                imageBox.appendChild(imgElement);
+        //                            } else {
+        //                                img_valid_arr.push('not valid');
+        //                            }
+        //
+        //                            var sub = files.length - img_valid_arr.length;
+        //
+        //                            console.log(sub);
+        //
+        //                            var selc_cont = (sub == 0) ? '<p>No image selected.</p>' : '<p>' + sub + ' image selected.</p>';
+        //
+        //                            if (img_valid_arr.length > 0) {
+        //                                imageBoxFooter.html(selc_cont+'<p style="color:red;">The image dimensions should be: 750 width and 350 height</p>');
+        //                                $("#fileee").val("");
+        //                            } else {
+        //                                imageBoxFooter.html(selc_cont);
+        //                            }
+        //                        };
+        //                        load_img.src = window.URL.createObjectURL(files[i]);
+        //                    }
+        //                } else {
+        //                    imageBoxFooter.html('');
+        //                    imageBoxFooter.html('<p>No image selected.</p>');
+        //                }
+        //
+        //
+        //            });
+        //
+        //
+        //            document.querySelector('#add-new-addon').addEventListener('click', addAddon);
+        //            document.querySelector('#add-choice-question').addEventListener('click', addChoiceQuestion);
+        //            document.querySelector('#add-range-question').addEventListener('click', addRangeQuestion);
+        //            $('.btn-gig-img-remove').click(function (e) {
+        //                e.preventDefault();
+        //                if (!confirm('Are you sure you want to delete this image?')) {
+        //                    return false;
+        //                }
+        //                // console.log('Test');
+        //                //alert($(this).attr('href'));
+        //                else {
+        //                    var obj = $(this);
+        //                    $.ajax({
+        //
+        //                        method: 'post',
+        //                        url: $(this).data('href'),
+        //                        data: {gigimage_id: $(this).data('image-id')},
+        //                        success: function (data) {
+        //                            console.log(data);
+        //
+        //                            if (data.result == true) {
+        //
+        //                                obj.parent().remove();
+        //                            }
+        //                            else {
+        //
+        //                            }
+        //                        }
+        //                    });
+        //
+        //                }
+        //            });
+        //
+        //            $('.remove-addon').click(function (e) {
+        //
+        //                e.preventDefault();
+        //                var addon = $(this);
+        //                $.ajax({
+        //
+        //                    method: 'post',
+        //                    url: $(this).data('href'),
+        //                    data: {gigadonid: $(this).data('addonid')},
+        //                    success: function (data) {
+        //
+        //                        if (data.result == true) {
+        //                            addon.parent().parent().remove();
+        //
+        //                        }
+        //                    }
+        //
+        //
+        //                });
+        //
+        //
+        //            });
+        //
+        //
+        //            $(".select2").select2({
+        //                tags: true,
+        //                tokenSeparators: [','],
+        //                maximumSelectionSize: 0,
+        //            });
+        //            $('.select2-selection__rendered').prepend('<li class="select2-selection__choice" title="hello"><span class="select2-selection__choice__remove" role="presentation">×</span>hello</li>');
+        //            $('.select2-hidden-accessible').prepend('<option value="hello" data-select2-tag="true">hello</option>');
+        //
+        //
+        //        })();
+
+
+        function changeName(elem) {
+
+            var name = '';
+            var addonContainer = $(elem).parent().parent();
+
+            if (addonContainer.find('.row:last').find('input').length > 0) {
+                addonContainer.find('.row:last').find('input[name $= "[discription]"]').each(function () {
+
+                    name = this.name.replace(/\[(\d+)\]/, function (str, p1) {
+
+                        return '[' + (parseInt(p1, 10) + 1) + ']';
+
+                    });
+
+                });
+            } else {
+                name = "gig-addon[1][discription]";
+            }
+
+            return name;
+
+        }
+
+        function changeName2(elem) {
+
+            var name = '';
+            var addonContainer = $(elem).parent().parent();
+
+            if (addonContainer.find('.row:last').find('input').length > 0) {
+                addonContainer.find('.row:last').find('input[name $= "[price]"]').each(function () {
+
+                    name = this.name.replace(/\[(\d+)\]/, function (str, p1) {
+
+                        return '[' + (parseInt(p1, 10) + 1) + ']';
+
+                    });
+
+                });
+            } else {
+                name = "gig-addon[1][price]";
+            }
+
+            return name;
+
+        }
+
+        function choiceQuestionChangeName(elem) {
+
+            var questionContainer = $(elem).parent().parent().parent();
+
+            if (questionContainer.find('.well:last').find('input').length > 0) {
+                questionContainer.find('.well:last').find('input[name $= "[question]"]').each(function () {
+
+                    name = this.name.replace(/\[(\d+)\]/, function (str, p1) {
+
+                        return '[' + (parseInt(p1, 10) + 1) + ']';
+
+                    });
+
+                });
+            } else {
+                name = "gig-choice-question[1][question]";
+            }
+
+            return name;
+
+        }
+
+        function choiceQuestionChangeName2(elem) {
+
+            var questionContainer = $(elem).parent().parent().parent();
+
+            if (questionContainer.find('.well:last').find('select').length > 0) {
+                questionContainer.find('.well:last').find('select[name *= "[answers]"]').each(function () {
+
+                    name = this.name.replace(/\[(\d+)\]/, function (str, p1) {
+
+                        return '[' + (parseInt(p1, 10) + 1) + ']';
+
+                    }).replace('[]', '');
+
+                });
+            } else {
+                name = "gig-choice-question[1][answers]";
+            }
+
+            return name;
+
+        }
+
+        function choiceQuestionChangeName3(elem) {
+
+            var questionContainer = $(elem).parent().parent().parent().parent().parent();
+
+            if (questionContainer.find('.well:last').find('.answers-container').length > 0) {
+                questionContainer.find('.well:last').find('.answer[name *= "[answers]"]').each(function () {
+
+                    name = this.name.replace(/\[(\d+)\]/, function (str, p1) {
+
+                        return '[' + (parseInt(p1, 10) + 1) + ']';
+
+                    }).replace('[]', '');
+
+                });
+            } else {
+                name = "gig-choice-question[1][answers]";
+            }
+
+            return name;
+
+        }
+
+        function addAddon() {
+
+
+            console.log(changeName(this));
+
+
+            var newAddon = $('<div class="row" id="new_addon">' +
+                '<div class="col-md-5">' +
+                '<div class="form-group">' +
+                '<input name="' + changeName(this) + '" type="text" class="form-control" placeholder="Enter Addon Discription...">' +
+//                    '<input name="' + changeName(this) + '" type="submit" class="btn btn-primary btn-xs pull-right" value="Insert">' +
+                '</div>' +
+                '</div>' +
+                '<div class="col-md-5">' +
+                '<div class="form-group">' +
+                '<div class="input-group">' +
+                '<span class="input-group-addon">&euro;</span>' +
+                '<input name="' + changeName2(this) + '" type="number" class="form-control">' +
+                '<input name="new_addon[]" type="hidden" value="">' +
+                '<span class="input-group-addon">.00</span>' +
+                '</div>' +
+                '</div>' +
+                '</div>' +
+                '<div class="col-md-2 del-btn-box">' +
+//                    '<button type="button" class="btn btn-primary btn-xs pull-right add-addon">Insert</button>' +
+                '<button type="button" class="btn btn-danger btn-xs remove-addon"><span class="fa fa-minus"></span></button>' +
+                '</div>' +
+                '</div>');
+
+
+            $('.addons-box .box-body').append(newAddon);
+
+            var removeBtns = document.querySelectorAll('.remove-addon');
+
+            for (var i = 0; i < removeBtns.length; i++) {
+                removeBtns[i].addEventListener('click', removeAddon);
+            }
+
+        }
+
+        function removeAddon() {
+
+            this.parentNode.parentNode.remove();
+
+        }
+
+        function addChoiceQuestion() {
+            var newChoiceQuestion = $('<div class="well well-sm">' +
+                '<div class="pull-right">' +
+                '<button type="button" class="btn btn-danger btn-xs remove-choice-question"><span class="fa fa-minus"></span></button>' +
+                '</div>' +
+                '<div class="row">' +
+                '<div class="col-md-12">' +
+                '<div class="form-group">' +
+                '<label>Choice Question</label>' +
+                '<input name="' + choiceQuestionChangeName(this) + '" type="text" class="form-control" placeholder="Enter ...">' +
+                '</div>' +
+                '</div>' +
+                '</div>' +
+                '<div class="row">' +
+                '<div class="multi-field-wrapper">'+
+                '<div class="multi-fields">'+
+                '<div class="multi-field col-md-3">'+
+                '<input type="text" class="form-control" name="' + choiceQuestionChangeName3(this) + '[]" style="display: inline; width: 80%;">'+
+                '<span class="remove-field btn btn-danger" style="float: right;">-</span>'+
+                '</div>'+
+                '</div>'+
+                '<div class="col-md-2">'+
+                '<button type="button" class="add-field btn btn-primary">Add more choices</button>'+
+                '</div>'+
+                '</div>'+
+                '</div>' +
+                '</div>');
+
+
+            $('.gig-questions-box .box-body').append(newChoiceQuestion);
+            addinput();
+            var removeBtns = document.querySelectorAll('.remove-choice-question');
+
+            for (var i = 0; i < removeBtns.length; i++) {
+                removeBtns[i].addEventListener('click', removeChoiceQuestion);
+            }
+
+
+            $(".select2").select2({
+                tags: true,
+                tokenSeparators: [',', ' '],
+                maximumSelectionSize: 0,
+            });
+
+        }
+
+        function removeChoiceQuestion() {
+
+            this.parentNode.parentNode.remove();
+
+        }
+
+        function addRangeQuestion() {
+
+            var newRangeQuestion = $('<div class="well well-sm range-question-box">' +
+                '<div class="pull-right">' +
+                '<button type="button" id="remove-range-question" class="btn btn-danger btn-xs remove-range-question"><span class="fa fa-minus"></span></button>' +
+                '</div>' +
+                '<div class="row">' +
+                '<div class="col-md-12">' +
+                '<div class="form-group">' +
+                '<label>Range Question</label>' +
+                '<input type="text" class="form-control" placeholder="Enter ...">' +
+                '</div>' +
+                '</div>' +
+                '</div>' +
+                '<div class="row">' +
+                '<div class="col-md-12">' +
+                '<div class="form-group">' +
+                '<label>Range Options</label><span> <button type="button" id="add-range-option" class="btn btn-primary btn-xs"><span class="fa fa-plus"></span></button></span>' +
+                '</div>' +
+                '</div>' +
+                '</div>' +
+                '</div>');
+
+            $('.gig-questions-box .box-body').append(newRangeQuestion);
+
+            document.querySelector('#add-range-option').addEventListener('click', addRangeQuestionOption);
+
+
+            var removeBtns = document.querySelectorAll('.remove-range-question');
+
+            for (var i = 0; i < removeBtns.length; i++) {
+                removeBtns[i].addEventListener('click', removeRangeQuestion);
+            }
+
+        }
+
+        function removeRangeQuestion() {
+
+            this.parentNode.parentNode.remove();
+
+        }
+
+        function addRangeQuestionOption() {
+
+            var newRangeQuestionOption = $('<div class="row">' +
+                '<div class="col-md-3">' +
+                '<div class="form-group">' +
+                '<input type="text" class="form-control" placeholder="Option 1">' +
+                '</div>' +
+                '</div>' +
+                '<div class="col-md-3">' +
+                '<div class="form-group">' +
+                '<img style="width:100%;" src="<?php echo e(asset('img/slider_big.png')); ?>" />' +
+                '</div>' +
+                '</div>' +
+                '<div class="col-md-3">' +
+                '<div class="form-group">' +
+                '<input type="text" class="form-control" placeholder="Option 2">' +
+                '</div>' +
+                '</div>' +
+                '<div class="col-md-1">' +
+                '<button type="button" class="btn btn-danger btn-xs remove-range-option"><span class="fa fa-minus"></span></button>' +
+                '</div>' +
+                '</div>');
+
+            $('.range-question-box').append(newRangeQuestionOption);
+
+
+            var removeBtns = document.querySelectorAll('.remove-range-option');
+
+            for (var i = 0; i < removeBtns.length; i++) {
+                removeBtns[i].addEventListener('click', removeRangeOption);
+            }
+
+        }
+
+        function removeRangeOption() {
+
+            this.parentNode.parentNode.remove();
+
+        }
+
+    </script>
+    <script type="text/javascript">
+        function addinput() {
+            $('.multi-field-wrapper').each(function () {
+                var $wrapper = $('.multi-fields', this);
+                $(".add-field", $(this)).click(function (e) {
+                    $('.multi-field:first-child', $wrapper).clone(true).appendTo($wrapper).find('input').val('').focus();
+                });
+                $('.multi-field .remove-field', $wrapper).click(function () {
+                    if ($('.multi-field', $wrapper).length > 1)
+                        $(this).parent('.multi-field').remove();
+                });
+            });
+        }
+    </script>
+<?php $__env->stopSection(); ?>
+
+
+<?php echo $__env->make('pages.agency.agency_template', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

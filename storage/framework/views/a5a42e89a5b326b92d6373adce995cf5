@@ -1,0 +1,26 @@
+<?php echo $__env->make('includes.header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+<!--Content-->
+<div class="dash-main-content" style="min-height: 700px;">
+    <div class="container top-gap" style="background-color: transparent !important;">
+        <div class="well">
+            <h1 class="text-primary" style="color:#367fa9">Wir über uns – Marktplatz für kreative Köpfe</h1>
+            <p>Wir haben unsere Vision für einen digitalen Marktplatz in ein kreatives Netzwerk-Konzept</p>
+            <p>gegossen. Mit unseren Erfahrungen, die wir auf unterschiedlichsten, internationalen
+                Plattformen in vielen Jahren gesammelt haben bieten wir jetzt ein Produktportfolio im Bereich Design,
+                Grafik und Entwicklung für den deutschen Markt an. Unser Marktplatz hat aus unserer Sicht ein
+                optimiertes, einfaches und sicheres Produkt entwickelt. Ihre Vorstellungen setzen wir in ein kreatives
+                Design um. Wir haben viele Experten, die wir streng auswählen. Diese Experten stellen wir Ihnen zur
+                Verfügung. Wir sind sicher, dass wir auch Sie unkompliziert zufrieden stellen werden.</p>
+            <p>Unsere <b><i>Favors</i></b>, so nennen wir unsere Produkte, die wir für Sie erarbeiten dürfen, sind sehr</p>
+            <p>vielfältig. Komplexe Wünsche können Sie im Rahmen eines persönlichen Projektes direkt an</p>
+            <p>unser Vertriebsteam richten. Wir freuen uns auf Sie!
+            </p>
+            <p>CNERR.DE – Marktplatz für kreative Köpfe</p>
+        </div>
+    </div>
+</div>
+
+<?php echo $__env->make('includes.footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<div class="cnerr-footer-background-color">
+    <div class="container mob-text-center">
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                <a href="#"><img src="<?php echo e(asset('img/bluelogo.png')); ?>" class="cnerr-footer-logo-margin"></a>
+                <p class="cnerr-copyright-class">Copyright 2015 &copy; <span class="cnerr-span-text-color-copy">Cnerr</span></p>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                <h4 class="cnerr-footer-category-margin-top heading-font">PAGES</h4>
+                <ul class="footer-pages-list">
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Download</a></li>
+                    <li><a href="#">Press</a></li>
+                    <li><a href="#">Email</a></li>
+                    <li><a href="#">Support</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                <h4 class="cnerr-footer-category-margin-top heading-font">RECENT POSTS</h4>
+                <ul class="footer-list">
+                    <li>Lorem ipsum dolor sit amet.</li>
+                    <li>Lorem ipsum dolor sit amet.</li>
+                    <li>Lorem ipsum dolor sit amet.</li>
+                    <li>Lorem ipsum dolor sit amet.</li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                <h4 class="cnerr-footer-category-margin-top heading-font">TWITTER</h4>
+                <ul class="footer-list2">
+                    <li><span class="footer-twitter">@crucio</span> Lorem ipsum dolor sit amet,
+                        consectetur adipiscing elit. tellus vit
+                        ae magna.</li>
+                    <li><span class="footer-twitter">@crucio</span> Lorem ipsum dolor sit amet,
+                        consectetur adipiscing elit. tellus vit
+                        ae magna.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--javascript-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+<script type="text/javascript" src="<?php echo e(asset('node_modules/bootstrap/dist/js/bootstrap.min.js')); ?>"></script>
+<script type="text/javascript" src="<?php echo e(asset('js/jquery.flexslider-min.js')); ?>"></script>
+<script type="text/javascript" src="<?php echo e(asset('js/jssor.slider.mini.js')); ?>"></script>
+<script type="text/javascript" src="<?php echo e(asset('js/slick.min.js')); ?>"></script>
+<script type="text/javascript" src="<?php echo e(asset('node_modules/angular/angular.js')); ?>"></script>
+<script type="text/javascript" src="<?php echo e(asset('js/bootstrap-slider.js')); ?>"></script>
+<script type="text/javascript" src="<?php echo e(asset('js/bootstrap-select.min.js')); ?>"></script>
+
+<script type="text/javascript" src="<?php echo e(asset('script/app.js')); ?>"></script>
+<?php if(\Illuminate\Support\Facades\Auth::check()): ?>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $(".gig-btn").click(function(){
+            $(".gig-style").slideToggle();
+        });
+    });
+</script>
+<?php endif; ?>

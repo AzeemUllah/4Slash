@@ -1,0 +1,61 @@
+<?php echo $__env->make('includes.header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<div class="dash-main-content">
+    <!--Content-->
+    <div class="container top-gap">
+        <div class="well main" style="height: 1300px;">
+            <h1 style="color:#367fa9">So funktioniert´s</h1>
+            <br>
+            <ol class="how-to-list">
+                <li><b>Registrieren</b> Sie sich kostenlos als Benutzer auf unserem Marktplatz <a
+                            href="https://cnerr.de">www.cnerr.de</a><br> <span class="purple move-left registeren" data-toggle="modal" data-target="#gridSystemModal1">Jetzt kostenfrei
+                    registrieren!</span>
+                </li>
+                <li>
+                    <b>Verifizieren</b> Sie Ihr Benutzerkonto nach Erhalt der Bestätigungsemail während des
+                    Registrierungsprozesses.<br><span class="purple move-left anmelden" data-toggle="modal" data-target="#gridSystemModal">Ihr Benutzerkonto ist jetzt aktiv.</span>
+                </li>
+                <li>
+                    <b>Melden</b> Sie sich als Benutzer auf unserem Marktplatz – <a href="https://cnerr.de">www.cnerr.de</a> an und stöbern Sie einfach in
+                    unseren umfangreichen Angeboten.
+                </li>
+                <p class="text-indent">
+                    Unser Angebot besteht grundsätzlich aus Favors und Paketen. <i>* Favor/-s nennen wir unsere Produkte, die
+                    wir für Sie erledigen dürfen. Kleine oder auch große Gefälligkeiten! ;-)</i>
+                </p>
+                <p class="text-indent">
+                    <span class="purple">a. Favor ist ein einzelnes Produkt mit unterschiedlichen Eigenschaften.</span><br>
+                    <span class="purple">b.	Pakete sind umfangreichere, gebündelte Produkte zu einem Vorzugspreis.</span>
+                </p>
+                <li>
+                    Wenn Sie ihr Wunschprodukt gefunden haben, starten Sie den Bestellvorgang.
+                </li>
+                <p class="text-indent">
+                    a.	Klicken Sie auf „<b>Zur Kasse</b>“ um ihr Bestellung zu beginnen.<br>
+                    b.	Im Feld „<b>Projektbeschreibung</b>“ tragen Sie ihre persönlichen Details ein.<br>
+                    c.	Um den Bestellvorgang abzuschließen klicken Sie auf „<b>Jetzt bestellen</b>“.<br>
+                    d.	Bezahlen Sie per <b>PayPal</b> ihren Warenkorb und schließen damit nach erfolgreicher Bezahlung den Bestellvorgang ab.
+                </p>
+                <li>
+                    In Ihrem Benutzerkonto können Sie den Bestellvorgang verfolgen und jederzeit in Kontakt mit dem Cnerr-Team treten.
+                </li>
+                <li>
+                    Den <b>Liefertermin</b> zu Ihrer Bestellung haben Sie in Ihrem Bestellvorgang ausgewählt. Nach Ablauf der
+                    Produktionszeit erhalten Sie eine Lieferbestätigung in Ihrem <span class="move-left">Benutzerkonto und per Email. Sollten
+                    Sie noch Änderungswünsche haben, so werden diese gerne abgearbeitet. Nachdem Sie abschließend Ihre
+                        Bestellung als</span>„<b>fertig markiert</b>“ <span class="move-left">gekennzeichnet haben ist der Bestellvorgang abgeschlossen. <b>Ihre
+                    Bestellung ist damit erfolgreich beendet.</b></span>
+                </li>
+                <li>
+                    Bitte geben Sie eine Bewertung zu Ihrer Bestellung ab. Ihre Bewertung hilft uns zur Verbesserung
+                    unserer Dienstleistungen und Optimierung des Marktplatzes.
+                </li>
+                <li>
+                    Im Kontrollcenter steht Ihnen zu jeder Bestellung eine Rechnung als PDF zum Download zur Verfügung.
+                    In der Übersicht haben Sie immer einen Überblick was Sie auf dem <span class="move-left">Marktplatz bestellt haben.
+                    Automatisch wechselt die abgeschlossene Bestellung in Ihr persönliches Archiv.</span>
+                </li>
+            </ol>
+        </div>
+    </div>
+</div>
+<?php echo $__env->make('includes.footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

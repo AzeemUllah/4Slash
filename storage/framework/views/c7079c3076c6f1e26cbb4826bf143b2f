@@ -1,0 +1,67 @@
+<?php $__env->startSection('header_title'); ?>
+        <h1>Charges</h1>
+<?php $__env->stopSection(); ?>
+
+<style>
+    /* .gig-images-box-body img{
+         width:120px;
+         flaot:left;
+         margin-right:5px;
+     }*/
+</style>
+
+
+<?php $__env->startSection('content'); ?>
+    <?php if(\Illuminate\Support\Facades\Session::has('succes-charges')): ?>
+        <p class="alert alert-success">
+            <?php echo e(\Illuminate\Support\Facades\Session::get('succes-charges')); ?>
+
+            <?php echo e(\Illuminate\Support\Facades\Session::forget('succes-charges')); ?>
+
+    <?php endif; ?>
+    <?php if(\Illuminate\Support\Facades\Session::has('succes-error')): ?>
+        <p class="alert alert-success">
+            <?php echo e(\Illuminate\Support\Facades\Session::get('succes-error')); ?>
+
+            <?php echo e(\Illuminate\Support\Facades\Session::forget('succes-error')); ?>
+
+        </p>
+    <?php endif; ?>
+        <form method="post" action="<?php echo e(route('charges.update')); ?>">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="bank">Bank Charges</label>
+                    <input type="text" name="bank" id="bank" class="form-control" value="<?php echo e($query ? $query->bank_services : ''); ?>">
+                </div>
+                <div class="form-group">
+                    <label for="paypal">Paypal Charges</label>
+                    <input type="text" name="paypal" id="paypal"class="form-control" value="<?php echo e($query ? $query->paypal_services : ''); ?>">
+                </div>
+                <div class="form-group">
+                    <?php if($query): ?>
+                        <input type="submit" name="update" value="Update" class="btn btn-primary btn-md">
+                    <?php else: ?>
+                        <input type="submit" name="submit" value="Add" class="btn btn-primary btn-md">
+                    <?php endif; ?>
+                </div>
+            </div>
+        </form>
+
+<?php $__env->stopSection(); ?>
+
+
+
+<?php $__env->startSection('pages_css'); ?>
+
+    <link rel="stylesheet" href="<?php echo e(asset('bower_components/AdminLTE/plugins/select2/select2.min.css')); ?>">
+
+<?php $__env->stopSection(); ?>
+
+
+
+<?php $__env->startSection('pages_script'); ?>
+
+
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('pages.admin.admin_template', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

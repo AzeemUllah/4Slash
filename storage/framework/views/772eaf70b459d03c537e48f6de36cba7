@@ -1,0 +1,417 @@
+<?php $__env->startSection('header_title'); ?>
+
+    <h1>Create a new Gig</h1>
+
+<?php $__env->stopSection(); ?>
+
+
+
+
+<?php $__env->startSection('content'); ?>
+
+    <form method="post">
+        <div class="row">
+        <div class="col-md-12">
+            <div class="box box-info">
+
+                <div class="box-body">
+                        <!-- text input -->
+                        <div class="form-group">
+                            <label>Title</label>
+                            <input name="gig-title" type="text" class="form-control" placeholder="Enter Gig Title...">
+                        </div>
+
+
+
+
+                        <div class="form-group">
+                            <label>Short Discription</label>
+                            <input name="gig-short-discription" type="text" class="form-control" placeholder="Enter Gig Short Discription...">
+                        </div>
+
+
+                        <!-- textarea -->
+                        <div class="form-group">
+                            <label>Discription</label>
+                            <textarea name="gig-discription" class="form-control" rows="3" placeholder="Enter Gig Discription..."></textarea>
+                        </div>
+
+
+                        <!-- select -->
+                        <div class="form-group">
+                            <label>Category</label>
+                            <select name="gig-category" class="form-control">
+                                <?php foreach($categories as $category): ?>
+                                    <option value="<?php echo e($category->id); ?>"><?php echo e($category->name); ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+
+
+                        <!-- select -->
+                        <div class="row">
+
+                            <div class="col-md-6 form-group">
+                                <label>Delivery Days</label>
+                                <select name="gig-delivery-days" class="form-control">
+                                    <?php for($i = 1; $i <= 30; $i++): ?>
+                                    <option value="<?php echo e($i); ?>"><?php echo e($i); ?></option>
+                                    <?php endfor; ?>
+                                </select>
+                            </div>
+
+
+                            <div class="col-md-6 form-group">
+                                <label>Price</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon">&euro;</span>
+                                    <input name="gig-price" type="number" class="form-control">
+                                    <span class="input-group-addon">.00</span>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-info addons-box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Addons</h3>
+                        <button type="button" id="add-new-addon" class="btn btn-primary btn-xs pull-right"><span class="fa fa-plus"></span></button>
+                    </div>
+                    <div class="box-body">
+
+                    </div><!-- /.box-body -->
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-info gig-questions-box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Questions</h3>
+                        <div class="btn-group pull-right">
+                            <button type="button" id="add-choice-question" class="btn btn-primary btn-xs"><span class="fa fa-plus"></span> Add Choice Question</button>
+                            <button disabled type="button" id="add-range-question" class="btn btn-primary btn-xs"><span class="fa fa-plus"></span> Add Range Question</button>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                    </div><!-- /.box-body -->
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center">
+            <button class="btn btn-primary btn-lg" type="submit">Create</button>
+        </div>
+    </form>
+
+<?php $__env->stopSection(); ?>
+
+
+
+<?php $__env->startSection('pages_css'); ?>
+
+    <link rel="stylesheet" href="<?php echo e(asset('bower_components/AdminLTE/plugins/select2/select2.min.css')); ?>">
+
+<?php $__env->stopSection(); ?>
+
+
+
+<?php $__env->startSection('pages_script'); ?>
+
+    <script src="<?php echo e(asset('bower_components/AdminLTE/plugins/select2/select2.full.min.js')); ?>"></script>
+
+    <script>
+
+        (function() {
+
+            document.querySelector('#add-new-addon').addEventListener('click', addAddon);
+            document.querySelector('#add-choice-question').addEventListener('click', addChoiceQuestion);
+            document.querySelector('#add-range-question').addEventListener('click', addRangeQuestion);
+
+
+            $(".select2").select2({
+                tags: true,
+                tokenSeparators: [','],
+                maximumSelectionSize: 0,
+            });
+
+
+        })();
+
+
+
+
+        function changeName(elem) {
+
+            var name = '';
+            var addonContainer = $(elem).parent().parent();
+
+            if(addonContainer.find('.row:last').find('input').length > 0) {
+                addonContainer.find('.row:last').find('input[name $= "[discription]"]').each(function () {
+
+                    name = this.name.replace(/\[(\d+)\]/, function (str, p1) {
+
+                        return '[' + (parseInt(p1, 10) + 1) + ']';
+
+                    });
+
+                });
+            } else {
+                name = "gig-addon[1][discription]";
+            }
+
+            return name;
+
+        }
+
+        function changeName2(elem) {
+
+            var name = '';
+            var addonContainer = $(elem).parent().parent();
+
+            if(addonContainer.find('.row:last').find('input').length > 0) {
+                addonContainer.find('.row:last').find('input[name $= "[price]"]').each(function () {
+
+                    name = this.name.replace(/\[(\d+)\]/, function (str, p1) {
+
+                        return '[' + (parseInt(p1, 10) + 1) + ']';
+
+                    });
+
+                });
+            } else {
+                name = "gig-addon[1][price]";
+            }
+
+            return name;
+
+        }
+
+        function choiceQuestionChangeName(elem) {
+
+            var questionContainer = $(elem).parent().parent().parent();
+
+            if(questionContainer.find('.well:last').find('input').length > 0) {
+                questionContainer.find('.well:last').find('input[name $= "[question]"]').each(function () {
+
+                    name = this.name.replace(/\[(\d+)\]/, function (str, p1) {
+
+                        return '[' + (parseInt(p1, 10) + 1) + ']';
+
+                    });
+
+                });
+            } else {
+                name = "gig-choice-question[1][question]";
+            }
+
+            return name;
+
+        }
+
+        function choiceQuestionChangeName2(elem) {
+
+            var questionContainer = $(elem).parent().parent().parent();
+
+            if(questionContainer.find('.well:last').find('select').length > 0) {
+                questionContainer.find('.well:last').find('select[name *= "[answers]"]').each(function () {
+
+                    name = this.name.replace(/\[(\d+)\]/, function (str, p1) {
+
+                        return '[' + (parseInt(p1, 10) + 1) + ']';
+
+                    }).replace('[]', '');
+
+                });
+            } else {
+                name = "gig-choice-question[1][answers]";
+            }
+
+            return name;
+
+        }
+
+        function addAddon() {
+
+
+            console.log(changeName(this));
+
+
+            var newAddon = $('<div class="row">' +
+                    '<div class="col-md-5">' +
+                    '<div class="form-group">' +
+                    '<input name="'+changeName(this)+'" type="text" class="form-control" placeholder="Enter Addon Discription...">' +
+                    '</div>' +
+                    '</div>' +
+                    '<div class="col-md-5">' +
+                    '<div class="form-group">' +
+                    '<div class="input-group">' +
+                    '<span class="input-group-addon">&euro;</span>' +
+                    '<input name="'+changeName2(this)+'" type="number" class="form-control">' +
+                    '<span class="input-group-addon">.00</span>' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>' +
+                    '<div class="col-md-2 del-btn-box">' +
+                    '<button type="button" class="btn btn-danger btn-xs remove-addon"><span class="fa fa-minus"></span></button>' +
+                    '</div>' +
+                    '</div>');
+
+
+            $('.addons-box .box-body').append(newAddon);
+
+
+        }
+
+        function removeAddon() {
+
+            this.parentNode.parentNode.remove();
+
+        }
+
+        function addChoiceQuestion() {
+            var newChoiceQuestion = $('<div class="well well-sm">' +
+                    '<div class="pull-right">' +
+                    '<button type="button" class="btn btn-danger btn-xs remove-choice-question"><span class="fa fa-minus"></span></button>' +
+                    '</div>' +
+                    '<div class="row">' +
+                    '<div class="col-md-12">' +
+                    '<div class="form-group">' +
+                    '<label>Choice Question</label>' +
+                    '<input name="'+choiceQuestionChangeName(this)+'" type="text" class="form-control" placeholder="Enter ...">' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>' +
+                    '<div class="row">' +
+                    '<div class="col-md-12">' +
+                    '<div class="form-group">' +
+                    '<label>Choices</label>' +
+                    '<select name="'+choiceQuestionChangeName2(this)+'[]" class="form-control select2" multiple="multiple" data-placeholder="Select a State" style="width: 100%;">' +
+                    '</select>' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>');
+
+
+            $('.gig-questions-box .box-body').append(newChoiceQuestion);
+
+            var removeBtns = document.querySelectorAll('.remove-choice-question');
+
+            for(var i = 0; i < removeBtns.length; i++) {
+                removeBtns[i].addEventListener('click', removeChoiceQuestion);
+            }
+
+
+            $(".select2").select2({
+                tags: true,
+                tokenSeparators: [',', ' '],
+                maximumSelectionSize: 0,
+            });
+
+        }
+
+        function removeChoiceQuestion() {
+
+            this.parentNode.parentNode.remove();
+
+        }
+
+        function addRangeQuestion() {
+
+            var newRangeQuestion = $('<div class="well well-sm range-question-box">' +
+                                        '<div class="pull-right">' +
+                                            '<button type="button" id="remove-range-question" class="btn btn-danger btn-xs remove-range-question"><span class="fa fa-minus"></span></button>' +
+                                        '</div>' +
+                                        '<div class="row">' +
+                                            '<div class="col-md-12">' +
+                                                '<div class="form-group">' +
+                                                    '<label>Range Question</label>' +
+                                                    '<input type="text" class="form-control" placeholder="Enter ...">' +
+                                                '</div>' +
+                                            '</div>' +
+                                        '</div>' +
+                                        '<div class="row">' +
+                                            '<div class="col-md-12">' +
+                                                '<div class="form-group">' +
+                                                    '<label>Range Options</label><span> <button type="button" id="add-range-option" class="btn btn-primary btn-xs"><span class="fa fa-plus"></span></button></span>' +
+                                                '</div>' +
+                                            '</div>' +
+                                        '</div>' +
+                                '</div>');
+
+            $('.gig-questions-box .box-body').append(newRangeQuestion);
+
+            document.querySelector('#add-range-option').addEventListener('click', addRangeQuestionOption);
+
+
+            var removeBtns = document.querySelectorAll('.remove-range-question');
+
+            for(var i = 0; i < removeBtns.length; i++) {
+                removeBtns[i].addEventListener('click', removeRangeQuestion);
+            }
+
+        }
+
+        function removeRangeQuestion() {
+
+            this.parentNode.parentNode.remove();
+
+        }
+
+        function addRangeQuestionOption() {
+
+            var newRangeQuestionOption = $('<div class="row">' +
+                                            '<div class="col-md-3">' +
+                                            '<div class="form-group">' +
+                                            '<input type="text" class="form-control" placeholder="Option 1">' +
+                                            '</div>' +
+                                            '</div>' +
+                                            '<div class="col-md-3">' +
+                                            '<div class="form-group">' +
+                                            '<img style="width:100%;" src="<?php echo e(asset('img/slider_big.png')); ?>" />' +
+                                            '</div>' +
+                                            '</div>' +
+                                            '<div class="col-md-3">' +
+                                            '<div class="form-group">' +
+                                            '<input type="text" class="form-control" placeholder="Option 2">' +
+                                            '</div>' +
+                                            '</div>' +
+                                            '<div class="col-md-1">' +
+                                            '<button type="button" class="btn btn-danger btn-xs remove-range-option"><span class="fa fa-minus"></span></button>' +
+                                            '</div>' +
+                                            '</div>');
+
+            $('.range-question-box').append(newRangeQuestionOption);
+
+
+
+            var removeBtns = document.querySelectorAll('.remove-range-option');
+
+            for(var i = 0; i < removeBtns.length; i++) {
+                removeBtns[i].addEventListener('click', removeRangeOption);
+            }
+
+        }
+
+        function removeRangeOption() {
+
+            this.parentNode.parentNode.remove();
+
+        }
+
+
+    </script>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('pages.admin.admin_template', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

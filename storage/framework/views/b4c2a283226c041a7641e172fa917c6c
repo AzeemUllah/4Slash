@@ -1,0 +1,192 @@
+<?php $__env->startSection('header_title'); ?>
+
+    <h1>Dashboard</h1>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+    <div class="row">
+        <div class="col-lg-4 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-green">
+                <div class="inner">
+                    <h3><?php echo e($NewOrders); ?></h3>
+
+                    <p>Today's New Orders</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-bag"></i>
+                </div>
+                <a href="<?php echo e(route('adminorders')); ?>?status=pending" class="small-box-footer">More info <i
+                            class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-4 col-xs-6">
+            <!-- small boxes -->
+            <div class="col-sm-6 col-xs-12 padding_null">
+                <div class="small-box bg-aqua">
+                    <div class="inner">
+                        <h3><?php echo e($totalNewFavorOrders); ?></h3>
+
+                        <p>Favor Orders</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-bag"></i>
+                    </div>
+                    <a href="<?php echo e(route('adminorders')); ?>?status=pending" class="small-box-footer">More info <i
+                                class="fa fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <!-- small box -->
+            <div class="col-sm-6 col-xs-12 padding_null">
+                <div class="small-box bg-aqua">
+                    <div class="inner">
+                        <h3><?php echo e($totalNewPackageOrders); ?></h3>
+
+                        <p>Packages Orders</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-bag"></i>
+                    </div>
+                    <a href="<?php echo e(route('admin.orders.packages')); ?>?status=pending" class="small-box-footer">More info <i
+                                class="fa fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-4 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-yellow">
+                <div class="inner">
+                    <h3><?php echo e($individuell); ?></h3>
+
+                    <p>Individuell Orders</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-bag"></i>
+                </div>
+                <a href="<?php echo e(route('admin.orders.custom')); ?>?status=pending" class="small-box-footer">More info <i
+                            class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+    </div>
+    <div class="row">
+        <div class="col-lg-4 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-green">
+                <div class="inner">
+                    <h3><?php echo e($reviewagency); ?></h3>
+
+                    <p>Agency to Review</p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-eur"></i>
+                </div>
+                <a href="<?php echo e(route('adminagencies')); ?>?agency=all" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+
+        <!-- ./col -->
+        <div class="col-lg-4 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-aqua">
+                <div class="inner">
+                    <h3><?php echo e($activeagency); ?></h3>
+
+                    <p>Total Active agencies</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-person-add"></i>
+                </div>
+                <a href="<?php echo e(route('adminagencies')); ?>?agency=active" class="small-box-footer">More info <i
+                            class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-4 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-yellow">
+                <div class="inner">
+                    <h3><?php echo e($requestpayment); ?></h3>
+
+                    <p>Payment withdraw review</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-bag"></i>
+                </div>
+                <a href="<?php echo e(route('payment.request')); ?>" class="small-box-footer">More info <i
+                            class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-green">
+                <div class="inner">
+                    <h3><?php echo e($favorreview); ?></h3>
+
+                    <p>Favor to Review</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-bag"></i>
+                </div>
+                <a href="<?php echo e(route('agenciesSuggestion')); ?>" class="small-box-footer">More info <i
+                            class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-4 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-aqua">
+                <div class="inner">
+                    <h3><?php echo e($packagereview); ?></h3>
+
+                    <p>Packages to approve</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-bag"></i>
+                </div>
+                <a href="<?php echo e(route('adminpackages')); ?>" class="small-box-footer">More info <i
+                            class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <div class="col-lg-4 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-yellow">
+                <div class="inner">
+                    <h3><?php echo e($totalUser); ?></h3>
+
+                    <p>Total Registered Users</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-bag"></i>
+                </div>
+                <a href="<?php echo e(route('registeredusers')); ?>" class="small-box-footer">More info <i
+                            class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+    </div>
+    <div class="row">
+        <!-- ./col -->
+        <div class="col-lg-4 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-green">
+                <div class="inner">
+                    <h3><?php echo e($totalnewuser); ?></h3>
+
+                    <p>New Registered Users</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-person-add"></i>
+                </div>
+                <a href="<?php echo e(route('registeredusers')); ?>" class="small-box-footer">More info <i
+                            class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+    </div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('pages.admin.admin_template', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -1,0 +1,452 @@
+<?php echo $__env->make('includes.header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner" role="listbox">
+        <?php $i = 0;?>
+        <?php foreach($images as $image): ?>
+        <?php
+        $style = (!empty($image->txt_style)) ? json_decode($image->txt_style) : "";
+        $stl_tit1 = "";
+        $stl_tit2 = "";
+        if (!empty($style)) {
+            $stl_tit1 = $style->stl_tit1;
+            $stl_tit2 = $style->stl_tit2;
+        }
+        ?>
+        <div class="item <?php if($i == 0): ?> <?php echo e('active'); ?> <?php else: ?>  <?php echo e(''); ?> <?php endif; ?>">
+            <img src="<?php echo e(url('files/slider_images').'/'.$image->image_name); ?>" alt="" style="width: 100%;">
+            <div class="container" style="position: absolute; top: 0; left: 0; right: 0;bottom: 0;overflow: hidden;">
+                <h1 style="<?=(!empty($stl_tit1->align)) ? "text-align:" . $stl_tit1->align . ";" : ""?><?=(!empty($stl_tit1->shadow_color) && !empty($stl_tit1->shadow_top) && !empty($stl_tit1->shadow_left) && !empty($stl_tit1->shadow_blur)) ? "text-shadow: " . $stl_tit1->shadow_left . " " . $stl_tit1->shadow_top . " " . $stl_tit1->shadow_blur . " " . $stl_tit1->shadow_color . ";" : ""?><?=(!empty($stl_tit1->txt_color)) ? "color:" . $stl_tit1->txt_color . ";" : ""?><?=(!empty($stl_tit1->txt_size)) ? "font-size:" . $stl_tit1->txt_size . ";" : ""?><?=(!empty($stl_tit1->txt_pos_t)) ? "margin-top:".$stl_tit1->txt_pos_t.";" : ""?><?=(!empty($stl_tit1->txt_pos_l)) ? "margin-left:".$stl_tit1->txt_pos_l.";" : ""?><?=(!empty($stl_tit1->txt_pos_b)) ? "margin-bottom:".$stl_tit1->txt_pos_b.";" : ""?><?=(!empty($stl_tit1->txt_pos_r)) ? "margin-right:".$stl_tit1->txt_pos_r.";" : ""?>;"><?php echo e((!empty($image->title))? $image->title : ""); ?></h1>
+                <h1 style="<?=(!empty($stl_tit2->align)) ? "text-align:" . $stl_tit2->align . ";" : ""?><?=(!empty($stl_tit2->shadow_color) && !empty($stl_tit2->shadow_top) && !empty($stl_tit2->shadow_left) && !empty($stl_tit2->shadow_blur)) ? "text-shadow: " . $stl_tit2->shadow_left . " " . $stl_tit2->shadow_top . " " . $stl_tit2->shadow_blur . " " . $stl_tit2->shadow_color . ";" : ""?><?=(!empty($stl_tit2->txt_color)) ? "color:" . $stl_tit2->txt_color . ";" : ""?><?=(!empty($stl_tit2->txt_size)) ? "font-size:" . $stl_tit2->txt_size . ";" : ""?><?=(!empty($stl_tit2->txt_pos_t)) ? "margin-top:".$stl_tit2->txt_pos_t.";" : ""?><?=(!empty($stl_tit2->txt_pos_l)) ? "margin-left:".$stl_tit2->txt_pos_l.";" : ""?><?=(!empty($stl_tit2->txt_pos_b)) ? "margin-bottom:".$stl_tit2->txt_pos_b.";" : ""?><?=(!empty($stl_tit2->txt_pos_r)) ? "margin-right:".$stl_tit2->txt_pos_r.";" : ""?>;"><?php echo e((!empty($image->title2))? $image->title2 : ""); ?></h1>
+            </div>
+        </div>
+        <?php $i++; ?>
+        <?php endforeach; ?>
+    </div>
+</div>
+<div class="cnerr-main-content-background-color text-center">
+    <div class="white container-fluid" style="background-color: white;">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 slider-video text-right">
+                <video class="slider_video" src="img/Cnerr - final.mp4" controls
+                       poster="img/cnerr-poster.png"></video>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 slider-text">
+                <h1 class="cnerr-main-content-heading margin-top">
+                    Grafik, Design oder Programmierung?<br/>Natürlich auf
+                        <span class="txt-color">
+                            <img src="https://cnerr.de/img/cnerr_logo_dark.png" alt="" style="margin-bottom: 15px;">
+                        </span>
+                    ab 10€!
+                </h1>
+                <p class="home-text"
+                   style="border: 0; margin-bottom: 20px;color: #2b2a29;font-weight: bold;font-size: 19px;">Benötigen
+                    Sie Designer, Grafiker, kreative Arbeiten,<br> Web- und App-Programierer oder Entwickler für ihre <i
+                            style="color: #367fa9;">Favors</i>?<br/>Wir haben die Experten die <i
+                            style="color: #367fa9;">24/7</i> für Sie tätig werden!</p>
+            </div>
+        </div>
+    </div>
+    <div class="container main-container">
+        <?php if($featuredGigs->count() > 0): ?>
+            <div class="mp-box mp-box-center-flex" style="">
+
+                <article class="mp-gig-carousel">
+
+                    <header>
+                        <h2 class="heading" style="text-transform: none">
+
+
+                            Unsere Leistungen
+
+                        </h2>
+                    </header>
+
+                    <div class="gig-carousel cf loading-dummy dummy-12">
+                        <div class="slider-box">
+                            <div class="slider-hider cf">
+                                <div class="slide gig-item gig-item-default js-slide">
+                                    <div style="padding: 8px;background-color: white;">
+                                        <img src="https://cnerr.de/img/slide_img1.jpg" style="width: 100%;">
+                                        <p style="margin-top: 15px;"><i>Wir erstellen Ihnen ihre individuellen <font
+                                                        style="color: #367fa9;">Favors</font> mit unserem Expertenteam.</i>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="slide gig-item gig-item-default js-slide">
+                                    <div style="padding: 8px;background-color: white;">
+                                        <img src="https://cnerr.de/img/slide_img2.jpg" style="width: 100%;">
+                                        <p style="margin-top: 15px;"><i>Unsere Experten sind für Sie da! Wenn sie
+                                                wünschen <font style="color: #367fa9;">24/7!</font></i></p>
+                                    </div>
+                                </div>
+                                <div class="slide gig-item gig-item-default js-slide">
+                                    <div style="padding: 8px;background-color: white;">
+                                        <img src="https://cnerr.de/img/slide_img3.jpg" style="width: 100%;">
+                                        <p style="margin-top: 15px;"><i>Cnerr arbeitet in einem SSL geschützten Umfeld.
+                                                Ihre Daten sind verschlüsselt!</i></p>
+                                    </div>
+                                </div>
+                                <div class="slide gig-item gig-item-default js-slide">
+                                    <div style="padding: 8px;background-color: white;">
+                                        <img src="https://cnerr.de/img/slide_img4.jpg" style="width: 100%;">
+                                        <p style="margin-top: 15px;"><i>Kein Risiko bei unseren <font
+                                                        style="color: #367fa9;">Favors</font>! Wir arbeiten so lange bis
+                                                Sie zufrieden sind</i></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p style=""><i>* Favor/-s nennen wir unsere Produkte, die wir für Sie erledigen dürfen. Kleine oder
+                            auch große Gefälligkeiten! ;-)</i></p>
+
+                    <header style="padding: 0px 42px;">
+                        <h2 class="heading" style="text-transform: none; border:0px; margin-bottom: 0px;">
+
+
+                            Unsere Empfehlungen
+
+                        </h2>
+                        <h3 class="text-left" style="color: #367fa9;margin:0px; margin-bottom: 10px;border-bottom: 1px solid #E2E0E0;padding-bottom: 10px;">Favors</h3>
+                    </header>
+
+                    <div class="gig-carousel cf loading-dummy dummy-12"
+                         data-json-path="/gigs/endless_page_as_json?host=homepage&amp;type=endless&amp;category_id=99912&amp;limit=12"
+                         data-load-more="false" data-hide-empty="true" data-hide-parent="false" data-gigs-shown="4"
+                         data-do-sliding="false" data-two-lines="false" data-do-lazyload="false" data-do-endless="false"
+                         data-host="homepage" data-box-id="hp99912_1_4">
+
+
+                        <div class="slider-box">
+                            <div class="slider-hider cf">
+                                <?php foreach($featuredGigs as $featuredGig): ?>
+                                    <div class="slide gig-item gig-item-default js-slide js-gig-card "
+                                         data-gig-id="4864637"
+                                         data-cached-slug="create-unusual-illustrations-in-my-style" data-gig-index="0"
+                                         data-gig-category="graphics-design"
+                                         data-gig-sub-category="digital-illustration" data-gig-price="20" itemscope=""
+                                         itemtype="http://schema.org/Product">
+                                        <?php /*<div id="sold" style="display: none;"><span style="color:white;font-weight: bold;font-size: 11px; position: relative;top:5px;"><?php echo e($featuredGig['sale_count']); ?></span></div>*/ ?>
+                                        <div class="gig-seller">
+                        <span itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating">
+                            <span class="ratings-count" itemprop="ratingCount">(202)</span>
+                        </span>
+                                            <meta itemprop="worstRating" content="1">
+                                            <span class="circ-rating-s8 rate-10" itemprop="ratingValue">10</span>
+                                            <meta itemprop="bestRating" content="10">
+                                            <?php /*by <a href="/muravski" rel="nofollow" class="seller-name" itemprop="brand" itemscope="" itemtype="http://schema.org/Brand">muravski</a>*/ ?>
+                                        </div>
+
+                                        <a href="<?php echo e(url()); ?>/favors/<?php echo e($featuredGig['gigtype_slug']); ?>/<?php echo e($featuredGig->slug); ?>?funnel=<?php echo e($featuredGig->uuid); ?>"
+                                           class="gig-link-main" itemprop="url">
+                                            <span class="gig-pict-222" itemscope=""
+                                                  itemtype="http://schema.org/ImageObject">
+                                                <?php if(!empty($featuredGig['thumbnail']) AND $featuredGig['thumbnail'] != ''): ?>
+                                                    <img src="<?php echo e($featuredGig['thumbnail']); ?>"
+                                                         alt="<?php echo e($featuredGig->title); ?>"></span>
+                                            <?php endif; ?>
+                                            <h3 itemprop="name"><?php echo e(str_limit($featuredGig->title,50,'...')); ?></h3>
+                                            <?php /*<h3 itemprop="name"><?php echo e($featuredGig->title); ?></h3>*/ ?>
+                                        </a>
+
+                                        <div class="col-xs-5">
+                                            <span class="gig-badges featured" itemprop="award">featured</span>
+                                        </div>
+                                        <div class="col-xs-3">
+                                            <?php if($user): ?>
+                                                <aside data-url="<?php echo e(route('gig.favourite')); ?>"
+                                                       data-coll-id="<?php echo e($featuredGig->id); ?>">
+                                                    <a id="btn-favourite-submit" href="javascript:void(0);"
+                                                       class="gig-favourite-heart-icn">
+                                                                <span class="favorite-span">
+                                                                    <?php if($featuredGig['my_fav']): ?>
+                                                                        <i class="fa fa-heart"></i>
+                                                                    <?php else: ?>
+                                                                        <i class="fa fa-heart-o"></i>
+                                                                    <?php endif; ?>
+                                                                </span>
+
+                                                    </a>
+
+                                                </aside>
+                                            <?php endif; ?>
+                                        </div>
+                                        <div class="col-xs-4">
+                                            <a href="<?php echo e(url()); ?>/favors/<?php echo e($featuredGig['gigtype_slug']); ?>/<?php echo e($featuredGig->slug); ?>?funnel=<?php echo e($featuredGig->uuid); ?>"
+                                               class="gig-price" rel="nofollow" itemprop="offers" itemscope=""
+                                               itemtype="http://schema.org/Offer">
+                                                <small itemprop="price"></small>
+                                                <span itemprop="price"><?php echo e(config('app.currency') . $featuredGig->price); ?></span></a>
+                                        </div>
+                                    </div>
+                                <?php endforeach; ?>
+                                <div class="slide gig-item gig-item-default js-slide">
+                                    <a href="#" id="custom_offer" class="gig-link-main">
+                                        <div style="padding: 8px;background-color: white;">
+                                            <img src="https://cnerr.de/img/slide_img1.jpg"
+                                                 style="width: 100%; height: 108px;">
+                                            <h3 itemprop="name">Sie suchen etwas anderes?</h3>
+                                            <div class="col-xs-5">
+                                                <span class="gig-badges featured" itemprop="award">featured</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <header style="padding: 30px 42px 0px 42px;">
+                        <h3 class="text-left" style="color: #367fa9;margin:0px; margin-bottom: 10px;border-bottom: 1px solid #E2E0E0;padding-bottom: 10px;">Pakete</h3>
+                    </header>
+                    <div class="gig-carousel cf loading-dummy dummy-12"
+                         data-json-path="/gigs/endless_page_as_json?host=homepage&amp;type=endless&amp;category_id=99912&amp;limit=12"
+                         data-load-more="false" data-hide-empty="true" data-hide-parent="false" data-gigs-shown="4"
+                         data-do-sliding="false" data-two-lines="false" data-do-lazyload="false" data-do-endless="false"
+                         data-host="homepage" data-box-id="hp99912_1_4">
+
+
+                        <div class="slider-box">
+                            <div class="slider-hider cf">
+                                <?php foreach($featuredPackages as $featuredPackag): ?>
+                                    <div class="slide gig-item gig-item-default js-slide js-gig-card "
+                                         data-gig-id="4864637"
+                                         data-cached-slug="create-unusual-illustrations-in-my-style" data-gig-index="0"
+                                         data-gig-category="graphics-design"
+                                         data-gig-sub-category="digital-illustration" data-gig-price="20" itemscope=""
+                                         itemtype="http://schema.org/Product">
+                                        <?php /*<div id="sold" style="display: none;"><span style="color:white;font-weight: bold;font-size: 11px; position: relative;top:5px;"><?php echo e($featuredGig['sale_count']); ?></span></div>*/ ?>
+                                        <div class="gig-seller">
+                        <span itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating">
+                            <span class="ratings-count" itemprop="ratingCount">(202)</span>
+                        </span>
+                                            <meta itemprop="worstRating" content="1">
+                                            <span class="circ-rating-s8 rate-10" itemprop="ratingValue">10</span>
+                                            <meta itemprop="bestRating" content="10">
+                                            <?php /*by <a href="/muravski" rel="nofollow" class="seller-name" itemprop="brand" itemscope="" itemtype="http://schema.org/Brand">muravski</a>*/ ?>
+                                        </div>
+
+                                        <a href="<?php echo e(route('site.single.package',['packageId' => $featuredPackag->id,'funnel' => uniqid(),'uuid' => rand(1,1000)])); ?>"
+                                           class="gig-link-main" itemprop="url">
+                                            <span class="gig-pict-222" itemscope=""
+                                                  itemtype="http://schema.org/ImageObject">
+                                                <?php if(!empty($featuredPackag['thumbnail']) AND $featuredPackag['thumbnail'] != ''): ?>
+                                                    <img src="<?php echo e($featuredPackag['thumbnail']); ?>"
+                                                         alt="<?php echo e($featuredPackag->title); ?>"></span>
+                                            <?php endif; ?>
+                                            <h3 itemprop="name"><?php echo e(str_limit($featuredPackag->title,50,'...')); ?></h3>
+                                            <?php /*<h3 itemprop="name"><?php echo e($featuredGig->title); ?></h3>*/ ?>
+                                            <div class="row" style="margin:0px;">
+                                                <div class="col-xs-4">
+                                                    <p>Bronze</p>
+                                                    <img src="<?php echo e(url('/').'/img/bronze_label.png'); ?>" alt="" width="30px">
+                                                    <p><?php echo e(config('app.currency').$featuredPackag['package_bronze']->price); ?></p>
+                                                </div>
+                                                <div class="col-xs-4">
+                                                    <p>Silber</p>
+                                                    <img src="<?php echo e(url('/').'/img/silver_label.png'); ?>" alt="" width="30px">
+                                                    <p><?php echo e(config('app.currency').$featuredPackag['package_silver']->price); ?></p>
+                                                </div>
+                                                <div class="col-xs-4">
+                                                    <p>Gold</p>
+                                                    <img src="<?php echo e(url('/').'/img/gold_label.png'); ?>" alt="" width="30px">
+                                                    <p><?php echo e(config('app.currency').$featuredPackag['package_gold']->price); ?></p>
+                                                </div>
+                                            </div>
+                                        </a>
+
+                                        <div class="col-xs-5">
+                                            <span class="gig-badges featured" itemprop="award">featured</span>
+                                        </div>
+                                        <div class="col-xs-3">
+                                            <?php if($user): ?>
+                                                <aside data-url="<?php echo e(route('gig.favourite')); ?>"
+                                                       data-coll-id="<?php echo e($featuredPackag->id); ?>">
+                                                    <a id="btn-favourite-submit" href="javascript:void(0);"
+                                                       class="gig-favourite-heart-icn">
+                                                                <span class="favorite-span">
+                                                                    <?php if($featuredPackag['my_fav']): ?>
+                                                                        <i class="fa fa-heart"></i>
+                                                                    <?php else: ?>
+                                                                        <i class="fa fa-heart-o"></i>
+                                                                    <?php endif; ?>
+                                                                </span>
+
+                                                    </a>
+
+                                                </aside>
+                                            <?php endif; ?>
+                                        </div>
+                                        <?php /*<div class="col-xs-4">
+                                            <a href="<?php echo e(url()); ?>/favors/<?php echo e($featuredGig['gigtype_slug']); ?>/<?php echo e($featuredGig->slug); ?>?funnel=<?php echo e($featuredGig->uuid); ?>"
+                                               class="gig-price" rel="nofollow" itemprop="offers" itemscope=""
+                                               itemtype="http://schema.org/Offer">
+                                                <small itemprop="price"></small>
+                                                <span itemprop="price"><?php echo e(config('app.currency') . $featuredPackag->price); ?></span></a>
+                                        </div>*/ ?>
+                                    </div>
+                                <?php endforeach; ?>
+                               <?php /* <div class="slide gig-item gig-item-default js-slide">
+                                    <a href="#" id="custom_offer" class="gig-link-main">
+                                        <div style="padding: 8px;background-color: white;">
+                                            <img src="https://cnerr.de/img/slide_img1.jpg"
+                                                 style="width: 100%; height: 108px;">
+                                            <h3 itemprop="name">Sie suchen etwas anderes?</h3>
+                                            <div class="col-xs-5">
+                                                <span class="gig-badges featured" itemprop="award">featured</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>*/ ?>
+                            </div>
+                        </div>
+
+                    </div>
+                </article>
+
+            </div>
+        <?php endif; ?>
+    </div>
+    <div class="cnerr-main-content-background-color text-center"
+         style="background: #fff; padding:50px 0; margin:30px 0">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <img src="img/setting.png" class="image-top-margin">
+
+                    <p class="img-caption top-bottom-margin">Kreativität</p>
+
+                    <p class="cnerr-main-content-paragragh-cat">Nutze unsere Kreativät und Erfahrungen, um dein Produkt
+                        wahr werden zu lassen. Unsere Experten verfügen über jahrelange Erfahrungen und werden diese in
+                        deinem Produkt einfließen lassen.</p>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <img src="img/document.png" class="image-top-margin">
+
+                    <p class="img-caption top-bottom-margin">Professionalität</p>
+
+                    <p class="cnerr-main-content-paragragh-cat">Wir arbeiten in unserem Netzwerk ausschließlich mit
+                        professionellen Partnern zusammen. Unseren hohen Anspruch an das Produkt lassen wir vor
+                        Übermittlung durch die Qualitätskontrolle überprüfen. Erst dann liefern wir die Bestellungen
+                        aus.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <img src="img/bulb.png" class="image-top-margin">
+
+                    <p class="img-caption top-bottom-margin">Zuverlässigkeit</p>
+
+                    <p class="cnerr-main-content-paragragh-cat">Jedes Produkt auf unserem Marktplatz hat eine bestimmte
+                        Lieferzeit, die der Kunde mit beeinflussen kann. Die Auslieferung erfolgt garantiert innerhalb
+                        des gewünschten Termins.</p>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <img src="img/world.png" class="image-top-margin">
+
+                    <p class="img-caption top-bottom-margin">Keinerlei Risiko</p>
+
+                    <p class="cnerr-main-content-paragragh-cat">Sollten Sie mit der kreativen Arbeit einmal nicht
+                        100%zig zufrieden sein, werden wir Ihnen den Kaufpreis erstatten. Somit haben Sie auf Cnerr
+                        keinelei Risiko.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<?php /*<div class="cnerr-public-topcontent-background-color text-center" style="height: auto;padding: 70px 0;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h2 class="cnerr-public-topcontent-heading">“Cnerr erledigt zuverlässig unsere Arbeiten”</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <p class="cnerr-public-topcontent-paragragh" style="margin-bottom: 0;"><b>Dr.Alexander
+                        Schuller, </b><span class="designation-color"> Zahnarzt, Niederlande</span></p>
+            </div>
+        </div>
+    </div>
+</div>*/ ?>
+<div class="cnerr-public-background-color">
+    <div class="container text-center" style="color: #fff;">
+        <style>
+            @media  screen and (min-width: 770px) {
+                .margin_top_lg {
+                    margin-top: 70px !important;
+                }
+            }
+        </style>
+        <h2 class="cnerr-social-heading margin-top margin_top_lg">Sei ein Teil von Cnerr. Wir freuen uns.</h2>
+        <p class="cnerr-social-paragragh top-bottom" style="color: white;">Registriere dich kostenlos und stöbere
+            einfach auf unserem Marktplatz.</p>
+    </div>
+</div>
+
+<?php echo $__env->make('includes.footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<script>
+
+    $('.gig-favourite-heart-icn').click(function (e) {
+
+        e.preventDefault();
+        $selectedGig = $(this).parent();
+
+        var gigId = $selectedGig.data('coll-id');
+        var url = $selectedGig.data('url');
+
+        // var className = $('span.favorite-span > i').attr('class');
+
+        //  alert(className);
+
+        if ($(this).find('i').attr('class') == 'fa fa-heart') {
+            var action = 'removeFavorite';
+            $(this).empty().html('<span class="favorite-span"><i class="fa fa-heart-o"></i></span>');
+        }
+        else {
+            var action = 'addToFavorite';
+            $(this).empty().html('<span class="favorite-span"><i class="fa fa-heart"></i></span>');
+        }
+
+
+        $.ajax({
+            url: url,
+            method: 'POST',
+            data: {'gig-id': gigId, 'action': action},
+            success: function (data) {
+                console.log(data);
+
+            }
+        });
+    });
+
+
+</script>
+<script type="text/javascript">
+     $(document).ready(function () {
+         /*$('.gig-item-default').hover(function(){
+             $(this).children('.col-xs-5').removeClass('hover-transition');
+         },function(){
+             $(this).children('.col-xs-5').addClass('hover-transition');
+         });
+         $('.gig-item-default').hover(function(){
+             $(this).children('.col-xs-4').removeClass('hover-transition');
+         },function(){
+             $(this).children('.col-xs-4').addClass('hover-transition');
+         });*/
+         $('.gig-item-default').hover(function(){
+             $(this).children('#sold').show();
+         },function(){
+             $(this).children('#sold').hide();
+         });
+         $('#custom_offer').click(function(){
+
+             $(".gig-style").toggle();
+         });
+     });
+</script>
+
+</body>
+</html>

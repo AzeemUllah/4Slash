@@ -1,0 +1,239 @@
+<?php echo $__env->make('includes.header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+        <!--Content-->
+<div class="dash-main-content">
+<div class="container top-gap">
+    <div class="well main" style="word-break: break-all; max-height: 1360px; overflow-y: scroll;">
+        <h1 class="text-primary" style="color:#367fa9">AGB</h1>
+
+        <p>Allgemeine Geschäftsbedingungen der Firma <a href="https://cnerr.de/AGB">https://cnerr.de/AGB</a></p>
+        <br>
+
+        <p><b>Geltung gegenüber Unternehmern und Begriffsdefinitionen</b></p>
+
+        <p>Die nachfolgenden Allgemeinen Geschäftbedingungen gelten für alle Lieferungen zwischen uns und einem Verbraucher in ihrer zum Zeitpunkt der Bestellung gültigen Fassung.</p>
+
+        <p>Verbraucher ist jede natürliche Person, die ein Rechtsgeschäft zu Zwecken abschließt, die überwiegend weder ihrer gewerblichen noch ihrer selbständigen beruflichen Tätigkeit zugerechnet werden können (§ 13 BGB). </p>
+        <br>
+
+        <p><b>Zustandekommen eines Vertrages, Speicherung des Vertragstextes</b></p>
+
+        <p>Die folgenden Regelungen über den Vertragsabschluss gelten für Bestellungen über unseren Marktplatz
+            <a href="https://www.cnerr.de">https://www.cnerr.de</a>.</p>
+
+        <p>Im Falle des Vertragsschlusses kommt der Vertrag mit dem jeweiligen Anbieter der angebotenen Dienstleistung auf <a href="https://www.cnerr.de">https://www.cnerr.de</a> zustande.</p>
+
+        <h4>Cnerr.de wird gemäß § 5 TMG:</h4>
+        <p>Romero & Malik GbR<br/> Brookstr. 25<br/> 48607 Ochtrup </p>
+        <h4>Vertreten durch:</h4>
+        <p>Faisal Khalid Malik<br/> Severin Romero</p>
+        <h4>Kontakt:</h4>
+        <p>
+            <span style="display: inline-block; width: 70px;">Telefon:</span>
+            <span>+49 (0)2553 9263766</span>
+        </p>
+        <p>
+            <span style="display: inline-block; width: 70px;">Telefax:</span>
+            <span>+49 (0)2553 9263770</span>
+        </p>
+        <p>
+            <span style="display: inline-block; width: 70px;">E-Mail:</span>
+            <span>anfrage@cnerr.de</span>
+        </p>
+        <br>
+
+        <p>als Marktplatz betrieben. Die Romero & Malik GbR tritt als Vermittler auf dem Marktplatz auf, die von unterschiedlichen Anbietern für den Verkauf deren eigenen Dienstleistungen genutzt wird. </p>
+
+        <p>Die Präsentation der Waren auf unserem Marktplatz stellen kein rechtlich bindendes Vertragsangebot unsererseits dar, sondern sind nur eine unverbindliche Aufforderungen an den Verbraucher, Waren zu bestellen. Mit der Bestellung der gewünschten Ware gibt der Verbraucher ein für ihn verbindliches Angebot auf Abschluss eines Kaufvertrages ab.</p>
+
+        <p>Bei Eingang einer Bestellung in unserem Internetshop gelten folgende Regelungen: Der Verbraucher gibt ein bindendes Vertragsangebot ab, indem er die in unserem Internetshop vorgesehene Bestellprozedur erfolgreich durchläuft.</p>
+
+        <p>Die Bestellung erfolgt in folgenden Schritten:</p>
+
+        <p>1) Auswahl der gewünschten Ware</p>
+
+        <p>2) Bestätigen durch Anklicken der Buttons „jetzt Bestellen“</p>
+
+        <p>3) Prüfung der Angaben im Warenkorb</p>
+
+        <p>4) Betätigung des Buttons „jetzt bezahlen mit Paypal“</p>
+
+        <p>5) Anmeldung auf dem Marktplatz nach Registrierung und Eingabe der Anmelderangaben (E-Mail-Adresse und Passwort).
+        </p>
+
+        <p>6) Nochmalige Prüfung bzw. Berichtigung der jeweiligen eingegebenen Daten.</p>
+
+        <p>7) Verbindliche Absendung der Bestellung durch Anklicken des Buttons „jetzt bezahlen mit Paypal“
+        </p>
+
+        <p>Der Verbraucher kann vor dem verbindlichen Absenden der Bestellung durch Betätigen der in dem von ihm verwendeten Internet-Browser enthaltenen „Zurück“-Taste nach Kontrolle seiner Angaben wieder zu der Internetseite gelangen, auf der die Angaben des Kunden erfasst werden und Eingabefehler berichtigen bzw. durch Schließen des Internetbrowsers den Bestellvorgang abbrechen. Wir bestätigen den Eingang der Bestellung unmittelbar durch eine automatisch generierte E-Mail („Auftragsbestätigung“). Mit dieser übermitteln wir die Bestellung an den jeweiligen Anbieter wir Ihr Angebot an.</p>
+
+        <p>Speicherung des Vertragstextes bei Bestellungen über unseren Internetshop : Wir speichern den Vertragstext und senden Ihnen die Bestelldaten und unsere AGB per E-Mail zu. Die AGB können Sie jederzeit auch unter
+            <a href="https://www.cnerr.de/agb">https://www.cnerr.de/agb</a> einsehen. Ihre vergangenen Bestellungen können Sie in unserem Kunden-Bereich unter Mein Konto --> Bestellungen --> Übersicht einsehen. (<a
+                    href="https://www.cnerr.de/my_orders">https://www.cnerr.de/my_orders</a>)</p>
+        <br>
+
+        <p>Preise, Versandkosten, Zahlung, Fälligkeit</p>
+
+        <p>(1) Die angegebenen Preise enthalten die gesetzliche Umsatzsteuer und sonstige Preisbestandteile. Hinzu kommen etwaige Versandkosten.</p>
+
+        <p>(2) Der Verbraucher hat die Möglichkeit der Zahlung per PayPal .
+        </p>
+        <br>
+
+        <p>Lieferung</p>
+
+        <p>(1) Sofern wir dies in der Produktbeschreibung nicht deutlich anders angegeben haben, sind alle von uns angebotenen Artikel sofort versandfertig. Die Lieferung erfolgt hier spätesten innerhalb von 10 Werktagen. Dabei beginnt die Frist für die Lieferung im Falle der Zahlung per Vorkasse am Tag nach Zahlungsauftrag an die mit der Überweisung beauftragte Bank und bei allen anderen Zahlungsarten am Tag nach Vertragsschluss zu laufen. Fällt das Fristende auf einen Samstag, Sonntag oder gesetzlichen Feiertag am Lieferort, so endet die Frist am nächsten Werktag.
+        </p>
+
+        <p>(2) Die Gefahr des zufälligen Untergangs und der zufälligen Verschlechterung der verkauften Sache geht auch beim Versendungskauf erst mit der Übergabe der Sache an den Käufer auf diesen über.
+        </p>
+        <br>
+
+        <p>Eigentumsvorbehalt</p>
+
+        <p>Wir behalten uns das Eigentum an der Ware bis zur vollständigen Bezahlung des Kaufpreises vor.</p>
+
+        <p>*************************************************************************************************</p>
+
+        <p>Widerrufsrecht des Kunden als Verbraucher Widerrufsrecht für Verbraucher
+        </p>
+
+        <p>Verbrauchern steht ein Widerrufsrecht nach folgender Maßgabe zu, wobei Verbraucher jede natürliche Person ist, die ein Rechtsgeschäft zu Zwecken abschließt, die überwiegend weder ihrer gewerblichen noch ihrer selbständigen beruflichen Tätigkeit zugerechnet werden können: </p>
+        <br>
+
+        <p>Haftung</p>
+        <p>Auf dem Marktplatz Cnerr.de präsentierte Inhalte, gleich ob eigene oder fremde Inhalte, richtet sich nach den gesetzlichen Regelungen gemäß §7 ff TMG. Die einzelnen Anbieter übernehmen die Haftung der erbrachten Dienstleistungen eigenverantwortlich. </p>
+
+        <p>Widerrufsbelehrung</p>
+
+        <p>Widerrufsrecht</p>
+
+        <p>Sie haben das Recht, binnen vierzehn Tagen ohne Angabe von Gründen diesen Vertrag zu widerrufen. Die Widerrufsfrist beträgt vierzehn Tage, ab dem Tag des Vertragsabschlusses.</p>
+
+        <p>Um Ihr Widerrufsrecht auszuüben, müssen Sie uns</p>
+
+        <h4>Angaben gem&auml;&szlig; &sect; 5 TMG:</h4>
+        <p>Romero & Malik GbR GbR<br/> Brookstr. 25<br/> 48607 Ochtrup </p>
+        <h4>Vertreten durch:</h4>
+        <p>Faisal Khalid Malik<br/> Severin Romero</p>
+        <h4>Kontakt:</h4>
+        <p>
+            <span style="display: inline-block; width: 70px;">Telefon:</span>
+            <span>+49 (0)2553 9263766</span>
+        </p>
+        <p>
+            <span style="display: inline-block; width: 70px;">Telefax:</span>
+            <span>+49 (0)2553 9263770</span>
+        </p>
+        <p>
+            <span style="display: inline-block; width: 70px;">E-Mail:</span>
+            <span>anfrage@cnerr.de</span>
+        </p>
+
+        <p>E-Mail anfrage@cnerr.de</p>
+        <p>mittels einer eindeutigen Erklärung (z.B. ein mit der Post versandter Brief, Telefax oder E-Mail) über Ihren Entschluss, diesen Vertrag zu widerrufen, informieren. Sie können dafür das beigefügte Muster-Widerrufsformular verwenden, das jedoch nicht vorgeschrieben ist.</p>
+        <p>
+            Zur Wahrung der Widerrufsfrist reicht es aus, dass Sie die Mitteilung über die Ausübung des Widerrufsrechts vor Ablauf der Widerrufsfrist absenden.
+        </p>
+        <br>
+
+        <p><b>Widerrufsfolgen</b></p>
+
+        <p>Wenn Sie diesen Vertrag widerrufen, haben wir Ihnen alle Zahlungen, die wir von Ihnen erhalten haben, einschließlich der Lieferkosten (mit Ausnahme der zusätzlichen Kosten, die sich daraus ergeben, dass Sie eine andere Art der Lieferung als die von uns angebotene, günstigste Standardlieferung gewählt haben), unverzüglich und spätestens binnen vierzehn Tagen ab dem Tag zurückzuzahlen, an dem die Mitteilung über Ihren Widerruf dieses Vertrags bei uns eingegangen ist. Für diese Rückzahlung verwenden wir dasselbe Zahlungsmittel, das Sie bei der ursprünglichen Transaktion eingesetzt haben, es sei denn, mit Ihnen wurde ausdrücklich etwas anderes vereinbart; in keinem Fall werden Ihnen wegen dieser Rückzahlung Entgelte berechnet.</p>
+
+        <p>Haben Sie verlangt, dass die Dienstleistungen während der Widerrufsfrist beginnen soll, so haben Sie uns einen angemessenen Betrag zu zahlen, der dem Anteil der bis zu dem Zeitpunkt, zu dem Sie uns von der Ausübung des Widerrufsrechts hinsichtlich dieses Vertrags unterrichten, bereits erbrachten Dienstleistungen im Vergleich zum Gesamtumfang der im Vertrag vorgesehenen Dienstleistungen entspricht.</p>
+
+        <p><b>Ende der Widerrufsbelehrung </b></p>
+
+        <p>*************************************************************************************************</p>
+
+        <p>Widerrufsformular Muster-Widerrufsformular
+        </p>
+
+        <p>(Wenn Sie den Vertrag widerrufen wollen, dann füllen Sie bitte dieses Formular aus und senden Sie es
+            zurück.)</p>
+        An :
+        <h4>Angaben gem&auml;&szlig; &sect; 5 TMG:</h4>
+        <p>Romero & Malik GbR GbR<br/> Brookstr. 25<br/> 48607 Ochtrup </p>
+        <h4>Vertreten durch:</h4>
+        <p>Faisal Khalid Malik<br/> Severin Romero</p>
+        <h4>Kontakt:</h4>
+        <p>
+            <span style="display: inline-block; width: 70px;">Telefon:</span>
+            <span>+49 (0)2553 9263766</span>
+        </p>
+        <p>
+            <span style="display: inline-block; width: 70px;">Telefax:</span>
+            <span>+49 (0)2553 9263770</span>
+        </p>
+        <p>
+            <span style="display: inline-block; width: 70px;">E-Mail:</span>
+            <span>anfrage@cnerr.de</span>
+        </p>
+
+        <p>E-Mail anfrage@cnerr.de</p>
+        <br>
+        <p>Hiermit widerrufe(n) ich/wir (*) den von mir/uns (*) abgeschlossenen Vertrag über den Kauf der folgenden
+            Waren (*)/die Erbringung der folgenden Dienstleistung (*)</p>
+
+        <p>_____________________________________________________</p>
+
+        <p>Bestellt am (*)/erhalten am (*)</p>
+
+        <p>__________________</p>
+
+        <p>Name des/der Verbraucher(s)</p>
+
+        <p>_____________________________________________________</p>
+
+        <p>Anschrift des/der Verbraucher(s)</p>
+
+        <p>_____________________________________________________</p>
+
+        <p>Unterschrift des/der Verbraucher(s) (nur bei Mitteilung auf Papier)</p>
+
+        <p>__________________</p>
+
+        <p>Datum</p>
+
+        <p>__________________</p>
+
+        <p>(*) Unzutreffendes streichen.</p>
+        <br>
+
+        <p><b>Gewährleistung</b></p>
+
+        <p>Es gelten die gesetzlichen Gewährleistungsregelungen. </p>
+        <br>
+
+        <p><b>Vertragssprache</b></p>
+
+        <p>Als Vertragssprache steht ausschließlich Deutsch zur Verfügung.</p>
+
+        <p>*************************************************************************************************</p>
+
+        <p>Kundendienst Unser Kundendienst für Fragen, Reklamationen und Beanstandungen steht Ihnen werktags von 8:30 Uhr bis 17:30 Uhr unter
+        </p>
+
+        <p><b>Telefon: 0255380340</b></p>
+
+        <p><b>Telefax: 0255380346</b></p>
+
+        <p><b>E-Mail: support@cnerr.de</b></p>
+
+        <p><b>zur Verfügung.</b></p>
+
+        <p>**************************************************************************************************</p>
+
+        <p>Stand der AGB Aug.2016 </p>
+
+        <p>erstellt von agb.de</p>
+
+    </div>
+</div>
+</div>
+
+<?php echo $__env->make('includes.footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+</body>
+</html>

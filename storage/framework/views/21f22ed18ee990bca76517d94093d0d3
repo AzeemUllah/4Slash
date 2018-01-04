@@ -1,0 +1,136 @@
+<?php echo $__env->make('includes.header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+<div class="container" style="height: 750px;">
+
+    <div class="col-md-offset-2 col-md-8 col-sm-8 col-xs-8" style="padding: 0px;border-bottom: 1px solid rgba(51, 51, 51, 0.16);">
+        <h1 style="color: rgb(51, 51, 51);">Buy Sprout Essential</h1>
+    </div>
+
+
+    <div class= "col-md-offset-2 col-md-12" style="padding: 0px;">
+        <div class="col-md-8 col-md-8 col-md-8" style="padding: 0px;">
+            <div class="col-md-12" style="padding-left: 0px;">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="usr">Full Name:</label>
+                        <input type="text" class="form-control" id="usr">
+                    </div>
+
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="usr">Admin Email:</label>
+                        <input type="email" class="form-control" id="usr" name="email">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12" style="padding-left: 0px;">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="usr">Company Name:</label>
+                        <input type="text" class="form-control" id="usr">
+                    </div>
+
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="usr">Country:</label>
+                        <input type="text" class="form-control" id="usr">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12" style="padding-left: 0px;">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="usr">Number of Users:</label>
+                        <input type="number" class="form-control" id="usr" style="width: 100%;">
+                    </div>
+
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="usr">Phone Number:</label>
+                        <input type="text" class="form-control" id="usr">
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="col-md-4 col-sm-4 col-xs-4">
+
+        </div>
+    </div>
+</div>
+
+
+
+
+<?php echo $__env->make('includes.footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+<script>
+
+    $('.gig-favourite-heart-icn').click(function (e) {
+
+        e.preventDefault();
+        $selectedGig = $(this).parent();
+
+        var gigId = $selectedGig.data('coll-id');
+        var url = $selectedGig.data('url');
+
+        // var className = $('span.favorite-span > i').attr('class');
+
+        //  alert(className);
+
+        if ($(this).find('i').attr('class') == 'fa fa-heart') {
+            var action = 'removeFavorite';
+            $(this).empty().html('<span class="favorite-span"><i class="fa fa-heart-o"></i></span>');
+        }
+        else {
+            var action = 'addToFavorite';
+            $(this).empty().html('<span class="favorite-span"><i class="fa fa-heart"></i></span>');
+        }
+
+
+        $.ajax({
+            url: url,
+            method: 'POST',
+            data: {'gig-id': gigId, 'action': action},
+            success: function (data) {
+                console.log(data);
+
+            }
+        });
+    });
+
+
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        /*$('.gig-item-default').hover(function(){
+         $(this).children('.col-xs-5').removeClass('hover-transition');
+         },function(){
+         $(this).children('.col-xs-5').addClass('hover-transition');
+         });
+         $('.gig-item-default').hover(function(){
+         $(this).children('.col-xs-4').removeClass('hover-transition');
+         },function(){
+         $(this).children('.col-xs-4').addClass('hover-transition');
+         });*/
+        $('.gig-item-default').hover(function(){
+            $(this).children('#sold').show();
+        },function(){
+            $(this).children('#sold').hide();
+        });
+        $('#custom_offer').click(function(){
+
+            $(".gig-style").toggle();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

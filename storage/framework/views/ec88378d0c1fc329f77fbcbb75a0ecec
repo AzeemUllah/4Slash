@@ -1,0 +1,201 @@
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Untitled Document</title>
+</head>
+
+<body>
+<div style="min-height:100%!important;width:100%!important;margin:0;padding-top: 10px; padding-bottom: 10px;">
+
+    <?php if(!empty($adminJobDone) && $adminJobDone == 'adminDone'): ?>
+        <table border="0" cellpadding="0" cellspacing="0" width="600"
+               style="overflow:hidden;border-radius:4px;border-collapse:collapse!important;width: 100%;">
+            <tbody>
+            <tr>
+                <td align="bottom" style="text-align:center!important">
+                    <a href="https://www.4slash.com/" style="text-decoration:none" target="_blank"></a>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top" bgcolor="#367fa9" style="padding:20px; width: 100%;">
+                    <a href="" style="text-decoration: none; color: white;">
+                        <img src="https://4slash.com/img/logo.png" alt="4slash" width="100px">
+                        <span style="font-size: 20px; color: white; position: relative; bottom: 7px">| Marketplace for creative minds</span>
+                    </a>
+                </td>
+            </tr>
+        <tr>
+            <td style="padding-top: 20px;">
+                    <p style="font-size:22px;line-height:28px;margin:40px 0;margin-left: 35px;"><font color="#666666"><b>Dear 4slash customer, <?php echo e($user); ?>,</b></font></p>
+                <p style="font-size:18px;line-height:28px;margin:20px 0;padding:0 40px"><font color="#666666">
+                            Your order has been marked with "Done" status!
+                    </font>
+                </p>
+                <p style="font-size:18px;line-height:28px;margin:20px 0;padding:0 40px"><font color="#666666">
+                        If you want a change click on <a href="<?php echo e(route('myorders', ['orderno' => $order_no])); ?>">assignment</a>„
+                        Change desired "or confirm the job as" Done "
+                    </font>
+                </p>
+                <p style="font-size:18px;line-height:28px;margin:20px 0;padding:0 40px"><font color="#666666">   For further information, you can contact us at any time
+                        über order@4slash.com  Or via our contact form <p style="font-size:18px;line-height:28px;margin:20px 0;padding:0 40px"><font color="#888888"><a href=" <?php echo e(route('contact')); ?>" class="btn-primary" style="text-decoration: none; margin-top:
+65px; background-color: #367fa9; padding: 15px 18px; border-radius: 5px; border: 0px; transition: all 0.8s ease
+0s; color:#FFFFFF;">Contact</a>
+                    </font>
+                </p>
+            </td>
+        </tr>
+        <tr>
+                <td>
+                    <p style="font-size:18px;line-height:28px;margin:20px 0;padding:0 40px"><font color="#666666">other
+                            Greetings/regards,</font></p>
+                    <p style="font-size:18px;line-height:28px;margin:20px 0;padding:0 40px"><font color="#666666">
+                           4slash - Team
+                        </font>
+                    </p>
+                    <p style="font-size:18px;line-height:28px;margin:20px 0;padding:0 40px"><font color="#666666"><a
+                                    href="<?php echo e(url()); ?>">www.4slash.com</a>
+                        </font>
+                    </p>
+                    <?php /*<p style="font-size:18px;line-height:28px;margin:20px 0;padding:0 40px"><font color="#666666">
+                        Kontaktformular:
+                    </font>
+                    </p>*/ ?>
+                    <p style="font-size:18px;line-height:28px;margin:20px 0;padding:0 40px"><font color="#666666">
+                            4slash<br>
+                            Gausepohl 33<br>
+                            48607 Ochtrup<br>
+
+                        </font>
+                    </p>
+                    <p style="font-size:18px;line-height:28px;margin:20px 0;padding:0 40px"><font color="#666666">
+
+                            tax number: 311/5130/2449<br>
+                            VAT number.: DE274571605<br>
+                            Inh.: Faisal Khalid Malik</br>
+                        </font>
+                    </p>
+                    <p style="font-size:18px;line-height:28px;margin:20px 0;padding:0 40px"><font color="#666666"> Tax authorities
+                            Steinfurt
+                        </font>
+                    </p>
+                    <p style="font-size:18px;line-height:28px;margin:20px 0;padding:0 40px"><font color="#666666"> These
+                            This e-mail contains confidential and / or legally protected information. If you do not
+                            Or if you have received this e-mail in error, please let us know
+                            Immediately remove the sender and destroy this mail. Unauthorized copying and unauthorized copying
+                            This e-mail is not permitted.
+                        </font>
+                    </p>
+                </td>
+            </tr>
+    </table>
+    <?php elseif(!empty($mail) && $mail == 'acknowledge'): ?>
+        <table border="0" cellpadding="0" cellspacing="0" width="600"
+               style="overflow:hidden;border-radius:4px;border-collapse:collapse!important;width: 100%;">
+            <tbody>
+            <tr>
+                <td align="bottom" style="text-align:center!important">
+                    <a href="https://www.4slash.com/" style="text-decoration:none" target="_blank"></a>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top" bgcolor="#367fa9" style="padding:20px; width: 100%;">
+                    <a href="" style="text-decoration: none; color: white;">
+                        <img src="https://4slash.com/img/logo.png" alt="4slash" width="100px">
+                            <span style="font-size: 20px; color: white; position: relative; bottom: 7px">| Marketplace for creative minds</span>
+                    </a>
+                </td>
+            </tr>
+            <?php if(!empty($type) && $type == 'user'): ?>
+            <tr>
+                <td style="padding-top: 20px;">
+                    <p style="font-size:22px;line-height:28px;margin:40px 0;margin-left: 35px;"><font color="#666666"><b>Dear 4slash customer, <?php echo e($user); ?>,</b></font></p>
+                    <p style="font-size:18px;line-height:28px;margin:20px 0;padding:0 40px"><font color="#666666">
+                            your order<a href="<?php echo e(route('myorders', ['orderno' => $order_no])); ?>"><?php echo e($order_no); ?></a> Has been successfully completed.
+                        </font>
+                    </p>
+                    <p style="font-size:18px;line-height:28px;margin:20px 0;padding:0 40px"><font color="#666666">We would be very pleased to welcome you back to our market square.
+                        </font>
+                    </p>
+                    <p style="font-size:18px;line-height:28px;margin:20px 0;padding:0 40px"><font color="#666666"> For further information, you can contact us at any time
+                            Via order@4slash.com or via our contact form <p style="font-size:18px;line-height:28px;margin:20px 0;padding:0 40px"><font color="#888888"><a href=" <?php echo e(route('contact')); ?>" class="btn-primary" style="text-decoration: none; margin-top:
+65px; background-color: #367fa9; padding: 15px 18px; border-radius: 5px; border: 0px; transition: all 0.8s ease
+0s; color:#FFFFFF;">Contact</a>
+                        </font>
+                    </p>
+                </td>
+            </tr>
+            <?php elseif(!empty($type) && $type == 'agency'): ?>
+                <tr>
+                    <td>
+                        <p style="font-size:22px;line-height:28px;margin:40px 0;margin-left: 35px;"><font color="#666666"><b>Dear 4slash partner, <?php echo e($agency); ?>,</b></font></p>
+                        <p style="font-size:18px;line-height:28px;margin:20px 0;padding:0 40px"><font color="#666666">
+                                Congratulations. Our customer <?php echo e($user); ?>  Has the following order
+                                <a href="<?php echo e(route('myorders', ['orderno' => $order_no])); ?>"><?php echo e($order_no); ?></a>
+                                Successfully completed. The order is given the status "completed" and is now entitled to rights.
+                            </font>
+                        </p>
+                    </td>
+                </tr>
+            <?php elseif(!empty($type) && $type == 'admin'): ?>
+                <tr>
+                    <td>
+
+
+                        <p style="font-size:22px;line-height:28px;margin:40px 0;margin-left: 35px;"><font color="#666666"><b>Dear 4slash team,</b></font></p>
+                        <p style="font-size:18px;line-height:28px;margin:20px 0;padding:0 40px"><font color="#666666">
+                                Congratulations. Our customer <?php echo e($user); ?>Has the following order <a href="<?php echo e(route('myorders', ['orderno' => $order_no])); ?>"><?php echo e($order_no); ?></a>
+                                Successfully completed. The order is given the status "Completed" and is entitled to receive payments.
+                            </font>
+                        </p>
+                    </td>
+                </tr>
+            <?php endif; ?>
+            <tr>
+                <td>
+                    <p style="font-size:18px;line-height:28px;margin:20px 0;padding:0 40px"><font color="#666666">other
+                             Greetings / regards,</font></p>
+                    <p style="font-size:18px;line-height:28px;margin:20px 0;padding:0 40px"><font color="#666666">
+                            4slash - Team
+                        </font>
+                    </p>
+                    <p style="font-size:18px;line-height:28px;margin:20px 0;padding:0 40px"><font color="#666666"><a
+                                    href="<?php echo e(url()); ?>">www.4slash.com</a>
+                        </font>
+                    </p>
+                    <?php /*<p style="font-size:18px;line-height:28px;margin:20px 0;padding:0 40px"><font color="#666666">
+                        Kontaktformular:
+                    </font>
+                    </p>*/ ?>
+                    <p style="font-size:18px;line-height:28px;margin:20px 0;padding:0 40px"><font color="#666666">
+                            4slash<br>
+                            Gausepohl 33<br>
+                            48607 Ochtrup<br>
+
+                        </font>
+                    </p>
+                    <p style="font-size:18px;line-height:28px;margin:20px 0;padding:0 40px"><font color="#666666">
+                            Tax number: 311/5130/2449<br>
+                            VAT number.: DE274571605<br>
+                            Inh.: Faisal Khalid Malik</br>
+                        </font>
+                    </p>
+                    <p style="font-size:18px;line-height:28px;margin:20px 0;padding:0 40px"><font color="#666666"> Tax authorities
+                            Steinfurt
+                        </font>
+                    </p>
+                    <p style="font-size:18px;line-height:28px;margin:20px 0;padding:0 40px"><font color="#666666"> These
+                            This e-mail contains confidential and / or legally protected information. If you do not
+                            Or if you have received this e-mail in error, please let us know
+                            Immediately remove the sender and destroy this mail. Unauthorized copying and unauthorized copying
+                            This e-mail is not permitted.
+                        </font>
+                    </p>
+                </td>
+            </tr>
+        </table>
+    <?php endif; ?>
+</div>
+</body>
+</html>

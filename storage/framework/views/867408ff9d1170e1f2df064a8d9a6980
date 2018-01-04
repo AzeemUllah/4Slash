@@ -1,0 +1,75 @@
+
+
+
+<?php $__env->startSection('header_title'); ?>
+
+    <h1>Payment Withdraw Requests</h1>
+
+<?php $__env->stopSection(); ?>
+
+
+
+
+<?php $__env->startSection('content'); ?>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-body table-responsive">
+                    <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Wallet</th>
+                        </tr>
+                        </thead>
+                        <tfoot>
+                        <tr>
+                            <th colspan="9" style="text-align:left; display: none" class="no-match">No Record Found</th>
+                        </tr>
+                        </tfoot>
+                        <tbody class="form-gigs-body-container">
+                            <?php foreach($requests as $payment): ?>
+                            <tr class="data-row">
+                                <td><?php echo e($payment->id); ?></td>
+                                <td><?php echo e($payment->name); ?></td>
+                                <td><?php echo e($payment->email); ?></td>
+                                <td><?php echo e($payment->wallet); ?></td>
+                            </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+
+                    </table>
+                </div><!-- /.box-body -->
+            </div><!-- /.box -->
+        </div><!-- /.col -->
+    </div><!-- /.row -->
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('pages_css'); ?>
+
+    <!-- DataTables -->
+    <link rel="stylesheet" href="<?php echo e(asset('bower_components/AdminLTE/plugins/datatables/dataTables.bootstrap.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('css/animate.css')); ?>">
+    <style>
+        .btn-gig-activate:hover {
+            background-color: #5cb85c;
+            border-color: #4cae4c;
+        }
+
+    </style>
+
+<?php $__env->stopSection(); ?>
+
+
+
+
+
+<?php $__env->startSection('pages_script'); ?>
+    <!-- DataTables -->
+    <script src="<?php echo e(asset('bower_components/AdminLTE/plugins/datatables/jquery.dataTables.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('bower_components/AdminLTE/plugins/datatables/dataTables.bootstrap.min.js')); ?>"></script>
+    <!-- page script -->
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('pages.admin.admin_template', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

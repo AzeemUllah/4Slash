@@ -1,0 +1,67 @@
+<?php echo $__env->make('includes.header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<div class="well" style="margin-bottom: 0px;">
+        <!-- content -->
+    <div class="container" style="height:90vh">
+        <div class="row" style="margin-top: 65px; margin-bottom: 60px;">
+
+            <div class="col-xs-6 col-xs-push-3" style="text-align:-webkit-center; background: white; padding: 40px;">
+                    <?php /*<form method="POST" action="/password/email">*/ ?>
+                    <h3 style="color: #367fa9;" class="text-left">Passwort vergessen?</h3>
+                <p style="color:#367fa9;" class="text-left">Kein Problem. Bitte tragen Sie hier die E-Mail Adresse ein,
+                    mit der Sie sich registriert haben und klicken nach Eingabe auf "Senden".
+                </p>
+                    <form method="POST" action="<?php echo e(route('userforgotEmail')); ?>" class="text-left" style="padding-bottom: 40px;">
+                        <?php echo csrf_field(); ?>
+
+
+
+                        <?php if(count($errors) > 0): ?>
+                            <?php foreach($errors->all() as $error): ?>
+                                <div class="alert alert-danger alert-dismissible" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <?php echo e($error); ?>
+
+                                </div>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
+
+                        <?php if(session('status')): ?>
+                            <div class="alert alert-success alert-dismissible" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <?php echo e(session('status')); ?>
+
+                            </div>
+                        <?php endif; ?>
+
+                        <?php if(session('success')): ?>
+                            <div class="alert alert-success alert-dismissible" role="alert" style="margin-top: 30px;">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <?php echo e(session('success')); ?>
+
+                            </div>
+                        <?php endif; ?>
+
+
+
+
+                        <div class="form-group">
+                            <label for="email"></label>
+                            <input type="email" name="email" class="form-control" id="email" placeholder="jane.doe@example.com" value="<?php echo e(old('email')); ?>">
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="background: #367fa9;">
+                            Senden
+                        </button>
+
+                    </form>
+                <?php /*<button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-th-large" style="margin-right:5px;"></span>View all Gigs</button>*/ ?>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<?php echo $__env->make('includes.footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+
+</body>
+</html>

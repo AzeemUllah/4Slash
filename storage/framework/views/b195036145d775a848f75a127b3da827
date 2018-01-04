@@ -1,0 +1,29 @@
+<table border="0" cellpadding="0" cellspacing="0" width="100%" style="overflow:hidden;border-radius:4px;border-collapse:collapse!important;/* text-align:center; */padding: 12px;margin: 10px;margin-top: 0px;padding-top: 70px;">
+    <tbody>
+    <tr><td align="bottom" style="text-align:center!important">
+            <a href="https://www.cnerr.de/" style="text-decoration:none" target="_blank"></a>
+        </td></tr>
+    <tr>
+        <td valign="top" bgcolor="#367fa9" style="max-width:100%!important;">
+            <h1 style="font-family:Helvetica;font-size:36px;font-style:normal;font-weight:bold;text-align:center;" align="center"><font color="white">Cnerr.de</font></h1>
+            <h1 style="font-family:Helvetica;font-size:36px;font-style:normal;font-weight:bold;text-align:center;margin:36px auto 36px" align="center"><font color="white">Was benötigst du? Cnerr hat es!</font></h1>
+            <h3 style="font-size:20px;font-weight:bold;letter-spacing:normal;text-align:left;margin:25px 0" align="left"><font color="white"></font></h3>
+    </tr>
+    <tr>
+        <td>
+            <p style="font-size:22px;line-height:28px;margin:40px 0;margin-left: 35px;"><font color="#666666"><b>Lieber Cnerr-Partner, (<?php echo e($agency->username); ?>),</b></font></p>
+        </td>
+    </tr>
+    <tr>
+        <td style="font-size:15px; color:#666666">
+            <p>sie haben ein neues Passwort angefragt. Wenn Sie auf diesen Link klicken werden Sie aufgefordert ein neues Passwort zu vergeben.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="<?php echo e(url()); ?>/resetEmailPassword/<?php echo e($agency->email); ?>/<?php echo e($token); ?>"><?php echo e(url()); ?>/resetEmailPassword/<?php echo e($agency->email); ?>/<?php echo e($token); ?></a>
+        </td>
+    </tr>
+
+
+</table>
